@@ -1,6 +1,8 @@
 <?php
 
-require ('/Verax/DAL/Gateways/UtilisateurGateway.php');
+ini_set('display_errors', 'On'); ini_set('html_errors', 0); error_reporting(-1);
+
+require(__DIR__.'/Gateways/UtilisateurGateway.php');
 
 $username = "test";
 $password = "test";
@@ -11,7 +13,7 @@ $con = new Connection($dsn, $username, $password);
 
 $gw = new UtilisateurGateway($con);
 
-$mdp = $gw->findPasswordByPseudo($_POST["pseudo"]);
+$mdp = $gw->findPasswordByPseudo($_POST['pseudo']);
 
 
 if (password_verify($_POST['mdp'],$mdp)) {
@@ -19,7 +21,7 @@ if (password_verify($_POST['mdp'],$mdp)) {
     $_SESSION['pseudo'] = $_POST['pseudo'];
     $_SESSION['mdp'] = $mdp;
     echo "Session OK ! <br/>";
-    header('Location: /Vue/connexion.php');
+    header('Location: /Verax/Vue/connexion.php');
 }
 
 else {

@@ -1,7 +1,7 @@
 <?php
 
-require ('/Verax/DAL/Connection.php');
-require ('/Verax/DAL/Utilisateur.php');
+require(__DIR__.'/../Connection.php');
+require(__DIR__.'/../Utilisateur.php');
 
 class UtilisateurGateway {
     private $con;
