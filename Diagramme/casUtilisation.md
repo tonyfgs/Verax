@@ -33,12 +33,14 @@ package Verax {
     usecase "Supprimer des contributions" as UC27
     usecase "Archiver des contributions" as UC26
     usecase "Commenter des articles" as UC15
+    usecase "Demander à faire valider un aticle" as UC14
 
     usecase "Voir les signalements" as UC16
     usecase "Supprimer un utilisateur" as UC17
     usecase "Supprimer un article" as UC18
     usecase "Valider un article" as UC13
     usecase "Voir les actions des modérateurs" as UC19
+    usecase "Réfuter un article" as UC20
 
     usecase "Gérer les modérateurs" as UC22
     usecase "Gérer les roles" as UC23
@@ -67,6 +69,7 @@ u --> UC25
 
 r --> UC11
 r --> UC12
+r --> UC14
 r --> UC15
 r --> UC27
 r --> UC26
@@ -76,10 +79,10 @@ m --> UC16
 m --> UC17
 m --> UC18
 m --> UC19
+m --> UC20
 
 a --> UC22
 a --> UC23
-
 
 
 @enduml
