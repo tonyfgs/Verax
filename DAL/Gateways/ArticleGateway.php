@@ -1,5 +1,7 @@
 <?php
-require ('DAL/Connection.php');
+require (__DIR__.'/../Connection.php');
+require (__DIR__.'/../../Metier/Article.php');
+
 class ArticleGateway {
 
 private $con;
@@ -17,9 +19,13 @@ public function insert(int $id, string $titre, string $contenu, int $temps) : bo
 
 public function findArticle(int $id) : array {
 	$query = 'SELECT * FROM article WHERE idArticle = :i';
-	$res = $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
-	if (!$res) return [];
-	return $this->con->getResults();
+	$this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
+	$results = $this->con->getResults();
+	if (count($results) == 0) return array();
+	foreach ($results as $row) {
+		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
+	}
+	return $tab;
 }
 
 public function delete(int $id) : bool {
@@ -34,9 +40,13 @@ public function update(int $id, string $titre, string $contenu, int $temps) : bo
 
 public function selectAllArticle() : array {
     $query = 'SELECT * FROM Article';
-	$res = $this->con->executeQuery($query,array());
-	if (!$res) return [];
-    return $this->con->getResults();
+	$this->con->executeQuery($query,array());
+	$results = $this->con->getResults();
+	if (count($results) == 0) return array();
+	foreach ($results as $row) {
+		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
+	}
+	return $tab;
 }
 
 

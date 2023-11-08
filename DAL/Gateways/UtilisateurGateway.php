@@ -1,7 +1,7 @@
 <?php
 
 require(__DIR__.'/../Connection.php');
-require(__DIR__.'/../Utilisateur.php');
+require(__DIR__.'/../../Metier/Utilisateur.php');
 
 class UtilisateurGateway {
     private $con;
