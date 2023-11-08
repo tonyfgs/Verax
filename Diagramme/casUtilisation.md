@@ -14,16 +14,16 @@ package Interne {
 }
 
 package Verax {
-    usecase "Choisir une catégorie" as UC1
+    usecase "Filtrer par thème" as UC1
     usecase "Voir un article" as UC2
     usecase "Recherche un article" as UC3
     usecase "Créer un compte" as UC4
     
     usecase "Se connecter" as UC5
 
-    usecase "Donner son avis" as UC6
-    usecase "Proposer un sujet d'article" as UC7
-    usecase "Modifier le profil" as UC8
+    usecase "Evaluer un article" as UC6
+    usecase "Contribuer" as UC7
+    usecase "Modifier son profil" as UC8
     usecase "Signaler un article" as UC9
 
     usecase "Remplir le formulaire" as UC10
