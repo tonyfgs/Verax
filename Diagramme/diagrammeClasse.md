@@ -13,8 +13,6 @@ namespace Model{
         # pseudo : String
         # noterInfo() 
     }
-    class Lecteur{
-    }
     class Contributeur {
         # soumettreContenu()
         # modifierContenu()
@@ -29,6 +27,8 @@ namespace Model{
     }
     class UtilisateurTheque {
     } 
+    class Lecteur{
+    }
     abstract Modifier {
     }
     class Supprimer {
