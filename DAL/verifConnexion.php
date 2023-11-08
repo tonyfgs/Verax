@@ -13,13 +13,19 @@ $con = new Connection($dsn, $username, $password);
 
 $gw = new UtilisateurGateway($con);
 
-$mdp = $gw->findPasswordByPseudo($_POST['pseudo']);
+$tab = $gw->findUserByPseudo($_POST['pseudo']);
 
 
-if (password_verify($_POST['mdp'],$mdp)) {
+$user = $tab[0];
+
+if (password_verify($_POST['mdp'],$user->getMdp())) {
     session_start();
     $_SESSION['pseudo'] = $_POST['pseudo'];
-    $_SESSION['mdp'] = $mdp;
+    $_SESSION['mdp'] = $user->getMdp();
+    $_SESSION['nom'] = $user->getNom();
+    $_SESSION['prenom'] = $user->getPrenom();
+    $_SESSION['mail'] = $user->getMail();
+    $_SESSION['role'] = $user->getRole();
     echo "Session OK ! <br/>";
     header('Location: /Verax/Vue/connexion.php');
 }

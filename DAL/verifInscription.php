@@ -14,7 +14,7 @@ try{
         if (!empty($tab)) {
             header('Location: /Verax/Vue/inscription.php');
         }
-        $verif = $gw->insert($_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp'],$_POST['mail']);
+        $verif = $gw->insert($_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp'],$_POST['mail'],'U');
         if (!$verif) {
             header('Location: /Verax/Vue/inscription.php');
         }
