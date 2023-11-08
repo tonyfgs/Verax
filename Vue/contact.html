@@ -6,16 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
 
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -95,7 +95,7 @@
 
 
     <!-- Start Content Page -->
-    <div class="container-fluid bg-light py-5">
+    <div class="container-fluid bg-dark py-5">
         <div class="col-md-6 m-auto text-center">
             <h1 class="h1">Contactez nous</h1>
             <p>
@@ -103,31 +103,6 @@
             </p>
         </div>
     </div>
-
-    <!--changer en ajoutant google map-->
-    <!-- Start Map -->
-    <div id="mapid" style="width: 100%; height: 300px;"></div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script>
-        var mymap = L.map('mapid').setView([-23.013104, -43.394365, 13], 13);
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            attribution: 'Zay Telmplte | Template Design by <a href="https://templatemo.com/">Templatemo</a> | Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(mymap);
-
-        L.marker([-23.013104, -43.394365, 13]).addTo(mymap)
-            .bindPopup("<b>Zay</b> eCommerce Template<br />Location.").openPopup();
-
-        mymap.scrollWheelZoom.disable();
-        mymap.touchZoom.disable();
-    </script>
-    <!-- Ena Map -->
 
     <!-- Start Contact -->
     <div class="container py-5">
@@ -165,6 +140,111 @@
     </div>
     <!-- End Contact -->
 
+    <script>
+        // Fonction pour afficher ou masquer les champs
+        function afficherChamps() {
+            var selection = document.getElementById("choix").value;
+
+            // Récupérer les éléments des champs
+            var champs1 = document.getElementById("champs1");
+            var champs2 = document.getElementById("champs2");
+
+            // Masquer tous les champs par défaut
+            champs1.style.display = "none";
+            champs2.style.display = "none";
+
+            // Afficher les champs correspondant à l'option sélectionnée
+            if (selection === "option1") {
+                champs1.style.display = "block";
+            } else if (selection === "option2") {
+                champs2.style.display = "block";
+            }else if (selection === "option3") {
+                champs3.style.display = "block";
+            }
+        }
+    </script>
+
+    <div class="container py-5">
+        <form class="col-md-9 m-auto" method="post" role="form">
+            <label for="choix">Pourquoi nous écrivez vous?</label>
+            <select id="choix" onchange="afficherChamps()">
+                <option value=""></option>
+                <option value="option1">soumission d'une Fake News</option>
+                <option value="option2">soumission d'un article</option>
+                <option value="option3">soumission d'un bug</option>
+            </select>
+
+            <div id="champs1" style="display: none;">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-1">Thème :</label>
+                    <input type="text" class="form-control mt-1" id="champ1-1" name="champ1" placeholder="ex: Zelenski est cannibal">
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-2">Date de publication de la Fake News :</label>
+                    <input type="date" class="form-control mt-1" id="champ1-2" name="champ1">
+                </div>
+
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-3">Lien vers la Fake News :</label>
+                    <input type="url" class="form-control mt-1" id="champ1-3" name="champ1" placeholder="ex: https://lesite.fr/fakeNews">
+                </div>
+            </div>
+
+            <div id="champs2" style="display: none;">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-1">Titre :</label>
+                    <input type="text" class="form-control mt-1" id="champ2-1" name="champ2" placeholder="ex: Zelenski est cannibal">
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-2">Contenu :</label>
+                    <textarea class="form-control mt-1" id="champ2-2" name="champ2" rows="8" placeholder="écrivez votre article"></textarea>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-3">Images :</label>
+                    <input type="file" class="form-control mt-1" id="champ2-3" name="champ2">
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-4">Redacteur :</label>
+                    <input type="text" class="form-control mt-1" id="champ2-4" name="champ2" placeholder="ex: Henri Martin @enRiz">
+                </div>
+            </div>
+
+            <div id="champs3" style="display: none;" >
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ3-1">Description brève du bug :</label>
+                    <input type="text" class="form-control mt-1" id="champ3-1" name="champ2" placeholder="ex: Lorsque je suis sur la page 'Accueil' l'article ne s'affiche pas">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-3">Envoyer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--changer en ajoutant google map-->
+    <!-- Start Map -->
+    <div id="mapid" style="width: 100%; height: 300px;"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script>
+        var mymap = L.map('mapid').setView([-23.013104, -43.394365, 13], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(mymap);
+
+        L.marker([-23.013104, -43.394365, 13]).addTo(mymap)
+            .bindPopup("<b>Verax</b>").openPopup();
+
+        mymap.scrollWheelZoom.disable();
+        mymap.touchZoom.disable();
+    </script>
+    <!-- Ena Map -->
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -172,50 +252,24 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            5 Av. Blaise Pascal, 63170 Aubière
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:010-020-0340">06 07 08 09 10</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">info@SAE.com</a>
                         </li>
                     </ul>
                 </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
-                    </ul>
-                </div>
-
             </div>
 
-            <div class="row text-light mb-4">
+            <div class="row text-light">
                 <div class="col-12 mb-3">
                     <div class="w-100 my-3 border-top border-light"></div>
                 </div>
@@ -236,37 +290,25 @@
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
+                    <label class="sr-only" for="subscribeEmail">Adresse mail</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Adresse Mail">
+                        <div class="input-group-text btn-success text-light">S'abonner</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </footer>
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
     <!-- End Script -->
 </body>
 

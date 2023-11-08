@@ -54,7 +54,7 @@ body, ul, li, p, a, label, input, div {
 .text-muted { color: #bcbcbc !important;}
 .text-success { color: #d33b2d!important;}
 .text-light { color: #231f20 !important;} /*text passé en dark*/
-.bg-dark { background-color: #e7dfd8 !important;}
+.bg-dark { background-color: #e7dfd8 !important;}  /*fond passé en beige*/
 .bg-light { background-color: #e9eef5 !important;}
 .bg-black { background-color: #1d242d !important;}
 .bg-success { background-color: #d33b2d!important;}
