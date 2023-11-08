@@ -33,7 +33,7 @@ package Verax {
     usecase "Supprimer des contributions" as UC27
     usecase "Archiver des contributions" as UC26
     usecase "Commenter des articles" as UC15
-    usecase "Demander à faire valider un aticle" as UC14
+    usecase "Demander à faire valider un article" as UC14
 
     usecase "Voir les signalements" as UC16
     usecase "Supprimer un utilisateur" as UC17
