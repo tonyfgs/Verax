@@ -28,20 +28,17 @@ package Verax {
     usecase "Se déconnecter" as UC24
     usecase "Supprimer son profil" as UC25 
 
-    usecase "Remplir le formulaire" as UC10
-
     usecase "Rédiger un article" as UC11
-    usecase "Vérifier les formulaires" as UC12
-    usecase "Donner son accord pour un article" as UC13
-    usecase "Publier un article" as UC14
-    usecase "Commenter l'article" as UC15
+    usecase "Consulter les contributions" as UC12
+    usecase "Supprimer des contributions" as UC27
+    usecase "Archiver des contributions" as UC26
+    usecase "Commenter des articles" as UC15
 
     usecase "Voir les signalements" as UC16
     usecase "Supprimer un utilisateur" as UC17
     usecase "Supprimer un article" as UC18
+    usecase "Valider un article" as UC13
     usecase "Voir les actions des modérateurs" as UC19
-    usecase "Voir les bannissements utilisateurs" as UC20
-    usecase "Voir les suppressions (temporaires) des articles" as UC21
 
     usecase "Gérer les modérateurs" as UC22
     usecase "Gérer les roles" as UC23
@@ -68,19 +65,13 @@ u --> UC9
 u --> UC24
 u --> UC25
 
-UC11 .> UC10 : include
-UC13 .> UC15 : include
-UC14 .> UC13 : include
-UC7 .> UC10  : include
-
 r --> UC11
 r --> UC12
-r --> UC13
-r --> UC14
+r --> UC15
+r --> UC27
+r --> UC26
 
-UC21 --|> UC19
-UC20 --|> UC19
-
+m --> UC13
 m --> UC16
 m --> UC17
 m --> UC18
