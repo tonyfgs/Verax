@@ -26,6 +26,7 @@ package Verax {
     usecase "Modifier son profil" as UC8
     usecase "Signaler un article" as UC9
     usecase "Se déconnecter" as UC24
+    usecase "Supprimer son profil" as UC25 
 
     usecase "Remplir le formulaire" as UC10
 
@@ -65,6 +66,7 @@ u --> UC7
 u --> UC8
 u --> UC9
 u --> UC24
+u --> UC25
 
 UC9 .> UC10 : inlcude
 UC11 .> UC10 : inlcude
