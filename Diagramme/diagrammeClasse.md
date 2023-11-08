@@ -48,11 +48,11 @@ namespace Model{
     }
     class Podcast {
         tempEcoute : int
-        nomPodcast : String
+        cheminPodcast : String
     }
     class Video {
         tempVisionnage : int
-        nomVideo : String
+        cheminVideo : String
     }
     enum Role{
         Administrateur
