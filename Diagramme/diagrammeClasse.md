@@ -36,7 +36,7 @@ namespace Model{
     }
     class InfoTheque {
     }
-    abstract Info {
+    interface Info {
         + titre : String
         + description : String
         + dateInfo : DateTime
