@@ -68,9 +68,10 @@ u --> UC9
 u --> UC24
 u --> UC25
 
-UC11 .> UC10 : inlcude
-UC13 .> UC15 : inlcude
-UC14 .> UC13 : inlcude
+UC11 .> UC10 : include
+UC13 .> UC15 : include
+UC14 .> UC13 : include
+UC7 .> UC10  : include
 
 r --> UC11
 r --> UC12
