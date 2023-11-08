@@ -44,12 +44,15 @@ namespace Model{
     }
     class Article {
         tempLecture : int
+        contenu : String
     }
     class Podcast {
         tempEcoute : int
+        nomPodcast : String
     }
     class Video {
         tempVisionnage : int
+        nomVideo : String
     }
     enum Role{
         Administrateur
