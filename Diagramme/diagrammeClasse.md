@@ -13,7 +13,7 @@ namespace Model{
         # pseudo : String
         # noterInfo() 
     }
-    class Contributeur {
+    class Redacteur {
         # soumettreContenu()
         # modifierContenu()
     }
@@ -34,26 +34,7 @@ namespace Model{
     class Supprimer {
         # supprimer() : bool
     }
-    class InfoTheque {
-    }
-    interface Info {
-        + titre : String
-        + description : String
-        + dateInfo : DateTime
-        + note : int
-    }
-    class Article {
-        tempLecture : int
-        contenu : String
-    }
-    class Podcast {
-        tempEcoute : int
-        cheminPodcast : String
-    }
-    class Video {
-        tempVisionnage : int
-        cheminVideo : String
-    }
+
     enum Role{
         Administrateur
         Moderateur
@@ -62,21 +43,48 @@ namespace Model{
         Visiteur
     }
 
-    InfoTheque "1" --> "*"  Info
-    Podcast --|> Info
-    Article --|> Info
-    Video --|> Info
+    abstract class Article{
+        # titre : String
+        # image : String
+        # datePlublication : Date
+        # description : String
+        # motsCles : list<String>
+        # tempsConsultation : int
+    }
+    abstract class Contenu{
+        ordre : int
+    }
+    class Image{
+        titre : String
+        chemin : String
+    }
+    class Paragraphe{
+        titre : String
+        texte : String
+    }
+    class Video{
+        lien : String
+    }
+    class Bibliotheque{}
 
-    Contributeur --|> Utilisateur : est un
-    Moderateur --|>  Contributeur : est un
+
+    Article --> "*" Contenu : "listeContenus"
+    Bibliotheque --> "*" Article : "listeArticles"
+
+    Paragraphe --|> Contenu
+    Image --|> Contenu
+    Video --|> Contenu
+
+    Redacteur --|> Utilisateur : est un
+    Moderateur --|>  Redacteur : est un
     Administrateur --|> Moderateur : est un 
     Utilisateur -->Role
 
+    Utilitaire.Lecteur --> Bibliotheque
     UtilisateurTheque "1" --> "*"  Utilisateur
     Modifier ..> UtilisateurTheque
     Supprimer --|> Modifier
 
-    Utilitaire.Lecteur --> InfoTheque
     Utilisateur --> Utilitaire.Lecteur
     Visiteur --> Utilitaire.Lecteur
     Utilitaire.Saisisseur --|> Modifier
