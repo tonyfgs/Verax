@@ -2,7 +2,7 @@
 
 namespace Chat;
 
-class ChatGateway
+class Chat
 {
 
 
