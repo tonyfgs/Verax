@@ -41,4 +41,8 @@ class ModeleUtilisateur
             $gw->updateNote($idArticle, $_SESSION["login"], -1);
         }
     }
+
+    public function accessForm(){
+        include 'contact.html';
+    }
 }

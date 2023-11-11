@@ -80,4 +80,9 @@ class UtilisateurControleur
         $mdl = new ModeleUtilisateur();
         $mdl->badReview('');
     }
+
+    function accessForm(){
+        $mdl = new ModeleUtilisateur();
+        $mdl->accessForm();
+    }
 }
