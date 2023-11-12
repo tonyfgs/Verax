@@ -28,6 +28,7 @@ class redacteurControleur
                     require("vues/connexion.php");
             }
         } catch (Exception $e) {
-            require("vues/erreur.php");
+            require("vues/error.php");
         }
+    }
 }

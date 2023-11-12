@@ -8,6 +8,7 @@ use MongoDB\Driver\Exception\Exception;
 class UtilisateurControleur
 {
     public function __construct(){
+        global $twig;
         session_start();
 
         try{
@@ -17,10 +18,11 @@ class UtilisateurControleur
             }
             else
             {
-                //nettoyage de l'action (validation)
+                $action = \Validation::nettoyerString($_REQUEST["action"]);
             }
-            $action=$_REQUEST['action'];
             switch ($action){
+                case NULL:
+
                 case 'Disconnect':
                     $this->disconnect();
                     break;
@@ -52,16 +54,17 @@ class UtilisateurControleur
                     $this->deleteAccount();
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
+                    echo $twig->render("../Vue/error.html",['dVueError' => $dataVueErreur]);
 
             }
         }
         catch (PDOException $e){
             $dataVueErreur[] = "Erreur de BDD !";
-            require("../Vue/erreur.php");
+            require("../Vue/error.php");
         }
         catch (Exception $e2){
             $dataVueErreur[] = "Erreur !";
-            require("../Vue/erreur.php");
+            require("../Vue/error.php");
         }
     }
 
@@ -85,4 +88,10 @@ class UtilisateurControleur
         $mdl = new ModeleUtilisateur();
         $mdl->accessForm();
     }
+
+    function accessAccount(){
+        $mdl = new ModeleUtilisateur();
+        $mdl->accessAccount();
+    }
+
 }
