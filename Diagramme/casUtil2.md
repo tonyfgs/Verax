@@ -9,7 +9,7 @@ package Interne {
     skinparam actorStyle awesome
     actor Rédacteur as r
     actor Modérateur as m
-    actor Administateur as a
+    actor Administrateur as a
 }
 
 package Verax {
