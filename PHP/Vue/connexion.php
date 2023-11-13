@@ -17,7 +17,7 @@ else {
     echo $_SESSION['pseudo'];
 ?>
             <h1>Formulaire xdddd</h1>
-            <form action="/Verax/DAL/verifConnexion.php" method="post">
+            <form action="/Verax/PHP/DAL/verifConnexion.php" method="post">
                 <label for="pseudo">Pseudo :</label><br>
                 <input type="text" id="pseudo" name="pseudo" required><br>
                 <label for="mdp">Mot de passe :</label><br>
