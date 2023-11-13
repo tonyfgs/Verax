@@ -1,23 +1,16 @@
 <?php
-require("config/config.php");
-require("config/Validation.php");
 
-require("controleur/VisiteurControleur");
-require("controleur/UtilisateurControleur");
-require("controleur/RedacteurControleur");
-require("controleur/ModerateurControleur");
-require("controleur/AdminControleur");
+namespace controleur;
 
-require("modele/VisiteurModele");
-require("modele/UtilisateurModele");
-require("modele/redacteurModele");
-require("modele/ModerateurModele");
-require("modele/AdminModele");
+use config, modele;
 
 
 
-class FrontControler{
-    public function start(){
+
+class FrontControler {
+
+    public function __construct()
+    {
         $actions = array(
             "Visiteur" => [
                 "seConnecter", "sInscrire", "accueil", "chercherArticle", "signalerArticle"
@@ -57,7 +50,7 @@ class FrontControler{
 
     private function checkAccess($actions, $action, $personne) {
         if ($personne == null) {
-            require("vues/connexion.php");
+            require("Vue/connexion.php");
             echo "<br>ERREUR : Vous n'êtes pas connecté, veuillez vous connecter pour accéder à cette fonctionnalité";
             return false;
         } else {

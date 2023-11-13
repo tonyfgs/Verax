@@ -1,9 +1,6 @@
 <?php
 
-namespace Modele;
-
-use Connection;
-use NoteGateway;
+namespace modele;
 
 class ModeleUtilisateur
 {

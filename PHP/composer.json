@@ -1,0 +1,17 @@
+{
+   
+    "require": {
+        "twig/twig": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "controleur\\": "controleur/",
+            "config\\": "config/",
+            "modele\\": "modele/",
+            "metier\\": "metier/",
+            "Vue\\" : "Vue/",
+            "dal\\" : "dal/",
+            "gateways\\" : "dal/gateway"
+        }
+    }
+}

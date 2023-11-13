@@ -1,5 +1,7 @@
 <?php
 
+namespace metier;
+
 class Utilisateur {
     private $pseudo;
     private $mail;

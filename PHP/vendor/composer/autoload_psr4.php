@@ -6,9 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'modeles\\' => array($baseDir . '/modeles'),
+    'modele\\' => array($baseDir . '/modele'),
+    'metier\\' => array($baseDir . '/metier'),
+    'gateways\\' => array($baseDir . '/dal/gateway'),
+    'dal\\' => array($baseDir . '/dal'),
     'controleur\\' => array($baseDir . '/controleur'),
     'config\\' => array($baseDir . '/config'),
+    'Vue\\' => array($baseDir . '/Vue'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),

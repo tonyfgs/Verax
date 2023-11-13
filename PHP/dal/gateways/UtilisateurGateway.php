@@ -1,7 +1,7 @@
 <?php
-
+namespace gateways;
 require(__DIR__.'/../Connection.php');
-require(__DIR__.'/../../Metier/Utilisateur.php');
+require(__DIR__ . '/../../metier/Utilisateur.php');
 
 class UtilisateurGateway {
     private $con;

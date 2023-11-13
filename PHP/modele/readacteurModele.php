@@ -1,5 +1,7 @@
 <?php
 
+namespace modele;
+
 class readacteurModele
 {
     public function deconnexion()

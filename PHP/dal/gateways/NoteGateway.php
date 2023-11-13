@@ -1,5 +1,5 @@
 <?php
-
+namespace gateways;
 require("Connection.php");
 class NoteGateway
 {

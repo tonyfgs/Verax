@@ -1,9 +1,6 @@
 <?php
 
-namespace Controleur;
-
-use Modele\ModeleUtilisateur;
-use MongoDB\Driver\Exception\Exception;
+namespace controleur;
 
 class UtilisateurControleur
 {
@@ -12,7 +9,7 @@ class UtilisateurControleur
         session_start();
 
         try{
-            if(!isset($_REQUEST["action"]))
+            if(empty($_REQUEST["action"]))
             {
                 $action = NULL;
             }

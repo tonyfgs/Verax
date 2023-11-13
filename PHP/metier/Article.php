@@ -1,5 +1,6 @@
 <?php
 
+namespace Metier;
 
 class Article {
     private $id;

@@ -1,6 +1,6 @@
 <?php
 
-require(__DIR__.'/Gateways/UtilisateurGateway.php');
+require(__DIR__ . '/gateways/UtilisateurGateway.php');
 
 function redirect_by_path($path)
 {

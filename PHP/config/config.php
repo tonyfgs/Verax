@@ -12,10 +12,10 @@
     $mdp="";
 
     /** Différentes vues */
-    $vues['contact']='vues/contact.html';
-    $vues['culture']='vues/culture.html';
-    $vues['economie']='vues/economie.html';
-    $vues['faitsdivers']='vues/faitsdivers.html';
-    $vues['index']='vues/index.html';
-    $vues['politique']='vues/politique.html';
+    $vues['contact']='../Vue/contact.html';
+    $vues['culture']='../Vue/culture.html';
+    $vues['economie']='../Vue/economie.html';
+    $vues['faitsdivers']='../Vue/faitsdivers.html';
+    $vues['index']='../Vue/index.html';
+    $vues['politique']='../Vue/politique.html';
     //à completer, erreur, connexion ...

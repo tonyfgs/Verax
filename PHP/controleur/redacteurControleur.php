@@ -1,5 +1,7 @@
 <?php
 
+namespace controleur;
+
 class redacteurControleur
 {
     function __construct()

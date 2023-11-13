@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 'On'); ini_set('html_errors', 0); error_reporting(-1);
 
-require(__DIR__.'/Gateways/UtilisateurGateway.php');
+require(__DIR__ . '/gateways/UtilisateurGateway.php');
 
 function redirect_by_path($path)
 {

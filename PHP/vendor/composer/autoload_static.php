@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita6287a55fe354aae4af95d1e4395c915
+class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -14,12 +14,25 @@ class ComposerStaticInita6287a55fe354aae4af95d1e4395c915
     public static $prefixLengthsPsr4 = array (
         'm' => 
         array (
-            'modeles\\' => 8,
+            'modele\\' => 7,
+            'metier\\' => 7,
+        ),
+        'g' => 
+        array (
+            'gateways\\' => 9,
+        ),
+        'd' => 
+        array (
+            'dal\\' => 4,
         ),
         'c' => 
         array (
             'controleur\\' => 11,
             'config\\' => 7,
+        ),
+        'V' => 
+        array (
+            'Vue\\' => 4,
         ),
         'T' => 
         array (
@@ -33,9 +46,21 @@ class ComposerStaticInita6287a55fe354aae4af95d1e4395c915
     );
 
     public static $prefixDirsPsr4 = array (
-        'modeles\\' => 
+        'modele\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/modeles',
+            0 => __DIR__ . '/../..' . '/modele',
+        ),
+        'metier\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/metier',
+        ),
+        'gateways\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/dal/gateway',
+        ),
+        'dal\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/dal',
         ),
         'controleur\\' => 
         array (
@@ -44,6 +69,10 @@ class ComposerStaticInita6287a55fe354aae4af95d1e4395c915
         'config\\' => 
         array (
             0 => __DIR__ . '/../..' . '/config',
+        ),
+        'Vue\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Vue',
         ),
         'Twig\\' => 
         array (
@@ -66,9 +95,9 @@ class ComposerStaticInita6287a55fe354aae4af95d1e4395c915
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita6287a55fe354aae4af95d1e4395c915::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita6287a55fe354aae4af95d1e4395c915::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita6287a55fe354aae4af95d1e4395c915::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$classMap;
 
         }, null, ClassLoader::class);
     }

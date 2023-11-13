@@ -1,6 +1,8 @@
 <?php
+
+namespace gateways;
 require (__DIR__.'/../Connection.php');
-require (__DIR__.'/../../Metier/Article.php');
+require (__DIR__ . '/../../metier/Article.php');
 
 class ArticleGateway {
 
