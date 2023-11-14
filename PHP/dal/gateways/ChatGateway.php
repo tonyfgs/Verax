@@ -1,6 +1,6 @@
 <?php
 
-namespace gateways;
+namespace dal\gateways;
 require ('Connection.php');
 /* on part du principe qu une table chat existe est quelle contient les attributs suivants :
 idMessage (un identifiant unique pour chaque message)

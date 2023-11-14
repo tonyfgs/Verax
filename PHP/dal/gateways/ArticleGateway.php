@@ -1,6 +1,6 @@
 <?php
 
-namespace gateways;
+namespace dal\gateways;
 require (__DIR__.'/../Connection.php');
 require (__DIR__ . '/../../metier/Article.php');
 

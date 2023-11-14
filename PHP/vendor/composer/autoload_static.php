@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
+class ComposerStaticInit2914a5452c57eeae9bee5207fdf5559c
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -17,22 +17,14 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
             'modele\\' => 7,
             'metier\\' => 7,
         ),
-        'g' => 
-        array (
-            'gateways\\' => 9,
-        ),
         'd' => 
         array (
+            'dal\\gateways\\' => 13,
             'dal\\' => 4,
         ),
         'c' => 
         array (
             'controleur\\' => 11,
-            'config\\' => 7,
-        ),
-        'V' => 
-        array (
-            'Vue\\' => 4,
         ),
         'T' => 
         array (
@@ -42,6 +34,10 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'C' => 
+        array (
+            'Config\\' => 7,
         ),
     );
 
@@ -54,9 +50,9 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
         array (
             0 => __DIR__ . '/../..' . '/metier',
         ),
-        'gateways\\' => 
+        'dal\\gateways\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/dal/gateway',
+            0 => __DIR__ . '/../..' . '/dal/gateways',
         ),
         'dal\\' => 
         array (
@@ -65,14 +61,6 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
         'controleur\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controleur',
-        ),
-        'config\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/config',
-        ),
-        'Vue\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Vue',
         ),
         'Twig\\' => 
         array (
@@ -86,6 +74,10 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/config',
+        ),
     );
 
     public static $classMap = array (
@@ -95,9 +87,9 @@ class ComposerStaticInit531a73d921b6182c2a7acf30e786ef53
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit531a73d921b6182c2a7acf30e786ef53::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2914a5452c57eeae9bee5207fdf5559c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2914a5452c57eeae9bee5207fdf5559c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2914a5452c57eeae9bee5207fdf5559c::$classMap;
 
         }, null, ClassLoader::class);
     }

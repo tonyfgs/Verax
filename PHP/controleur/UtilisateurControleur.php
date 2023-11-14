@@ -2,6 +2,9 @@
 
 namespace controleur;
 
+use controleur\VisiteurControleur;
+use PDOException;
+
 class UtilisateurControleur
 {
     public function __construct(){
@@ -68,7 +71,7 @@ class UtilisateurControleur
     function disconnect(){
         $mdl = new ModeleUtilisateur();
         $mdl->disconnect();
-        // new VisiteurControler();
+        new VisiteurControleur();
     }
 
     function goodReview(){

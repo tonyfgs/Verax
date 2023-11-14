@@ -1,15 +1,24 @@
 <?php
 
-namespace Modele;
+namespace modele;
 
-use Connection;
+use dal;
+use dal\gateways;
 use Exception;
 use PDO;
 use PDOException;
-use UtilisateurGateway;
 
 class ModeleVisiteur
 {
+
+    public function estConnecte() : bool
+    {
+        if(isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"]))
+        {
+            return true;
+        }
+        return false;
+    }
 
     public function signUp(){
         global $dsn, $login, $mdp;

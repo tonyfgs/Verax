@@ -1,16 +1,18 @@
 <?php
 
-namespace Controleur;
+namespace controleur;
 
-use Modele\ModeleUtilisateur;
+use controleur\UtilisateurControleur, config\Validation;
+
+use dal\gateways\UtilisateurGateway;
 use Modele\ModeleVisiteur;
-use MongoDB\Driver\Exception\Exception;
+use PDOException;
+
 
 class VisiteurControleur
 {
     public function __construct(){
         global $twig;
-        session_start();
 
         try{
             if(!isset($_REQUEST["action"]))
@@ -19,7 +21,7 @@ class VisiteurControleur
             }
             else
             {
-                $action = \Validation::nettoyerString($_REQUEST["action"]);
+                $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action){
                 case NULL:
@@ -47,23 +49,13 @@ class VisiteurControleur
         }
     }
 
-
-    function redirect_by_path($path)
-    {
-        $redirect = substr(strtr(realpath($path), '\\', '/'), strlen($_SERVER['DOCUMENT_ROOT']));
-        header("location: $redirect");
-        exit;
-    }
-
     function signUp() {
-        $md = new ModeleVisiteur;
+        $md = new ModeleVisiteur();
         $md->signUp();
-        $redirect = redirect_by_path(__DIR__.'/../Vue/connexion.php');
-        header("Location: $redirect");
     }
 
     function connect() {
-        $md = new ModeleVisiteur;
+        $md = new ModeleVisiteur();
         $md->connect();
         new UtilisateurControleur();
     }

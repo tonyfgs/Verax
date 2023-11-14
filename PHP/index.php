@@ -8,6 +8,5 @@ require __DIR__ . '/vendor/autoload.php';
 $loader = new \Twig\Loader\FilesystemLoader('Vue');
 $twig = new Twig\Environment($loader, [ 'cache' => false, ]);
 
-session_start();
 
 $cont = new FrontControler();

@@ -1,5 +1,5 @@
 <?php
-namespace gateways;
+namespace dal\gateways;
 require("Connection.php");
 class NoteGateway
 {

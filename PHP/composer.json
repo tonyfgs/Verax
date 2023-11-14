@@ -1,17 +1,19 @@
 {
-   
+    "name": "allaurent13/php",
+    "autoload": {
+        "psr-4": {
+            "modele\\" : "modele/",
+            "Config\\" : "config/",
+            "controleur\\" : "controleur/",
+            "dal\\" : "dal/",
+            "dal\\gateways\\" : "dal/gateways/",
+            "metier\\" : "metier/"
+        }
+    },
     "require": {
         "twig/twig": "^3.0"
     },
-    "autoload": {
-        "psr-4": {
-            "controleur\\": "controleur/",
-            "config\\": "config/",
-            "modele\\": "modele/",
-            "metier\\": "metier/",
-            "Vue\\" : "Vue/",
-            "dal\\" : "dal/",
-            "gateways\\" : "dal/gateway"
-        }
+    "scripts": {
+        "dev" : "php -S localhost:8080"
     }
 }

@@ -2,9 +2,10 @@
 
 namespace controleur;
 
-use config\Validation, modele\ModeleUtilisateur;
 
 
+use Config\Validation;
+use modele\ModeleVisiteur;
 
 class FrontControler {
 
@@ -38,7 +39,7 @@ class FrontControler {
         $actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
 
         session_start();
-        $modele = new ModeleUtilisateur();
+        $modele = new ModeleVisiteur();
         $action = Validation::nettoyerString($_GET["action"] ?? "");
         $personne=$modele->estConnecte();
 
@@ -69,7 +70,7 @@ class FrontControler {
     private function routeToController($role) {
         switch ($role) {
             case 'Utilisateur':
-                new ControleurUtilisateur();
+                new UtilisateurControleur();
                 break;
             /**case 'Redacteur':
                 new ControleurRedacteur();
@@ -82,9 +83,11 @@ class FrontControler {
                 break;
             */
             default:
-                new ControleurVisiteur();
+                new VisiteurControleur();
         }
     }
+
+
 }
 
 ?>

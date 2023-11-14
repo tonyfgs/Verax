@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'allaurent13/php',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3207a041f3f1441f5c5c9dac78a4ac48cd329e08',
+        'reference' => 'ca73d1d2a23bc8ad7ef3d8cca03e2e4a07063ecd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'allaurent13/php' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3207a041f3f1441f5c5c9dac78a4ac48cd329e08',
+            'reference' => 'ca73d1d2a23bc8ad7ef3d8cca03e2e4a07063ecd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

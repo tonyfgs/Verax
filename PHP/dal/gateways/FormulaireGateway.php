@@ -1,5 +1,5 @@
 <?php
-namespace gateways;
+namespace dal\gateways;
 class FormulaireGateway
 {
     private $con;

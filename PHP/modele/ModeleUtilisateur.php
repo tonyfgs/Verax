@@ -5,7 +5,7 @@ namespace modele;
 class ModeleUtilisateur
 {
     public function disconnect(){
-        session_destroy();
+        session_unset();
     }
 
     public function goodReview($idArticle){

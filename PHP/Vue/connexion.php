@@ -2,7 +2,7 @@
     <body>
 <?php
 
-session_start();
+
 
 if (isset($_SESSION['mdp'])) {
     echo "Connexion réussie !<br/>";
