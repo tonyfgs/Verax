@@ -2,8 +2,7 @@
 
 namespace controleur;
 
-use config, modele;
-
+use config\Validation, modele\ModeleUtilisateur;
 
 
 
@@ -39,7 +38,7 @@ class FrontControler {
         $actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
 
         session_start();
-        $modele = new modeleVisiteur();
+        $modele = new ModeleUtilisateur();
         $action = Validation::nettoyerString($_GET["action"] ?? "");
         $personne=$modele->estConnecte();
 
@@ -72,7 +71,7 @@ class FrontControler {
             case 'Utilisateur':
                 new ControleurUtilisateur();
                 break;
-            case 'Redacteur':
+            /**case 'Redacteur':
                 new ControleurRedacteur();
                 break;
             case 'Moderateur':
@@ -81,6 +80,7 @@ class FrontControler {
             case 'Admin':
                 new ControleurAdmin();
                 break;
+            */
             default:
                 new ControleurVisiteur();
         }

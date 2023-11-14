@@ -1,5 +1,5 @@
 <?php
-
+    namespace config;
     /** Liste des modules à inclure */
     $dConfig['includes']=array('controleur/Validation.php');
 

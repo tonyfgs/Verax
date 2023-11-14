@@ -1,5 +1,6 @@
 <?php
 
+    namespace config;
 /**
  * Classe qui permet la verification et le nettoyage des données rentrées par l'utilisateur
  */
