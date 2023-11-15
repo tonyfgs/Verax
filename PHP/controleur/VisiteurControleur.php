@@ -25,7 +25,8 @@ class VisiteurControleur
             }
             switch ($action){
                 case NULL:
-
+                    echo $twig->render("Vue/accueil.html",[]);
+                    break;
                 case 'seConnecter':
                     $this->connect();
                     break;
