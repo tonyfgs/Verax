@@ -60,11 +60,11 @@ class UtilisateurControleur
         }
         catch (PDOException $e){
             $dataVueErreur[] = "Erreur de BDD !";
-            require("../Vue/error.php");
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
         }
         catch (Exception $e2){
             $dataVueErreur[] = "Erreur !";
-            require("../Vue/error.php");
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
         }
     }
 

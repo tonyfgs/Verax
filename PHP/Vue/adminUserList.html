@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Liste des Utilisateurs</title>
+    <!-- Ajoutez vos liens vers les fichiers CSS ici -->
+</head>
+
+<body>
+
+<h1>Liste des Utilisateurs</h1>
+
+<div>
+    {% if utilisateurs is not empty %}
+    {% for utilisateur in utilisateurs %}
+    <div class="utilisateur">
+        <h2>{{ utilisateur.pseudo }} {{ utilisateur.prenom }}</h2>
+        <p>Email: {{ utilisateur.email }}</p>
+        <!-- Ajoutez d'autres informations de l'utilisateur ici -->
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Aucun utilisateur disponible pour le moment.</p>
+    {% endif %}
+</div>
+
+<!-- Ajoutez vos scripts JavaScript ici -->
+
+</body>
+
+</html>

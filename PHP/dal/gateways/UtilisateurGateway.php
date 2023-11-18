@@ -1,9 +1,7 @@
 <?php
 namespace dal\gateways;
 use metier\Utilisateur;
-
-require(__DIR__.'/../Connection.php');
-require(__DIR__ . '/../../metier/Utilisateur.php');
+use dal\Connection;
 
 class UtilisateurGateway {
     private $con;
@@ -13,7 +11,14 @@ class UtilisateurGateway {
     }
 
     public function findAllUser() : array {
-
+        $query = 'SELECT * FROM utilisateur';
+        $res = $this->con->executeQuery($query);
+        $results = $this->con->getResults();
+        $tab = array();
+        foreach ($results as $row){
+            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
+        }
+        return $tab;
     }
 
     public function findUserByPseudo(string $pseudo) : ?Utilisateur {
