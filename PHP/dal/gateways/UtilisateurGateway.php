@@ -1,5 +1,7 @@
 <?php
 namespace dal\gateways;
+use metier\Utilisateur;
+
 require(__DIR__.'/../Connection.php');
 require(__DIR__ . '/../../metier/Utilisateur.php');
 
@@ -10,15 +12,16 @@ class UtilisateurGateway {
         $this->con = $con;
     }
 
-    public function findUserByPseudo(string $pseudo) : array {
+    public function findAllUser() : array {
+
+    }
+
+    public function findUserByPseudo(string $pseudo) : ?Utilisateur {
         $query = 'SELECT * FROM utilisateur WHERE pseudo = :p';
         $res = $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
-        if (count($results) == 0) return array();
-        Foreach ($results as $row) {
-            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
-        }
-        return $tab;
+        if (count($results) == 0) return NULL;
+        return new Utilisateur($results['pseudo'],$results['mail'],$results['mdp'],$results['nom'],$results['prenom'],$results['role']);
     }
 
     public function findPasswordByPseudo(string $pseudo) : string {

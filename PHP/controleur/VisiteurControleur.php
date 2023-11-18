@@ -2,10 +2,10 @@
 
 namespace controleur;
 
-use controleur\UtilisateurControleur, config\Validation;
-
+use controleur\UtilisateurControleur;
+use Config\Validation;
 use dal\gateways\UtilisateurGateway;
-use Modele\ModeleVisiteur;
+use modele\ModeleVisiteur;
 use PDOException;
 
 
@@ -15,17 +15,16 @@ class VisiteurControleur
         global $twig;
 
         try{
-            if(!isset($_REQUEST["action"]))
-            {
+            if(!isset($_REQUEST["action"])) {
                 $action = NULL;
             }
-            else
-            {
+            else {
                 $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action){
                 case NULL:
-                    echo $twig->render("Vue/accueil.html",[]);
+                case 'accueil':
+                    $this->accueil();
                     break;
                 case 'seConnecter':
                     $this->connect();
@@ -35,30 +34,34 @@ class VisiteurControleur
                     break;
 
                 default:
-                    $dataVueErreur[] = "Erreur d'appel PHP";
-                    echo $twig->render("../Vue/error.html",['dVueError' => $dataVueErreur]);
+                    $dataVueErreur[] = "Action Non-Autorisé si pas connecté";
+                    echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
 
             }
         }
         catch (PDOException $e){
             $dataVueErreur[] = "Erreur de BDD !";
-            require("../Vue/error.php");
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
         }
         catch (Exception $e2){
             $dataVueErreur[] = "Erreur !";
-            require("../Vue/error.php");
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
         }
     }
 
     function signUp() {
-        $md = new ModeleVisiteur();
-        $md->signUp();
+        global $twig;
+        echo $twig->render('inscription.html');
     }
 
     function connect() {
-        $md = new ModeleVisiteur();
-        $md->connect();
-        new UtilisateurControleur();
+        global $twig;
+        echo $twig->render('connexion.html');
+    }
+
+    function accueil(){
+        global $twig;
+        echo $twig->render('accueil.html', []);
     }
 
 }

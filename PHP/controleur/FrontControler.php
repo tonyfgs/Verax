@@ -3,20 +3,23 @@
 namespace controleur;
 
 
-
 use Config\Validation;
+use metier\Utilisateur;
 use modele\ModeleVisiteur;
 
 class FrontControler {
 
     public function __construct()
     {
+        global $twig;
+        session_start();
+        $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
-                "seConnecter", "sInscrire", "accueil", "chercherArticle", "signalerArticle"
+                "seConnecter", "sInscrire", "chercherArticle", "signalerArticle"
             ],
             "Utilisateur" => [
-                "deconnexion", "noter", "envoyerFormulaire", "modifierProfil"
+                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm", "SubmitForm","ReportArticle", 'AccessAccount'
             ],
             "Redacteur" => [
                 "redigerArticle", "validerArticle", "publierArticle",
@@ -33,24 +36,30 @@ class FrontControler {
          *admin: gererModerateur
          */
 
-        $actions["Utilisateur"] = array_merge($actions["Utilisateur"], $actions["Visiteur"]);
-        $actions["Redacteur"] = array_merge($actions["Redacteur"], $actions["Utilisateur"]);
-        $actions["Moderateur"] = array_merge($actions["Moderateur"], $actions["Redacteur"]);
-        $actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
+        //$actions["Utilisateur"] = array_merge($actions["Utilisateur"], $actions["Visiteur"]);
+        //$actions["Redacteur"] = array_merge($actions["Redacteur"], $actions["Utilisateur"]);
+        //$actions["Moderateur"] = array_merge($actions["Moderateur"], $actions["Redacteur"]);
+        //$actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
 
-        session_start();
-        $modele = new ModeleVisiteur();
         $action = Validation::nettoyerString($_GET["action"] ?? "");
-        $personne=$modele->estConnecte();
-
-        if (!$this->checkAccess($actions, $action, $personne)) {
-            echo "<br>ERREUR : Accès refusé, vous ne pouvez pas faire cette action";
+        if(in_array($action,$actions['Utilisateur'])){
+            echo "oui";
+            if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur'){
+                $dVueErreur[] = 'Connexion requise !';
+                echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
+            }
+            else {
+                new UtilisateurControleur();
+            }
+        }
+        else {
+            new VisiteurControleur();
         }
     }
 
     private function checkAccess($actions, $action, $personne) {
         if ($personne == null) {
-            require("Vue/connexion.php");
+            require("Vue/connexion.html");
             echo "<br>ERREUR : Vous n'êtes pas connecté, veuillez vous connecter pour accéder à cette fonctionnalité";
             return false;
         } else {

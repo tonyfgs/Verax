@@ -2,7 +2,9 @@
 
 namespace dal;
 
-class Connection extends PDO { 
+use PDO;
+
+class Connection extends PDO {
 
 private $stmt;
 

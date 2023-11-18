@@ -12,6 +12,7 @@
     $mdp="";
 
     /** Différentes vues */
+    $vues['accueil']='../Vue/accueil.html';
     $vues['contact']='../Vue/contact.html';
     $vues['culture']='../Vue/culture.html';
     $vues['economie']='../Vue/economie.html';
