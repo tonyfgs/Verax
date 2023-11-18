@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+    <body>
 <?php
 
 session_start();
@@ -9,26 +12,50 @@ if (isset($_SESSION['pseudo'])) {
 
 else {
     ?>
-        <html>
-            <body>
-                <h1>Formulaire xdddd</h1>
-                <form action="/Verax/PHP/DAL/verifInscription.php" method="post">
-                    <label for="pseudo">Pseudo :</label><br>
-                    <input type="text" id="pseudo" name="pseudo" required><br>
-                    <label for="mdp">Mot de passe :</label><br>
-                    <input type="password" id="mdp" name="mdp" required><br>
-                    <label for="nom">Nom :</label><br>
-                    <input type="text" id="nom" name="nom" required><br>
-                    <label for="prenom">Prénom :</label><br>
-                    <input type="text" id="prenom" name="prenom" required><br>
-                    <label for="mail">Adresse email :</label><br>
-                    <input type="text" id="mail" name="mail" required><br>
-                    <input type="submit" value="Submit">
-                </form>
+        <!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscription</title>
+        <link rel="stylesheet" href="../assets/css/Connexion.css">
+    
+    </head>
+    
+    <div class="bg">
+        <!-- Bouton de retour -->
+        <a href="javascript:history.back()" class="back-button">Retour</a>
+    
+        <div class="login-container">
+            <div class="logo">Verax</div> 
+            <form action="/Verax/PHP/DAL/verifInscription.php" method="post">
+                <div class="input-group">
+                    <input type="text" id="pseudo" placeholder="Nom d'utilisateur" name="pseudo" required>
+                </div>
+            <div class="input-group">
+                <input type="password" placeholder="Mot de passe" id="mdp" name="mdp" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="nom" name="nom" placeholder="Nom" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+            </div>
+            <div class="input-group">
+                <input type="text" id="mail" name="mail" placeholder="Mail" required>
+            </div>
+            
+            <button class="btn" type="submit">S'inscrire</button> <br/>
+            </form>
+        </div>
+    </div>
+                
     
     
-            </body>
+    
+            
     <?php
     }
     
     ?>
+    
+        </body>
+    </html>
