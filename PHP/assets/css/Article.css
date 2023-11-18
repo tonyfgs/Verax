@@ -1,0 +1,31 @@
+.file-explorer-container {
+    background: #fff;
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#tableArticle {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f9f9f9;
+}
+.file-icon {
+    width: 30px;
+    height: auto;
+    vertical-align: middle;
+}
+a {
+    text-decoration: none;
+    color: #00f;
+}
+a:hover {
+    text-decoration: underline;
+}

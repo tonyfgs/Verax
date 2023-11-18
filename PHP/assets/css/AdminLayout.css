@@ -7,16 +7,13 @@ table {
     border-collapse: collapse;
 }
 th, td {
-    border: 1px solid #dddddd;
+    border: 1px solid #f2f2f2;
     text-align: left;
     padding: 8px;
 }
 th {
     background-color: #004196;
     color: white;
-}
-tr:nth-child(even) {
-    background-color: #f2f2f2;
 }
 
 .navAdmin {
@@ -40,4 +37,79 @@ tr:nth-child(even) {
 }
 .navAdmin a.active {
     background-color: #788888; /* Background color of the active link */
+}
+
+.btn-participer {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 5px 10px; /* Padding autour du texte */
+    text-align: center; /* Centre le texte dans le bouton */
+    text-decoration: none; /* Pas de soulignement */
+    display: inline-block; /* Permet au bouton d'être à côté d'autres éléments inline */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Marge autour du bouton */
+    cursor: pointer; /* Change le curseur en main au survol */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+/* Style pour le bouton au survol */
+.btn-participer:hover {
+    background-color: #45a049; /* Un vert légèrement différent pour l'effet au survol */
+}
+
+ .search-container {
+     margin: auto;
+     max-width: 300px;
+     padding: 20px;
+     align-content: center;
+ }
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Partie Vue Redaction Article */
+
+
+.file-explorer-container {
+    background: #fff;
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#tableArticle {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.file-icon {
+    width: 30px;
+    height: auto;
+    vertical-align: middle;
+}
+a {
+    text-decoration: none;
+    color: #00f;
+}
+a:hover {
+    text-decoration: underline;
 }
