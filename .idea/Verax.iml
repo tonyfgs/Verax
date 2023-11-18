@@ -2,7 +2,17 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Metier" isTestSource="false" packagePrefix="Chat" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/Vue" isTestSource="false" packagePrefix="Vue\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/config" isTestSource="false" packagePrefix="config\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/controleur" isTestSource="false" packagePrefix="controleur\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/dal" isTestSource="false" packagePrefix="dal\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/dal/gateway" isTestSource="false" packagePrefix="gateways\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/metier" isTestSource="false" packagePrefix="metier\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHP/modele" isTestSource="false" packagePrefix="modele\" />
+      <excludeFolder url="file://$MODULE_DIR$/PHP/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/PHP/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/PHP/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/PHP/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
