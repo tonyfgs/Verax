@@ -10,8 +10,13 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
-    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/PHP/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/PHP/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/PHP/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/PHP/vendor/composer" />
+    </include_path>
   </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />

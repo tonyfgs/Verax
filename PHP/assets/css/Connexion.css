@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.bg {
+    /* The image used */
+    background-image: url("../img/wallpaperConnexion.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    text-align: center;
+}
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #db7093; /* Or any color you want */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #c06090; /* A slightly darker shade of the button color */
+}
+.login-container a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background: #666; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 14px; /* Taille de police */
+    transition: background 0.3s; /* Transition pour l'effet hover */
+}
+
+.back-button:hover {
+    background: #555; /* Changement de couleur au survol */
+}

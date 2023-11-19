@@ -7,12 +7,6 @@
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de données : `sae`
 --
@@ -30,6 +24,10 @@ DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS sujet;
 DROP TABLE IF EXISTS theme;
 DROP TABLE IF EXISTS discuter;
+DROP TABLE IF EXISTS bannir;
+DROP TABLE IF EXISTS consultation;
+DROP TABLE IF EXISTS consulter;
+DROP TABLE IF EXISTS rediger;
 
 -- --------------------------------------------------------
 
@@ -38,7 +36,7 @@ DROP TABLE IF EXISTS discuter;
 --
 
 CREATE TABLE `article` (
-  `idArticle` decimal(10,0) NOT NULL PRIMARY KEY,
+  `idArticle` decimal(10,0),
   `titre` varchar(30) NOT NULL,
   `contenu` text NOT NULL,
   `temps` decimal(10,0) NOT NULL CHECK (`temps` > 0),
@@ -162,11 +160,36 @@ CREATE TABLE `utilisateur` (
 CREATE TABLE discuter (
   idMessage decimal(10,0) PRIMARY KEY,
   idArticle decimal(10,0) NOT NULL REFERENCES article,
-  pseudo varchar(30) NOT NULL REFERENCES pseudo,
+  pseudo varchar(30) NOT NULL REFERENCES utilisateur,
   message TEXT NOT NULL,
   datePublication DATE NOT NULL
 );
 
+CREATE TABLE `bannir` (
+  `pseudoUser` varchar(30) REFERENCES utilisateur,
+  `pseudoModo` varchar(30) REFERENCES utilisateur,
+  `motif` text NOT NULL,
+  PRIMARY KEY(`pseudoUser`,`pseudoModo`)
+);
+
+CREATE TABLE `consultation` (
+  id decimal(10,0) PRIMARY KEY,
+  `contenu` text NOT NULL
+);
+
+
+CREATE TABLE `consulter` (
+  `idConsultation` decimal(10,0) REFERENCES consultation,
+  `pseudo` varchar(30) REFERENCES utilisateur,
+  `motif` text NOT NULL,
+  PRIMARY KEY(`idConsultation`, `pseudo`)
+);
+
+CREATE TABLE `rediger` (
+  `idArticle` decimal(10,0) REFERENCES article,
+  `pseudo` varchar(30) REFERENCES utilisateur,
+  PRIMARY KEY(`pseudo`,`idArticle`)
+);
 
 --
 -- Index pour les tables déchargées
