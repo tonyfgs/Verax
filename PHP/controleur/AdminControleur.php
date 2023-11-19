@@ -30,7 +30,7 @@ class AdminControleur
                 case 'ChangeUserRole':
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
-                    echo $twig->render("../Vue/error.html", ['dVueError' => $dataVueErreur]);
+                    echo $twig->render("error.html", ['dVueError' => $dataVueErreur]);
 
             }
         }
