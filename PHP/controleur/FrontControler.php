@@ -43,7 +43,6 @@ class FrontControler {
 
         $action = Validation::nettoyerString($_GET["action"] ?? "");
         if(in_array($action,$actions['Admin'])){
-            echo "oui";
             if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Admin'){
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);

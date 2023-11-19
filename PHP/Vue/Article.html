@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Détails de l'Article</title>
+    <!-- Ajoutez vos liens vers les fichiers CSS ici -->
+</head>
+
+<body>
+
+<h1>Détails de l'Article</h1>
+
+<div>
+    {% if article is defined %}
+    <h2>{{ article.titre }}</h2>
+    <p>{{ article.texte }}</p>
+    <!-- Ajoutez d'autres informations de l'article ici -->
+    {% else %}
+    <p>Aucun article trouvé.</p>
+    {% endif %}
+</div>
+
+<!-- Ajoutez vos scripts JavaScript ici -->
+
+</body>
+
+</html>
