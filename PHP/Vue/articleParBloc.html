@@ -8,23 +8,17 @@
 
 <body>
 
-<div class="view">
-  {% include './blockParagraphe.html' with {
-  'titreParagraphe': article.titreParagraphe,
-  'contenuParagraphe': article.contenuParagraphe
-  } %}
-
-  {% include './blockImage.html' with {
-  'imageTitle': article.imageTitre,
-  'imagePath': article.imageChemin,
-  'imageAlt': article.imageAlt
-  } %}
-
-  {% include './blockVideo.html' with {
-  videoTitle': article.videoTitre,
-  'videoLink': article.videoLink
-  } %}
-</div>
+  <div class="view">
+    {% for bloc in blocs %}
+      {% if bloc.type == 'paragraphe' %}
+        {% include './blockParagraphe.html' with bloc.data %}
+      {% elseif bloc.type == 'image' %}
+        {% include './blockImage.html' with bloc.data %}
+      {% elseif bloc.type == 'video' %}
+        {% include './blockVideo.html' with bloc.data %}
+      {% endif %}
+    {% endfor %}
+  </div>
 
 </body>
 </html>

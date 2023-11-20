@@ -6,6 +6,7 @@ class redacteurControleur
 {
     function __construct()
     {
+        global $twig;
         try {
             if(!isset($_REQUEST["action"]))
             {
@@ -27,10 +28,10 @@ class redacteurControleur
                     break;
                 default:
                     $VueErreur[] ="Erreur d'appel php";
-                    require("vues/connexion.php");
+                    echo $twig->render("Vue/connexion.php");
             }
         } catch (Exception $e) {
-            require("vues/error.php");
+            echo $twig->render("Vue/error.php");
         }
     }
 }

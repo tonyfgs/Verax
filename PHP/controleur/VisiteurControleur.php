@@ -13,7 +13,7 @@ class VisiteurControleur
 {
     public function __construct(){
         global $twig;
-
+        $_SESSION["role"] = 'Visiteur';
         try{
             if(!isset($_REQUEST["action"])) {
                 $action = NULL;
@@ -78,7 +78,7 @@ class VisiteurControleur
 
     function accueil(){
         global $twig;
-        echo $twig->render('accueil.html', []);
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
     }
 
 }
