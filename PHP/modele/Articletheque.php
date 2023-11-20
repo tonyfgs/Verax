@@ -1,33 +1,35 @@
 <?php 
+    namespace modele;
+    
+    use Metier\Article;
+    use modele\manager\IArticleDataManager;
 
-use Metier\Article;
+    class Articletheque {
 
-class Articletheque {
+        private $lArticles;
+        private $dataManager;
 
-    private $lArticles;
-    private $dataManager;
+        public function __construct(IArticleDataManager $dtManager) {
 
-    public function __construct(IArticleDataManager $dtManager) {
-
-        $this -> dataManager = $dtManager;
-        $this-> lArticles = $this -> dataManager -> getAllArticles();
-    }
-
-    public function getArticle (int $id) : Article {
-        
-        $temp = NULL;
-
-        foreach ($this -> lArticles as $article) {
-            if ($article -> getId() == $id) {
-                $temp = $article;
-            }
+            $this -> dataManager = $dtManager;
+            $this-> lArticles = $this -> dataManager -> getAllArticles();
         }
 
-        return $temp;
-    }
+        public function getArticle (int $id) : Article {
+            
+            $temp = NULL;
 
-    public function getAllArticles() : array {
-        return $this -> lArticles;
+            foreach ($this -> lArticles as $article) {
+                if ($article -> getId() == $id) {
+                    $temp = $article;
+                }
+            }
+
+            return $temp;
+        }
+
+        public function getAllArticles() : array {
+            return $this -> lArticles;
+        }
     }
-}
 ?>

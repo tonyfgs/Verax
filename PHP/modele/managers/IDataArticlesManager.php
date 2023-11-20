@@ -1,5 +1,7 @@
 <?php
 
+    namespace modele\manager;
+
     interface IArticleDataManager {
 
         public function getAllArticles();

@@ -1,5 +1,7 @@
 <?php
 
+namespace modele;
+
 use Metier\Article;
 
     class ArticleManager {

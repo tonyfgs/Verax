@@ -1,5 +1,8 @@
 <?php
 
+namespace modele;
+
+use Modele\manager\IArticleDataManager;
 use Metier\Article;
 
     class stubArticles implements IArticleDataManager {
