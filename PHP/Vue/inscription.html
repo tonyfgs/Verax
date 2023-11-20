@@ -1,18 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="assets/css/Connexion.css">
+
+</head>
     <body>
-        <h1>Formulaire</h1>
-        <form action="dal/verifInscription.php" method="post">
-            <label for="pseudo">Pseudo :</label><br>
-            <input type="text" id="pseudo" name="pseudo" required><br>
-            <label for="mdp">Mot de passe :</label><br>
-            <input type="password" id="mdp" name="mdp" required><br>
-            <label for="nom">Nom :</label><br>
-            <input type="text" id="nom" name="nom" required><br>
-            <label for="prenom">Prénom :</label><br>
-            <input type="text" id="prenom" name="prenom" required><br>
-            <label for="mail">Adresse email :</label><br>
-            <input type="text" id="mail" name="mail" required><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div class="bg">
+            <!-- Bouton de retour -->
+            <a href="javascript:history.back()" class="back-button">Retour</a>
+        
+            <div class="login-container">
+                <form action="dal/verifInscription.php" method="post">
+                    <div class="logo">Verax</div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Nom d'utilisateur" name="pseudo" id="pseudo" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Mot de passe" name="mdp" id="mdp" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Nom" name="nom" id="nom" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Prenom" name="prenom" id="prenom" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Mail" name="mail" id="mail" required>
+                    </div>
+                    <button class="btn" type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

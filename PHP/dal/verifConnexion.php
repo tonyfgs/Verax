@@ -5,8 +5,8 @@ ini_set('display_errors', 'On'); ini_set('html_errors', 0); error_reporting(-1);
 use dal\gateways\UtilisateurGateway;
 use dal\Connection;
 
-$username = "";
-$password = "";
+$username = "test";
+$password = "test";
 
 $dsn = "mysql:host=localhost;dbname=Verax";
 
