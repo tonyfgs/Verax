@@ -19,6 +19,10 @@ package Controller{
         + getUsers() : List<User>
         + addUser(email : String, pseudo : String, motDePasse : String)
         + delUser(pseudo : String)
+
+        + addForm(prenom : String, nom : String, mail : String, String... ).
+        + delForm(id : String)
+        + getForms() : List<String>
     }
 }
 
@@ -28,6 +32,7 @@ class ArticleTheque{
     + addArticle(newArticle : Article)
     + delArticle(article : Article)
     + rechercheArticle(id : String) : Article
+    + getArticlesSignales() : List<Article>
 }
 class Article{
     - id : String
@@ -37,6 +42,8 @@ class Article{
     - motsCles : List<String>
     - tempsConsultation : int
     - etat : int
+    - cptSignalement : int
+    - commentaires : List< map <User, Message> > 
 
     + getId() : String
     + getTitre() : String
@@ -45,9 +52,15 @@ class Article{
     + getTempsConsultation() : int
     + getNote() : int
     + getEtat() : int
+    + getCptSignalement() : int
 
-    + setNote(int newNote)
-    + setEtat(int newEtat)
+    + setTitre(newTitre : String)
+    + setDescription(newDescription : String)
+    + setMotsCles(newMotCles : List<String>)
+    + setTempsConsultation (newTemps : int)
+    + setNote(newNote : int)
+    + setEtat(newEtat : int)
+    + setCptSignalement()
 }
 abstract Contenu{
     ordre : int
@@ -63,6 +76,14 @@ class Paragraphe{
 class Video{
     titre : String
     chemin : String
+}
+
+class Message{
+    - dateMessage : date
+    - message : String
+
+    + getDateMessage() : date
+    + getMessage() : String
 }
 
 class UserTheque{
@@ -93,7 +114,38 @@ enum Role{
     Administrateur
 }
 
-interface IDataManager{}
+class FormTheque{
+    + addForm(newFormulaire : Formulaire)
+    + delForm(formulaire : Formulaire)
+    + getForms() : List<Formulaire>
+}
+abstract Formulaire{
+    - id : String
+    - pseudoUser : String
+    - mailUser : String
+
+    + getId() : String
+    + getPseudoUser() : String
+    + getMailUser() : String
+}
+class FormAide{
+    - sujet : String
+    - message : String
+
+    + getSujet() : String
+    + getMessage() : String
+}
+class FormContribution{
+    - theme : String
+    - dateEnvoie : date
+    - liens : List<String> 
+
+    + getTheme() : String
+    + getDateEnvoie() : date
+    + getLiens() : List<String>
+}
+
+class DataManager{}
 
 index.php --> App
 App --> Controller
@@ -104,13 +156,25 @@ Article --> "*" Contenu
 Image --|> Contenu
 Paragraphe --|> Contenu
 Video --|> Contenu
+Article ..> Message
 
 UserManager --> UserTheque
 UserTheque --> "*" User
 User --> Role
 
-ArticleTheque ..> IDataManager
-UserTheque ..> IDataManager
+UserManager --> FormTheque
+FormTheque --> "*" Formulaire
+FormAide --|> Formulaire
+FormContribution --|> Formulaire
+
+
+ArticleTheque ..|> IArticleTheque
+UserTheque ..|> IUserTheque
+FormTheque ..|> IFormTheque
+DataManager --> IArticleTheque
+DataManager --> IUserTheque
+DataManager --> IFormTheque
+
 
 @enduml
 

@@ -4,13 +4,12 @@
 left to right direction
 
 actor Visiteur as v
-actor Connecteur as c
 actor Utilisateur as u
 package Interne {
     skinparam actorStyle awesome
     actor Rédacteur as r
     actor Modérateur as m
-    actor Administateur as a
+    actor Administrateur as a
 }
 
 package Verax {
@@ -46,8 +45,7 @@ package Verax {
     usecase "Gérer les roles" as UC23
 }
 
-c --|> v
-u --|> c
+u --|> v
 r --|> u
 m --|> r
 a --|> m
@@ -57,8 +55,6 @@ v --> UC2
 v --> UC3
 v --> UC4
 v --> UC5
-
-c .> UC5 : include
 
 u --> UC6
 u --> UC7
@@ -84,6 +80,26 @@ m --> UC20
 a --> UC22
 a --> UC23
 
+UC6 ..> UC5
+UC7 ..> UC5
+UC8 ..> UC5
+UC9 ..> UC5
+UC24 ..> UC5
+UC25 ..> UC5
+UC11 ..> UC5
+UC12 ..> UC5
+UC14 ..> UC5
+UC15 ..> UC5
+UC27 ..> UC5
+UC26 ..> UC5
+UC13 ..> UC5
+UC16 ..> UC5
+UC17 ..> UC5
+UC18 ..> UC5
+UC19 ..> UC5
+UC20 ..> UC5
+UC22 ..> UC5
+UC23 ..> UC5
 
 @enduml
 ```
