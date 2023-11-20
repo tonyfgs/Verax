@@ -2,19 +2,30 @@
 
 namespace Metier;
 
+use contenu;
+
 class Article {
     private $id;
     private $titre;
-    private $contenu;
+    private $description;
     private $temps;
     private $date;
+    
+    private $lContenus;
 
-    public function __construct( $id, $title, $content, $temps, $date ) {
+    public function __construct( $id, $title, $content, $temps, $date) {
         $this->id = $id;
         $this->titre = $title;
-        $this->contenu = $content;
+        $this->description = $content;
         $this->temps = $temps;
         $this->date = $date;
+        $this -> lContenus = array();
+    }
+
+    public function remplirArticle($lContenus) {
+        foreach ($lContenus as $contenu) {
+            $this -> lContenus[] = $contenu; 
+        }
     }
 
     public function getId() {
@@ -26,7 +37,7 @@ class Article {
     }
 
     public function getContent() {
-        return $this->contenu;
+        return $this->description;
     }
 
     public function getTemps() {
@@ -46,7 +57,7 @@ class Article {
     }
 
     private function setContent( $content ) {
-        $this->contenu = $content;
+        $this->description = $content;
     }
 
     private function setTemps( $temps ) {
