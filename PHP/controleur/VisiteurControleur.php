@@ -76,7 +76,7 @@ class VisiteurControleur
 
     function accueil(){
         global $twig;
-        echo $twig->render('accueil.html', []);
+        echo $twig->render('accueil.html', ['userRole' => $_REQUEST["role"]]);
     }
 
 }

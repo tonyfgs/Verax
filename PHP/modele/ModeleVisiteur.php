@@ -36,7 +36,7 @@ class ModeleVisiteur
     }
 
     public function connect() {
-        global $dsn, $login, $mdp;
+        global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $tab = $gw->findUserByPseudo($_POST['pseudo']);
         $user = $tab[0];
@@ -51,6 +51,7 @@ class ModeleVisiteur
         else {
             throw new Exception("Pseudo et/ou mot de passe incorrect(s)");
         }
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION['role']]);
 
     }
 
