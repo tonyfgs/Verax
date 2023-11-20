@@ -16,7 +16,7 @@ class FrontControler {
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
-                "seConnecter", "sInscrire", "chercherArticle", "signalerArticle"
+                "seConnecter", "sInscrire", "Connexion", "Inscription"
             ],
             "Utilisateur" => [
                 "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm", "SubmitForm","ReportArticle", 'AccessAccount'
