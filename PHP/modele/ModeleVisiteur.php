@@ -5,9 +5,8 @@ namespace modele;
 use dal;
 use dal\gateways\UtilisateurGateway;
 use Exception;
-use PDO;
-use PDOException;
 use dal\Connection;
+use PDOException;
 
 class ModeleVisiteur
 {

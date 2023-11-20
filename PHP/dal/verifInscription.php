@@ -1,5 +1,5 @@
 <?php
-
+namespace dal;
 use dal\gateways\UtilisateurGateway;
 use dal\Connection;
 

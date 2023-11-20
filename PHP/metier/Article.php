@@ -1,6 +1,6 @@
 <?php
 
-namespace Metier;
+namespace metier;
 
 use contenu;
 

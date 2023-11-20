@@ -1,6 +1,6 @@
 <?php
 namespace dal\gateways;
-require("Connection.php");
+use dal\Connection;
 class NoteGateway
 {
     private $con;
