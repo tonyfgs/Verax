@@ -1,7 +1,8 @@
 <?php
 
 namespace modele;
-
+use dal\gateways\NoteGateway;
+use dal\Connection;
 
 class ModeleUtilisateur
 {

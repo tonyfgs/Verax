@@ -4,6 +4,7 @@ namespace controleur;
 
 use controleur\VisiteurControleur;
 use PDOException;
+use modele\ModeleUtilisateur;
 
 class UtilisateurControleur
 {
@@ -22,7 +23,9 @@ class UtilisateurControleur
             }
             switch ($action){
                 case NULL:
-
+                case 'accueil':
+                    $this->accueil();
+                    break;
                 case 'Disconnect':
                     $this->disconnect();
                     break;
@@ -93,5 +96,11 @@ class UtilisateurControleur
         $mdl = new ModeleUtilisateur();
         $mdl->accessAccount();
     }
+
+    function accueil(){
+        global $twig;
+        echo $twig->render('accueil.html', []);
+    }
+
 
 }

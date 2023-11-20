@@ -7,9 +7,9 @@
     global $dsn;
     global $login;
     global $mdp;
-    $dsn="mysql:host=londres.uca.local;dbname=dballaurent13";
-    $login = "allaurent13";
-    $mdp = "achanger";
+    $dsn="mysql:host=localhost;dbname=Verax";
+    $login = "test";
+    $mdp = "test";
 
     /** Différentes vues */
     $vues['accueil']='../Vue/accueil.html';
