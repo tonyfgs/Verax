@@ -21,7 +21,7 @@ class ModeleVisiteur
     }
 
     public function signUp(){
-        global $dsn, $login, $mdp;
+        global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
             $tab = $gw->findUserByPseudo($_POST['pseudo']);
@@ -29,10 +29,9 @@ class ModeleVisiteur
                 throw new PDOException();
             }
             $verif = $gw->insert($_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp'],$_POST['mail'],'U');
-            if (!$verif) {
-                throw new PDOException();
-            }
-
+            $verif = false;
+            var_dump($verif);
+            echo $twig->render('connexion.html');
         }
     }
 
@@ -42,7 +41,6 @@ class ModeleVisiteur
         $tab = $gw->findUserByPseudo($_POST['pseudo']);
         $user = $tab[0];
         if (password_verify($_POST['mdp'],$user->getMdp())) {
-            session_start();
             $_SESSION['pseudo'] = $_POST['pseudo'];
             $_SESSION['mdp'] = $user->getMdp();
             $_SESSION['nom'] = $user->getNom();

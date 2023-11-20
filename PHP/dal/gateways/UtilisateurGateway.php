@@ -2,6 +2,7 @@
 namespace dal\gateways;
 use metier\Utilisateur;
 use dal\Connection;
+use PDO;
 
 class UtilisateurGateway {
     private $con;
@@ -21,12 +22,12 @@ class UtilisateurGateway {
         return $tab;
     }
 
-    public function findUserByPseudo(string $pseudo) : ?Utilisateur {
+    public function findUserByPseudo(string $pseudo) : array {
         $query = 'SELECT * FROM utilisateur WHERE pseudo = :p';
         $res = $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
-        if (count($results) == 0) return NULL;
-        return new Utilisateur($results['pseudo'],$results['mail'],$results['mdp'],$results['nom'],$results['prenom'],$results['role']);
+        if (count($results) == 0) return array();
+        return array(new Utilisateur($results['pseudo'],$results['mail'],$results['mdp'],$results['nom'],$results['prenom'],$results['role']));
     }
 
     public function findPasswordByPseudo(string $pseudo) : string {

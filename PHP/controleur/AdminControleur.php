@@ -10,7 +10,6 @@ class AdminControleur
     public function __construct()
     {
         global $twig;
-        session_start();
 
         try {
             if (empty($_REQUEST["action"])) {

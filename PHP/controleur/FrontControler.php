@@ -12,7 +12,6 @@ class FrontControler {
     public function __construct()
     {
         global $twig;
-        session_start();
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [

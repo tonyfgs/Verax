@@ -1,17 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost
--- Généré le : lun. 06 nov. 2023 à 12:43
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
-
---
--- Base de données : `sae`
---
-
-
 DROP TABLE IF EXISTS article;
 DROP TABLE IF EXISTS utilisateur;
 DROP TABLE IF EXISTS concerne;
@@ -36,7 +22,7 @@ DROP TABLE IF EXISTS rediger;
 --
 
 CREATE TABLE `article` (
-  `idArticle` decimal(10,0),
+  `idArticle` decimal(10,0) PRIMARY KEY,
   `titre` varchar(30) NOT NULL,
   `contenu` text NOT NULL,
   `temps` decimal(10,0) NOT NULL CHECK (`temps` > 0),
@@ -49,98 +35,66 @@ CREATE TABLE `article` (
 -- Structure de la table `Concerne`
 --
 
-CREATE TABLE `concerne` (
-  `codeLoi` decimal(10,0) NOT NULL,
-  `idArticle` decimal(10,0) NOT NULL
-);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Contribue`
---
-
-CREATE TABLE `contribue` (
-  `idArticle` decimal(10,0) NOT NULL,
-  `pseudo` varchar(30) NOT NULL
-);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Loi`
---
-
 CREATE TABLE `loi` (
-  `codeLoi` decimal(10,0) NOT NULL,
+  `codeLoi` decimal(10,0) PRIMARY KEY,
   `amende` decimal(10,0) NOT NULL
 );
 
--- --------------------------------------------------------
 
---
--- Structure de la table `Note`
---
-
-CREATE TABLE `note` (
-  `idArticle` decimal(10,0) NOT NULL,
-  `pseudo` varchar(30) NOT NULL,
-  `note` numeric NOT NULL CHECK (`note` in (1,-1))
+CREATE TABLE `concerne` (
+  `codeLoi` decimal(10,0) REFERENCES loi,
+  `idArticle` decimal(10,0) REFERENCES article
 );
 
--- --------------------------------------------------------
 
---
--- Structure de la table `Posseder`
---
-
-CREATE TABLE `posseder` (
-  `pseudo` varchar(30) NOT NULL,
-  `roleUtil` char(1) NOT NULL
-);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Role`
---
 
 CREATE TABLE `role` (
-  `roleUtil` char(1) NOT NULL CHECK (`roleUtil` in ('U','R','M','A'))
+  `roleUtil` char(1) PRIMARY KEY CHECK (`roleUtil` in ('U','R','M','A'))
 );
+
+
+CREATE TABLE `utilisateur` (
+  `pseudo` varchar(30) PRIMARY KEY,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `roleUtil` char(1) NOT NULL REFERENCES Role
+);
+
+CREATE TABLE `note` (
+  `idArticle` decimal(10,0) NOT NULL REFERENCES article,
+  `pseudo` varchar(30) NOT NULL REFERENCES utilisateur,
+  `note` numeric NOT NULL CHECK (`note` in (1,-1)),
+  PRIMARY KEY(`idArticle`,`pseudo`)
+);
+
+CREATE TABLE `posseder` (
+  `pseudo` varchar(30) REFERENCES utilisateur,
+  `roleUtil` char(1) REFERENCES role,
+  PRIMARY KEY (`pseudo`,`roleUtil`)
+);
+
+
+
 
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `Sujet`
---
 
-CREATE TABLE `sujet` (
-  `idArticle` decimal(10,0) NOT NULL,
-  `idTheme` varchar(30) NOT NULL
-);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `Supprime`
---
-
-CREATE TABLE `supprime` (
-  `idArticle` decimal(10,0) NOT NULL,
-  `pseudo` varchar(30) NOT NULL,
-  `motif` text NOT NULL
-);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Theme`
---
 
 CREATE TABLE `theme` (
-  `theme` varchar(30) NOT NULL
+  `theme` varchar(30) PRIMARY KEY
 );
+
+CREATE TABLE `sujet` (
+  `idArticle` decimal(10,0) REFERENCES article,
+  `idTheme` varchar(30) REFERENCES theme,
+  PRIMARY KEY(`idArticle`,`idTheme`)
+);
+
 
 -- --------------------------------------------------------
 
@@ -148,13 +102,10 @@ CREATE TABLE `theme` (
 -- Structure de la table `Utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
-  `pseudo` varchar(30) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `mdp` varchar(255) NOT NULL,
-  `mail` varchar(30) NOT NULL,
-  `roleUtil` char(1) NOT NULL REFERENCES Role
+CREATE TABLE `contribue` (
+  `idArticle` decimal(10,0) REFERENCES article,
+  `pseudo` varchar(30) REFERENCES utilisateur,
+  PRIMARY KEY(`idArticle`,`pseudo`)
 );
 
 CREATE TABLE discuter (
@@ -163,6 +114,13 @@ CREATE TABLE discuter (
   pseudo varchar(30) NOT NULL REFERENCES utilisateur,
   message TEXT NOT NULL,
   datePublication DATE NOT NULL
+);
+
+CREATE TABLE `supprime` (
+  `idArticle` decimal(10,0) REFERENCES article,
+  `pseudo` varchar(30) REFERENCES utilisateur,
+  `motif` text NOT NULL,
+  PRIMARY KEY(`idArticle`,`pseudo`)
 );
 
 CREATE TABLE `bannir` (
@@ -190,78 +148,3 @@ CREATE TABLE `rediger` (
   `pseudo` varchar(30) REFERENCES utilisateur,
   PRIMARY KEY(`pseudo`,`idArticle`)
 );
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `Article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`idArticle`);
-
---
--- Index pour la table `Concerne`
---
-ALTER TABLE `concerne`
-  ADD PRIMARY KEY (`codeLoi`,`idArticle`);
-
---
--- Index pour la table `Contribue`
---
-ALTER TABLE `contribue`
-  ADD PRIMARY KEY (`idArticle`,`pseudo`);
-
---
--- Index pour la table `Loi`
---
-ALTER TABLE `loi`
-  ADD PRIMARY KEY (`codeLoi`);
-
---
--- Index pour la table `Note`
---
-ALTER TABLE `note`
-  ADD PRIMARY KEY (`idArticle`,`pseudo`);
-
---
--- Index pour la table `Posseder`
---
-ALTER TABLE `posseder`
-  ADD PRIMARY KEY (`pseudo`,`roleUtil`);
-
---
--- Index pour la table `Role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`roleUtil`);
-
---
--- Index pour la table `Sujet`
---
-ALTER TABLE `sujet`
-  ADD PRIMARY KEY (`idArticle`,`idTheme`);
-
---
--- Index pour la table `Supprime`
---
-ALTER TABLE `supprime`
-  ADD PRIMARY KEY (`idArticle`,`pseudo`);
-
---
--- Index pour la table `Theme`
---
-ALTER TABLE `theme`
-  ADD PRIMARY KEY (`theme`);
-
---
--- Index pour la table `Utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`pseudo`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

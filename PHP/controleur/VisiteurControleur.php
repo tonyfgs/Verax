@@ -57,8 +57,6 @@ class VisiteurControleur
     function signUp() {
         global $twig;
         echo $twig->render('inscription.html');
-        $mdl = new ModeleVisiteur();
-        $mdl->signUp();
     }
 
     function connect() {
@@ -73,7 +71,7 @@ class VisiteurControleur
 
     function inscription(){
         $mdl = new ModeleVisiteur();
-        $mdl->connect();
+        $mdl->signUp();
     }
 
     function accueil(){
