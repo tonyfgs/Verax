@@ -29,10 +29,15 @@ class VisiteurControleur
                 case 'seConnecter':
                     $this->connect();
                     break;
+                case 'Connexion':
+                    $this->connection();
+                    break;
                 case 'sInscrire':
                     $this->signUp();
                     break;
-
+                case 'Inscription':
+                    $this->inscription();
+                    break;
                 default:
                     $dataVueErreur[] = "Action Non-Autorisé si pas connecté";
                     echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
@@ -52,11 +57,23 @@ class VisiteurControleur
     function signUp() {
         global $twig;
         echo $twig->render('inscription.html');
+        $mdl = new ModeleVisiteur();
+        $mdl->signUp();
     }
 
     function connect() {
         global $twig;
         echo $twig->render('connexion.html');
+    }
+
+    function connection(){
+        $mdl = new ModeleVisiteur();
+        $mdl->connect();
+    }
+
+    function inscription(){
+        $mdl = new ModeleVisiteur();
+        $mdl->connect();
     }
 
     function accueil(){
