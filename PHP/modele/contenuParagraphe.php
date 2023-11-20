@@ -7,7 +7,8 @@
         private $titre;
         private $texte;
 
-        public function __construct(string $titre, string $texte) {
+        public function __construct(int $id, string $titre, string $texte) {
+            parent::__construct($id);
             $this -> titre = $titre; 
             $this -> texte = $texte;
         }
