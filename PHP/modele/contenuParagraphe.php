@@ -1,12 +1,15 @@
 <?php 
 
+    namespace modele;
+
     class contenuParagraphe extends Contenu {
 
         private $titre;
         private $texte;
 
-        public function __construct() {
-
+        public function __construct(string $titre, string $texte) {
+            $this -> titre = $titre; 
+            $this -> texte = $texte;
         }
 
         public function getTitre() : String {

@@ -36,7 +36,7 @@
             return $this->titre;
         }
 
-        public function getContent() {
+        public function getDescription() {
             return $this->description;
         }
 
@@ -56,7 +56,7 @@
             $this->titre = $title;
         }
 
-        private function setContent( $content ) {
+        private function setDescription( $content ) {
             $this->description = $content;
         }
 

@@ -1,6 +1,7 @@
 <?php
-
-    abstract class contenu {
+    namespace modele;
+    
+    abstract class Contenu {
         private int $id;
 
         public function __construct(int $id) {
