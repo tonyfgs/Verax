@@ -32,8 +32,8 @@ use Metier\Article;
 
             $temp = array();
 
-            $temp[] = new contenuParagraphe("Premier paragraphe", "Contenu du premier article et tout et tout....");
-            $temp[] = new contenuParagraphe("Titre du second paragraphe", "Contenu du second paragraphe....");
+            $temp[] = new contenuParagraphe(1, "Premier paragraphe", "Contenu du premier article et tout et tout....");
+            $temp[] = new contenuParagraphe(2, "Titre du second paragraphe", "Contenu du second paragraphe....");
             return $temp;
         }
 

@@ -11,6 +11,8 @@
             parent::__construct($id);
             $this -> titre = $titre; 
             $this -> texte = $texte;
+
+            $this -> setTypeContenu("paragraphe");
         }
 
         public function getTitre() : String {
