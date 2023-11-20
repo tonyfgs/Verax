@@ -3,7 +3,7 @@
         'name' => 'allaurent13/php',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'ca73d1d2a23bc8ad7ef3d8cca03e2e4a07063ecd',
+        'reference' => '950bf63d4e213c82d4391af0e56907d56077e50a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'allaurent13/php' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ca73d1d2a23bc8ad7ef3d8cca03e2e4a07063ecd',
+            'reference' => '950bf63d4e213c82d4391af0e56907d56077e50a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
