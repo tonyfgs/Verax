@@ -61,9 +61,11 @@
                             </form>
                         </li>
                         <li>
-                            <form action="index.php?action=seConnecter" method="POST">
-                                <input type="submit" value="Connexion">
-                            </form>
+                            {% if userRole == 'Visiteur' %}
+                                <form action="index.php?action=seConnecter" method="POST">
+                                    <input type="submit" value="Connexion">
+                                </form>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
