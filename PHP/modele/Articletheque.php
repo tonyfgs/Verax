@@ -2,7 +2,7 @@
     namespace modele;
     
     use Metier\Article;
-    use modele\manager\IArticleDataManager;
+    use modele\IArticleDataManager;
 
     class Articletheque {
 
