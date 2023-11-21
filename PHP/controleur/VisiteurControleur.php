@@ -24,7 +24,25 @@ class VisiteurControleur
             switch ($action){
                 case NULL:
                 case 'accueil':
-                    $this->accueil();
+                    $this->afficherAccueil();
+                    break;
+                case 'economie':
+                    $this->afficherEconomie();
+                    break;
+                case 'culture':
+                    $this->afficherCulture();
+                    break;
+                case 'politique':
+                    $this->afficherPolitique();
+                    break;
+                case 'faitsDivers':
+                    $this->afficherFaitsDivers();
+                    break;
+                case 'connexion':
+                    $this->afficherConnexion();
+                    break;
+                case 'contact':
+                    $this->afficherContact();
                     break;
                 case 'seConnecter':
                     $this->connect();
@@ -76,9 +94,38 @@ class VisiteurControleur
         $mdl->connect();
     }
 
-    function accueil(){
+    function afficherAccueil(){
         global $twig;
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
     }
 
+    public function afficherEconomie() {
+        global $twig;
+        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function afficherCulture() {
+        global $twig;
+        echo $twig->render('culture.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function afficherPolitique() {
+        global $twig;
+        echo $twig->render('politique.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function afficherFaitsDivers() {
+        global $twig;
+        echo $twig->render('faitsDivers.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function afficherConnexion() {
+        global $twig;
+        echo $twig->render('connexion.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function afficherContact() {
+        global $twig;
+        echo $twig->render('contact.html', ["userRole" => $_SESSION["role"]]);
+    }
 }

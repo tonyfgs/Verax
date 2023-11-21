@@ -2,7 +2,7 @@
 
 namespace controleur;
 use dal\gateways\ArticleGateway; //pour $con
-
+use dal\Connection;
 //je suis vraiment pas sûr pour le controleur
 class ArticleControleur
 {
