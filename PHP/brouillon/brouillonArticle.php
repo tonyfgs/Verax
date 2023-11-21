@@ -8,15 +8,17 @@ use modele\ArticleManager;
     $articleCourant = $articleManager -> getArticle(6);
 
 
-    foreach ($articleCourant -> getContenus() as $contenu) {
+    // foreach ($articleCourant -> getContenus() as $contenu) {
 
-        switch ($contenu -> getTypeContenu()) {
+    //     switch ($contenu -> getTypeContenu()) {
 
-            case "paragraphe" : 
-                include("blocParagrapheBrouillon.php");
-                break;
+    //         case "paragraphe" : 
+    //             include("blocParagrapheBrouillon.php");
+    //             break;
 
-            default : 
-        }
-    }
+    //         default : 
+    //     }
+    // }
+
+    echo $twig->render('Article.html', []);
 ?>
