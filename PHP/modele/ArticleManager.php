@@ -4,7 +4,7 @@ namespace modele;
 
 use metier\Article;
 use modele\IArticleDataManager;
-use modele\stubArticles;
+use modele\StubArticles;
 
     class ArticleManager {
 
