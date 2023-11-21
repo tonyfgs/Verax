@@ -2,8 +2,8 @@
 
 namespace modele;
 
-use Modele\manager\IArticleDataManager;
-use Metier\Article;
+use modele\IArticleDataManager;
+use metier\Article;
 
     class stubArticles implements IArticleDataManager {
 

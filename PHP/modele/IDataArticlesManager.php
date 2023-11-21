@@ -1,6 +1,6 @@
 <?php
 
-    namespace modele\manager;
+    namespace modele;
 
     interface IArticleDataManager {
 
