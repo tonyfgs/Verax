@@ -43,7 +43,7 @@ class Article{
     - tempsConsultation : int
     - etat : int
     - cptSignalement : int
-    - commentaires : List< map <User, Message> > 
+    - commentaires : map <User, List<Message> > 
 
     + getId() : String
     + getTitre() : String
@@ -157,6 +157,7 @@ Image --|> Contenu
 Paragraphe --|> Contenu
 Video --|> Contenu
 Article ..> Message
+Article ..> User
 
 UserManager --> UserTheque
 UserTheque --> "*" User
