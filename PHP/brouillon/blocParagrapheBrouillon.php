@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="block-article paragraphe-block">
-        <h2> <?php echo $contenu -> getContenu()['titre'] ?> /h2>
+        <h2> <?php echo $contenu -> getContenu()['titre'] ?> </h2>
         <p> <?php echo $contenu -> getContenu()['contenu'] ?>  </p>
     </div>
 </body>
