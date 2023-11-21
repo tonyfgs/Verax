@@ -4,7 +4,7 @@ namespace modele;
 
 use modele\IArticleDataManager;
 use metier\Article;
-use modele\contenuParagraphe;
+use modele\ContenuParagraphe;
 
 
     class stubArticles implements IArticleDataManager {
