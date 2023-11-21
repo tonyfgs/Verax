@@ -17,13 +17,15 @@
 
         public function getArticle (int $id) : Article {
             
-            $temp = NULL;
+            // $temp = NULL;
 
-            foreach ($this -> lArticles as $article) {
-                if ($article -> getId() == $id) {
-                    $temp = $article;
-                }
-            }
+            // foreach ($this -> lArticles as $article) {
+            //     if ($article -> getId() == $id) {
+            //         $temp = $article;
+            //     }
+            // }
+
+            $temp = $this -> lArticles[0];
 
             return $temp;
         }
