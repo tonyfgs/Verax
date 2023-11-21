@@ -20,7 +20,7 @@ package Controller{
         + addUser(email : String, pseudo : String, motDePasse : String)
         + delUser(pseudo : String)
 
-        + addForm(prenom : String, nom : String, mail : String, String... ).
+        + addForm(prenom : String, nom : String, mail : String, String... )
         + delForm(id : String)
         + getForms() : List<String>
     }
@@ -28,6 +28,13 @@ package Controller{
 
 class ArticleTheque{
 
+    + getArticles() : List<Article>
+    + addArticle(newArticle : Article)
+    + delArticle(article : Article)
+    + rechercheArticle(id : String) : Article
+    + getArticlesSignales() : List<Article>
+}
+interface IArticleTheque{
     + getArticles() : List<Article>
     + addArticle(newArticle : Article)
     + delArticle(article : Article)
@@ -62,20 +69,45 @@ class Article{
     + setEtat(newEtat : int)
     + setCptSignalement()
 }
-abstract Contenu{
-    ordre : int
+interface IArticle{
+    + getId() : String
+    + getTitre() : String
+    + getDatePublication() : Date
+    + getDescription() : String
+    + getTempsConsultation() : int
+    + getNote() : int
+    + getEtat() : int
+    + getCptSignalement() : int
+
+    + setTitre(newTitre : String)
+    + setDescription(newDescription : String)
+    + setMotsCles(newMotCles : List<String>)
+    + setTempsConsultation (newTemps : int)
+    + setNote(newNote : int)
+    + setEtat(newEtat : int)
+    + setCptSignalement()
 }
-class Image{
-    titre : String
-    chemin : String
+abstract Contenu{
+    - titre : String
+    - ordre : int
+    
+    + getTitre() : String
+    + getOrdre() : int
+    + setTitre(newTitre : String)
+    + setOrdre(newOrdre : int)
+    
+}
+class Media{
+    - chemin : String
+
+    + getChemin() : String
+    + setChemin(newChemin : String)
 }
 class Paragraphe{
-    titre : String
-    texte : String
-}
-class Video{
-    titre : String
-    chemin : String
+    - texte : String
+
+    + getTexte() : String
+    + setTexte(newTexte : String)
 }
 
 class Message{
@@ -85,9 +117,19 @@ class Message{
     + getDateMessage() : date
     + getMessage() : String
 }
+interface IMessage{
+    + getDateMessage() : date
+    + getMessage() : String
+}
 
 class UserTheque{
     
+    + getUsers() : List<User>
+    + addUser(newUser : User)
+    + delUser(user : User)
+    + rechercheUser(pseudo : String)
+}
+interface IUserTheque{
     + getUsers() : List<User>
     + addUser(newUser : User)
     + delUser(user : User)
@@ -106,6 +148,15 @@ class User{
     + setMail(newMail : String)
     + setMotDePasse(newMotDePasse : String)
 }
+interface IUser{
+    + getPseudo() : String
+    + getMail() : String
+    + getMotDePasse() : String
+
+    + setPseudo(newPseudo : String)
+    + setMail(newMail : String)
+    + setMotDePasse(newMotDePasse : String)
+}
 enum Role{
     Visiteur
     Utilisateur
@@ -115,6 +166,11 @@ enum Role{
 }
 
 class FormTheque{
+    + addForm(newFormulaire : Formulaire)
+    + delForm(formulaire : Formulaire)
+    + getForms() : List<Formulaire>
+}
+interface IFormTheque{
     + addForm(newFormulaire : Formulaire)
     + delForm(formulaire : Formulaire)
     + getForms() : List<Formulaire>
@@ -150,20 +206,22 @@ class DataManager{}
 index.php --> App
 App --> Controller
 
-ArticleManager --> ArticleTheque
-ArticleTheque --> "*" Article
+ArticleManager --> IArticleTheque
+ArticleTheque --> "*" IArticle
+Article --|> IArticle
 Article --> "*" Contenu
-Image --|> Contenu
 Paragraphe --|> Contenu
-Video --|> Contenu
-Article ..> Message
-Article ..> User
+Media --|> Contenu
+Article ..> IMessage
+Message --|> IMessage
+Article ..> IUser
 
-UserManager --> UserTheque
-UserTheque --> "*" User
+UserManager --> IUserTheque
+UserTheque --> "*" IUser
+User --|> IUser
 User --> Role
 
-UserManager --> FormTheque
+UserManager --> IFormTheque
 FormTheque --> "*" Formulaire
 FormAide --|> Formulaire
 FormContribution --|> Formulaire
