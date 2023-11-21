@@ -27,7 +27,11 @@ class UtilisateurGateway {
         $res = $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
         if (count($results) == 0) return array();
-        return array(new Utilisateur($results['pseudo'],$results['mail'],$results['mdp'],$results['nom'],$results['prenom'],$results['role']));
+        $tab = array();
+        foreach ($results as $row){
+            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['roleUtil']);
+        }
+        return $tab;
     }
 
     public function findPasswordByPseudo(string $pseudo) : string {

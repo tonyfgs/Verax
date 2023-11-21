@@ -13,7 +13,7 @@ class ModeleVisiteur
 
     public function estConnecte() : bool
     {
-        if(isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"]))
+        if(isset($_SESSION['pseudo']) && !empty($_SESSION['pseudo']))
         {
             return true;
         }
@@ -29,8 +29,6 @@ class ModeleVisiteur
                 throw new PDOException();
             }
             $verif = $gw->insert($_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp'],$_POST['mail'],'U');
-            $verif = false;
-            var_dump($verif);
             echo $twig->render('connexion.html');
         }
     }
@@ -46,13 +44,21 @@ class ModeleVisiteur
             $_SESSION['nom'] = $user->getNom();
             $_SESSION['prenom'] = $user->getPrenom();
             $_SESSION['mail'] = $user->getMail();
-            $_SESSION['role'] = $user->getRole();   
+            switch ($user->getRole()){
+                case 'U':
+                    $_SESSION['role'] = 'Utilisateur';
+                    break;
+                case 'A':
+                    $_SESSION['role'] = 'Admin';
+                    break;
+                default :
+                    $_SESSION['role'] = 'Visiteur';
+                    break;
+            }
         }
         else {
             throw new Exception("Pseudo et/ou mot de passe incorrect(s)");
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION['role']]);
-
     }
 
     public function accessForm(){

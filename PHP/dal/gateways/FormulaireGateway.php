@@ -1,5 +1,6 @@
 <?php
 namespace dal\gateways;
+use dal\Connection;
 class FormulaireGateway
 {
     private $con;

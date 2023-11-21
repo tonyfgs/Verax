@@ -13,7 +13,7 @@ class VisiteurControleur
 {
     public function __construct(){
         global $twig;
-
+        $_SESSION['role'] = 'Visiteur';
         try{
             if(!isset($_REQUEST["action"])) {
                 $action = NULL;
@@ -31,12 +31,14 @@ class VisiteurControleur
                     break;
                 case 'Connexion':
                     $this->connection();
+                    $this->accueil();
                     break;
                 case 'sInscrire':
                     $this->signUp();
                     break;
                 case 'Inscription':
                     $this->inscription();
+                    $this->accueil();
                     break;
                 default:
                     $dataVueErreur[] = "Action Non-Autorisé si pas connecté";
@@ -76,7 +78,7 @@ class VisiteurControleur
 
     function accueil(){
         global $twig;
-        echo $twig->render('accueil.html', ['userRole' => $_REQUEST["role"]]);
+        echo $twig->render('accueil.html', ['userRole' => $_SESSION["role"]]);
     }
 
 }

@@ -46,11 +46,12 @@ class ModeleUtilisateur
 
     public function accessForm(){
         global $twig;
-        echo $twig->render('contact.html', []);
+        echo $twig->render('contact.html');
     }
 
     public function accessAccount() : ?Utilisateur{
-        $gw = new UtilisateurGateway();
+        global $dsn, $login, $mdp;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $User = $gw->findUserByPseudo($_SESSION['pseudo']);
         return $User[0];
     }

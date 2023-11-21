@@ -3,8 +3,9 @@
 namespace controleur;
 
 use controleur\VisiteurControleur;
-use PDOException;
+use Exception;
 use modele\ModeleUtilisateur;
+use Config\Validation;
 
 class UtilisateurControleur
 {
@@ -18,7 +19,7 @@ class UtilisateurControleur
             }
             else
             {
-                $action = \Validation::nettoyerString($_REQUEST["action"]);
+                $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action){
                 case NULL:
