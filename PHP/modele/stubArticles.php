@@ -5,6 +5,7 @@ namespace modele;
 use modele\IArticleDataManager;
 use metier\Article;
 
+
     class stubArticles implements IArticleDataManager {
 
         private $lArticles;
