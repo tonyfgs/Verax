@@ -56,14 +56,23 @@
                             <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
                         </li>
                         <li>
-                            <form action="index.php?action=accessForm" method="POST">
-                                <input type="submit" value="accèsForm">
-                            </form>
+                            {% if userRole != 'Visiteur' and userRole != null%}
+                                <form action="index.php?action=AccessForm" method="POST">
+                                    <input type="submit" value="accèsForm">
+                                </form>
+                            {% endif %}
                         </li>
                         <li>
                             {% if userRole == 'Visiteur' or userRole == null %}
                                 <form action="index.php?action=seConnecter" method="POST">
                                     <input type="submit" value="Connexion">
+                                </form>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if userRole == 'Admin'%}
+                                <form action="index.php?action=GestionUser" method="POST">
+                                    <input type="submit" value="Admin">
                                 </form>
                             {% endif %}
                         </li>

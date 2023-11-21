@@ -2,6 +2,7 @@
 namespace dal\gateways;
 use metier\Utilisateur;
 use dal\Connection;
+use PDO;
 
 class UtilisateurGateway {
     private $con;
@@ -15,18 +16,22 @@ class UtilisateurGateway {
         $res = $this->con->executeQuery($query);
         $results = $this->con->getResults();
         $tab = array();
-        foreach ($results as $row){
-            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
+        foreach ($results as $row) {
+            $tab[] = new Utilisateur($row['pseudo'], $row['mail'], $row['mdp'], $row['nom'], $row['prenom'], $row['roleUtil']);
         }
         return $tab;
     }
 
-    public function findUserByPseudo(string $pseudo) : ?Utilisateur {
+    public function findUserByPseudo(string $pseudo) : array {
         $query = 'SELECT * FROM utilisateur WHERE pseudo = :p';
         $res = $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
-        if (count($results) == 0) return NULL;
-        return new Utilisateur($results['pseudo'],$results['mail'],$results['mdp'],$results['nom'],$results['prenom'],$results['role']);
+        if (count($results) == 0) return array();
+        $tab = array();
+        foreach ($results as $row){
+            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['roleUtil']);
+        }
+        return $tab;
     }
 
     public function findPasswordByPseudo(string $pseudo) : string {
@@ -42,7 +47,7 @@ class UtilisateurGateway {
         $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
         if (count($results) == 0) return "";
-        return $results[0]['role'];
+        return $results[0]['roleUtil'];
     }
 
     public function insert(string $pseudo, string $nom, string $prenom, string $mdp, string $mail, string $role) : bool {

@@ -12,7 +12,6 @@ class FrontControler {
     public function __construct()
     {
         global $twig;
-        session_start();
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
@@ -40,8 +39,9 @@ class FrontControler {
         //$actions["Redacteur"] = array_merge($actions["Redacteur"], $actions["Utilisateur"]);
         //$actions["Moderateur"] = array_merge($actions["Moderateur"], $actions["Redacteur"]);
         //$actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
-
         $action = Validation::nettoyerString($_GET["action"] ?? "");
+        //echo $action;
+        //echo $_SESSION['role'];
         if(in_array($action,$actions['Admin'])){
             if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Admin'){
                 $dVueErreur[] = 'Connexion requise !';
@@ -52,7 +52,6 @@ class FrontControler {
             }
         }
         else if(in_array($action,$actions['Utilisateur'])){
-            echo "oui";
             if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur'){
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);

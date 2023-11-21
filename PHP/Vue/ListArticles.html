@@ -14,8 +14,12 @@
     {% if articles is not empty %}
     {% for article in articles %}
     <div class="article">
-        <h2>{{ article.titre }}</h2>
-        <a href="{{ path('Article.html', {'id': article.idarticle}) }}">{{ article.titre }}</a>
+        <form action="index.php?action=AfficheArticle" method="POST">
+            <h2>{{ article.titre }}</h2>
+            <input type="hidden" name="id" value="{{ article.id }}">
+            <input class="btn" type="submit" value="Accéder à l'article">
+        </form>
+
     </div>
     {% endfor %}
     {% else %}

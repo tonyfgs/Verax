@@ -6,29 +6,31 @@
     <link rel="stylesheet" href="assets/css/Connexion.css">
 
 </head>
-<body>
+    <body>
 
-<div class="bg">
-    <!-- Bouton de retour -->
-    <a href="javascript:history.back()" class="back-button">Retour</a>
+        <div class="bg">
+            <!-- Bouton de retour -->
+            <form action="index.php?action=accueil" method="POST">
+                <input class="back-button"  type="submit" value="Retour">
+            </form>
 
-    <div class="login-container">
-        <form action="index.php?action=Connexion" method="post">
-            <div class="logo">Verax</div>
-            <div class="input-group">
-                <input type="text" placeholder="Nom d'utilisateur" name="username" required>
+            <div class="login-container">
+                <form action="index.php?action=Connexion" method="post">
+                    <div class="logo">Verax</div>
+                    <div class="input-group">
+                        <input type="text" placeholder="Nom d'utilisateur" name="pseudo" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Mot de passe" name="mdp" required>
+                    </div>
+                    <input class="btn" type="submit" value="Se Connecter">
+                    <a href="#">Mot de passe oublié ?</a>
+                </form>
+                <form action="index.php?action=sInscrire" method="POST">
+                    <input class="btn"  type="submit" value="S'inscrire">
+                </form>
             </div>
-            <div class="input-group">
-                <input type="password" placeholder="Mot de passe" name="password" required>
-            </div>
-            <input class="btn" type="submit" value="Se Connecter">
-            <a href="#">Mot de passe oublié ?</a>
-        </form>
-        <form action="index.php?action=sInscrire" method="POST">
-            <input class="btn"  type="submit" value="S'inscrire">
-        </form>
-    </div>
-</div>
+        </div>
 
-</body>
+    </body>
 </html>
