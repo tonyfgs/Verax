@@ -17,45 +17,44 @@ th {
 }
 
 .navAdmin {
-    display: flex; /* Use flexbox to layout the links */
-    justify-content: center; /* Center the links horizontally */
-    list-style-type: none; /* Remove default list styling */
-    background-color: #f3f3f3; /* Background color of the nav bar */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margins */
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    background-color: #f3f3f3;
+    padding: 0;
+    margin: 0;
 }
 .navAdmin a {
-    display: block; /* Block level links */
-    color: #000000; /* Text color */
-    text-align: center; /* Center text */
-    padding: 14px 20px; /* Padding around the links */
-    text-decoration: none; /* No underline */
-    font-size: 17px; /* Font size */
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
 }
 .navAdmin a:hover {
-    color: red; /* Text color on hover */
+    color: red;
 }
 .navAdmin a.active {
-    background-color: #788888; /* Background color of the active link */
+    background-color: #788888;
 }
 
 .btn-participer {
-    background-color: #4CAF50; /* Couleur de fond verte */
-    color: white; /* Texte blanc */
-    border: none; /* Pas de bordure */
-    padding: 5px 10px; /* Padding autour du texte */
-    text-align: center; /* Centre le texte dans le bouton */
-    text-decoration: none; /* Pas de soulignement */
-    display: inline-block; /* Permet au bouton d'être à côté d'autres éléments inline */
-    font-size: 16px; /* Taille de la police */
-    margin: 4px 2px; /* Marge autour du bouton */
-    cursor: pointer; /* Change le curseur en main au survol */
-    border-radius: 4px; /* Coins arrondis */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-/* Style pour le bouton au survol */
 .btn-participer:hover {
-    background-color: #45a049; /* Un vert légèrement différent pour l'effet au survol */
+    background-color: #45a049;
 }
 
  .search-container {
