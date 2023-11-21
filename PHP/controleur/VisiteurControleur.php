@@ -131,4 +131,6 @@ class VisiteurControleur
         global $twig;
         echo $twig->render('contact.html', ["userRole" => $_SESSION["role"]]);
     }
+
+
 }

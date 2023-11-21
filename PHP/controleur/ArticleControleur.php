@@ -3,7 +3,10 @@
 namespace controleur;
 use dal\gateways\ArticleGateway; //pour $con
 use dal\Connection;
-//je suis vraiment pas sûr pour le controleur
+
+//A suppr, transéré dans VisiteurControleur
+
+
 class ArticleControleur
 {
     private $articleGateway;
