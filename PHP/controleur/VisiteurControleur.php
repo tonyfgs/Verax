@@ -4,6 +4,7 @@ namespace controleur;
 
 use controleur\UtilisateurControleur;
 use Config\Validation;
+use dal\gateways\ArticleGateway;
 use dal\gateways\UtilisateurGateway;
 use modele\ModeleVisiteur;
 use PDOException;
@@ -101,6 +102,8 @@ class VisiteurControleur
 
     public function afficherEconomie() {
         global $twig;
+        $gw = new ArticleGateway();
+        $tabEco = $gw->selectAllArticle();
         echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
     }
 
