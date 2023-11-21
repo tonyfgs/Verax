@@ -16,8 +16,8 @@ class UtilisateurGateway {
         $res = $this->con->executeQuery($query);
         $results = $this->con->getResults();
         $tab = array();
-        foreach ($results as $row){
-            $tab[] = new Utilisateur($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
+        foreach ($results as $row) {
+            $tab[] = new Utilisateur($row['pseudo'], $row['mail'], $row['mdp'], $row['nom'], $row['prenom'], $row['roleUtil']);
         }
         return $tab;
     }
@@ -47,7 +47,7 @@ class UtilisateurGateway {
         $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
         $results = $this->con->getResults();
         if (count($results) == 0) return "";
-        return $results[0]['role'];
+        return $results[0]['roleUtil'];
     }
 
     public function insert(string $pseudo, string $nom, string $prenom, string $mdp, string $mail, string $role) : bool {

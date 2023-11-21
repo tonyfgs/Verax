@@ -2,8 +2,10 @@
 
 namespace controleur;
 
+use dal\Connection;
 use dal\gateways\ArticleGateway;
 use dal\gateways\UtilisateurGateway;
+use Config\Validation;
 
 class AdminControleur
 {
@@ -15,7 +17,7 @@ class AdminControleur
             if (empty($_REQUEST["action"])) {
                 $action = NULL;
             } else {
-                $action = \Validation::nettoyerString($_REQUEST["action"]);
+                $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action) {
                 case NULL:
@@ -25,6 +27,8 @@ class AdminControleur
                     $this->gestionUser();
                     break;
                 case 'BanUser':
+                    $this->banUser();
+                    break;
                 case 'UnbanUser':
                 case 'ChangeUserRole':
                 default:
@@ -44,8 +48,30 @@ class AdminControleur
     }
 
     public function gestionUser(){
-        global $twig;
-        $gw = new UtilisateurGateway();
-        echo $twig->render('adminUserList.html', ['utilisateurs' => $gw->findAllUser()]);
+        global $twig, $dsn, $login, $mdp;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $tab = $gw->findAllUser();
+        $tab2 = array();
+        foreach ($tab as $t){
+            if ($t->getRole() != 'A'){
+                $tab2[] = $t;
+            }
+        }
+        echo $twig->render('adminUserList.html', ['utilisateurs' => $tab2]);
     }
+
+    public function banUser(){
+        global $dsn, $login, $mdp, $twig;
+        $id = $_POST['id'];
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $verif = $gw->delete($id);
+        if($verif){
+            echo "Suppression de réussi";
+        }
+        else{
+            echo "Suppression de échoué";
+        }
+        $this->gestionUser();
+    }
+
 }
