@@ -48,5 +48,4 @@ use modele\contenuParagraphe;
         }
 
     }
-
 ?>

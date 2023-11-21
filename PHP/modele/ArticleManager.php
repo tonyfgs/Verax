@@ -3,11 +3,12 @@
 namespace modele;
 
 use metier\Article;
+use modele\IArticleDataManager;
 use modele\stubArticles;
 
     class ArticleManager {
 
-        private $dataManager;
+        private IArticleDataManager $dataManager;
         private $articletheque;
 
         public function __construct() {
