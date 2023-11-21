@@ -20,5 +20,5 @@ use modele\ArticleManager;
     //     }
     // }
 
-    echo $twig->render('Article.html', ['Article' => $articleCourant]);
+    echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
