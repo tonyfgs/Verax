@@ -2,7 +2,8 @@
 
 namespace modele;
 
-use Metier\Article;
+use metier\Article;
+use modele\stubArticles;
 
     class ArticleManager {
 
