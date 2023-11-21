@@ -46,7 +46,7 @@ class ModeleUtilisateur
 
     public function accessForm(){
         global $twig;
-        echo $twig->render('contact.html');
+        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
     }
 
     public function accessAccount() : ?Utilisateur{
