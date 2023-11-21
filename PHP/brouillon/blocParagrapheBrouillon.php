@@ -6,7 +6,7 @@
 <body>
     <div class="block-article paragraphe-block">
         <h2> <?php echo $contenu -> getContenu()['titre'] ?> /h2>
-        <p> coucou temporaire.....</p>
+        <p> <?php echo $contenu -> getContenu()['contenu'] ?>  </p>
     </div>
 </body>
 </html>

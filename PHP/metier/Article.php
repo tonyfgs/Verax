@@ -72,5 +72,4 @@
             $this->date = $date;
         }
     }
-
 ?>
