@@ -13,7 +13,7 @@ use modele\ArticleManager;
         switch ($contenu -> getTypeContenu()) {
 
             case "paragraphe" : 
-                include("./blocParagrapheBrouillon.php");
+                include("blocParagrapheBrouillon.php");
                 break;
 
             default : 
