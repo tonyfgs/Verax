@@ -1,5 +1,7 @@
 <?php
 
+
+namespace brouillon;
 use modele\ArticleManager;
 
     $articleManager = new ArticleManager();

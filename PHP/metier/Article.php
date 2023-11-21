@@ -28,6 +28,10 @@
             }
         }
 
+        public function getContenus() : array {
+            return $this -> lContenus;
+        }
+
         public function getId() {
             return $this->id;
         }
