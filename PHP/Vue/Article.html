@@ -12,6 +12,15 @@
     </nav>
     <!-- Close Header -->
 
+    {% for contenu in Article.lContenus %}
+    {% if contenu.type == "paragraphe"%}
+    <div class="block-article paragraphe-block">
+        <h2>{{contenu.titre}}</h2>
+        <p>{{contenu.texte}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    
 
 
 <!-- Ajoutez vos scripts JavaScript ici -->
