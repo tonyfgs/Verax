@@ -22,6 +22,7 @@ class AdminControleur
             switch ($action) {
                 case NULL:
                 case 'accueil':
+                    $this->accueil();
                     break;
                 case 'GestionUser':
                     $this->gestionUser();
@@ -45,6 +46,11 @@ class AdminControleur
                 $dataVueErreur[] = "Erreur !";
                 echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
             }
+    }
+
+    function accueil(){
+        global $twig;
+        echo $twig->render('accueil.html', ['userRole' => $_SESSION["role"]]);
     }
 
     public function gestionUser(){

@@ -99,7 +99,7 @@ class UtilisateurControleur
 
     function accueil(){
         global $twig;
-        echo $twig->render('accueil.html', ['userRole' => $_REQUEST["role"]]);
+        echo $twig->render('accueil.html', ['userRole' => $_SESSION["role"]]);
     }
 
     function submitForm(){
