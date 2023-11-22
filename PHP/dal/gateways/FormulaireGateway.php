@@ -1,5 +1,6 @@
 <?php
 namespace dal\gateways;
+use dal\Connection;
 class FormulaireGateway
 {
     private $con;
@@ -11,7 +12,12 @@ class FormulaireGateway
     public function getAllForm() : array{
         $query = 'SELECT * FROM Contribution';
         $this->con->executeQuery($query);
-        return $this->con->getResults();
+        $results = $this->con->getResults();
+        $tab = array();
+        foreach ($results as $row){
+            $tab[] = new Formulaire($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
+        }
+        return $tab;
     }
 
     public function getAllFormByUser($pseudo) : array{

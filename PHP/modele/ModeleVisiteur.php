@@ -13,7 +13,7 @@ class ModeleVisiteur
 
     public function estConnecte() : bool
     {
-        if(isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"]))
+        if(isset($_SESSION['pseudo']) && !empty($_SESSION['pseudo']))
         {
             return true;
         }
@@ -21,7 +21,7 @@ class ModeleVisiteur
     }
 
     public function signUp(){
-        global $dsn, $login, $mdp;
+        global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
             $tab = $gw->findUserByPseudo($_POST['pseudo']);
@@ -29,31 +29,36 @@ class ModeleVisiteur
                 throw new PDOException();
             }
             $verif = $gw->insert($_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp'],$_POST['mail'],'U');
-            if (!$verif) {
-                throw new PDOException();
-            }
-
+            echo $twig->render('connexion.html');
         }
     }
 
     public function connect() {
-        global $dsn, $login, $mdp;
+        global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $tab = $gw->findUserByPseudo($_POST['pseudo']);
         $user = $tab[0];
         if (password_verify($_POST['mdp'],$user->getMdp())) {
-            session_start();
             $_SESSION['pseudo'] = $_POST['pseudo'];
             $_SESSION['mdp'] = $user->getMdp();
             $_SESSION['nom'] = $user->getNom();
             $_SESSION['prenom'] = $user->getPrenom();
             $_SESSION['mail'] = $user->getMail();
-            $_SESSION['role'] = $user->getRole();   
+            switch ($user->getRole()){
+                case 'U':
+                    $_SESSION['role'] = 'Utilisateur';
+                    break;
+                case 'A':
+                    $_SESSION['role'] = 'Admin';
+                    break;
+                default :
+                    $_SESSION['role'] = 'Visiteur';
+                    break;
+            }
         }
         else {
             throw new Exception("Pseudo et/ou mot de passe incorrect(s)");
         }
-
     }
 
     public function accessForm(){

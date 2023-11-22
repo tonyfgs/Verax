@@ -3,13 +3,14 @@
 namespace controleur;
 
 use controleur\VisiteurControleur;
-use PDOException;
+use Exception;
+use modele\ModeleUtilisateur;
+use Config\Validation;
 
 class UtilisateurControleur
 {
     public function __construct(){
         global $twig;
-        session_start();
 
         try{
             if(empty($_REQUEST["action"]))
@@ -18,11 +19,13 @@ class UtilisateurControleur
             }
             else
             {
-                $action = \Validation::nettoyerString($_REQUEST["action"]);
+                $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action){
                 case NULL:
-
+                case 'accueil':
+                    $this->accueil();
+                    break;
                 case 'Disconnect':
                     $this->disconnect();
                     break;
@@ -90,8 +93,43 @@ class UtilisateurControleur
     }
 
     function accessAccount(){
+        global $twig;
         $mdl = new ModeleUtilisateur();
-        $mdl->accessAccount();
+        $User = $mdl->accessAccount();
+        if (empty($User)){
+            $dataVueErreur[] = "Erreur !";
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
+        }
+        else{
+            echo $twig->render("CompteUtilisateur.html", $User);
+        }
     }
+
+    function accueil(){
+        global $twig;
+        echo $twig->render('accueil.html', ['userRole' => $_REQUEST["role"]]);
+    }
+
+    function submitForm(){
+        $mdl = new ModeleUtilisateur();
+        $mdl->submitForm();
+    }
+
+    function reportArticle(){
+
+    }
+
+    function changeEmail(){
+
+    }
+
+    function changePassword(){
+
+    }
+
+    function deleteAccount(){
+
+    }
+
 
 }

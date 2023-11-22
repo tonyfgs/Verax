@@ -1,7 +1,11 @@
 <?php
 
 namespace modele;
-
+use dal\Connection;
+use dal\gateways\FormulaireGateway;
+use dal\gateways\NoteGateway;
+use dal\gateways\UtilisateurGateway;
+use metier\Utilisateur;
 
 class ModeleUtilisateur
 {
@@ -42,11 +46,19 @@ class ModeleUtilisateur
 
     public function accessForm(){
         global $twig;
-        echo $twig->render('contact.html', []);
+        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
     }
 
-    public function accessAccount(){
-        global $twig;
-        echo $twig->render('', []);
+    public function accessAccount() : ?Utilisateur{
+        global $dsn, $login, $mdp;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $User = $gw->findUserByPseudo($_SESSION['pseudo']);
+        return $User[0];
+    }
+
+    public function submitForm(){
+        global $dsn, $login, $mdp;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+
     }
 }
