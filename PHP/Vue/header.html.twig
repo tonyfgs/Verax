@@ -36,17 +36,17 @@
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 {% if userRole == 'Utilisateur' or userRole == 'Redacteur' or userRole == 'Moderateur' or userRole == 'Admin' %}
-                <div class="nav-item ml-auto">
-                    <form action="index.php?action=AccessAccount" method="POST">
-                        <input type="submit" value="Compte">
-                    </form>
-                </div>
+                    <div>
+                        <form action="index.php?action=CompteUtilisateur" method="POST">
+                            <input type="submit" class="page-header" value="CompteUtilisateur">
+                        </form>
+                    </div>
                 {% endif %}
 
                 {% if userRole == 'Visiteur' or userRole == null%}
                 <div>
                     <form action="index.php?action=seConnecter" method="POST">
-                            <input type="submit" value="Connexion">
+                            <input type="submit" class="page-header" value="Connexion">
                     </form>
                 </div>
                 {% endif %}
@@ -54,33 +54,47 @@
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                             <form action="index.php?action=accueil" method="POST">
-                                <input type="submit" value="accueil">
+                                <input type="submit" class="page-header" value="accueil">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=economie" method="POST">
-                                <input type="submit" value="economie">
+                                <input type="submit" class="page-header" value="economie">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=culture" method="POST">
-                                <input type="submit" value="culture">
+                                <input type="submit" class="page-header" value="culture">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=politique" method="POST">
-                                <input type="submit" value="politique">
+                                <input type="submit" class="page-header" value="politique">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=faitsDivers" method="POST">
-                                <input type="submit" value="faitsDivers">
+                                <input type="submit" class="page-header" value="faitsDivers">
                             </form>
+                        </li>
+                        <li>
+                            {% if userRole != 'Visiteur' and userRole != null%}
+                                <form action="index.php?action=AccessForm" method="POST">
+                                    <input type="submit" class="page-header" value="accèsForm">
+                                </form>
+                            {% endif %}
+                        </li>
+                        <li>
+                            {% if userRole != 'Visiteur' and userRole != null%}
+                                <form action="index.php?action=accessForm" method="POST">
+                                    <input type="submit" class="page-header" value="accèsForm">
+                                </form>
+                            {% endif %}
                         </li>
                         <li>
                             {% if userRole == 'Admin'%}
                                 <form action="index.php?action=GestionUser" method="POST">
-                                    <input type="submit" value="Admin">
+                                    <input type="submit" class="page-header" value="Admin">
                                 </form>
                             {% endif %}
                         </li>
@@ -89,7 +103,7 @@
                 <div class="nav-item ml-auto">
                     {% if userRole != 'Visiteur' and userRole != null%}
                     <form action="index.php?action=contact" method="POST">
-                        <input type="submit" value="contact">
+                        <input type="submit" class="page-header" value="contact">
                     </form>
                     {% endif %}
                 </div>
