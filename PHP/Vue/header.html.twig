@@ -37,7 +37,9 @@
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 {% if userRole == 'Utilisateur' or userRole == 'Redacteur' or userRole == 'Moderateur' or userRole == 'Admin' %}
                 <div class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ CompteUtilisateur.html }}">Compte</a>
+                    <form action="index.php?action=AccessAccount" method="POST">
+                        <input type="submit" value="Compte">
+                    </form>
                 </div>
                 {% endif %}
 
@@ -78,20 +80,6 @@
                             <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
                         </li>
                         <li>
-                            {% if userRole != 'Visiteur' and userRole != null%}
-                                <form action="index.php?action=AccessForm" method="POST">
-                                    <input type="submit" value="accèsForm">
-                                </form>
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if userRole != 'Visiteur' and userRole != null%}
-                                <form action="index.php?action=accessForm" method="POST">
-                                    <input type="submit" value="accèsForm">
-                                </form>
-                            {% endif %}
-                        </li>
-                        <li>
                             {% if userRole == 'Admin'%}
                                 <form action="index.php?action=GestionUser" method="POST">
                                     <input type="submit" value="Admin">
@@ -102,9 +90,11 @@
                 </div>
                 <div class="nav-item ml-auto">
                     <!--<a class="nav-link" href="{{ contact.html }}">Contact</a>-->
-                    <form action="index.php?action=contact" method="POST">
-                        <input type="submit" value="contact">
-                    </form>
+                    {% if userRole != 'Visiteur' and userRole != null%}
+                        <form action="index.php?action=contact" method="POST">
+                            <input type="submit" value="contact">
+                        </form>
+                    {% endif %}
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">

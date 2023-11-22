@@ -9,6 +9,10 @@ use metier\Utilisateur;
 
 class ModeleUtilisateur
 {
+
+    public function isUser(){
+        return !isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur';
+    }
     public function disconnect(){
         session_unset();
     }
@@ -49,11 +53,11 @@ class ModeleUtilisateur
         echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
     }
 
-    public function accessAccount() : ?Utilisateur{
-        global $dsn, $login, $mdp;
+    public function accessAccount(){
+        global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $User = $gw->findUserByPseudo($_SESSION['pseudo']);
-        return $User[0];
+        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User]);
     }
 
     public function submitForm(){

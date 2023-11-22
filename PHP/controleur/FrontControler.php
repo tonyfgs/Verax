@@ -5,6 +5,8 @@ namespace controleur;
 
 use Config\Validation;
 use metier\Utilisateur;
+use modele\ModeleAdmin;
+use modele\ModeleUtilisateur;
 use modele\ModeleVisiteur;
 
 class FrontControler {
@@ -15,10 +17,10 @@ class FrontControler {
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
-                "seConnecter", "sInscrire", "Connexion", "Inscription"
+                "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil"
             ],
             "Utilisateur" => [
-                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm", "SubmitForm","ReportArticle", 'AccessAccount'
+                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm", "SubmitForm","ReportArticle", 'AccessAccount', "accueil"
             ],
             "Redacteur" => [
                 "redigerArticle", "validerArticle", "publierArticle",
@@ -30,20 +32,11 @@ class FrontControler {
                 'GestionUser','BanUser','ChangeUserRole'
             ],
         );
-        /*redacteur: verifierFormulaire
-         *moderateur: voirSignalements
-         *admin: gererModerateur
-         */
-
-        //$actions["Utilisateur"] = array_merge($actions["Utilisateur"], $actions["Visiteur"]);
-        //$actions["Redacteur"] = array_merge($actions["Redacteur"], $actions["Utilisateur"]);
-        //$actions["Moderateur"] = array_merge($actions["Moderateur"], $actions["Redacteur"]);
-        //$actions["Admin"] = array_merge($actions["Admin"], $actions["Moderateur"]);
         $action = Validation::nettoyerString($_GET["action"] ?? "");
-        //echo $action;
-        //echo $_SESSION['role'];
         if(in_array($action,$actions['Admin'])){
-            if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Admin'){
+            $mdl = new ModeleAdmin();
+
+            if($mdl->isAdmin()){
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
             }
@@ -52,7 +45,8 @@ class FrontControler {
             }
         }
         else if(in_array($action,$actions['Utilisateur'])){
-            if(!isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur'){
+            $mdl = new ModeleUtilisateur();
+            if($mdl->isUser()){
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
             }

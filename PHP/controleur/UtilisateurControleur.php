@@ -93,16 +93,8 @@ class UtilisateurControleur
     }
 
     function accessAccount(){
-        global $twig;
         $mdl = new ModeleUtilisateur();
-        $User = $mdl->accessAccount();
-        if (empty($User)){
-            $dataVueErreur[] = "Erreur !";
-            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
-        }
-        else{
-            echo $twig->render("CompteUtilisateur.html", $User);
-        }
+        $mdl->accessAccount();
     }
 
     function accueil(){
