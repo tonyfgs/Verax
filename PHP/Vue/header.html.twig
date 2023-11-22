@@ -35,22 +35,44 @@
             </button>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                {% if userRole == 'Utilisateur' or userRole == 'Redacteur' or userRole == 'Moderateur' or userRole == 'Admin' %}
                 <div class="nav-item ml-auto">
-                    <a class="nav-link" href="CompteUtilisateur.html">Compte</a>
+                    <a class="nav-link" href="{{ CompteUtilisateur.html }}">Compte</a>
                 </div>
+                {% endif %}
+
+                {% if userRole == 'Visiteur' or userRole == null%}
+                <div>
+                    <form action="index.php?action=seConnecter" method="POST">
+                            <input type="submit" value="Connexion">
+                    </form>
+                </div>
+                {% endif %}
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="accueil.html">Accueil</a>
+                            <!--<a class="nav-link" href="{{ accueil.html }}">Accueil</a>-->
+                            <form action="index.php?action=accueil" method="POST">
+                                <input type="submit" value="accueil">
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="economie.html">Economie</a>
+                            <!-- <a class="nav-link" href="{{ economie }}">Economie</a>-->
+                            <form action="index.php?action=economie" method="POST">
+                                <input type="submit" value="economie">
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="culture.html">Culture</a>
+                            <!--<a class="nav-link" href="{{ culture.html }}">Culture</a>-->
+                            <form action="index.php?action=culture" method="POST">
+                                <input type="submit" value="culture">
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="politique.html">Politique</a>
+                            <!--<a class="nav-link" href="{{ politique.html }}">Politique</a>-->
+                            <form action="index.php?action=politique" method="POST">
+                                <input type="submit" value="politique">
+                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
@@ -63,9 +85,9 @@
                             {% endif %}
                         </li>
                         <li>
-                            {% if userRole == 'Visiteur' or userRole == null %}
-                                <form action="index.php?action=seConnecter" method="POST">
-                                    <input type="submit" value="Connexion">
+                            {% if userRole != 'Visiteur' and userRole != null%}
+                                <form action="index.php?action=accessForm" method="POST">
+                                    <input type="submit" value="accèsForm">
                                 </form>
                             {% endif %}
                         </li>
@@ -79,7 +101,10 @@
                     </ul>
                 </div>
                 <div class="nav-item ml-auto">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <!--<a class="nav-link" href="{{ contact.html }}">Contact</a>-->
+                    <form action="index.php?action=contact" method="POST">
+                        <input type="submit" value="contact">
+                    </form>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">

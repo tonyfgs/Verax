@@ -16,7 +16,7 @@
     $vues['contact']='../Vue/contact.html';
     $vues['culture']='../Vue/culture.html';
     $vues['economie']='../Vue/economie.html';
-    $vues['faitsdivers']='../Vue/faitsdivers.html';
+    $vues['faitsdivers']='../Vue/faitsDivers.html';
     $vues['index']='../Vue/index.html';
     $vues['politique']='../Vue/politique.html';
     //à completer, erreur, connexion ...
