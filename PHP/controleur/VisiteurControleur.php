@@ -95,6 +95,7 @@ class VisiteurControleur
         $mdl->connect();
     }
 
+    //utiliser router afficher les pages
     function afficherAccueil(){
         global $twig;
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
