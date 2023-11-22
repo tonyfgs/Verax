@@ -51,14 +51,14 @@ class VisiteurControleur
                     break;
                 case 'Connexion':
                     $this->connection();
-                    $this->accueil();
+                    $this->afficherAccueil();
                     break;
                 case 'sInscrire':
                     $this->signUp();
                     break;
                 case 'Inscription':
                     $this->inscription();
-                    $this->accueil();
+                    $this->afficherAccueil();
                     break;
                 default:
                     $dataVueErreur[] = "Action Non-Autorisé si pas connecté";
