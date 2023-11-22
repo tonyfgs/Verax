@@ -103,8 +103,6 @@ class VisiteurControleur
 
     public function afficherEconomie() {
         global $twig;
-        $gw = new ArticleGateway();
-        $tabEco = $gw->selectAllArticle();
         echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
     }
 
