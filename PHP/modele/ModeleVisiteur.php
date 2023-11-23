@@ -40,7 +40,6 @@ class ModeleVisiteur
         $user = $tab[0];
         if (password_verify($_POST['mdp'],$user->getMdp())) {
             $_SESSION['pseudo'] = $_POST['pseudo'];
-            $_SESSION['mdp'] = $user->getMdp();
             $_SESSION['nom'] = $user->getNom();
             $_SESSION['prenom'] = $user->getPrenom();
             $_SESSION['mail'] = $user->getMail();
