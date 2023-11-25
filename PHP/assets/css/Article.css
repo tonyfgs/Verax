@@ -24,7 +24,7 @@
     justify-content: space-around; */
 
     text-align: center; /* Centre le contenu à l'intérieur de la div */
-    width: 100%; /* Utilise la largeur totale de la div parente */
+    width: 60%; /* Utilise la largeur totale de la div parente */
     display: flex;
     flex-direction: column; /* Arrange les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
