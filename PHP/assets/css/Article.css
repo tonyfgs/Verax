@@ -97,6 +97,11 @@
     border-radius: 10px;
 }
 
+.contenuImageTitre {
+    margin-top : 20px;
+    text-decoration : underline;
+}
+
 .titre_tempsLecture,
 .titre_auteur,
 .titre_date {
