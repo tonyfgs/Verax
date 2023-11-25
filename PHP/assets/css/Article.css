@@ -84,6 +84,19 @@
     margin-left: 40px;
 }
 
+.contenuImage {
+    text-align: center; /* Centre le contenu à l'intérieur de la div */
+    width: 70%; /* Utilise la largeur totale de la div parente */
+    margin: auto; /* Ajoute une marge automatique pour centrer la div */
+    margin-bottom: 20px;
+}
+
+.contenuImageBloc {
+    width: 100%;
+    /* display: block; */
+    border-radius: 10px;
+}
+
 .titre_tempsLecture,
 .titre_auteur,
 .titre_date {
