@@ -65,6 +65,25 @@ class UtilisateurGateway {
         $query = 'DELETE FROM utilisateur WHERE pseudo = :p';
         return $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
     }
+
+    public function isBan(string $pseudo) : bool{
+        $query = "SELECT * FROM Bannir WHERE pseudoUser = :p";
+        $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
+        $results = $this->con->getResults();
+        if (empty($results)) return false;
+        return true;
+    }
+
+    public function banAnUser(string $pseudoBan, string $pseudoBanner, string $motif) : bool {
+        $query = "INSERT INTO Bannir VALUES (:pban, :pbanner, :m)";
+        return $this->con->executeQuery($query,array(':pban' => array($pseudoBan,PDO::PARAM_STR), ':pbanner' => array($pseudoBanner,PDO::PARAM_STR), ':m' => array($motif,PDO::PARAM_STR)));
+    }
+
+    public function unBanAnUser(string $pseudo) : bool{
+        $query = "DELETE FROM Bannir WHERE pseudoUser = :p";
+        return $this->con->executeQuery($query,array(':p' => array($pseudo,PDO::PARAM_STR)));
+    }
+
     
 }
 

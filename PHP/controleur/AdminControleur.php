@@ -22,10 +22,6 @@ class AdminControleur
                 $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action) {
-                case NULL:
-                case 'accueil':
-                    $this->accueil();
-                    break;
                 case 'GestionUser':
                     $this->gestionUser();
                     break;
@@ -33,10 +29,9 @@ class AdminControleur
                     $this->banUser();
                     break;
                 case 'UnbanUser':
-                case 'ChangeUserRole':
-                case "AccessForm":
-                    $this->accessForm();
+                    $this->unBanUser();
                     break;
+                case 'ChangeUserRole':
                 case "Disconnect":
                     $this->disconnect();
                     break;
@@ -56,41 +51,19 @@ class AdminControleur
             }
     }
 
-    function accueil(){
-        global $twig;
-        echo $twig->render('accueil.html', ['userRole' => $_SESSION["role"]]);
-    }
-
     public function gestionUser(){
-        global $twig, $dsn, $login, $mdp;
-        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
-        $tab = $gw->findAllUser();
-        $tab2 = array();
-        foreach ($tab as $t){
-            if ($t->getRole() != 'A'){
-                $tab2[] = $t;
-            }
-        }
-        echo $twig->render('adminUserList.html', ['utilisateurs' => $tab2]);
+        $mdl = new ModeleAdmin();
+        $mdl->gestionUser();
     }
 
     public function banUser(){
-        global $dsn, $login, $mdp, $twig;
-        $id = $_POST['id'];
-        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
-        $verif = $gw->delete($id);
-        if($verif){
-            echo "Suppression de réussi";
-        }
-        else{
-            echo "Suppression de échoué";
-        }
-        $this->gestionUser();
+        $mdl = new ModeleAdmin();
+        $mdl->banUser();
     }
 
-    function accessForm(){
-        $mdl = new ModeleAdmin();
-        $mdl->accessForm();
+    public function unBanUser(){
+        $mdl = new  ModeleAdmin();
+        $mdl->unBanUser();
     }
 
     function disconnect(){

@@ -60,7 +60,7 @@ class ModeleUtilisateur
         global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $User = $gw->findUserByPseudo($_SESSION['pseudo']);
-        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0]]);
+        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0], 'userRole' => $_SESSION["role"] ]);
     }
 
     public function submitForm(){
