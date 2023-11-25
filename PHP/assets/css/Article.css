@@ -51,8 +51,16 @@
 
   .titre_tempsLecture {
     color: blue;
-    font-weight: bold;
-    margin-right: 10px;
+    font-weight :700;
+    margin-right: 7px;
+  }
+
+  .titre_auteur {
+    margin-right: 7px;
+  }
+
+  .titre_date {
+    margin-right: 7px;
   }
   
   
