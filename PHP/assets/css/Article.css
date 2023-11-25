@@ -18,14 +18,17 @@
   }
   
   .titre_article {
-    color: #ff0000; /* Couleur rouge pour le titre */
-    font-size: 24px; /* Taille de la police du titre */
+    color: black; /* Couleur rouge pour le titre */
+    font-size: 35px; /* Taille de la police du titre */
     margin-bottom: 10px; /* Ajouter un espace en bas du titre */
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Police du titre */
+
   }
   
   .tempsLecture {
     display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
     justify-content: space-between; /* Espace équitable entre les éléments */
+    justify-content: flex-start;
   }
 
   .auteur  {
