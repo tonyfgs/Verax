@@ -23,7 +23,7 @@
             $this->date = $date;
             $this -> lContenus = array();
             $this -> auteur = $auteur;
-            $this -> imagePrincipale;
+            $this -> imagePrincipale = $imagePrincipale;
         }
 
         public function remplirArticle($lContenus) {
@@ -49,7 +49,7 @@
         }
 
         public function getTitle() {
-            return $this->imagePrincipale;
+            return $this->titre;
         }
 
         public function getDescription() {
