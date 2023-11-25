@@ -6,62 +6,50 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .titre_article {
+}
+
+.titre_article {
     color: black;
     font-size: 35px;
     margin-bottom: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-  }
+}
 
-  .lectureAuteurDate {
+.lectureAuteurDate {
     display:  flex;
-    flex-direction :row;
+    flex-direction: row;
     align-items: center; 
     justify-content: center;
-
     text-align: center;
-  }
-  
-  .description {
+}
+
+.description {
     font-size: 18px;
-    color: #555; /* Couleur de la description */
-    margin-bottom: 20px; /* Espacement sous la description */
-  }
-  
-  .tempsLecture {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.tempsLecture,
+.auteur,
+.date {
     display: flex;
+    align-items: center;
     justify-content: flex-start;
-    margin-left: 70px;
+    margin-left: 40px;
+}
+
+.titre_tempsLecture,
+.titre_auteur,
+.titre_date {
     font-weight: bold;
-  }
+    margin-right: 7px;
+}
 
-  .date {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 70px;
-  }
-
-  .auteur {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 30px;
-  }
-
-  .titre_tempsLecture {
+.titre_tempsLecture {
     color: blue;
-    font-weight :700;
-    margin-right: 7px;
-  }
+    font-weight: 700;
+}
 
-  .titre_auteur {
-    margin-right: 7px;
-  }
-
-  .titre_date {
-    margin-right: 7px;
-  }
   
   
   /* Ajouter du style au texte à l'intérieur du div si nécessaire */
