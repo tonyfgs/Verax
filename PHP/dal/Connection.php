@@ -22,7 +22,7 @@ $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 public function executeQuery(string $query, array $parameters = []) : bool{ 
 	$this->stmt = parent::prepare($query); 
-	foreach ($parameters as $name => $value) { 
+	foreach ($parameters as $name => $value) {
 	 $this->stmt->bindValue($name, $value[0], $value[1]); 
 	} 
 

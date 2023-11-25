@@ -29,7 +29,7 @@ class FrontControler {
                 "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
             ],
             "Admin" => [
-                'GestionUser','BanUser','ChangeUserRole'
+                'GestionUser','BanUser','ChangeUserRole', "accueil", "AccessForm"
             ],
         );
         $action = Validation::nettoyerString($_GET["action"] ?? "");

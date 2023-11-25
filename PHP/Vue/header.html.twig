@@ -37,8 +37,8 @@
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 {% if userRole == 'Utilisateur' or userRole == 'Redacteur' or userRole == 'Moderateur' or userRole == 'Admin' %}
                     <div>
-                        <form action="index.php?action=CompteUtilisateur" method="POST">
-                            <input type="submit" class="page-header" value="CompteUtilisateur">
+                        <form action="index.php?action=AccessAccount" method="POST">
+                            <input type="submit" class="page-header" value="Compte">
                         </form>
                     </div>
                 {% endif %}
@@ -78,20 +78,6 @@
                             </form>
                         </li>
                         <li>
-                            {% if userRole != 'Visiteur' and userRole != null%}
-                                <form action="index.php?action=AccessForm" method="POST">
-                                    <input type="submit" class="page-header" value="accèsForm">
-                                </form>
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if userRole != 'Visiteur' and userRole != null%}
-                                <form action="index.php?action=accessForm" method="POST">
-                                    <input type="submit" class="page-header" value="accèsForm">
-                                </form>
-                            {% endif %}
-                        </li>
-                        <li>
                             {% if userRole == 'Admin'%}
                                 <form action="index.php?action=GestionUser" method="POST">
                                     <input type="submit" class="page-header" value="Admin">
@@ -102,9 +88,12 @@
                 </div>
                 <div class="nav-item ml-auto">
                     {% if userRole != 'Visiteur' and userRole != null%}
-                    <form action="index.php?action=contact" method="POST">
-                        <input type="submit" class="page-header" value="contact">
-                    </form>
+                        <form action="index.php?action=contact" method="POST">
+                            <input type="submit" class="page-header" value="contact">
+                        </form>
+                        <form action="index.php?action=Disconnect" method="POST">
+                            <input type="submit" class="page-header" value="Déconnecter">
+                        </form>
                     {% endif %}
                 </div>
                 <div class="navbar align-self-center d-flex">

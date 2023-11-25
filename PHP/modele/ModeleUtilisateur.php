@@ -55,8 +55,12 @@ class ModeleUtilisateur
 
     public function accessAccount(){
         global $dsn, $login, $mdp, $twig;
+        echo "1";
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        echo "2";
+        echo $_SESSION['pseudo'];
         $User = $gw->findUserByPseudo($_SESSION['pseudo']);
+        echo "3";
         echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User]);
     }
 

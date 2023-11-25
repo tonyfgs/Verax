@@ -6,6 +6,8 @@ use dal\Connection;
 use dal\gateways\ArticleGateway;
 use dal\gateways\UtilisateurGateway;
 use Config\Validation;
+use modele\ModeleAdmin;
+use modele\ModeleUtilisateur;
 
 class AdminControleur
 {
@@ -32,6 +34,10 @@ class AdminControleur
                     break;
                 case 'UnbanUser':
                 case 'ChangeUserRole':
+                case "AccessForm":
+                    $this->accessForm();
+                    break;
+
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
                     echo $twig->render("error.html", ['dVueError' => $dataVueErreur]);
@@ -78,6 +84,11 @@ class AdminControleur
             echo "Suppression de échoué";
         }
         $this->gestionUser();
+    }
+
+    function accessForm(){
+        $mdl = new ModeleAdmin();
+        $mdl->accessForm();
     }
 
 }
