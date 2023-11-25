@@ -14,7 +14,10 @@ class ModeleUtilisateur
         return !isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur';
     }
     public function disconnect(){
+        global $twig;
         session_unset();
+        $_SESSION["role"] = 'Visiteur';
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
     }
 
     public function goodReview($idArticle){

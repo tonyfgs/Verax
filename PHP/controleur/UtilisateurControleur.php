@@ -74,7 +74,6 @@ class UtilisateurControleur
     function disconnect(){
         $mdl = new ModeleUtilisateur();
         $mdl->disconnect();
-        new VisiteurControleur();
     }
 
     function goodReview(){

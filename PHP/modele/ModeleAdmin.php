@@ -13,4 +13,11 @@ class ModeleAdmin
         echo $twig->render('contact.html', ["userRole" => $_REQUEST["role"]]);
     }
 
+    public function disconnect(){
+        global $twig;
+        session_unset();
+        $_SESSION["role"] = 'Visiteur';
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+    }
+
 }
