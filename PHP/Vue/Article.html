@@ -33,11 +33,10 @@
             </div>
         </div>
     </div>
-    
 
-    
+    <div class="corpsArticle">
 
-    {% for contenu in article.getContenus() %}
+        {% for contenu in article.getContenus() %}
         {% if contenu.getTypeContenu() == 'paragraphe' %}
             <div class="paragraphe">
                 <h2 class="titre_paragraphe">{{ contenu.getTitre() }}</h2>
@@ -45,6 +44,13 @@
             </div>
         {% endif %}
     {% endfor %}
+    
+    </div>
+    
+
+    
+
+    
     
 
 
