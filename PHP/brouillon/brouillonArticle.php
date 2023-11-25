@@ -20,6 +20,8 @@ use dal\Connection;
 
 
     echo $ret;
+
+    echo "Coucouuuuuu !";
     
 
     //echo $twig->render('Article.html', ['article' => $articleCourant]);
