@@ -1,44 +1,37 @@
-.titre_article {
-    text-align: center;
-    color: black;
-    font-weight: bold;
-    /* font-style: italic; */
-    font-size: 35px; 
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
 .infos_article {
     padding: 20px;
     background-color: #F7E3E3;
     width: 75%;
     margin: 50px auto;
     border-radius: 10px;
-    text-align: center; /* Centrer le texte à l'intérieur de la div */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une légère ombre */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .titre_article {
-    color: black; /* Couleur rouge pour le titre */
-    font-size: 35px; /* Taille de la police du titre */
-    margin-bottom: 10px; /* Ajouter un espace en bas du titre */
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Police du titre */
-
+    color: black;
+    font-size: 35px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
   
-  .tempsLecture {
-    display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
-    /* justify-content: space-between;  */
-    justify-content: flex-start;
+  .description {
+    font-size: 18px;
+    color: #555; /* Couleur de la description */
+    margin-bottom: 20px; /* Espacement sous la description */
   }
-
-  .auteur  {
+  
+  .tempsLecture,
+  .auteur {
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 10px; /* Espacement entre le bloc tempsLecture et auteur */
   }
   
   .titre_tempsLecture,
   .titre_auteur {
     font-weight: bold;
+    margin-right: 10px; /* Espacement entre le titre et sa valeur */
   }
   
   /* Ajouter du style au texte à l'intérieur du div si nécessaire */
@@ -51,10 +44,6 @@
     color: #333;
   }
   
-
-
-
-
 
 
 
