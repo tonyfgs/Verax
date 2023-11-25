@@ -9,7 +9,7 @@
 }
 
 .corpsArticle {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 75%;
     margin: 50px auto;
     border-radius: 10px;
@@ -19,6 +19,9 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.paragraphe {
+    margin-bottom: 20px;
+}
 .barreTitre {
     height: 2px;
     background-color: #313131;
