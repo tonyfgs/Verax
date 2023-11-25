@@ -40,11 +40,12 @@
         {% if contenu.getTypeContenu() == 'paragraphe' %}
             <div class="paragraphe">
                 <h2 class="titre_paragraphe">{{ contenu.getTitre() }}</h2>
+                <div class="barreTitre"></div>
                 <p class="texte_paragraphe">{{ contenu.getTexte() }}</p>
             </div>
         {% endif %}
     {% endfor %}
-    
+
     </div>
     
 

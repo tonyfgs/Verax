@@ -19,6 +19,12 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.barreTitre {
+    height: 2px;
+    background-color: #333;
+    margin: 20px 0;
+}
+
 .titre_article {
     color: black;
     font-size: 35px;
