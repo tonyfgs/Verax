@@ -40,6 +40,8 @@ use modele\ContenuParagraphe;
 
              $temp[0] -> remplirArticle($this -> chargerContenuParagraphe()['article1']);
 
+             //echo "Temporaire..." : $this -> chargerContenuParagraphe()['article1'].
+
             $this -> lArticles = $temp;
         }
 
@@ -47,10 +49,10 @@ use modele\ContenuParagraphe;
 
             $temp = array();
 
-            $temp['article2'] = new contenuParagraphe(1, "Premier paragraphe", "Contenu du premier article et tout et tout....");
-            $temp['article2'] = new contenuParagraphe(2, "Titre du second paragraphe", "Contenu du second paragraphe....");
+            $temp['article2'][] = new contenuParagraphe(1, "Premier paragraphe", "Contenu du premier article et tout et tout....");
+            $temp['article2'][] = new contenuParagraphe(2, "Titre du second paragraphe", "Contenu du second paragraphe....");
             
-            $temp['article1'] = new contenuParagraphe(3, "Le mystérieux cygne noir.", 
+            $temp['article1'][] = new contenuParagraphe(3, "Le mystérieux cygne noir.", 
                 "Sous les traits d’un mystérieux cygne noir, un objet vidéo non identifié plane dans la galaxie 
                 médiatique. Ambiance Star Wars. Après une musique lancinante, sur fond noir et fumée grisâtre,
                  un invité apparaît, et la voix d’un intervieweur-mystère situé hors champ l’invite à se
