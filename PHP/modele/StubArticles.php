@@ -92,7 +92,11 @@ use modele\ContenuParagraphe;
                   l'extrême gauche, explique Sky. On cherche à créer un terrain neutre pour 
                   que tout le monde puisse échanger.");
 
-                  
+            
+
+            $temp['article1'][] = ContenuMedia::newVideo(1, "Prendre le temps d'écouter les experts dans leurs domaines.",
+                 "https://www.youtube.com/watch?v=1tTksQL2kqs");
+
             return $temp;
         }
 
