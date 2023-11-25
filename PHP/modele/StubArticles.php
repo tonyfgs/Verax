@@ -77,6 +77,22 @@ use modele\ContenuParagraphe;
 
             $temp['article1'][] = new contenuMedia(1, "De prestigieux et fascinants invités", "https://i.ytimg.com/vi/_D-AnsdbnRI/maxresdefault.jpg");
             
+            $temp['article1'][] = new contenuParagraphe(3, "Une alternative dans un monde aux informations formatées", 
+                "\"Nous faisons des interviews aux perspectives alternatives dans un monde aux informations formatées\",
+                 explique le site Thinkerview. La marque a adopté un cygne noir comme logo, un clin d'œil à la théorie 
+                 du cygne noir (expliquée dans cet article de Challenges), soit un événement qui a peu de 
+                 chances de se produire mais qui, s'il se produit, a des conséquences considérables.
+
+                Les invités viennent d'horizons divers avec une petite préférence pour les 
+                intellectuels iconoclastes et les contestataires de tous bords, de l'ancien 
+                ministre grec Yanis Varoufakis à l'historien et essayiste Emmanuel Todd, en
+                 passant par les journalistes Natacha Polony et Laurent Obertone ou encore 
+                 la coqueluche des \"gilets jaunes\" Etienne Chouard. \"On est au milieu de 
+                 toutes les communautés qui s'écharpent sur internet, de l'extrême droite à
+                  l'extrême gauche, explique Sky. On cherche à créer un terrain neutre pour 
+                  que tout le monde puisse échanger.");
+
+                  
             return $temp;
         }
 
