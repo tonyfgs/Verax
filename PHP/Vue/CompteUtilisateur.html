@@ -20,62 +20,9 @@
 
 </head>
 <body>
-
-<!-- Start Top Nav -->
-<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top"
->
-    <a class="navbar-brand text-success logo h1 align-self-center" href="accueil.html"> Verax</a>
-</nav>
-<!-- Close Top Nav -->
-
+{% include './header.html.twig' %}
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container d-flex justify-content-between align-items-center">
-
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-            <div class="nav-item ml-auto">
-                <a class="nav-link" href="CompteUtilisateur.html">Compte</a>
-            </div>
-            <div class="flex-fill">
-                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="accueil.html">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="economie.html">Economie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="culture.html">Culture</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="politique.html">Politique</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav-item ml-auto">
-                <a class="nav-link" href="contact.html">Contact</a>
-            </div>
-            <div class="navbar align-self-center d-flex">
-                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="inputMobileSearch" placeholder="Recherchez votre Article">
-                        <div class="input-group-text">
-                            <i class="fa fa-fw fa-search"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
 <!-- Close Header -->
 <div class="container">
     <h1>Mon Compte</h1>
@@ -86,26 +33,26 @@
             <div class="col">
                 <label>Prénom:</label>
                 <div class="box">
-                    <span>{% utilisateur.getPrenom() %}</span>
+                    <span>{{ utilisateur.prenom }}</span>
                 </div>
                 <label>Nom:</label>
                 <div class="box">
-                    <span>{% utilisateur.getNom() %}</span>
+                    <span>{{ utilisateur.nom }}</span>
                 </div>
                 <label>Email:</label>
                 <div class="box">
-                    <span>{% utilisateur.getMail() %}</span>
+                    <span>{{ utilisateur.mail }}</span>
                 </div>
             </div>
             <div class="col">
                 <label>Pseudo:</label>
                 <div class="box">
-                    <span>{% utilisateur.getpseudo() %}</span>
+                    <span>{{ utilisateur.pseudo }}</span>
                 </div>
             </div>
         </div>
     </div>
-    {% endif % }
+    {% endif %}
 </div>
 </body>
 </html>

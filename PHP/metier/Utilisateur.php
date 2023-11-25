@@ -2,6 +2,9 @@
 
 namespace metier;
 
+use dal\Connection;
+use dal\gateways\UtilisateurGateway;
+
 class Utilisateur {
     private $pseudo;
     private $mail;
@@ -11,13 +14,19 @@ class Utilisateur {
     private $prenom;
     private $role;
 
-    public function __construct($pseudo, $mail, $mdp, $nom, $prenom, $role) {
+    private $ban;
+
+
+    public function __construct($pseudo, $mail, $password, $nom, $prenom, $role) {
+        global $dsn, $login, $mdp;
         $this->pseudo = $pseudo;
         $this->mail = $mail;
-        $this->mdp = $mdp;
+        $this->mdp = $password;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->role = $role;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $this->ban = $gw->isBan($pseudo);
     }
     public function getpseudo() {
         return $this->pseudo;
@@ -41,6 +50,16 @@ class Utilisateur {
 
     public function getRole() {
         return $this->role;
+    }
+
+    public function getBan(): bool
+    {
+        return $this->ban;
+    }
+
+    public function setBan(bool $ban): void
+    {
+        $this->ban = $ban;
     }
 }
 
