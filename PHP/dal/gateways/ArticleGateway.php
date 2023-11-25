@@ -20,6 +20,7 @@
 		$query = 'INSERT INTO article VALUES(:i, :a, :d, :t, :c, :te, :da)';
 		return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT),
 			':t' => array($titre, PDO::PARAM_STR),
+			'd' => array($description, PDO::PARAM_STR),
 			':a' => array($description, PDO::PARAM_STR),
 			':c' => array($contenu, PDO::PARAM_STR),
 			':te' => array($temps, PDO::PARAM_INT),
