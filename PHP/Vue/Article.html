@@ -16,9 +16,9 @@
 
     {% for contenu in article.getContenus() %}
         {% if contenu.getTypeContenu() == 'paragraphe' %}
-            <div class="block-article paragraphe-block">
-                <h2>{{ contenu.getTitre() }}</h2>
-                <p>{{ contenu.getTexte() }}</p>
+            <div class="paragraphe">
+                <h2 class="titre_paragraphe">{{ contenu.getTitre() }}</h2>
+                <p class="texte_paragraphe">{{ contenu.getTexte() }}</p>
             </div>
         {% endif %}
     {% endfor %}
