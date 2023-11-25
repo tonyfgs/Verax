@@ -32,7 +32,6 @@
   
   .tempsLecture {
     display: flex;
-    color: blue;
     justify-content: flex-start;
     margin-left: 70px;
     font-weight: bold;
@@ -47,6 +46,12 @@
     display: flex;
     justify-content: flex-start;
     margin-left: 30px;
+  }
+
+  .titre_tempsLecture {
+    color: blue;
+    font-weight: bold;
+    margin-left: 5px;
   }
   
   
