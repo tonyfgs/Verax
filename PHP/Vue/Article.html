@@ -54,6 +54,7 @@
         {% if contenu.getTypeContenu() == 'image' %}
             <div class="contenuImage">
                 <img class ="contenuImageBloc" src="{{ contenu.getLien() }}">
+                <p class="contenuImageTitre"> {{ contenu.getTitre() }} </p>
             </div>
         {% endif %}
     {% endfor %}
