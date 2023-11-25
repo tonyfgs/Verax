@@ -15,7 +15,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
-  .lectureAuteur {
+  .lectureAuteurDate {
     display:  flex;
     flex-direction :row;
     align-items: center; 
@@ -52,7 +52,8 @@
   .titre_tempsLecture,
   .titre_auteur,
   .valeur_tempsLecture,
-  .valeur_auteur {
+  .valeur_auteur, 
+  .valeur_date {
     font-size: 16px;
     color: #333;
   }
