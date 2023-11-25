@@ -4,6 +4,7 @@ namespace modele;
 
 use dal\Connection;
 use dal\gateways\UtilisateurGateway;
+use metier\Utilisateur;
 
 class ModeleAdmin
 {
@@ -58,6 +59,35 @@ class ModeleAdmin
             echo "Débannissement échoué";
         }
         $this->gestionUser();
+    }
+
+    public function changeUserRole(){
+        global $twig, $dsn, $login, $mdp;
+        global $dsn, $login, $mdp, $twig;
+        $id = $_POST['id'];
+        $role = $_POST['role'];
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $users = $gw->findUserByPseudo($id);
+        $user = $users[0];
+        try {
+            $verif = $gw->update($user->getpseudo(), $user->getPrenom(), $user->getNom(), $user->getMdp(), $user->getMail(), $role[0]);
+        }
+        catch (Exception $ex){
+            $dataVueErreur[] = "Erreur Inscription !";
+            echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
+        }
+        if($verif){
+            echo "Changement de rôle réussi";
+        }
+        else{
+            echo "Changement de rôle échoué";
+        }
+        $this->gestionUser();
+    }
+
+    public function administrer(){
+        global $twig;
+        echo $twig->render("VueAdminLayout.html");
     }
 
 }

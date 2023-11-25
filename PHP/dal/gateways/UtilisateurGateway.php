@@ -57,7 +57,7 @@ class UtilisateurGateway {
     }
 
     public function update(string $pseudo, string $prenom, string $nom, string $mdp, string $mail, string $role) : bool {
-        $query = 'UPDATE utilisateur SET pseudo = :ps, nom = :n, prenom = :pr, mdp = :mdp, mail = :mail role = :r';
+        $query = 'UPDATE utilisateur SET nom = :n, prenom = :pr, mdp = :mdp, mail = :mail, roleUtil = :r WHERE pseudo = :ps';
         return $this->con->executeQuery($query,array(':ps' => array($pseudo,PDO::PARAM_STR), ':n' => array($nom, PDO::PARAM_STR), ':pr' => array($prenom, PDO::PARAM_STR), ':mdp' => array($mdp, PDO::PARAM_STR), ':mail' => array($mail, PDO::PARAM_STR), ':r' => array($role,PDO::PARAM_STR)));
     }
 

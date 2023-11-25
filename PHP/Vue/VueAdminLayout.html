@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Verax</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/templatemo.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/AdminLayout.css">
+  <!-- Load fonts style after rendering the layout styles -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
+  <!-- Load map styles -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+</head>
+
+<body>
+{% include './header.html.twig' %}
+
+<!-- Nav Admin -->
+<div class="navAdmin">
+  <a href="SujetSoumis.html">Sujets soumis</a>
+  <a href="ValidationArticle.html">Sujets a valides</a>
+  <a href="RedactionArticle.html">Rediger un articles</a>
+  <a href="#about">Signalements</a>
+  <a href="VueAdminLayout.html" class="active" >Liste des Utilisateurs</a>
+  <a href="#about" >Actions des Moderateurs</a>
+  <a href="#about" >Bureau Clients</a>
+</div>
+
+
+<div class="search-container">
+  <form action="/search" method="get">
+    <input type="text" placeholder="Recherche..." name="search">
+    <input type="submit" value="Go">
+  </form>
+</div>
+<div class="container">
+  <!-- Table for the user list -->
+  <table>
+    <thead>
+    <tr>
+      <th>Pseudo</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Rôle</th>
+      <th>Date Création Compte</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Repeat this block for each user entry -->
+    <tr>
+      <td>ZGLIVENDU</td>
+      <td>Theo</td>
+      <td>Bernard</td>
+      <td>Modérateur</td>
+      <td>01/10/2023</td>
+    </tr>
+    <tr>
+      <td>ZGLIVENDU</td>
+      <td>Theo</td>
+      <td>Bernard</td>
+      <td>Rédacteur</td>
+      <td>01/10/2023</td>
+    </tr>
+    <!-- More rows as needed -->
+    </tbody>
+  </table>
+</div>
+<!-- Close Header -->
+<footer>
+
+</footer>
+<!-- End Footer -->
+
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+<!-- End Script -->
+</body>
+
+</html>

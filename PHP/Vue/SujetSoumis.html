@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Verax</title>
     <meta charset="utf-8">
@@ -8,13 +9,13 @@
     <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/templatemo.css">
-    <link rel="stylesheet" href="../../assets/css/Article.css">
-    <link rel="stylesheet" href="../../assets/css/AdminLayout.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/AdminLayout.css">
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
 
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -39,29 +40,29 @@
 
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
             <div class="nav-item ml-auto">
-                <a class="nav-link" href="../CompteUtilisateur.html">Compte</a>
+                <a class="nav-link" href="CompteUtilisateur.html">Compte</a>
             </div>
             <div class="flex-fill">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../accueil.html">Accueil</a>
+                        <a class="nav-link" href="accueil.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../economie.html">Economie</a>
+                        <a class="nav-link" href="economie.html">Economie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../culture.html">Culture</a>
+                        <a class="nav-link" href="culture.html">Culture</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../politique.html">Politique</a>
+                        <a class="nav-link" href="politique.html">Politique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../faitsDivers.html">Faits Divers</a>
+                        <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
                     </li>
                 </ul>
             </div>
             <div class="nav-item ml-auto">
-                <a class="nav-link" href="../contact.html">Contact</a>
+                <a class="nav-link" href="contact.html">Contact</a>
             </div>
             <div class="navbar align-self-center d-flex">
                 <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
@@ -76,6 +77,7 @@
         </div>
     </div>
 </nav>
+<!-- Close Header -->
 
 <!-- Nav Admin -->
 <div class="navAdmin">
@@ -88,40 +90,60 @@
     <a href="#about" >Bureau Clients</a>
 </div>
 
-<div class="file-explorer-container">
-    <table id="tableArticle">
+
+<div class="container">
+    <!-- Table for the user list -->
+    <table>
         <thead>
         <tr>
+            <th>Pseudo</th>
             <th>Nom</th>
-            <th>Modifié</th>
-            <th>Taille du fichier</th>
-            <th>Nombre de Redacteurs</th>
-            <th>Soumetre</th>
-
+            <th>Prénom</th>
+            <th>Link</th>
+            <th>Date de Soumission</th>
+            <th>Participer</th>
+            <th>Nombre de rédacteurs</th>
         </tr>
         </thead>
         <tbody>
+        <!-- Repeat this block for each user entry -->
         <tr>
-            <td><img src="../../assets/img/word-icon.png" alt="" class="file-icon"><a href="https://onedrive.live.com/chemin/vers/le/document"> Michel Drucker Illuminati</a></td>
-            <td>05/09/2023</td>
-            <td>117 Mo</td>
-            <td>2</td>
+            <td>ZGLIVENDU</td>
+            <td>Theo</td>
+            <td>Bernard</td>
+            <td>Link</td>
+            <td>01/10/2023</td>
             <td><button class="btn-participer">V</button></td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>ZGLIVENDU</td>
+            <td>Theo</td>
+            <td>Bernard</td>
+            <td>Link</td>
+            <td>01/10/2023</td>
+            <td><button class="btn-participer">V</button></td>
+            <td>1</td>
+
 
         </tr>
-        <!-- Plus de dossiers... -->
-        <tr>
-            <td><img src="../../assets/img/word-icon.png" alt="" class="file-icon"><a href="https://onedrive.live.com/chemin/vers/le/document"> Mbappe arrete de foot </a></td>
-            <td>Il y a 25 jours</td>
-            <td>11.5 Ko</td>
-            <td>2</td>
-            <td><button class="btn-participer">V</button></td>
-
-        </tr>
-        <!-- Plus de fichiers Word... -->
+        <!-- More rows as needed -->
         </tbody>
     </table>
 </div>
+<!-- Close Header -->
+<footer>
 
+</footer>
+<!-- End Footer -->
+
+<!-- Start Script -->
+<script src="../assets/js/jquery-1.11.0.min.js"></script>
+<script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/templatemo.js"></script>
+<script src="../assets/js/custom.js"></script>
+<!-- End Script -->
 </body>
+
 </html>
