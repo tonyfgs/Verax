@@ -18,7 +18,18 @@ use modele\ContenuParagraphe;
         public function chargerArticles() {
             
             $temp = array();
-            $temp[] = new Article(1, "Titre du premier Article", "Contenu du premier article...\n seconde ligne...", 3, date("d-m-Y"), "Siwa");
+            $temp[] = new Article(1, 
+                "Thinkerview", 
+                "Thinkerview est une chaîne youtube d'interview-débat, lancée en 2013 qui produit de
+                    longs entretiens entre un animateur en voix off et ses invités. Les émissions sont toujours
+                    diffusées en direct, puis republiées sans montage. ",
+                 3,
+                date("d-m-Y"),
+                "Siwa");
+            
+            
+            
+            
             $temp[] = new Article(2, "Titre du second Article", "Contenu du second article...\n seconde ligne...", 20, date("d-m-Y"), "Siwa");
             $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa");
             $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa");

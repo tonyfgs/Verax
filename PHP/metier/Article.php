@@ -14,10 +14,10 @@
         
         private $lContenus;
 
-        public function __construct( $id, $title, $content, $temps, $date, $auteur) {
+        public function __construct( $id, $title, $description, $temps, $date, $auteur) {
             $this->id = $id;
             $this->titre = $title;
-            $this->description = $content;
+            $this->description = $description;
             $this->temps = $temps;
             $this->date = $date;
             $this -> lContenus = array();
