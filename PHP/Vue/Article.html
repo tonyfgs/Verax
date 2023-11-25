@@ -11,8 +11,13 @@
     {% include './header.html.twig' %}
     </nav>
     <!-- Close Header -->
-    <h1 class="titre_article">{{ article.getTitle() }}</h1>
-    <p>{{ article.getDescription() }}</p>
+
+    <div class="infos_article">
+        <h1 class="titre_article">{{ article.getTitle() }}</h1>
+        <p>{{ article.getDescription() }}</p>
+    </div>
+
+    
 
     {% for contenu in article.getContenus() %}
         {% if contenu.getTypeContenu() == 'paragraphe' %}
