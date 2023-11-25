@@ -83,9 +83,11 @@ CREATE TABLE sujet (
 
 -- Table structure for contribue
 CREATE TABLE contribue (
-                           idArticle DECIMAL(10,0) REFERENCES article,
-                           pseudo VARCHAR(30) REFERENCES utilisateur,
-                           PRIMARY KEY(idArticle,pseudo)
+                        id int NOT NULL AUTO_INCREMENT,
+                        pseudo VARCHAR(10) NOT NULL,
+                        mail VARCHAR(256) NOT NULL,
+                        nom VARCHAR(256) NOT NULL,
+                        prenom VARCHAR(256) NOT NULL,
 );
 
 -- Table structure for discuter
