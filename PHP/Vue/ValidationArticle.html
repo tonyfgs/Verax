@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verax</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/Article.css">
+    <link rel="stylesheet" href="../assets/css/AdminLayout.css">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+</head>
+
+<body>
+<!-- Start Top Nav -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top"
+>
+    <a class="navbar-brand text-success logo h1 align-self-center" href="index.html"> Verax</a>
+</nav>
+<!-- Close Top Nav -->
+
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="nav-item ml-auto">
+                <a class="nav-link" href="CompteUtilisateur.html">Compte</a>
+            </div>
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="accueil.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="economie.html">Economie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="culture.html">Culture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="politique.html">Politique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faitsDivers.html">Faits Divers</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-item ml-auto">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </div>
+            <div class="navbar align-self-center d-flex">
+                <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputMobileSearch" placeholder="Recherchez votre Article">
+                        <div class="input-group-text">
+                            <i class="fa fa-fw fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Close Header -->
+
+<!-- Nav Admin -->
+<div class="navAdmin">
+    <a href="SujetSoumis.html">Sujets soumis</a>
+    <a href="ValidationArticle.html">Sujets a valides</a>
+    <a href="RedactionArticle.html">Rediger un articles</a>
+    <a href="#about">Signalements</a>
+    <a href="VueAdminLayout.html" class="active" >Liste des Utilisateurs</a>
+    <a href="#about" >Actions des Moderateurs</a>
+    <a href="#about" >Bureau Clients</a>
+</div>
+
+<div class="file-explorer-container">
+    <table id="tableArticle">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Nombre de Redacteurs</th>
+            <th>Validé</th>
+            <th>Nombre de rédacteur ayant validé (max 5)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><img src="../assets/img/pdf-icon.png" alt="" class="file-icon"><a href="https://onedrive.live.com/chemin/vers/le/document"> Michel Drucker Illuminati</a></td>
+            <td>2</td>
+            <td><button class="btn-participer">V</button></td>
+            <td>1</td>
+        </tr>
+        <!-- Plus de dossiers... -->
+        <tr>
+            <td><img src="../assets/img/pdf-icon.png" alt="" class="file-icon"><a href="https://onedrive.live.com/chemin/vers/le/document"> Mbappe arrete de foot </a></td>
+            <td>2</td>
+            <td><button class="btn-participer">V</button></td>
+            <td>4</td>
+        </tr>
+        <!-- Plus de fichiers Word... -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Liste des Utilisateurs</title>
+    <style>
+        /* Ajoutez des styles CSS pour la pop-up ici */
+        .confirmation-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .role-management-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Liste des Utilisateurs</h1>
+
+<div>
+    {% if utilisateurs is not empty %}
+    {% for utilisateur in utilisateurs %}
+    <div class="utilisateur">
+        <p>{{ utilisateur.pseudo }} : {{ utilisateur.nom }} {{ utilisateur.prenom }} Email: {{ utilisateur.mail }}</p>
+        {% if utilisateur.ban %}
+        <form class="ban-form" action="index.php?action=UnbanUser" method="POST")>
+            <input type="hidden" name="id" value="{{ utilisateur.pseudo }}">
+            <input type="submit" value="UNBAN">
+        </form>
+        {% else %}
+        <form class="ban-form" action="index.php?action=BanUser" method="POST" onsubmit="return popUpDeConfirmation('{{ utilisateur.pseudo }}')">
+            <input type="hidden" name="id" value="{{ utilisateur.pseudo }}">
+            <input type="submit" value="BAN">
+        </form>
+        {% endif %}
+    </div>
+    <form class="role-form" action="index.php?action=ChangeUserRole" method="POST" onsubmit="return showRoleManagementModal('{{ utilisateur.pseudo }}')">
+        <input type="hidden" name="id" value="{{ utilisateur.pseudo }}">
+        <input type="submit" value="Gérer rôle">
+    </form>
+    {% endfor %}
+    {% else %}
+    <p>Aucun utilisateur disponible pour le moment.</p>
+    {% endif %}
+</div>
+
+<div id="roleManagementModal" class="role-management-modal">
+    <h2>Choisissez le rôle :</h2>
+    <form id="roleChangerconfirmationForm" action="index.php?action=ChangeUserRole" method="POST" onsubmit="return envoyeRole()">
+        <input type="hidden" name="id" id="pseudoInputRole">
+        <label for="roleSelect">Rôle :</label>
+        <select id="roleSelect" name="role">
+            <option value="Utilisateur">Utilisateur</option>
+            <option value="Admin">Admin</option>
+        </select>
+        <input type="hidden" name="role" id="roleInput" value="">
+        <input type="submit" value="Valider">
+        <button type="button" onclick="hideRoleManagementModal()">Annuler</button>
+    </form>
+</div>
+
+<div id="confirmationPopup" class="confirmation-popup">
+    <form id="banConfirmationForm" action="index.php?action=BanUser" method="POST" onsubmit="return envoyeBan()">
+        <input type="hidden" name="id" id="pseudoInput">
+        <label for="messageInput">Raison du Ban :</label>
+        <input type="text" name="message" id="messageInput" required>
+        <input type="hidden" name="motif" id="motifInput" value="">
+        <input type="submit" value="Confirmer le Ban">
+        <button type="button" onclick="masquageConfirmationPopup()">Annuler</button>
+    </form>
+</div>
+
+    <script>
+        function popUpDeConfirmation(pseudo) {
+            document.getElementById('pseudoInput').value = pseudo;
+            document.getElementById('confirmationPopup').style.display = 'block';
+            return false; // Prevents the form from submitting immediately
+        }
+
+        function masquageConfirmationPopup() {
+            document.getElementById('confirmationPopup').style.display = 'none';
+        }
+
+        function envoyeBan(){
+            // Set the value of the hidden "motif" input with the content of the message input
+            var messageContent = document.getElementById('messageInput').value;
+            document.getElementById('motifInput').value = messageContent;
+            return true; // Allow the form to be submitted
+        }
+
+        function envoyeRole(){
+            // Set the value of the hidden "motif" input with the content of the message input
+            var role = document.getElementById('roleSelect').value;
+            document.getElementById('roleInput').value = role;
+            return true; // Allow the form to be submitted
+        }
+
+        function showRoleManagementModal(pseudo) {
+            document.getElementById('pseudoInputRole').value = pseudo;
+            document.getElementById('roleManagementModal').style.display = 'block';
+            return false; // Prevents the form from submitting immediately
+        }
+
+        function hideRoleManagementModal() {
+            document.getElementById('roleManagementModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

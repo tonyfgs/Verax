@@ -2,23 +2,25 @@
 
 
 namespace brouillon;
+
+use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
+use dal\Connection;
 
     $articleManager = new ArticleManager();
     $articleCourant = $articleManager -> getArticle(6);
 
+    $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
 
-    // foreach ($articleCourant -> getContenus() as $contenu) {
+    $ret = $gw -> insert($articleCourant -> getId(), 
+                         $articleCourant -> getTitre(),
+                         "ceci est le contenu et tout et tout...",
+                        $articleCourant -> getTemps(),
+                         $articleCourant -> getDescription());
 
-    //     switch ($contenu -> getTypeContenu()) {
 
-    //         case "paragraphe" : 
-    //             include("blocParagrapheBrouillon.php");
-    //             break;
+    echo $ret;
+    
 
-    //         default : 
-    //     }
-    // }
-
-    echo $twig->render('Article.html', ['article' => $articleCourant]);
+    //echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
