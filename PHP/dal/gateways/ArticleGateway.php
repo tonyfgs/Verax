@@ -15,18 +15,33 @@
 
 
 
-	public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool {
+	// public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool {
 
-		$query = 'INSERT INTO article VALUES(:i, :a, :d, :t, :c, :te, :da)';
-		return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT),
+	// 	$query = 'INSERT INTO article VALUES(:i, :a, :d, :t, :c, :te, :da)';	
+
+	// 	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT),
+	// 		':t' => array($titre, PDO::PARAM_STR),
+	// 		'd' => array($description, PDO::PARAM_STR),
+	// 		':a' => array($description, PDO::PARAM_STR),
+	// 		':c' => array($contenu, PDO::PARAM_STR),
+	// 		':te' => array($temps, PDO::PARAM_INT),
+	// 		'da' => array($id, PDO::PARAM_STR),
+	// 	));
+	// }
+
+	public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool {
+		$query = 'INSERT INTO article (idArticle, auteur, description, titre, contenu, temps, datePub) VALUES (:i, NULL, :d, :t, :c, :te, CURRENT_DATE)';
+	
+		return $this->con->executeQuery($query, array(
+			':i' => array($id, PDO::PARAM_INT),
 			':t' => array($titre, PDO::PARAM_STR),
-			'd' => array($description, PDO::PARAM_STR),
-			':a' => array($description, PDO::PARAM_STR),
+			':d' => array($description, PDO::PARAM_STR),
+			':a' => array(null, PDO::PARAM_STR),  // Assuming auteur is a foreign key with a default value of NULL
 			':c' => array($contenu, PDO::PARAM_STR),
 			':te' => array($temps, PDO::PARAM_INT),
-			'da' => array($id, PDO::PARAM_STR),
 		));
 	}
+	
 
 
 	// public function findArticle(int $id) : array {
