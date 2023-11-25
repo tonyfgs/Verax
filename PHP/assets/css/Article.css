@@ -9,10 +9,14 @@
 }
 
 .corpsArticle {
-    border: black;
+    border: 1px solid black;
     width: 75%;
     margin: 50px auto;
     border-radius: 10px;
+}
+
+.titre_paragraphe {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .titre_article {
