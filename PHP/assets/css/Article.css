@@ -1,6 +1,9 @@
 .titre_paragraphe {
-
-    color : #009933;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 24px; 
 }
 
 
