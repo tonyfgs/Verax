@@ -13,24 +13,26 @@
     width: 75%;
     margin: 50px auto;
     border-radius: 10px;
-    text-align: center; /* Centrer le texte à l'intérieur de la div */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une légère ombre */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .titre_article {
-    color: #ff0000; /* Couleur rouge pour le titre */
-    font-size: 24px; /* Taille de la police du titre */
-    margin-bottom: 10px; /* Ajouter un espace en bas du titre */
+    color: #ff0000;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
   
   .tempsLecture {
-    display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
-    justify-content: space-between; /* Espace équitable entre les éléments */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Réduire l'espace entre le paragraphe et le bloc tempsLecture */
   }
   
   .titre_tempsLecture,
   .titre_auteur {
     font-weight: bold;
+    margin-right: 10px; /* Réduire l'espace entre le titre et sa valeur */
   }
   
   /* Ajouter du style au texte à l'intérieur du div si nécessaire */
@@ -42,6 +44,7 @@
     font-size: 16px;
     color: #333;
   }
+  
   
 
 
