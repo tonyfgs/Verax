@@ -28,11 +28,15 @@
     margin-bottom: 20px; /* Espacement sous la description */
   }
   
-  .tempsLecture,
+  .tempsLecture {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 70px;
+  }
   .auteur {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 100px; /* Espacement entre le bloc tempsLecture et auteur */
+    margin-left: 50px;
   }
   
   .titre_tempsLecture,
