@@ -13,4 +13,4 @@ $twig = new Twig\Environment($loader, [ 'cache' => false, 'debug' => true ]);
 session_start();
 //$cont = new FrontControler();
 
-require("./brouillon.php");
+require("./brouillon/brouillonArticle.php");
