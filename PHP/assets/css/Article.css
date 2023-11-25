@@ -8,13 +8,41 @@
 }
 
 .infos_article {
-    /* border: 2px solid #ffcccc;  */
-    padding: 20px; /* Marge intérieure pour séparer le texte du bord */
-    background-color: #F7E3E3; /* Fond rouge pâle */
-    width: 75%; /* Prendre 3/4 de la page */
-    margin: 50px auto; /* Centrer sur la page et éloigner du haut */
-    border-radius: 10px; /* Bords arrondis */
-}
+    padding: 20px;
+    background-color: #F7E3E3;
+    width: 75%;
+    margin: 50px auto;
+    border-radius: 10px;
+    text-align: center; /* Centrer le texte à l'intérieur de la div */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une légère ombre */
+  }
+  
+  .titre_article {
+    color: #ff0000; /* Couleur rouge pour le titre */
+    font-size: 24px; /* Taille de la police du titre */
+    margin-bottom: 10px; /* Ajouter un espace en bas du titre */
+  }
+  
+  .tempsLecture {
+    display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
+    justify-content: space-between; /* Espace équitable entre les éléments */
+  }
+  
+  .titre_tempsLecture,
+  .titre_auteur {
+    font-weight: bold;
+  }
+  
+  /* Ajouter du style au texte à l'intérieur du div si nécessaire */
+  .infos_article p,
+  .titre_tempsLecture,
+  .titre_auteur,
+  .valeur_tempsLecture,
+  .valeur_auteur {
+    font-size: 16px;
+    color: #333;
+  }
+  
 
 
 
