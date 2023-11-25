@@ -27,13 +27,13 @@
   
   .tempsLecture {
     display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
-    justify-content: space-between; /* Espace équitable entre les éléments */
+    /* justify-content: space-between;  */
     justify-content: flex-start;
   }
 
   .auteur  {
     display:  flex;
-    justify-content: start;
+    justify-content: flex-start;
   }
   
   .titre_tempsLecture,
