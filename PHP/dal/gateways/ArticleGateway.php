@@ -4,6 +4,7 @@
 	use dal\Connection;
 	use metier\Article;
 	use pdo;
+use PDOException;
 
 	class ArticleGateway {
 
@@ -32,14 +33,18 @@
 	public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool {
 		$query = 'INSERT INTO article (idArticle, auteur, description, titre, contenu, temps, datePub) VALUES (:i, :a, :d, :t, :c, :te, CURRENT_DATE)';
 	
-		return $this->con->executeQuery($query, array(
-			':i' => array($id, PDO::PARAM_INT),
-			':t' => array($titre, PDO::PARAM_STR),
-			':d' => array($description, PDO::PARAM_STR),
-			':a' => array("Auteur inconnu", PDO::PARAM_STR),  // Assuming auteur is a foreign key with a default value of NULL
-			':c' => array($contenu, PDO::PARAM_STR),
-			':te' => array($temps, PDO::PARAM_INT),
-		));
+		try {
+			return $this->con->executeQuery($query, array(
+				':i' => array($id, PDO::PARAM_INT),
+				':t' => array($titre, PDO::PARAM_STR),
+				':d' => array($description, PDO::PARAM_STR),
+				':a' => array("Auteur inconnu", PDO::PARAM_STR),  // Assuming auteur is a foreign key with a default value of NULL
+				':c' => array($contenu, PDO::PARAM_STR),
+				':te' => array($temps, PDO::PARAM_INT),
+			));
+		} catch (PDOException $e) {
+			echo "Erreur PDO : ".$e -> getMessage();
+		}
 	}
 	
 
