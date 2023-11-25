@@ -62,6 +62,9 @@ use modele\ContenuParagraphe;
                   chaîne qui a commencé à diffuser en janvier 2013 sur YouTube. Ici, pas de publicité,
                    pas de montage, pas d’effets de lumière. Le calme, peut-être pour annoncer la tempête.");
 
+
+            $temp['article1'][] = new contenuImage(0, "Des sujets majeurs abordés", "https://www.systext.org/sites/default/files/styles/large/public/Ill_Thinkerview_Janv2022.png?itok=JvlFQmCH");
+
             $temp['article1'][] = new contenuParagraphe(2, "Penser, réfléchir et s'exprimer librement.",
                 "Dernier carton en date : un entretien de deux heures avec Juan Branco, l’avocat du gilet 
                 jaune Maxime Nicolle et « conseiller juridique » de Wikileaks. Quelques jours avant lui,
