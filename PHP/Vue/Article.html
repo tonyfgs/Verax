@@ -60,9 +60,8 @@
 
         {% if contenu.getTypeContenu() == 'video' %}
             <div class="contenuImage">
-                <h2 class="titre_paragraphe">{{ contenu.getTitre() }}</h2>
-                <div class="barreTitre"></div>
-                <p class="texte_paragraphe">{{ contenu.getLien() }}</p>
+                <iframe src="{{ contenu.getLien }}" allowfullscreen></iframe>
+                <p class="contenuImageTitre"> {{ contenu.getTitre() }} </p>
             </div>
         {% endif %}
     {% endfor %}
