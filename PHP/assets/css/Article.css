@@ -27,6 +27,11 @@
     display: flex; /* Utiliser un modèle de boîte flexible pour aligner les éléments en ligne */
     justify-content: space-between; /* Espace équitable entre les éléments */
   }
+
+  .auteur  {
+    display:  flex;
+    justify-content: start;
+  }
   
   .titre_tempsLecture,
   .titre_auteur {
