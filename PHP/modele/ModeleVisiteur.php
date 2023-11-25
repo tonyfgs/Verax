@@ -40,11 +40,10 @@ class ModeleVisiteur
     public function connect() {
         global $dsn, $login, $mdp, $twig;
         try{
-
-
             $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
             $tab = $gw->findUserByPseudo($_POST['pseudo']);
             $user = $tab[0];
+
             if (password_verify($_POST['mdp'], $user->getMdp())) {
                 $_SESSION['pseudo'] = $_POST['pseudo'];
                 $_SESSION['nom'] = $user->getNom();

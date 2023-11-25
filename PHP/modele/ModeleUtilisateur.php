@@ -66,6 +66,5 @@ class ModeleUtilisateur
     public function submitForm(){
         global $dsn, $login, $mdp;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-
     }
 }

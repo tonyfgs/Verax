@@ -17,11 +17,11 @@ class Utilisateur {
     private $ban;
 
 
-    public function __construct($pseudo, $mail, $mdp, $nom, $prenom, $role) {
+    public function __construct($pseudo, $mail, $password, $nom, $prenom, $role) {
         global $dsn, $login, $mdp;
         $this->pseudo = $pseudo;
         $this->mail = $mail;
-        $this->mdp = $mdp;
+        $this->mdp = $password;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->role = $role;
