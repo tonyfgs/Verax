@@ -16,10 +16,12 @@
   }
 
   .lectureAuteur {
-    display:  flex;
+    /* display:  flex;
     flex-direction :row;
-    align-items: center;
+    align-items: center; */
     /* justify-content: center; */
+
+    test-align: center;
   }
   
   .description {
@@ -29,15 +31,14 @@
   }
   
   .tempsLecture {
-    display: flex;
-    
+    /* display: flex;
     justify-content: flex-start;
-    margin-left: 70px;
+    margin-left: 70px; */
   }
   .auteur {
-    display: flex;
+    /* display: flex;
     justify-content: flex-start;
-    margin-right: 50px;
+    margin-right: 50px; */
   }
   
   .titre_tempsLecture,
