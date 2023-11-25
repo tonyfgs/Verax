@@ -1,6 +1,6 @@
 .titre_article {
     text-align: center;
-    color: #F7E3E3;
+    color: black;
     font-weight: bold;
     /* font-style: italic; */
     font-size: 35px; 
@@ -10,7 +10,7 @@
 .infos_article {
     border: 2px solid #ffcccc; /* Bordure rouge pâle */
   padding: 20px; /* Marge intérieure pour séparer le texte du bord */
-  background-color: #ffe6e6; /* Fond rouge pâle */
+  background-color: #F7E3E3; /* Fond rouge pâle */
 }
 
 
