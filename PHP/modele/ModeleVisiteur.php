@@ -73,13 +73,4 @@ class ModeleVisiteur
         }
     }
 
-    public function accessForm(){
-        global $twig;
-        echo $twig->render('contact.html', ["userRole" => $_REQUEST["role"]]);
-    }
-
-    public function accessAccount(){
-        global $twig;
-        echo $twig->render('', []);
-    }
 }

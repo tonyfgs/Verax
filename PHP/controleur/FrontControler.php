@@ -17,10 +17,10 @@ class FrontControler {
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
-                "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil"
+                "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie"
             ],
             "Utilisateur" => [
-                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm", "SubmitForm","ReportArticle", 'AccessAccount', "accueil"
+                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm","ReportArticle", 'AccessAccount'
             ],
             "Redacteur" => [
                 "redigerArticle", "validerArticle", "publierArticle",
@@ -29,14 +29,14 @@ class FrontControler {
                 "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
             ],
             "Admin" => [
-                'GestionUser','BanUser','ChangeUserRole', "accueil", "AccessForm"
+                'GestionUser','BanUser','ChangeUserRole'
             ],
         );
         $action = Validation::nettoyerString($_GET["action"] ?? "");
         if(in_array($action,$actions['Admin'])){
             $mdl = new ModeleAdmin();
 
-            if($mdl->isAdmin()){
+            if(!$mdl->isAdmin()){
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
             }

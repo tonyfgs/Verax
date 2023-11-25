@@ -11,12 +11,12 @@ class ModeleUtilisateur
 {
 
     public function isUser(){
-        return !isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur';
+        return (!isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur');
     }
     public function disconnect(){
         global $twig;
         session_unset();
-        $_SESSION["role"] = 'Visiteur';
+        $_SESSION["role"] = "Visiteur";
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
     }
 
@@ -58,13 +58,9 @@ class ModeleUtilisateur
 
     public function accessAccount(){
         global $dsn, $login, $mdp, $twig;
-        echo "1";
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
-        echo "2";
-        echo $_SESSION['pseudo'];
         $User = $gw->findUserByPseudo($_SESSION['pseudo']);
-        echo "3";
-        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User]);
+        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0]]);
     }
 
     public function submitForm(){

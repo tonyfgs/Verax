@@ -35,7 +35,7 @@
             </button>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                {% if userRole == 'Utilisateur' or userRole == 'Redacteur' or userRole == 'Moderateur' or userRole == 'Admin' %}
+                {% if userRole != 'Visiteur' and userRole != null %}
                     <div>
                         <form action="index.php?action=AccessAccount" method="POST">
                             <input type="submit" class="page-header" value="Compte">
@@ -91,7 +91,7 @@
 
                         {% if userRole != 'Visiteur' and userRole != null%}
                             <li>
-                                <form action="index.php?action=contact" method="POST">
+                                <form action="index.php?action=AccessForm" method="POST">
                                     <input type="submit" class="page-header" value="contact">
                                 </form>
                             </li>
