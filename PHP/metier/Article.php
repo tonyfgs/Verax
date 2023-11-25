@@ -24,6 +24,8 @@
             $this -> lContenus = array();
             $this -> auteur = $auteur;
             $this -> imagePrincipale;
+
+            echo $this -> imagePrincipale;
         }
 
         public function remplirArticle($lContenus) {
