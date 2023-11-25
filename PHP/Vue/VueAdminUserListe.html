@@ -30,9 +30,7 @@
   <a href="ValidationArticle.html">Sujets a valides</a>
   <a href="RedactionArticle.html">Rediger un articles</a>
   <a href="#about">Signalements</a>
-  <form action="index.php?action=GestionUser" method="POST">
-    <input type="submit" class="page-header" value="Liste des Utilisateurs">
-  </form>
+  <a href="VueAdminLayout.html" class="active" >Liste des Utilisateurs</a>
   <a href="#about" >Actions des Moderateurs</a>
   <a href="#about" >Bureau Clients</a>
 </div>
@@ -44,7 +42,39 @@
     <input type="submit" value="Go">
   </form>
 </div>
+<div class="container">
+  <!-- Table for the user list -->
+  <table>
+    <thead>
+    <tr>
+      <th>Pseudo</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Rôle</th>
+      <th>Date Création Compte</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Repeat this block for each user entry -->
+    <tr>
+      <td>ZGLIVENDU</td>
+      <td>Theo</td>
+      <td>Bernard</td>
+      <td>Modérateur</td>
+      <td>01/10/2023</td>
+    </tr>
+    <tr>
+      <td>ZGLIVENDU</td>
+      <td>Theo</td>
+      <td>Bernard</td>
+      <td>Rédacteur</td>
+      <td>01/10/2023</td>
+    </tr>
+    <!-- More rows as needed -->
+    </tbody>
+  </table>
+</div>
 <!-- Close Header -->
 <footer>
 
