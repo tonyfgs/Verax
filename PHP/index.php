@@ -15,6 +15,6 @@ if (!isset($_SESSION["role"])) {
     session_unset();
     $_SESSION["role"] = 'Visiteur';
 }
-$cont = new FrontControler();
+//$cont = new FrontControler();
 
-//require("./brouillon/brouillonArticle.php");
+require("./brouillon/brouillonArticle.php");
