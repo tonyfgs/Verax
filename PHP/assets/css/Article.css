@@ -30,13 +30,14 @@
   
   .tempsLecture {
     display: flex;
+    
     justify-content: flex-start;
-    margin-right: 70px;
+    margin-left: 70px;
   }
   .auteur {
     display: flex;
     justify-content: flex-start;
-    margin-left: 50px;
+    margin-right: 50px;
   }
   
   .titre_tempsLecture,
