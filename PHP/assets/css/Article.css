@@ -15,6 +15,11 @@
     border-radius: 10px;
 }
 
+.mainImageArticle {
+    width: 60%;
+    text-align: center;
+}
+
 .titre_paragraphe {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
