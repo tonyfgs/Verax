@@ -11,10 +11,11 @@
         private $temps;
         private $date;
         private $auteur;
+        private $imagePrincipale;
         
         private $lContenus;
 
-        public function __construct( $id, $title, $description, $temps, $date, $auteur) {
+        public function __construct( $id, $title, $description, $temps, $date, $auteur, $imagePrincipale) {
             $this->id = $id;
             $this->titre = $title;
             $this->description = $description;
@@ -22,6 +23,7 @@
             $this->date = $date;
             $this -> lContenus = array();
             $this -> auteur = $auteur;
+            $this -> imagePrincipale;
         }
 
         public function remplirArticle($lContenus) {
@@ -36,6 +38,10 @@
 
         public function getId() {
             return $this->id;
+        }
+
+        public function getImagePrincipale() {
+            return $this -> imagePrincipale;
         }
 
         public function getAuteur() {

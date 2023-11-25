@@ -25,14 +25,15 @@ use modele\ContenuParagraphe;
                     diffusées en direct, puis republiées sans montage. ",
                  3,
                 date("d-m-Y"),
-                "Siwa");
+                "Siwa", 
+            "assets/img/mainThinkerview.webp");
             
             
             
             
-            $temp[] = new Article(2, "Titre du second Article", "Contenu du second article...\n seconde ligne...", 20, date("d-m-Y"), "Siwa");
-            $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa");
-            $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa");
+            $temp[] = new Article(2, "Titre du second Article", "Contenu du second article...\n seconde ligne...", 20, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
+            $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
+            $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             
              $temp[1] -> remplirArticle($this -> chargerContenuParagraphe()['article2']);
              $temp[2] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);

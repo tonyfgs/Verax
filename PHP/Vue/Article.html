@@ -39,7 +39,7 @@
     <div class="corpsArticle">
 
         <div class="mainImageArticle">
-            <img  class = "imgMainArticle" src="assets/img/mainThinkerview.webp" alt="Image principale article">
+            <img  class = "imgMainArticle" src="{{ article.getImagePrincipale() }}" alt="Image principale article">
         </div>
 
         {% for contenu in article.getContenus() %}
