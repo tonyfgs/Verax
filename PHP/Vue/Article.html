@@ -12,9 +12,16 @@
     </nav>
     <!-- Close Header -->
 
-    <div class="infos_article">
+    < class="infos_article">
         <h1 class="titre_article">{{ article.getTitle() }}</h1>
         <p>{{ article.getDescription() }}</p>
+
+        <div class="tempsLecture">
+            <p class ="titre_tempsLecture">
+                Temps de lecture :
+            </p>
+            {{article.getTemps()}}
+        </div>
     </div>
 
     

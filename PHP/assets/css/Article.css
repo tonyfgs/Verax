@@ -8,7 +8,7 @@
 }
 
 .infos_article {
-    border: 2px solid #ffcccc; /* Bordure rouge pâle */
+    /* border: 2px solid #ffcccc;  */
     padding: 20px; /* Marge intérieure pour séparer le texte du bord */
     background-color: #F7E3E3; /* Fond rouge pâle */
     width: 75%; /* Prendre 3/4 de la page */
