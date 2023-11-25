@@ -81,11 +81,11 @@ CREATE TABLE sujet (
 
 -- Table structure for contribue
 CREATE TABLE contribue (
-                        id int NOT NULL AUTO_INCREMENT,
-                        pseudo VARCHAR(10) NOT NULL,
-                        mail VARCHAR(256) NOT NULL,
-                        nom VARCHAR(256) NOT NULL,
-                        prenom VARCHAR(256) NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pseudo VARCHAR(10) NOT NULL,
+    mail VARCHAR(256) NOT NULL,
+    nom VARCHAR(256) NOT NULL,
+    prenom VARCHAR(256) NOT NULL
 );
 
 -- Table structure for discuter

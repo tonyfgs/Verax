@@ -77,9 +77,8 @@ class ModeleUtilisateur
             echo "2";
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
             echo "3";
-            echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+
 
 
 

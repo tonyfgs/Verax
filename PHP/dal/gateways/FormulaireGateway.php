@@ -53,13 +53,18 @@ class FormulaireGateway
     }
 
     public function insertFormMessage($pseudo, $mail, $nom, $prenom) : bool {
+        echo "\n1.1";
         $query = 'INSERT INTO contribue VALUES (:ps, :m, :n, :p)';
-        return $this->con->executeQuery($query,  array(
+        echo "\n1.2";
+        $this->con->executeQuery($query,  array(
             ':ps' => array($pseudo, PDO::PARAM_STR),
             ':m' => array($mail, PDO::PARAM_STR),
             ':n' => array($nom, PDO::PARAM_STR),
             ':p' => array($prenom, PDO::PARAM_STR)
+
         ));
+        echo "\n1.3";
+        return true;
     }
 
 
