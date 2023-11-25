@@ -60,7 +60,7 @@
 
         {% if contenu.getTypeContenu() == 'video' %}
             <div class="contenuImage">
-                <video src="{{ contenu.getLien }}" allowfullscreen></video>
+                <iframe width="500" height="320" src="{{ contenu.getLien }}" allowfullscreen></iframe>
                 <p class="contenuImageTitre"> {{ contenu.getTitre() }} </p>
             </div>
         {% endif %}

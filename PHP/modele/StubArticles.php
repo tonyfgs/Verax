@@ -95,7 +95,7 @@ use modele\ContenuParagraphe;
             
 
             $temp['article1'][] = ContenuMedia::newVideo(1, "Prendre le temps d'écouter les experts dans leurs domaines.",
-                 "assets/videos/video_pres_aubrac.mp4");
+                 "https://www.youtube.com/watch?v=1tTksQL2kqs");
 
             return $temp;
         }
