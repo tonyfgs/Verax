@@ -11,6 +11,7 @@
     $login = "test";
     $mdp = "test";
 
+
     /** Différentes vues */
     $vues['accueil']='../Vue/accueil.html';
     $vues['contact']='../Vue/contact.html';

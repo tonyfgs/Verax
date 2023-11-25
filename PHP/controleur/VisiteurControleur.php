@@ -14,7 +14,6 @@ class VisiteurControleur
 {
     public function __construct(){
         global $twig;
-        $_SESSION['role'] = 'Visiteur';
 
         try{
             if(!isset($_REQUEST["action"])) {
@@ -42,9 +41,6 @@ class VisiteurControleur
                     break;
                 case 'connexion':
                     $this->afficherConnexion();
-                    break;
-                case 'contact':
-                    $this->afficherContact();
                     break;
                 case 'seConnecter':
                     $this->connect();
@@ -104,6 +100,7 @@ class VisiteurControleur
 
     public function afficherEconomie() {
         global $twig;
+        echo $_SESSION["role"];
         echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
     }
 
@@ -126,11 +123,6 @@ class VisiteurControleur
     public function afficherConnexion() {
         global $twig;
         echo $twig->render('connexion.html', ["userRole" => $_SESSION["role"]]);
-    }
-
-    public function afficherContact() {
-        global $twig;
-        echo $twig->render('contact.html', ["userRole" => $_SESSION["role"]]);
     }
 
 

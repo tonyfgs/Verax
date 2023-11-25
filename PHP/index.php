@@ -11,6 +11,10 @@ $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/Vue');
 $twig = new Twig\Environment($loader, [ 'cache' => false, 'debug' => true ]);
 
 session_start();
-//$cont = new FrontControler();
+if (!isset($_SESSION["role"])) {
+    session_unset();
+    $_SESSION["role"] = 'Visiteur';
+}
+$cont = new FrontControler();
 
-require("./brouillon/brouillonArticle.php");
+//require("./brouillon/brouillonArticle.php");

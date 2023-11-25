@@ -60,24 +60,14 @@
 
         {% if contenu.getTypeContenu() == 'video' %}
             <div class="contenuImage">
-                <iframe src="{{ contenu.getLien }}" allowfullscreen></iframe>
+                <iframe width="500" height="320" src="{{ contenu.getLien }}" allowfullscreen></iframe>
                 <p class="contenuImageTitre"> {{ contenu.getTitre() }} </p>
             </div>
         {% endif %}
-        
+
     {% endfor %}
 
     </div>
-    
-
-    
-
-    
-    
-
-
-    <p> coucou  {{ article.getImagePrincipale() }} </p>
-
 
     {% include './footer.html.twig' %}
 <!-- Ajoutez vos scripts JavaScript ici -->

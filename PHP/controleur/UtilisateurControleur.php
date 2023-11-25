@@ -2,7 +2,6 @@
 
 namespace controleur;
 
-use controleur\VisiteurControleur;
 use Exception;
 use modele\ModeleUtilisateur;
 use Config\Validation;
@@ -22,10 +21,6 @@ class UtilisateurControleur
                 $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action){
-                case NULL:
-                case 'accueil':
-                    $this->accueil();
-                    break;
                 case 'Disconnect':
                     $this->disconnect();
                     break;
@@ -96,10 +91,6 @@ class UtilisateurControleur
         $mdl->accessAccount();
     }
 
-    function accueil(){
-        global $twig;
-        echo $twig->render('accueil.html', ['userRole' => $_SESSION["role"]]);
-    }
 
     function submitForm(){
         $mdl = new ModeleUtilisateur();
@@ -121,6 +112,4 @@ class UtilisateurControleur
     function deleteAccount(){
 
     }
-
-
 }

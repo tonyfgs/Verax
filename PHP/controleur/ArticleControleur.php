@@ -14,7 +14,7 @@ class ArticleControleur
     function __construct($action, $id, $page)
     {
         global $twig;
-        $this->articleGateway = new ArticleGateway($con);
+        $this->articleGateway = new ArticleGateway();
 
         try {
             switch ($action) {
