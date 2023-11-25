@@ -52,13 +52,23 @@ use modele\ContenuParagraphe;
             $temp['article2'][] = new contenuParagraphe(1, "Premier paragraphe", "Contenu du premier article et tout et tout....");
             $temp['article2'][] = new contenuParagraphe(2, "Titre du second paragraphe", "Contenu du second paragraphe....");
             
-            $temp['article1'][] = new contenuParagraphe(3, "Le mystérieux cygne noir.", 
+            $temp['article1'][] = new contenuParagraphe(1, "Le mystérieux cygne noir.", 
                 "Sous les traits d’un mystérieux cygne noir, un objet vidéo non identifié plane dans la galaxie 
                 médiatique. Ambiance Star Wars. Après une musique lancinante, sur fond noir et fumée grisâtre,
                  un invité apparaît, et la voix d’un intervieweur-mystère situé hors champ l’invite à se
                   présenter « succinctement ». C’est ainsi qu’on entre dans le monde de ThinkerView, 
                   chaîne qui a commencé à diffuser en janvier 2013 sur YouTube. Ici, pas de publicité,
                    pas de montage, pas d’effets de lumière. Le calme, peut-être pour annoncer la tempête.");
+
+            $temp['article1'][] = new contenuParagraphe(2, "Penser, réfléchir et s'exprimer librement.",
+                "Dernier carton en date : un entretien de deux heures avec Juan Branco, l’avocat du gilet 
+                jaune Maxime Nicolle et « conseiller juridique » de Wikileaks. Quelques jours avant lui,
+                 c’était au tour de François Boulo, autre avocat inscrit au barreau de Rouen et l’un des
+                  porte-parole des « gilets jaunes ». « Ici, les gens ont vraiment le temps de développer 
+                  leurs idées, confie Boulo. Il faut pouvoir écouter une pensée complète, sans être interrompu.
+                   » Aux yeux de ce fils d’une famille de droite populaire (paysans et commerçants), ThinkerView 
+                   a réalisé ce dont Pierre Bourdieu avait rêvé. S’il s’abreuve à cette source depuis « un an ou 
+                   deux », en réalité, ce n’est pas lui qui l’a trouvée, mais l’inverse. Magie des algorithmes.");
             
             return $temp;
         }

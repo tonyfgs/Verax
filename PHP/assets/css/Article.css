@@ -22,6 +22,7 @@
 .barreTitre {
     height: 2px;
     background-color: #313131;
+    margin-bottom: 10px;
 }
 
 .titre_article {
