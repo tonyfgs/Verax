@@ -63,8 +63,22 @@ class ModeleUtilisateur
         echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0], 'userRole' => $_SESSION["role"] ]);
     }
 
-    public function submitForm(){
-        global $dsn, $login, $mdp;
+    public function   submitForm(){
+        global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        echo "sdvcoljiubhkdsvijbfuk\n";
+        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            echo "sedd\n";
+            $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
+            echo "qwewe\n";
+
+            echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+
+
+        }
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+
+
+
     }
 }
