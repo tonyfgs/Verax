@@ -1,10 +1,3 @@
-body {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
 
 .infos_article {
     padding: 20px;
@@ -24,9 +17,13 @@ body {
 }
 
 .mainImageArticle {
-    width: 60%;
+    /* width: 60%;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 10px; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .imgMainArticle {
