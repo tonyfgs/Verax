@@ -6,9 +6,20 @@ namespace brouillon;
 use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
 use dal\Connection;
+use pdo;
+use PDOException;
 
     $articleManager = new ArticleManager();
     $articleCourant = $articleManager -> getArticle(6);
+
+    
+
+
+    echo $ret;
+
+    echo "Coucouuuuuu !";
+
+    try {
 
     $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
 
@@ -18,10 +29,9 @@ use dal\Connection;
                         $articleCourant -> getTemps(),
                          $articleCourant -> getDescription());
 
-
-    echo $ret;
-
-    echo "Coucouuuuuu !";
+    } catch (PDOException $e) {
+        echo "Erreur PDO : ".$e -> getMessage();
+    }
     
 
     //echo $twig->render('Article.html', ['article' => $articleCourant]);

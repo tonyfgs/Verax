@@ -4,7 +4,7 @@
 	use dal\Connection;
 	use metier\Article;
 	use pdo;
-use PDOException;
+	use PDOException;
 
 	class ArticleGateway {
 
