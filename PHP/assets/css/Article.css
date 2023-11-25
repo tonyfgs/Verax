@@ -1,9 +1,9 @@
 .titre_article {
     text-align: center;
-    color: red;
+    color: black;
     font-weight: bold;
-    font-style: italic;
-    font-size: 24px; 
+    /* font-style: italic; */
+    font-size: 40px; 
 }
 
 .infos_article {
