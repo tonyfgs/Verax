@@ -30,7 +30,7 @@
     align-items: center;  */
 
     text-align: center; /* Centre le contenu à l'intérieur de la div */
-    width: 60%; /* Utilise la largeur totale de la div parente */
+    width: 70%; /* Utilise la largeur totale de la div parente */
     margin: auto; /* Ajoute une marge automatique pour centrer la div */
     margin-bottom: 20px;
 }
