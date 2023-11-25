@@ -10,7 +10,7 @@
 .infos_article {
     padding: 20px;
     background-color: #F7E3E3;
-    width: 75%;
+    width: 85%;
     margin: 50px auto;
     border-radius: 10px;
     text-align: center;
@@ -24,8 +24,8 @@
   }
   
   .tempsLecture {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
     margin-top: 10px; /* Réduire l'espace entre le paragraphe et le bloc tempsLecture */
   }
   
