@@ -50,7 +50,7 @@
   
   
   /* Ajouter du style au texte à l'intérieur du div si nécessaire */
-  .infos_article p,
+  /* .infos_article p,
   .titre_tempsLecture,
   .titre_auteur,
   .valeur_tempsLecture,
@@ -58,7 +58,7 @@
   .valeur_date {
     font-size: 16px;
     color: #333;
-  }
+  } */
   
 
 
