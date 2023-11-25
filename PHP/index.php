@@ -16,3 +16,5 @@ if (!isset($_SESSION["role"])) {
     $_SESSION["role"] = 'Visiteur';
 }
 $cont = new FrontControler();
+
+//require("./brouillon/brouillonArticle.php");

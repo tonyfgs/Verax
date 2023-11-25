@@ -1,31 +1,112 @@
-.file-explorer-container {
-    background: #fff;
-    width: 90%;
-    margin: 30px auto;
+
+.infos_article {
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #F7E3E3;
+    width: 75%;
+    margin: 50px auto;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-#tableArticle {
+
+.corpsArticle {
+    /* border: 1px solid black; */
+    width: 75%;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+.mainImageArticle {
+    /* border : 1px solid red;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; */
+
+    /* 
+    width: 60%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;  */
+
+    text-align: center; /* Centre le contenu à l'intérieur de la div */
+    width: 85%; /* Utilise la largeur totale de la div parente */
+    margin: auto; /* Ajoute une marge automatique pour centrer la div */
+    margin-bottom: 50px;
+}
+
+.imgMainArticle {
     width: 100%;
-    border-collapse: collapse;
+    /* display: block; */
+    border-radius: 10px;
 }
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+
+.titre_paragraphe {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-th {
-    background-color: #f9f9f9;
+
+.paragraphe {
+    margin-bottom: 35px;
+    margin-top : 20px;
 }
-.file-icon {
-    width: 30px;
-    height: auto;
-    vertical-align: middle;
+.barreTitre {
+    height: 2px;
+    background-color: #313131;
+    margin-bottom: 10px;
 }
-a {
-    text-decoration: none;
-    color: #00f;
+
+.titre_article {
+    color: black;
+    font-size: 35px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-a:hover {
-    text-decoration: underline;
+
+.lectureAuteurDate {
+    display:  flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+
+.description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.tempsLecture,
+.auteur,
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 40px;
+}
+
+.contenuImage {
+    text-align: center; /* Centre le contenu à l'intérieur de la div */
+    width: 60%; /* Utilise la largeur totale de la div parente */
+    margin: auto; /* Ajoute une marge automatique pour centrer la div */
+    margin-bottom: 20px;
+    margin-top : 40px;
+}
+
+.contenuImageBloc {
+    width: 100%;
+    /* display: block; */
+    border-radius: 10px;
+}
+
+.contenuImageTitre {
+    margin-top : 20px;
+    text-decoration : underline;
+}
+
+.titre_tempsLecture,
+.titre_auteur,
+.titre_date {
+    font-weight: bold !important;
+    margin-right: 7px;
 }

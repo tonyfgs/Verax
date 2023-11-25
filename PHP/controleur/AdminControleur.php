@@ -22,6 +22,9 @@ class AdminControleur
                 $action = Validation::nettoyerString($_REQUEST["action"]);
             }
             switch ($action) {
+                case 'Administrer':
+                    $this->administrer();
+                    break;
                 case 'GestionUser':
                     $this->gestionUser();
                     break;
@@ -32,6 +35,8 @@ class AdminControleur
                     $this->unBanUser();
                     break;
                 case 'ChangeUserRole':
+                    $this->changeUserRole();
+                    break;
                 case "Disconnect":
                     $this->disconnect();
                     break;
@@ -69,6 +74,17 @@ class AdminControleur
     function disconnect(){
         $mdl = new ModeleAdmin();
         $mdl->disconnect();
+    }
+
+    function changeUserRole(){
+        $mdl = new ModeleAdmin();
+        $mdl->changeUserRole();
+    }
+
+    function administrer()
+    {
+        $mdl = new ModeleAdmin();
+        $mdl->administrer();
     }
 
 }

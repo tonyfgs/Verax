@@ -52,8 +52,14 @@ class ModeleUtilisateur
     }
 
     public function accessForm(){
-        global $twig;
-        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+        global $twig, $dsn, $mdp, $login;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login,$mdp));
+        if ($gw->isBan($_SESSION["pseudo"])){
+            echo  $twig->render('error.html', ['dVueErreur' => array('Vous n êtes plus autorisée à faire cette action pour le moment !')]);
+        }
+        else {
+            echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+        }
     }
 
     public function accessAccount(){
