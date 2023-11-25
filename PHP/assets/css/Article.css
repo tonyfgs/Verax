@@ -46,7 +46,8 @@
 }
 
 .paragraphe {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
+    margin-top : 20px;
 }
 .barreTitre {
     height: 2px;
@@ -89,6 +90,7 @@
     width: 60%; /* Utilise la largeur totale de la div parente */
     margin: auto; /* Ajoute une marge automatique pour centrer la div */
     margin-bottom: 20px;
+    margin-top : 40px;
 }
 
 .contenuImageBloc {
