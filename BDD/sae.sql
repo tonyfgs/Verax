@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS rediger;
 -- Table structure for article
 CREATE TABLE article (
                          idArticle DECIMAL(10,0) PRIMARY KEY,
-                         auteur VARCHAR(30) REFERENCES utilisateur,
+                         auteur VARCHAR(30),
                          description VARCHAR(30),
                          titre VARCHAR(30) NOT NULL,
                          contenu TEXT NOT NULL,
