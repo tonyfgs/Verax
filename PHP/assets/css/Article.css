@@ -41,7 +41,7 @@
 .titre_tempsLecture,
 .titre_auteur,
 .titre_date {
-    font-weight: bold;
+    font-weight: bold !important;
     margin-right: 7px;
 }
 
