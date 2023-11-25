@@ -1,6 +1,8 @@
 <?php
 namespace dal\gateways;
 use dal\Connection;
+use metier\Formulaire;
+use PDO;
 class FormulaireGateway
 {
     private $con;
@@ -49,5 +51,16 @@ class FormulaireGateway
         $this->con->executeQuery($query, $param);
         return $this->con->getResults();
     }
+
+    public function insertFormMessage($pseudo, $mail, $nom, $prenom) : bool {
+        $query = 'INSERT INTO contribue VALUES (:ps, :m, :n, :p)';
+        return $this->con->executeQuery($query,  array(
+            ':ps' => array($pseudo, PDO::PARAM_STR),
+            ':m' => array($mail, PDO::PARAM_STR),
+            ':n' => array($nom, PDO::PARAM_STR),
+            ':p' => array($prenom, PDO::PARAM_STR)
+        ));
+    }
+
 
 }
