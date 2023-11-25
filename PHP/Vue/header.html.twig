@@ -87,14 +87,21 @@
                     </ul>
                 </div>
                 <div class="nav-item ml-auto">
-                    {% if userRole != 'Visiteur' and userRole != null%}
-                        <form action="index.php?action=contact" method="POST">
-                            <input type="submit" class="page-header" value="contact">
-                        </form>
-                        <form action="index.php?action=Disconnect" method="POST">
-                            <input type="submit" class="page-header" value="Déconnecter">
-                        </form>
-                    {% endif %}
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+
+                        {% if userRole != 'Visiteur' and userRole != null%}
+                            <li>
+                                <form action="index.php?action=contact" method="POST">
+                                    <input type="submit" class="page-header" value="contact">
+                                </form>
+                            </li>
+                            <li>
+                                <form action="index.php?action=Disconnect" method="POST">
+                                    <input type="submit" class="page-header" value="Déconnecter">
+                                </form>
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
