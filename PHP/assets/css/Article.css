@@ -17,7 +17,14 @@
 
 .mainImageArticle {
     width: 60%;
-    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.imgMainArticle {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
 }
 
 .titre_paragraphe {
