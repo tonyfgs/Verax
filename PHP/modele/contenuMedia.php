@@ -2,17 +2,23 @@
 
     namespace modele;
 
-    class contenuImage extends Contenu {
+    class contenuMedia extends Contenu {
 
         private $titre;
         private $lien;
 
-        public function __construct(int $id, string $titre, string $lien) {
+        public function __construct(int $id, ?string $titre, string $lien) {
             parent::__construct($id);
             $this -> titre = $titre; 
             $this -> lien = $lien;
 
             $this -> setTypeContenu("image");
+        }
+
+        static public function newVideo(int $id, ?string $titre, string $lien) : contenuMedia {
+            $temp = new contenuMedia($id, $titre, $lien);
+            $temp -> setTypeContenu("video");
+            return $temp;
         }
 
         public function getTitre() : String {

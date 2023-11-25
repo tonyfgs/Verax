@@ -63,7 +63,7 @@ use modele\ContenuParagraphe;
                    pas de montage, pas d’effets de lumière. Le calme, peut-être pour annoncer la tempête.");
 
 
-            $temp['article1'][] = new contenuImage(0, "Des sujets majeurs abordés", "https://www.systext.org/sites/default/files/styles/large/public/Ill_Thinkerview_Janv2022.png?itok=JvlFQmCH");
+            $temp['article1'][] = new contenuMedia(0, "Des sujets majeurs abordés", "https://www.systext.org/sites/default/files/styles/large/public/Ill_Thinkerview_Janv2022.png?itok=JvlFQmCH");
 
             $temp['article1'][] = new contenuParagraphe(2, "Penser, réfléchir et s'exprimer librement.",
                 "Dernier carton en date : un entretien de deux heures avec Juan Branco, l’avocat du gilet 
@@ -75,7 +75,7 @@ use modele\ContenuParagraphe;
                    a réalisé ce dont Pierre Bourdieu avait rêvé. S’il s’abreuve à cette source depuis « un an ou 
                    deux », en réalité, ce n’est pas lui qui l’a trouvée, mais l’inverse. Magie des algorithmes.");
 
-            $temp['article1'][] = new contenuImage(1, "Titre d'image factice !", "assets/img/wallpaperConnexion.jpg");
+            $temp['article1'][] = new contenuMedia(1, "De prestigieux et fascinants invités", "https://i.ytimg.com/vi/_D-AnsdbnRI/maxresdefault.jpg");
             
             return $temp;
         }
