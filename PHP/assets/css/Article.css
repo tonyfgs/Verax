@@ -42,7 +42,7 @@
     justify-content: flex-start;
     margin-left: 70px;
   }
-  
+
   .auteur {
     display: flex;
     justify-content: flex-start;
@@ -52,7 +52,7 @@
   .titre_tempsLecture {
     color: blue;
     font-weight: bold;
-    margin-left: 500px;
+    margin-right: 10px;
   }
   
   
