@@ -41,6 +41,7 @@ use modele\ContenuParagraphe;
 
              $temp[0] -> remplirArticle($this -> chargerContenuParagraphe()['article1']);
 
+
              //echo "Temporaire..." : $this -> chargerContenuParagraphe()['article1'].
 
             $this -> lArticles = $temp;
@@ -70,6 +71,8 @@ use modele\ContenuParagraphe;
                    » Aux yeux de ce fils d’une famille de droite populaire (paysans et commerçants), ThinkerView 
                    a réalisé ce dont Pierre Bourdieu avait rêvé. S’il s’abreuve à cette source depuis « un an ou 
                    deux », en réalité, ce n’est pas lui qui l’a trouvée, mais l’inverse. Magie des algorithmes.");
+
+            $temp['article1'][] = new contenuImage(1, "Titre d'image factice !", "assets/img/wallpaperConnexion.jpg");
             
             return $temp;
         }

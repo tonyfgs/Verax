@@ -50,6 +50,11 @@
                 <p class="texte_paragraphe">{{ contenu.getTexte() }}</p>
             </div>
         {% endif %}
+
+        {% if contenu.getTypeContenu() == 'image' %}
+            <div class="contenuImage">
+                <img class ="contenuImageBloc" src="{{ contenu.getLien()}}">
+            </div>
     {% endfor %}
 
     </div>
