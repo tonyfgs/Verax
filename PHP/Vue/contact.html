@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include './header.html.twig' %}
+<body>
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <label for="inputModalSearch"></label><input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Start Content Page -->
+    <div class="container-fluid bg-dark py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1">Contactez nous</h1>
+            <p>
+                Une soumission d'article, un problème, une suggestion d'amélioration? Envoyez vous un message et nous le traiterons dans les plus bref 
+            </p>
+        </div>
+    </div>
+
+ <script>
+        // Fonction pour afficher ou masquer les champs
+        function afficherChamps() {
+            var selection = document.getElementById("choix").value;
+
+            // Récupérer les éléments des champs
+            var champs1 = document.getElementById("champs1");
+            var champs2 = document.getElementById("champs2");
+            var champs3 = document.getElementById("champs3");
+
+            // Fonction pour gérer l'attribut 'required'
+            function gererRequired(champs, etat) {
+                var inputs = champs.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].required = etat;
+                }
+            }
+
+            // Masquer tous les champs et retirer 'required'
+            gererRequired(champs1, false);
+            gererRequired(champs2, false);
+            gererRequired(champs3, false);
+            champs1.style.display = "none";
+            champs2.style.display = "none";
+            champs3.style.display = "none";
+
+            // Afficher les champs et ajouter 'required' selon la sélection
+            if (selection === "option1") {
+                champs1.style.display = "block";
+                gererRequired(champs1, true);
+            } else if (selection === "option2") {
+                champs2.style.display = "block";
+                gererRequired(champs2, true);
+            } else if (selection === "option3") {
+                champs3.style.display = "block";
+                gererRequired(champs3, true);
+            }
+        }
+
+ </script>
+
+    <div class="container py-5">
+        <form class="col-md-9 m-auto" method="post" role="form">
+            <label for="choix">Pourquoi nous écrivez vous?</label>
+            <select id="choix" onchange="afficherChamps()">
+                <option value=""></option>
+                <option value="option1" >soumission d'une Fake News</option>
+                <option value="option2">soumission d'un article</option>
+                <option value="option3">soumission d'un bug</option>
+            </select>
+
+            <div id="champs1" style="display: none;">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-1">Thème :</label>
+                    <input type="text" class="form-control mt-1" id="champ1-1" name="champ1-1" placeholder="ex: Zelenski est cannibal" required>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-2">Date de publication de la Fake News :</label>
+                    <input type="date" class="form-control mt-1" id="champ1-2" name="champ1-2" required>
+                </div>
+
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ1-3">Lien vers la Fake News :</label>
+                    <input type="url" class="form-control mt-1" id="champ1-3" name="champ1-3" placeholder="ex: https://lesite.fr/fakeNews" required>
+                </div>
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <button type="submit" formaction="index.php?action=SubmitFormFakeNews" class="btn btn-success btn-lg px-3">Envoyer</button>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <div id="champs2" style="display: none;">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-1">Titre :</label>
+                    <input type="text" class="form-control mt-1" id="champ2-1" name="champ2-1" placeholder="ex: Zelenski est cannibal">
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-2">Contenu :</label>
+                    <textarea class="form-control mt-1" id="champ2-2" name="champ2-2" rows="8" placeholder="écrivez votre article"></textarea>
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-3">Images :</label>
+                    <input type="file" class="form-control mt-1" id="champ2-3" name="champ2-3">
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ2-4">Redacteur :</label>
+                    <input type="text" class="form-control mt-1" id="champ2-4" name="champ2-4" placeholder="ex: Henri Martin @enRiz">
+                </div>
+
+            </div>
+
+            <div id="champs3" style="display: none;" >
+                <div class="form-group col-md-6 mb-3">
+                    <label for="champ3-1">Description brève du bug :</label>
+                    <input type="text" class="form-control mt-1" id="champ3-1" name="champ3-1" placeholder="ex: Lorsque je suis sur la page 'Accueil' l'article ne s'affiche pas" required>
+                </div>
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <button type="submit" formaction="index.php?action=SubmitFormBug" class="btn btn-success btn-lg px-3">Envoyer</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+{% include './footer.html.twig' %}
+
+</body>
+
+</html>

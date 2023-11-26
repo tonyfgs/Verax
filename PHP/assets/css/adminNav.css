@@ -1,0 +1,127 @@
+
+h1 {
+    margin: auto;
+    max-width: 300px;
+    padding: 20px;
+    align-content: center;
+}
+.navAdmin {
+    display: flex; /* Use flexbox to layout the links */
+    justify-content: center; /* Center the links horizontally */
+    list-style-type: none; /* Remove default list styling */
+    background-color: #f3f3f3; /* Background color of the nav bar */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margins */
+}
+.navAdmin a {
+    display: block; /* Block level links */
+    color: #000000; /* Text color */
+    text-align: center; /* Center text */
+    padding: 14px 20px; /* Padding around the links */
+    text-decoration: none; /* No underline */
+    font-size: 17px; /* Font size */
+}
+.navAdmin a:hover {
+    color: red; /* Text color on hover */
+}
+.navAdmin a.active {
+    background-color: #788888; /* Background color of the active link */
+}
+
+.search-container {
+    margin: auto;
+    max-width: 300px;
+    padding: 20px;
+    align-content: center;
+}
+
+.utilisateur {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}
+
+.ban-form input[type="submit"], .role-form input[type="submit"] {
+    padding: 5px 10px;
+    border: none;
+    margin-top: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ban-form input[type="submit"] {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.ban-form input[type="submit"]:hover {
+    background-color: #ff3333;
+}
+
+.role-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.role-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.role-management-modal label, .confirmation-popup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.role-management-modal input[type="submit"], .confirmation-popup input[type="submit"] {
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+
+.role-management-modal input[type="submit"]:hover, .confirmation-popup input[type="submit"]:hover {
+    background-color: #007BBA;
+}
+
+.confirmation-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.role-management-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background: #666; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 14px; /* Taille de police */
+    transition: background 0.3s; /* Transition pour l'effet hover */
+}

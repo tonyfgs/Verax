@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Liste des Articles</title>
+    <!-- Ajoutez vos liens vers les fichiers CSS ici -->
+</head>
+
+<body>
+
+<h1>Liste des Articles</h1>
+
+<div>
+    {% if articles is not empty %}
+    {% for article in articles %}
+    <div class="article">
+        <form action="index.php?action=AfficheArticle" method="POST">
+            <h2>{{ article.titre }}</h2>
+            <input type="hidden" name="id" value="{{ article.id }}">
+            <input class="btn" type="submit" value="Accéder à l'article">
+        </form>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Aucun article disponible pour le moment.</p>
+    {% endif %}
+</div>
+
+<!-- Ajoutez vos scripts JavaScript ici -->
+
+</body>
+
+</html>

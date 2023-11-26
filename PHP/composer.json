@@ -1,0 +1,20 @@
+{
+    "name": "allaurent13/php",
+    "autoload": {
+        "psr-4": {
+            "modele\\" : "modele/",
+            "Config\\" : "config/",
+            "controleur\\" : "controleur/",
+            "dal\\" : "dal/",
+            "dal\\gateways\\" : "dal/gateways/",
+            "metier\\" : "metier/",
+            "modele\\manager\\" : "modele/manager" 
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0"
+    },
+    "scripts": {
+        "dev" : "php -S localhost:8080"
+    }
+}

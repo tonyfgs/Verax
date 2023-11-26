@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page - Verax</title>
+</head>
+    <body>
+      <h1>List Error :</h1>
+      {% if dVueError is defined %}
+        {% for value in dVueError %}
+            <p>- {{value}}</p>
+        {% endfor %}
+      {% endif %}
+      <form action="index.php?action=accueil" method="POST">
+          <input class="back-button"  type="submit" value="Retour">
+      </form>
+    </body>
+</html>
