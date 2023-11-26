@@ -43,11 +43,17 @@ class AdminControleur
                 case 'AccessForm':
                     $this->accessForm();
                     break;
-                case 'SubmitForm':
-                    $this->submitForm();
-                    break;
                 case 'AccessAccount':
                     $this->accessAccount();
+                    break;
+                case 'SubmitFormFakeNews':
+                    $this->SubmitFormFakeNews();
+                    break;
+                case 'SubmitFormArticle':
+                    $this->submitFormArticle();
+                    break;
+                case 'SubmitFormBug':
+                    $this->submitFormBug();
                     break;
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
@@ -101,14 +107,24 @@ class AdminControleur
         $mdl->accessForm();
     }
 
-    function submitForm(){
-        $mdl = new ModeleAdmin();
-        $mdl->submitForm();
-    }
-
     function accessAccount(){
         $mdl = new ModeleAdmin();
         $mdl->accessAccount();
+    }
+
+    function submitFormBug(){
+        $mdl = new ModeleAdmin();
+        $mdl->submitFormBug();
+    }
+
+    function submitFormArticle(){
+        $mdl = new ModeleAdmin();
+        $mdl->SubmitFormArticle();
+    }
+
+    function SubmitFormFakeNews(){
+        $mdl = new ModeleAdmin();
+        $mdl->SubmitFormFakeNews();
     }
 
 }
