@@ -23,7 +23,7 @@ class ModeleUtilisateur
     public function goodReview($idArticle){
         global $dsn, $login, $mdp;
         $gw = new NoteGateway(new Connection($dsn, $login, $mdp));
-        $note = $gw->getNoteByUserOnArticle($_SESSION[], $idArticle);
+        $note = $gw->getNoteByUserOnArticle($_SESSION["pseudo"], $idArticle);
         if ($note == 0){
             $gw->insertNote($idArticle,$_SESSION["pseudo"], 1);
         }
@@ -39,6 +39,7 @@ class ModeleUtilisateur
     public  function badReview($idArticle){
         global $dsn, $login, $mdp;
         $gw = new NoteGateway(new Connection($dsn, $login, $mdp));
+        $idArticle = $_POST["id"];
         $note = $gw->getNoteByUserOnArticle($_SESSION["pseudo"], $idArticle);
         if ($note == 0){
             $gw->insertNote($idArticle,$_SESSION["pseudo"], -1);

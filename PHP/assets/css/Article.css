@@ -110,3 +110,26 @@
     font-weight: bold !important;
     margin-right: 7px;
 }
+
+.avis-class {
+    text-align: center; /* Centrer le contenu horizontalement */
+}
+
+.avis-class-bouton {
+    display: flex;
+    flex-direction: row; /* Aligner les boutons verticalement */
+    justify-content: center;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+.avis-button {
+    border: none;
+    padding: 0; /* Supprimer le padding par défaut du bouton */
+    background: none;
+    cursor: pointer;
+}
+
+.avis-button img {
+    width: 50px; /* Ajustez la taille de l'image selon vos besoins */
+    height: 50px; /* Ajustez la taille de l'image selon vos besoins */
+}
