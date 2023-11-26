@@ -6,6 +6,7 @@ namespace brouillon;
 use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
 use dal\Connection;
+use metier\Article;
 use modele\SerialManager;
 use pdo;
 use PDOException;
@@ -16,6 +17,17 @@ use PDOException;
     $stockageContenusSerialises = SerialManager::serialiserContenus($articleCourant -> getContenus());
 
     echo "Contenus serialisés : " . $stockageContenusSerialises;
+
+    $articleFinal = new Article(1, "Thinkerview", "Thinkerview est une chaîne youtube d'interview-débat, 
+                                    lancée en 2013 qui produit de longs entretiens entre un animateur en voix off 
+                                    et ses invités. Les émissions sont toujours
+                                    diffusées en direct, puis republiées sans montage. ", 3, date("d-m-Y"), "Siwa", 
+                                    "assets/img/mainThinkerview.webp");
+
+    $stockageContenusDeserialises = SerialManager::deserialiserContenus($stockageContenusSerialises);
+    $articleFinal -> remplirArticle($stockageContenusDeserialises);
+
+    echo $twig->render('Article.html', ['article' => $articleFinal]);
 
     //echo $ret;
 
