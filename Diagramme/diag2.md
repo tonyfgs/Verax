@@ -2,68 +2,15 @@
 ```plantuml
 @startuml
 
-class ArticleTheque{
+class ContenuTheque{
+    + getContenus() : List<Contenu>
 
-    + getArticles() : List<Article>
-    + addArticle(newArticle : Article)
-    + delArticle(article : Article)
-    + rechercheArticle(id : String) : Article
-    + getArticlesSignales() : List<Article>
+    + addContenu(newContenu : Contenu)
+    + deleteContenu(contenu : Contenu)
+    + searchContenu(ordre : int) : Contenu
 }
-interface IArticleTheque{
-    + getArticles() : List<Article>
-    + addArticle(newArticle : Article)
-    + delArticle(article : Article)
-    + rechercheArticle(id : String) : Article
-    + getArticlesSignales() : List<Article>
-}
-class Article{
-    - id : String
-    - titre : String
-    - datePublication : Date
-    - description : String
-    - motsCles : List<String>
-    - tempsConsultation : int
-    - etat : int
-    - cptSignalement : int
-    - commentaires : map <User, List<Message> > 
 
-    + getId() : String
-    + getTitre() : String
-    + getDatePublication() : Date
-    + getDescription() : String
-    + getTempsConsultation() : int
-    + getNote() : int
-    + getEtat() : int
-    + getCptSignalement() : int
-
-    + setTitre(newTitre : String)
-    + setDescription(newDescription : String)
-    + setMotsCles(newMotCles : List<String>)
-    + setTempsConsultation (newTemps : int)
-    + setNote(newNote : int)
-    + setEtat(newEtat : int)
-    + setCptSignalement()
-}
-interface IArticle{
-    + getId() : String
-    + getTitre() : String
-    + getDatePublication() : Date
-    + getDescription() : String
-    + getTempsConsultation() : int
-    + getNote() : int
-    + getEtat() : int
-    + getCptSignalement() : int
-
-    + setTitre(newTitre : String)
-    + setDescription(newDescription : String)
-    + setMotsCles(newMotCles : List<String>)
-    + setTempsConsultation (newTemps : int)
-    + setNote(newNote : int)
-    + setEtat(newEtat : int)
-    + setCptSignalement()
-}
-abstract Contenu{
+abstract class Contenu{
     - titre : String
     - ordre : int
     
@@ -71,14 +18,15 @@ abstract Contenu{
     + getOrdre() : int
     + setTitre(newTitre : String)
     + setOrdre(newOrdre : int)
-    
 }
+
 class Media{
     - chemin : String
 
     + getChemin() : String
     + setChemin(newChemin : String)
 }
+
 class Paragraphe{
     - texte : String
 
@@ -86,53 +34,90 @@ class Paragraphe{
     + setTexte(newTexte : String)
 }
 
+class Article{
+    - id : String
+    - titre : String
+    - dateCreation : Date
+    - description : String
+    - motsCles : List<String>
+    - tempsConsultation : int
+    - note : int
+    - etat : int
+    - cptSignalement : int
+
+    + getId() : String
+    + getTitre() : String
+    + getDateCreation() : Date
+    + getDescription() : String
+    + getTempsConsultation() : int
+    + getNote() : int
+    + getEtat() : int
+    + getCptSignalement() : int
+
+    + setTitre(newTitre : String)
+    + setDescription(newDescription : String)
+    + setMotsCles(newMotCles : List<String>)
+    + setTempsConsultation (newTemps : int)
+    + setNote(newNote : int)
+    + setEtat(newEtat : int)
+    + setCptSignalement()
+}
+
+class ArticleTheque{
+    + getArticles() : List<Article>
+    + getArticlesSignales() : List<Article>
+
+    + addArticle(newArticle : Article)
+    + deleteArticle(article : Article)
+    + searchArticle(id : String) : Article
+}
+
+class MessageTheque{
+    + getMessages() : Map <String, List<Message>>
+
+    + searchMessageUser(pseudo : String) : List<Message>
+    + addMessage(pseudo : String, newMessage : Message)
+    + deleteMessage(pseudo : String, newMessage : Message)
+}
+
 class Message{
-    - dateMessage : date
+    - dateMessage : Date
     - message : String
 
-    + getDateMessage() : date
+    + getDateMessage() : Date
     + getMessage() : String
 }
-interface IMessage{
-    + getDateMessage() : date
-    + getMessage() : String
+
+class User{
+    - pseudo : String
+    - nom : String
+    - prenom : String
+    - mail : String
+    - motDePasse : String
+    - role : Role
+    - ban : Bool
+
+    + getPseudo() : String
+    + getNom() : String
+    + getPrenom() : String
+    + getMail() : String
+    + getMotDePasse() : String
+    + getRole() : Role
+    + isBan() : Bool
+    
+    + setMail(newMail : String)
+    + setMotDePasse(newMotDePasse : String)
+    + setBan(ban : Bool)
 }
 
 class UserTheque{
-    
     + getUsers() : List<User>
+
     + addUser(newUser : User)
-    + delUser(user : User)
-    + rechercheUser(pseudo : String)
+    + deleteUser(user : User)
+    + searchUser(pseudo : String)
 }
-interface IUserTheque{
-    + getUsers() : List<User>
-    + addUser(newUser : User)
-    + delUser(user : User)
-    + rechercheUser(pseudo : String)
-}
-class User{
-    - pseudo : String
-    - mail : String
-    - motDePasse : String
 
-    + getPseudo() : String
-    + getMail() : String
-    + getMotDePasse() : String
-
-    + setPseudo(newPseudo : String)
-    + setMail(newMail : String)
-    + setMotDePasse(newMotDePasse : String)
-}
-interface IUser{
-    + getPseudo() : String
-    + getMail() : String
-    + getMotDePasse() : String
-
-    + setPseudo(newPseudo : String)
-    + setMail(newMail : String)
-    + setMotDePasse(newMotDePasse : String)
-}
 enum Role{
     Visiteur
     Utilisateur
@@ -142,24 +127,20 @@ enum Role{
 }
 
 class FormTheque{
-    + addForm(newFormulaire : Formulaire)
-    + delForm(formulaire : Formulaire)
     + getForms() : List<Formulaire>
-}
-interface IFormTheque{
+    
     + addForm(newFormulaire : Formulaire)
-    + delForm(formulaire : Formulaire)
-    + getForms() : List<Formulaire>
+    + deleteForm(formulaire : Formulaire)
 }
+
 abstract Formulaire{
     - id : String
     - pseudoUser : String
-    - mailUser : String
 
     + getId() : String
     + getPseudoUser() : String
-    + getMailUser() : String
 }
+
 class FormAide{
     - sujet : String
     - message : String
@@ -167,43 +148,126 @@ class FormAide{
     + getSujet() : String
     + getMessage() : String
 }
+
 class FormContribution{
     - theme : String
-    - dateEnvoie : date
+    - dateEnvoie : Date
     - liens : List<String> 
 
     + getTheme() : String
-    + getDateEnvoie() : date
+    + getDateEnvoie() : Date
     + getLiens() : List<String>
 }
 
-class DataManager{}
+interface IRedirigeur{
+    + redirection(nomPage : String)
+}
 
-ArticleTheque --> "*" IArticle
-Article --|> IArticle
-Article --> "*" Contenu
-Paragraphe --|> Contenu
+class ModeleVisiteur{
+    + connection(... String)
+    + registration(... String)
+}
+
+interface IModeleConnected {
+    + disconnect()
+    + goodReview()
+    + badReview()
+}
+
+class ModeleUtilisateur{
+}
+
+class ModeleAdmin{
+    + banUser()
+    + manageUser()
+    + unbanUser()
+    + changeUserRole()
+}
+
+interface IFormManager{
+    + getForm() : String
+    + addForm(... String)
+    + deleteForm(... String)
+}
+
+interface IUserManager{
+    + getUsers() : String
+
+    + addUser(... String)
+    + deleteUser(... String)
+}
+
+interface IArticleManager{
+    + getArticles() : String
+    + addArticle(... String)
+    + deleteArticle(... String)
+}
+
+class DataManager{
+    + getElements() : Element
+    + addElement(... String) : Bool
+    + deleteElement(... String) : Bool
+}
+
+interface ISerializer{
+    + Serilize()
+}
+
+interface IDeserializer{
+    + Deserilize()
+}
+
 Media --|> Contenu
-Article ..> IMessage
-Message --|> IMessage
-Article ..> IUser
+Paragraphe --|> Contenu
+ContenuTheque --> "*" Contenu
 
-UserTheque --> "*" IUser
-User --|> IUser
+Article --> ContenuTheque
+ArticleTheque --> "*" Article
+
+Article --> MessageTheque
+
+Message ..> User
+
 User --> Role
+UserTheque --> "*" User
+
+MessageTheque "key : String" #--> "*" Message
+
+IUserManager <.. DataManager
+IFormManager <.. DataManager
+IArticleManager <.. DataManager
+
+IArticleManager --> ArticleTheque
+IFormManager --> FormTheque
+IUserManager --> UserTheque
+
+ModeleVisiteur ..> User
+ModeleVisiteur ..> IArticleManager
+
+ModeleUtilisateur ..> IUserManager
+ModeleUtilisateur ..> IArticleManager
+IModeleConnected ..> Formulaire
+
+ModeleAdmin ..> IUserManager
+ModeleAdmin ..> IArticleManager
+ModeleAdmin ..> IFormManager
 
 FormTheque --> "*" Formulaire
 FormAide --|> Formulaire
 FormContribution --|> Formulaire
 
+IModeleConnected --|> IRedirigeur
+IModeleConnected ..> User
+ModeleVisiteur ..|> IRedirigeur
+ModeleAdmin ..|> IModeleConnected
+ModeleUtilisateur ..|> IModeleConnected
 
-ArticleTheque ..|> IArticleTheque
-UserTheque ..|> IUserTheque
-FormTheque ..|> IFormTheque
-DataManager --> IArticleTheque
-DataManager --> IUserTheque
-DataManager --> IFormTheque
-
+ContenuSerializerBDD ..|> ISerializer
+ContenuDeserializerBDD ..|> IDeserializer
+ContenuDeserializerBDD ..> ContenuTheque
+ContenuSerializerBDD ..> ContenuTheque
+ContenuDeserializerBDD ..> Contenu
+ContenuSerializerBDD ..> Contenu
 
 @enduml
 
