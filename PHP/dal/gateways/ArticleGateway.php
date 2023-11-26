@@ -3,8 +3,9 @@
 namespace dal\gateways;
 use dal\Connection;
 use metier\Article;
+use modele\IArticleDataManager;
 
-class ArticleGateway {
+class ArticleGateway implements IArticleDataManager {
 
 private $con;
 
@@ -51,7 +52,16 @@ public function selectAllArticle() : array {
 	return $tab;
 }
 
+    public function getAllArticles()
+    {
+        return $this->selectAllArticle();
+    }
 
+    public function getArticle(int $id)
+    {
+        $articles = $this->findArticle($id);
+        return $articles[0];
+    }
 
 
 }
