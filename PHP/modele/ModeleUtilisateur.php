@@ -87,7 +87,13 @@ class ModeleUtilisateur
         $champ1_2 = isset($_POST['champ1-2']) ? $_POST['champ1-2'] : null;
         $champ1_3 = isset($_POST['champ1-3']) ? $_POST['champ1-3'] : null;
         $result = $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3);
-        echo "Envoie du formulaire confirmer merci pour votre contribution";
+        if ($result){
+            echo "Envoie du formulaire confirmer merci pour votre contribution";
+        }
+        else {
+            echo "Erreur envoie du formulaire";
+
+        }
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
 
     }
