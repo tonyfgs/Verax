@@ -28,9 +28,7 @@ use modele\ContenuParagraphe;
                 "Siwa", 
             "assets/img/mainThinkerview.webp");
             
-            
-            
-            
+                       
             $temp[] = new Article(2, "Titre du second Article", "Contenu du second article...\n seconde ligne...", 20, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
@@ -106,6 +104,20 @@ use modele\ContenuParagraphe;
 
         public function getAllArticles() : array {
             return $this -> lArticles;
+        }
+
+        public function getDerniersArticles(int $nbArticles) : array {
+		
+            $temp = array();
+    
+            for ($cpt = 0 ; $cpt <= $nbArticles; $cpt++) {
+                
+                if (isset($this -> getAllArticles()[$cpt])) {
+                    $temp[] = $this -> getAllArticles()[$cpt];
+                }
+            }
+    
+            return $temp;
         }
 
     }

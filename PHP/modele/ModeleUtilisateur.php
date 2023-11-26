@@ -69,19 +69,44 @@ class ModeleUtilisateur
         echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0], 'userRole' => $_SESSION["role"] ]);
     }
 
-    public function   submitForm(){
+    public function  submitFormBug(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        $result =  mail("Tony.FAGES@etu.uca.fr","Bug Report",$_POST["champ3-1"]);
+        echo $result;
+        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+
+    }
+
+    public function SubmitFormFakeNews() {
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+
+        // Vérifier si les clés existent dans $_POST
+        $champ1_1 = isset($_POST['champ1-1']) ? $_POST['champ1-1'] : null;
+        $champ1_2 = isset($_POST['champ1-2']) ? $_POST['champ1-2'] : null;
+        $champ1_3 = isset($_POST['champ1-3']) ? $_POST['champ1-3'] : null;
+        $result = $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3);
+        if ($result){
+            echo "Envoie du formulaire confirmer merci pour votre contribution";
+        }
+        else {
+            echo "Erreur envoie du formulaire";
+
+        }
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+
+    }
+
+
+    public function   SubmitFormArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
         echo "1";
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             echo "2";
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
-            echo "3";
             echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
-
-
-
     }
 }

@@ -20,7 +20,7 @@ class FrontControler {
                 "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie"
             ],
             "Utilisateur" => [
-                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitForm","ReportArticle", 'AccessAccount'
+                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle","ReportArticle", 'AccessAccount'
             ],
             "Redacteur" => [
                 "redigerArticle", "validerArticle", "publierArticle",
@@ -29,7 +29,7 @@ class FrontControler {
                 "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
             ],
             "Admin" => [
-                'GestionUser','BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer'
+                'GestionUser','BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer', "AccessForm", "SubmitForm",'AccessAccount'
             ],
         );
         $action = Validation::nettoyerString($_GET["action"] ?? "");

@@ -1,106 +1,87 @@
 <?php
 
-	namespace dal\gateways;
-	use dal\Connection;
-	use metier\Article;
-	use pdo;
-	use PDOException;
+namespace dal\gateways;
+use dal\Connection;
+use metier\Article;
+use modele\IArticleDataManager;
 
-	class ArticleGateway {
+class ArticleGateway implements IArticleDataManager {
 
-	private $con;
+private $con;
 
-	public function __construct(Connection $con){
-		$this->con = $con;
-	} 
-
+public function __construct(Connection $con){
+	$this->con = $con;
+} 
 
 
-	// public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool {
 
-	// 	$query = 'INSERT INTO article VALUES(:i, :a, :d, :t, :c, :te, :da)';	
+public function insert(int $id, string $titre, string $contenu, int $temps) : bool{
+	$query = 'INSERT INTO article VALUES(:i,:t,:c,:te,CURRENT_DATE)';
+	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT), ':t' => array($titre, PDO::PARAM_STR), ':c' => array($contenu, PDO::PARAM_STR), ':te' => array($temps, PDO::PARAM_INT)));
+}
 
-	// 	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT),
-	// 		':t' => array($titre, PDO::PARAM_STR),
-	// 		'd' => array($description, PDO::PARAM_STR),
-	// 		':a' => array($description, PDO::PARAM_STR),
-	// 		':c' => array($contenu, PDO::PARAM_STR),
-	// 		':te' => array($temps, PDO::PARAM_INT),
-	// 		'da' => array($id, PDO::PARAM_STR),
-	// 	));
-	// }
-
-	public function insert(int $id, string $titre, string $contenu, int $temps, string $description) : bool
-    {
-        $query = 'INSERT INTO article (idArticle, auteur, description, titre, contenu, temps, datePub) VALUES (:i, :a, :d, :t, :c, :te, CURRENT_DATE)';
-
-        try {
-            return $this->con->executeQuery($query, array(
-                ':i' => array($id, PDO::PARAM_INT),
-                ':t' => array($titre, PDO::PARAM_STR),
-                ':d' => array($description, PDO::PARAM_STR),
-                ':a' => array("Auteur inconnu", PDO::PARAM_STR),  // Assuming auteur is a foreign key with a default value of NULL
-                ':c' => array($contenu, PDO::PARAM_STR),
-                ':te' => array($temps, PDO::PARAM_INT),
-            ));
-        } catch (PDOException $e) {
-            echo "Erreur PDO : " . $e->getMessage();
-        }
-        return false;
+public function findArticle(int $id) : array {
+	$query = 'SELECT * FROM article WHERE idArticle = :i';
+	$this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
+	$results = $this->con->getResults();
+	if (count($results) == 0) return array();
+	foreach ($results as $row) {
+		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
 	}
+	return $tab;
+}
 
-	public function recupAllArticles() : array {
+public function delete(int $id) : bool {
+	$query = 'DELETE FROM article WHERE idArticle = :i';
+	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
+}
+
+public function update(int $id, string $titre, string $contenu, int $temps) : bool {
+	$query = 'UPDATE article SET titre = :t, contenu = :c, temps = :te WHERE idArticle = :i';
+	return $this->con->executeQuery($query, array(':i' => array($id, PDO::PARAM_INT), ':t' => array($titre,PDO::PARAM_STR), ':c' => array($contenu, PDO::PARAM_STR), ':te' => array($temps, PDO::PARAM_INT)));
+}
+
+public function selectAllArticle() : array {
+    $query = 'SELECT * FROM Article';
+	$this->con->executeQuery($query,array());
+	$results = $this->con->getResults();
+	if (count($results) == 0) return array();
+	foreach ($results as $row) {
+		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
+	}
+	return $tab;
+}
+
+    public function getAllArticles() : array {
+        return $this->selectAllArticle();
+    }
+
+    public function getArticle(int $id) : Article {
+        $articles = $this->findArticle($id);
+        return $articles[0];
+    }
+
+	/*
+		Cette méthode a vocation a être modifée avec le temps. 
+		Pour l'instant, elle renvoie simplement un certains nombre d'articles sans prendre
+		en compte leur date de parution. Le but est simplement d'implémenter la méthode pour répondre
+		à la demande d'implémentation de l'interface. 
+	*/
+	public function getDerniersArticles(int $nbArticles) : array {
 		
-			$query = 'SELECT * FROM article';
-            $this -> con -> executeQuery($query);
-			try {
-                $newA = array();
-				$results = $this->con->getResults();
-				foreach ($results as $row){
-                    $newA[] = new Article(
-                        $row['idArticle'], $row['titre'], $row['description'],
-                        $row['temps'], $row['datePub'], $row['auteur'],
-                        "Pas d'image encore...");
-                }
-		} catch (PDOException $e) {
-			echo "Erreur PDO : ".$e -> getMessage();
+		$temp = array();
+
+		for ($cpt = 0 ; $cpt <= $nbArticles; $cpt++) {
+			
+			if (isset($this -> getAllArticles()[$cpt])) {
+				$temp[] = $this -> getAllArticles()[$cpt];
+			}
 		}
 
-		return $newA;
+		return $temp;
 	}
-	
 
 
-	// public function findArticle(int $id) : array {
-	// 	$query = 'SELECT * FROM article WHERE idArticle = :i';
-	// 	$this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
-	// 	$results = $this->con->getResults();
-	// 	if (count($results) == 0) return array();
-	// 	foreach ($results as $row) {
-	// 		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
-	// 	}
-	// 	return $tab;
-	// }
-
-	// public function delete(int $id) : bool {
-	// 	$query = 'DELETE FROM article WHERE idArticle = :i';
-	// 	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT)));
-	// }
-
-	// public function update(int $id, string $titre, string $contenu, int $temps) : bool {
-	// 	$query = 'UPDATE article SET titre = :t, contenu = :c, temps = :te WHERE idArticle = :i';
-	// 	return $this->con->executeQuery($query, array(':i' => array($id, PDO::PARAM_INT), ':t' => array($titre,PDO::PARAM_STR), ':c' => array($contenu, PDO::PARAM_STR), ':te' => array($temps, PDO::PARAM_INT)));
-	// }
-
-	// public function selectAllArticle() : array {
-	// 	$query = 'SELECT * FROM Article';
-	// 	$this->con->executeQuery($query,array());
-	// 	$results = $this->con->getResults();
-	// 	if (count($results) == 0) return array();
-	// 	foreach ($results as $row) {
-	// 		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
-	// 	}
-	// 	return $tab;
-	// }
 }
+
 ?>

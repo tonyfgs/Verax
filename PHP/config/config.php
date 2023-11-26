@@ -7,7 +7,7 @@
     global $dsn;
     global $login;
     global $mdp;
-    $dsn="mysql:host=localhost;dbname=verax";
+    $dsn="mysql:host=localhost;dbname=verax2";
     $login = "test";
     $mdp = "test";
 

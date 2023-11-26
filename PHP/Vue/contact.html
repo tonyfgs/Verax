@@ -2,7 +2,7 @@
 <html lang="en">
 
 {% include './header.html.twig' %}
-
+<body>
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -11,7 +11,7 @@
             </div>
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <label for="inputModalSearch"></label><input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -31,46 +31,7 @@
         </div>
     </div>
 
-    <!-- Start Contact -->
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" action="index.php?action=SubmitForm"  method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputsurname">Mon pseudo</label>
-                        <input type="text" class="form-control mt-1" id="pseudo" name="pseudo" placeholder="Pseudo" >
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputsurname">Mon prénom</label>
-                        <input type="text" class="form-control mt-1" id="surname" name="surname" placeholder="Prénom" >
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">Mon nom</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nom">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">Mon Email</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="inputsubject">Sujet</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Nouvel article">
-                </div>
-                <div class="mb-3">
-                    <label for="inputmessage">Mon Message</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Bonjour, je vous contacte car..." rows="8"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Envoyer</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Contact -->
-    <script>
+ <script>
         // Fonction pour afficher ou masquer les champs
         function afficherChamps() {
             var selection = document.getElementById("choix").value;
@@ -78,28 +39,45 @@
             // Récupérer les éléments des champs
             var champs1 = document.getElementById("champs1");
             var champs2 = document.getElementById("champs2");
+            var champs3 = document.getElementById("champs3");
 
-            // Masquer tous les champs par défaut
+            // Fonction pour gérer l'attribut 'required'
+            function gererRequired(champs, etat) {
+                var inputs = champs.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].required = etat;
+                }
+            }
+
+            // Masquer tous les champs et retirer 'required'
+            gererRequired(champs1, false);
+            gererRequired(champs2, false);
+            gererRequired(champs3, false);
             champs1.style.display = "none";
             champs2.style.display = "none";
+            champs3.style.display = "none";
 
-            // Afficher les champs correspondant à l'option sélectionnée
+            // Afficher les champs et ajouter 'required' selon la sélection
             if (selection === "option1") {
                 champs1.style.display = "block";
+                gererRequired(champs1, true);
             } else if (selection === "option2") {
                 champs2.style.display = "block";
-            }else if (selection === "option3") {
+                gererRequired(champs2, true);
+            } else if (selection === "option3") {
                 champs3.style.display = "block";
+                gererRequired(champs3, true);
             }
         }
-    </script>
+
+ </script>
 
     <div class="container py-5">
         <form class="col-md-9 m-auto" method="post" role="form">
             <label for="choix">Pourquoi nous écrivez vous?</label>
             <select id="choix" onchange="afficherChamps()">
                 <option value=""></option>
-                <option value="option1">soumission d'une Fake News</option>
+                <option value="option1" >soumission d'une Fake News</option>
                 <option value="option2">soumission d'un article</option>
                 <option value="option3">soumission d'un bug</option>
             </select>
@@ -107,74 +85,62 @@
             <div id="champs1" style="display: none;">
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ1-1">Thème :</label>
-                    <input type="text" class="form-control mt-1" id="champ1-1" name="champ1" placeholder="ex: Zelenski est cannibal">
+                    <input type="text" class="form-control mt-1" id="champ1-1" name="champ1-1" placeholder="ex: Zelenski est cannibal" required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ1-2">Date de publication de la Fake News :</label>
-                    <input type="date" class="form-control mt-1" id="champ1-2" name="champ1">
+                    <input type="date" class="form-control mt-1" id="champ1-2" name="champ1-2" required>
                 </div>
 
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ1-3">Lien vers la Fake News :</label>
-                    <input type="url" class="form-control mt-1" id="champ1-3" name="champ1" placeholder="ex: https://lesite.fr/fakeNews">
+                    <input type="url" class="form-control mt-1" id="champ1-3" name="champ1-3" placeholder="ex: https://lesite.fr/fakeNews" required>
                 </div>
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <button type="submit" formaction="index.php?action=SubmitFormFakeNews" class="btn btn-success btn-lg px-3">Envoyer</button>
+                    </div>
+
+                </div>
+                
             </div>
 
             <div id="champs2" style="display: none;">
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ2-1">Titre :</label>
-                    <input type="text" class="form-control mt-1" id="champ2-1" name="champ2" placeholder="ex: Zelenski est cannibal">
+                    <input type="text" class="form-control mt-1" id="champ2-1" name="champ2-1" placeholder="ex: Zelenski est cannibal">
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ2-2">Contenu :</label>
-                    <textarea class="form-control mt-1" id="champ2-2" name="champ2" rows="8" placeholder="écrivez votre article"></textarea>
+                    <textarea class="form-control mt-1" id="champ2-2" name="champ2-2" rows="8" placeholder="écrivez votre article"></textarea>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ2-3">Images :</label>
-                    <input type="file" class="form-control mt-1" id="champ2-3" name="champ2">
+                    <input type="file" class="form-control mt-1" id="champ2-3" name="champ2-3">
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ2-4">Redacteur :</label>
-                    <input type="text" class="form-control mt-1" id="champ2-4" name="champ2" placeholder="ex: Henri Martin @enRiz">
+                    <input type="text" class="form-control mt-1" id="champ2-4" name="champ2-4" placeholder="ex: Henri Martin @enRiz">
                 </div>
+
             </div>
 
             <div id="champs3" style="display: none;" >
                 <div class="form-group col-md-6 mb-3">
                     <label for="champ3-1">Description brève du bug :</label>
-                    <input type="text" class="form-control mt-1" id="champ3-1" name="champ2" placeholder="ex: Lorsque je suis sur la page 'Accueil' l'article ne s'affiche pas">
+                    <input type="text" class="form-control mt-1" id="champ3-1" name="champ3-1" placeholder="ex: Lorsque je suis sur la page 'Accueil' l'article ne s'affiche pas" required>
+                </div>
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <button type="submit" formaction="index.php?action=SubmitFormBug" class="btn btn-success btn-lg px-3">Envoyer</button>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col text-end mt-2">
-                    <button type="submit" class="btn btn-success btn-lg px-3">Envoyer</button>
-                </div>
-            </div>
+
         </form>
     </div>
-
-    <!--changer en ajoutant google map-->
-    <!-- Start Map -->
-    <div id="mapid" style="width: 100%; height: 300px;"></div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script>
-        var mymap = L.map('mapid').setView([-23.013104, -43.394365, 13], 13);
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(mymap);
-
-        L.marker([-23.013104, -43.394365, 13]).addTo(mymap)
-            .bindPopup("<b>Verax</b>").openPopup();
-
-        mymap.scrollWheelZoom.disable();
-        mymap.touchZoom.disable();
-    </script>
-    <!-- Ena Map -->
 
 {% include './footer.html.twig' %}
 
