@@ -69,6 +69,23 @@
 
     </div>
 
+    <div class="avis-class">
+        <h4>Cette Article vous a-t-il plu ?</h4>
+        <div class="avis-class-bouton">
+            <form action="index.php?action=GoodReview" method="POST">
+                <button type="submit" class="avis-button">
+                    <img src="assets/img/like.png" alt="Like">
+                </button>
+            </form>
+            <form action="index.php?action=BadReview" method="POST">
+                <button type="submit" class="avis-button">
+                    <img src="assets/img/dislike.png" alt="Dislike">
+                </button>
+            </form>
+        </div>
+    </div>
+
+
     {% include './footer.html.twig' %}
 <!-- Ajoutez vos scripts JavaScript ici -->
 
