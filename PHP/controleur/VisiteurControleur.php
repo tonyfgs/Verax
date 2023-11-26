@@ -31,6 +31,11 @@ class VisiteurControleur
                 case 'economie':
                     $this->afficherEconomie();
                     break;
+
+                case 'afficherArticle' :
+                    $this -> afficherArticle();
+                    break;
+
                 case 'culture':
                     $this->afficherCulture();
                     break;
@@ -91,6 +96,13 @@ class VisiteurControleur
     function inscription(){
         $mdl = new ModeleVisiteur();
         $mdl->signUp();
+    }
+
+    function afficherArticle() {
+        global $twig;
+        $manager = new ArticleManager();
+        $articleTemp = $manager -> getArticle(7);
+        echo $twig -> render('article.html', ['article' => $articleTemp]);
     }
 
     //utiliser router afficher les pages
