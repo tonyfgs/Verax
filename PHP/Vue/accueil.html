@@ -26,6 +26,11 @@
                                     <h1 class="h1 text-success"><b>{{ article.getTitre() }}</b></h1>
                                     <h3 class="h2">{{ article.getDescription() }}</h3>
                                     {# <p>{{ article.getContenus()|raw }}</p> #}
+
+                                    <form method="post" action="afficherArticle">
+                                        <input type="hidden" value="{{ article.getId() }}"
+                                        <input type="submit" value="Voir l'article">
+                                    </form>
                                 </div>
                             </div>
                         </div>
