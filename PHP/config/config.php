@@ -8,8 +8,8 @@
     global $login;
     global $mdp;
     $dsn="mysql:host=localhost;dbname=verax";
-    $login = "test";
-    $mdp = "test";
+    $login = "siwa";
+    $mdp = "tutu";
 
 
     /** Différentes vues */
