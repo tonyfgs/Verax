@@ -119,7 +119,6 @@ class VisiteurControleur
         global $twig, $dsn, $login, $mdp;
         $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
         $tabArticles = array();
-        $manager = new ArticleManager();
         $tabArticles = $manager -> getDerniersArticles(3);
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
