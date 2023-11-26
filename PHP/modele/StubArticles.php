@@ -18,26 +18,39 @@ use modele\ContenuParagraphe;
         public function chargerArticles() {
             
             $temp = array();
-            $temp[] = new Article(1, 
-                "Thinkerview", 
-                "Thinkerview est une chaîne youtube d'interview-débat, lancée en 2013 qui produit de
-                    longs entretiens entre un animateur en voix off et ses invités. Les émissions sont toujours
-                    diffusées en direct, puis republiées sans montage. ",
-                 3,
-                date("d-m-Y"),
-                "Siwa", 
+
+            // ------ Creation de l'article 1 ------------
+            $temp[] = new Article(1, "Thinkerview", "Thinkerview est une chaîne youtube d'interview-débat, 
+            lancée en 2013 qui produit de longs entretiens entre un animateur en voix off 
+            et ses invités. Les émissions sont toujours
+            diffusées en direct, puis republiées sans montage. ", 3, date("d-m-Y"), "Siwa", 
             "assets/img/mainThinkerview.webp");
+
+            $temp[0] -> remplirArticle($this -> chargerContenuParagraphe()['article1']);
+
+            // ----------- Creation de l'article 2 -------------
+                                   
+            $temp[] = new Article(2, "Guerre en Ukraine : Les troupes ukrainiennes reprennent-elles du terrain ?", 
+                                "Les troupes ukrainiennes reprennent-elles du territoire ? Doit-on s'attendre 
+                                à des pénuries de produits alimentaires, de médicaments ou encore de composants
+                                 électroniques ? L'augmentation des prix du gaz vont-ils autant toucher les usines
+                                  que les particuliers ? Telles sont les questions courantes que l'on se pose, et au sujet desquelles
+                                  les journalistes de la rédaction de franceinfo ont décidé de déméler le vrai du faux.", 
+                                  7, date("d-m-Y"), "Siwa", 
+                                  "https://images.ladepeche.fr/api/v1/images/view/64e31dd60f90f526a4234177/large/image.jpg?v=1");
             
-                       
-            $temp[] = new Article(2, "Titre du second Article", "Contenu du second article...\n seconde ligne...", 20, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
+            
+            $temp[1] -> remplirArticle($this -> chargerContenuParagraphe()['article2']);
+            
+            // =======================================
             $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             
-             $temp[1] -> remplirArticle($this -> chargerContenuParagraphe()['article2']);
+             
              $temp[2] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);
              $temp[3] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);
 
-             $temp[0] -> remplirArticle($this -> chargerContenuParagraphe()['article1']);
+             
 
 
              //echo "Temporaire..." : $this -> chargerContenuParagraphe()['article1'].
@@ -49,8 +62,7 @@ use modele\ContenuParagraphe;
 
             $temp = array();
 
-            $temp['article2'][] = new contenuParagraphe(1, "Premier paragraphe", "Contenu du premier article et tout et tout....");
-            $temp['article2'][] = new contenuParagraphe(2, "Titre du second paragraphe", "Contenu du second paragraphe....");
+            // --------- Contenu Article 1 --------------
             
             $temp['article1'][] = new contenuParagraphe(1, "Le mystérieux cygne noir.", 
                 "Sous les traits d’un mystérieux cygne noir, un objet vidéo non identifié plane dans la galaxie 
@@ -90,10 +102,68 @@ use modele\ContenuParagraphe;
                   l'extrême gauche, explique Sky. On cherche à créer un terrain neutre pour 
                   que tout le monde puisse échanger.");
 
-            
-
             $temp['article1'][] = ContenuMedia::newVideo(1, "Prendre le temps d'écouter les experts dans leurs domaines.",
                  "https://www.youtube.com/embed/1tTksQL2kqs");
+
+            // --------- Contenu Article 2 ------------------
+
+            $temp['article2'][] = new contenuParagraphe(1, "Oui les Ukrainiens reprennent du terrain", 
+                                    "Timéo demande à Eric Biegala, grand reporter à la rédaction internationale de Radio France,
+                                     s'il est vrai \"que les Ukrainiens ont repris du territoire\" face aux Russes. Selon Eric
+                                      Biegala, il n'y a aucun doute là-dessus, oui les Ukrainiens reprennent bien du terrain comme
+                                       l'indique \"la quantité astronomique d'images, prises dans les endroits qui ont été reconquis, 
+                                       par les gens sur place, les soldats et surtout les journalistes.\" Volodymyr Zelensky
+                                        lui-même était à Izioum, ville reprise aux Russes et Eric Biegala explique qu'il y a 
+                                        aussi \"des photos et images d'armes et blindés laissés sur place par les soldats russes,
+                                         partis en panique de la ville\". 
+                                    Néanmoins Eric Biegala tient à rappeler l'importance d'être très vigilant sur les
+                                     informations et images qui circulent en temps de guerre, selon lui \"à la guerre, 
+                                     tout le monde ment et il faut partir de ce principe-là et tout vérifier.\"
+                                    Parmi les façons de vérifier l'information en temps de guerre, Eric Biegala explique 
+                                    qu'il y a des gens spécialisés dans la géolocalisation d'images. Vous pouvez aussi
+                                     utiliser Google Images ou son équivalent russe Yandex pour faire une recherche 
+                                     d'images inversées, c'est-à-dire vérifier l'origine d'une photo ou d'une vidéo en 
+                                     l'entrant sur l'un de ces moteurs de recherche.");
+            
+            $temp['article2'][] = new contenuMedia(1, "Des violents affrontements", 
+           "                    https://www.google.com/search?sca_esv=585436030&sxsrf=AM9HkKmPAjDFE0AvmmHe7NbFGfDwHj1
+           GsQ:1701014553597&q=guerre+en+ukraine&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjB4OWBheKCAxWVUKQEHQMuCHsQ0pQJe
+           gQIChAB&biw=1163&bih=571&dpr=1.65#imgrc=ownouWa-eHpUdM");
+           
+           $temp['article2'][] = new ContenuParagraphe(2, "Non les rayons ne seront pas vides cet hiver", 
+                                    "Lorenzo se demande s'il est vrai \"qu'il y aura une pénurie de produits étrangers cet hiver\"
+                                     et c'est Sophie Auvigne, journaliste au service économie de franceinfo qui lui répond.
+                                    Elle met l'accent sur le principe de \"souveraineté française pour l'alimentation et pour les médicame
+                                    nt\", car quand la France ne reçoit plus certains produits de l'étranger, quelque soit la raison
+                                    , il faut savoir si elle est capable de compenser par sa propre production. En l'occurence, po
+                                    ur certains produits, la France n'en est pas capable et elle se repose principalement sur les impo
+                                    rtations venant de l'étranger et c'est pourquoi, lorsqu'un pays ne peut plus nous fournir, cela cré
+                                    é un manque en France.
+                                    Sophie Auvigne donne l'exemple de la moutarde et de l'huile qui manquent dans les rayons des supermarché
+                                    s français et \"qu'on n'est pas près de combler\". Elle explique que cela est dû au fait que \"le grand
+                                     fournisseur de graines (pour fabriquer de la moutarde), le Canada, a connu une terrible sécheresse qui
+                                      a mis à mal sa récolte et l'autre producteur, la Russie, est frappée par un embargo commercial pour son
+                                       invasion de l'Ukraine, donc on n'achète plus les produits russes.\"
+                                    Mais Sophie Auvigne rappelle qu'on est encore loin d'une pénurie alimentaire comme le prouve nos rayons
+                                     encore pleins. Néanmoins elle se montre plus inquiète concernant les médicaments, \"car on s'est 
+                                     rendus compte que 80% des molécules étaient fabriquées hors d'Europe\", mais aussi \"les composants 
+                                     électroniques qui manquent aujourd'hui et qu'on retrouve un peu partout autour de nous, dans nos vo
+                                     itures, nos téléphones ou encore dans les jouets.\"");
+
+            $temp['article2'][] = new contenuMedia(2, "Une carte en perpétuelle évolution", 
+                                    "https://www.google.com/search?sca_esv=585436030&sxsrf=AM9HkKmPAjDF
+                                    E0AvmmHe7NbFGfDwHj1GsQ:1701014553597&q=guerre+en+ukraine&tbm=isch&source=
+                                    lnms&sa=X&ved=2ahUKEwjB4OWBheKCAxWVUKQEHQMuCHsQ0pQJegQIChAB&biw=1163&bih=57
+                                    1&dpr=1.65#imgrc=3nh2M_YW4N6_gM");
+
+            $temp['article2'][] = new ContenuParagraphe(3, "Le gaz va augmenter en 2023, mais l'Etat va continuer à aider", 
+                                "Isra se demande s'il est vrai \"que le gaz va être plus cher cet hiver\". Grégoire Lecalot
+                                , journaliste au service eco de franceinfo, explique que le gaz va bien augmenter, mais pas c
+                                ette année où il est protégé par le bouclier tarifaire mise en place par le gouvernement depui
+                                s novembre 2021. Mais à partir de janvier 2023, le gouvernement a déjà annoncé que les facture
+                                s de gaz \"vont augmenter de 15%\", ça représente \"25 euros en plus à payer chaque mois pour le gaz\"
+                                 précise Grégoire Lecalot qui ajoute que le gouvernement a quand même prévu \"des chèques é
+                                 nergies aux foyers les plus modestes de 100 ou 200 euros selon ce qu'on gagne.\"");
 
             return $temp;
         }

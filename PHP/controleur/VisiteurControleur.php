@@ -8,7 +8,8 @@ use dal\gateways\ArticleGateway;
 use dal\gateways\UtilisateurGateway;
 use modele\ModeleVisiteur;
 use PDOException;
-
+use Exception;
+use modele\ArticleManager;
 
 class VisiteurControleur
 {
@@ -95,7 +96,10 @@ class VisiteurControleur
     //utiliser router afficher les pages
     function afficherAccueil(){
         global $twig;
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+        $tabArticles = array();
+        $manager = new ArticleManager();
+        $tabArticles = $manager -> getDerniersArticles(2);
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
 
     public function afficherEconomie() {

@@ -20,5 +20,9 @@ use modele\StubArticles;
 
             return $this -> articletheque -> getArticle($id);
         }
+
+        public function getDerniersArticles(int $nbArticles) : array {
+            return $this -> dataManager -> getDerniersArticles($nbArticles);
+        }
     }
 ?>
