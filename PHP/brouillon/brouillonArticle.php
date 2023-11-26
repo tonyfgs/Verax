@@ -17,32 +17,32 @@ use PDOException;
 
     //echo $ret;
 
-    echo "Coucouuuuuu !";
+    // echo "Coucouuuuuu !";
 
-    try {
+    // try {
 
-        $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
+    //     $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
 
-        $ret = $gw -> insert($articleCourant -> getId(), 
-                            $articleCourant -> getTitre(),
-                            "ceci est le contenu et tout et tout...",
-                            $articleCourant -> getTemps(),
-                            $articleCourant -> getDescription());
+    //     $ret = $gw -> insert($articleCourant -> getId(), 
+    //                         $articleCourant -> getTitre(),
+    //                         "ceci est le contenu et tout et tout...",
+    //                         $articleCourant -> getTemps(),
+    //                         $articleCourant -> getDescription());
 
-        $recup = $gw -> recupAllArticles();
+    //     $recup = $gw -> recupAllArticles();
 
-    } catch (PDOException $e) {
-        echo "Erreur PDO : ".$e -> getMessage();
-    }
+    // } catch (PDOException $e) {
+    //     echo "Erreur PDO : ".$e -> getMessage();
+    // }
 
-    if (isset($ret)) {
-        echo "Valeur de retour ... : " . $ret;
-    }
+    // if (isset($ret)) {
+    //     echo "Valeur de retour ... : " . $ret;
+    // }
 
-    if (!isset($recup)) {
-        $recup = $articleCourant;
-    }
+    // if (!isset($recup)) {
+    //     $recup = $articleCourant;
+    // }
     
 
-    echo $twig->render('Article.html', ['article' => $recup]);
+    echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
