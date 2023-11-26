@@ -40,6 +40,15 @@ class AdminControleur
                 case "Disconnect":
                     $this->disconnect();
                     break;
+                case 'AccessForm':
+                    $this->accessForm();
+                    break;
+                case 'SubmitForm':
+                    $this->submitForm();
+                    break;
+                case 'AccessAccount':
+                    $this->accessAccount();
+                    break;
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
                     echo $twig->render("error.html", ['dVueError' => $dataVueErreur]);
@@ -85,6 +94,21 @@ class AdminControleur
     {
         $mdl = new ModeleAdmin();
         $mdl->administrer();
+    }
+
+    function accessForm(){
+        $mdl = new ModeleAdmin();
+        $mdl->accessForm();
+    }
+
+    function submitForm(){
+        $mdl = new ModeleAdmin();
+        $mdl->submitForm();
+    }
+
+    function accessAccount(){
+        $mdl = new ModeleAdmin();
+        $mdl->accessAccount();
     }
 
 }

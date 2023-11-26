@@ -2,23 +2,37 @@
 
 
 namespace brouillon;
+
+use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
+use dal\Connection;
+use pdo;
+use PDOException;
 
     $articleManager = new ArticleManager();
     $articleCourant = $articleManager -> getArticle(6);
 
+    
 
-    // foreach ($articleCourant -> getContenus() as $contenu) {
 
-    //     switch ($contenu -> getTypeContenu()) {
+    echo $ret;
 
-    //         case "paragraphe" : 
-    //             include("blocParagrapheBrouillon.php");
-    //             break;
+    echo "Coucouuuuuu !";
 
-    //         default : 
-    //     }
-    // }
+    try {
 
-    echo $twig->render('Article.html', ['article' => $articleCourant]);
+    $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
+
+    $ret = $gw -> insert($articleCourant -> getId(), 
+                         $articleCourant -> getTitre(),
+                         "ceci est le contenu et tout et tout...",
+                        $articleCourant -> getTemps(),
+                         $articleCourant -> getDescription());
+
+    } catch (PDOException $e) {
+        echo "Erreur PDO : ".$e -> getMessage();
+    }
+    
+
+    //echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
