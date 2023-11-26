@@ -101,7 +101,15 @@ class VisiteurControleur
     function afficherArticle() {
         global $twig;
         $manager = new ArticleManager();
-        $articleTemp = $manager -> getArticle(7);
+
+        if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
+            $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
+            echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
+        } else {
+            $idArticle = htmlspecialchars($_POST['articleId']);
+        }
+
+        $articleTemp = $manager -> getArticle($idArticle);
         echo $twig -> render('Article.html', ['article' => $articleTemp]);
     }
 

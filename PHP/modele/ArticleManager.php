@@ -16,9 +16,18 @@ use modele\StubArticles;
             $this -> articletheque = new Articletheque($this -> dataManager);
         }
 
-        public function getArticle(int $id) : Article {
+        public function getArticle(int $id) : ?Article {
 
-            return $this -> articletheque -> getArticle($id);
+            //return $this -> articletheque -> getArticle($id);
+            $temp = array();
+
+            foreach($this -> articletheque -> getAllArticles() as $a) {
+                if ($a -> getId() == $id) {
+                    $temp[] = $a;
+                }
+            }
+            
+            return $temp[0];
         }
 
         public function getDerniersArticles(int $nbArticles) : array {
