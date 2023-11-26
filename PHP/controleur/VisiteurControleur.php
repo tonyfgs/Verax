@@ -100,27 +100,14 @@ class VisiteurControleur
     }
 
     function afficherArticle() {
-        global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
-
-        if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
-            $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
-            echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
-        } else {
-            $idArticle = htmlspecialchars($_POST['articleId']);
-        }
-
-        $articleTemp = $manager -> getArticle($idArticle);
-        echo $twig -> render('Article.html', ['article' => $articleTemp]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherArticle();
     }
 
     //utiliser router afficher les pages
     function afficherAccueil(){
-        global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
-        $tabArticles = array();
-        $tabArticles = $manager -> getDerniersArticles(3);
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
     }
 
     public function afficherEconomie() {

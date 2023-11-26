@@ -81,12 +81,12 @@ class UtilisateurControleur
 
     function goodReview(){
         $mdl = new ModeleUtilisateur();
-        $mdl->goodReview('');
+        $mdl->goodReview();
     }
 
     function badReview(){
         $mdl = new ModeleUtilisateur();
-        $mdl->badReview('');
+        $mdl->badReview();
     }
 
     function accessForm(){

@@ -2,6 +2,8 @@
 
     namespace metier;
 
+    use dal\Connection;
+    use dal\gateways\NoteGateway;
     use modele;
 
     class Article {
@@ -12,10 +14,12 @@
         private $date;
         private $auteur;
         private $imagePrincipale;
-        
+
+        private $note;
         private $lContenus;
 
         public function __construct( $id, $title, $description, $temps, $date, $auteur, $imagePrincipale) {
+            global $dsn, $login,$mdp;
             $this->id = $id;
             $this->titre = $title;
             $this->description = $description;
@@ -24,6 +28,8 @@
             $this -> lContenus = array();
             $this -> auteur = $auteur;
             $this -> imagePrincipale = $imagePrincipale;
+            $gw = new NoteGateway(new Connection($dsn, $login,$mdp));
+            $this->note = $gw->getNoteByArticles($id);
         }
 
         public function remplirArticle($lContenus) {
@@ -82,6 +88,11 @@
 
         private function setDate( $date ) {
             $this->date = $date;
+        }
+
+        public function getNote()
+        {
+            return $this->note;
         }
     }
 ?>

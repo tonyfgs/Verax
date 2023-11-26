@@ -1,6 +1,7 @@
 <?php
 
 namespace modele;
+use controleur\VisiteurControleur;
 use dal\Connection;
 use dal\gateways\FormulaireGateway;
 use dal\gateways\NoteGateway;
@@ -17,11 +18,13 @@ class ModeleUtilisateur
         global $twig;
         session_unset();
         $_SESSION["role"] = "Visiteur";
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
     }
 
-    public function goodReview($idArticle){
-        global $dsn, $login, $mdp;
+    public function goodReview(){
+        global $dsn, $login, $mdp, $twig;
+        $idArticle = $_POST["id"];
         $gw = new NoteGateway(new Connection($dsn, $login, $mdp));
         $note = $gw->getNoteByUserOnArticle($_SESSION["pseudo"], $idArticle);
         if ($note == 0){
@@ -33,10 +36,11 @@ class ModeleUtilisateur
         else {
             $gw->updateNote($idArticle, $_SESSION["pseudo"], 1);
         }
-
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
     }
 
-    public  function badReview($idArticle){
+    public  function badReview(){
         global $dsn, $login, $mdp;
         $gw = new NoteGateway(new Connection($dsn, $login, $mdp));
         $idArticle = $_POST["id"];
@@ -50,6 +54,8 @@ class ModeleUtilisateur
         else {
             $gw->updateNote($idArticle, $_SESSION["pseudo"], -1);
         }
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
     }
 
     public function accessForm(){
@@ -95,7 +101,8 @@ class ModeleUtilisateur
             echo "Erreur envoie du formulaire";
 
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
 
     }
 

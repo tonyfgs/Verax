@@ -17,7 +17,8 @@ class ModeleAdmin
         global $twig;
         session_unset();
         $_SESSION["role"] = 'Visiteur';
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
     }
 
     public function banUser(){
@@ -135,7 +136,8 @@ class ModeleAdmin
             echo "Erreur envoie du formulaire";
 
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherAccueil();
 
     }
 
