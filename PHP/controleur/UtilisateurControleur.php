@@ -33,8 +33,15 @@ class UtilisateurControleur
                 case 'AccessForm':
                     $this->accessForm();
                     break;
-                case 'SubmitForm':
-                    $this->submitForm();
+                case 'SubmitFormFakeNews':
+                    echo "Je Suit la \n";
+                    $this->SubmitFormFakeNews();
+                    break;
+                case 'SubmitFormArticle':
+                    $this->submitFormArticle();
+                    break;
+                case 'SubmitFormBug':
+                    $this->submitFormBug();
                     break;
                 case 'ReportArticle':
                     $this->reportArticle();
@@ -91,10 +98,20 @@ class UtilisateurControleur
         $mdl->accessAccount();
     }
 
-
-    function submitForm(){
+    function submitFormBug(){
         $mdl = new ModeleUtilisateur();
-        $mdl->submitForm();
+        $mdl->submitFormBug();
+    }
+
+    function submitFormArticle(){
+        $mdl = new ModeleUtilisateur();
+        $mdl->SubmitFormArticle();
+    }
+
+    function SubmitFormFakeNews(){
+        echo "marche fdp";
+        $mdl = new ModeleUtilisateur();
+        $mdl->SubmitFormFakeNews();
     }
 
     function reportArticle(){

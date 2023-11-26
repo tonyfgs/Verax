@@ -69,7 +69,30 @@ class ModeleUtilisateur
         echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0], 'userRole' => $_SESSION["role"] ]);
     }
 
-    public function   submitForm(){
+    public function  submitFormBug(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        $result =  mail("Tony.FAGES@etu.uca.fr","Bug Report",$_POST["champ3"]);
+        echo $result;
+        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+
+    }
+
+    public function   SubmitFormFakeNews(){
+        echo "sdvcoljiubhkdsvijbfuk\n";
+        echo "sedd\n";
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        echo $_POST['champ1-1'];
+        echo $_POST['champ1-2'];
+        echo $_POST['champ1-3'];
+        $result = $gw->insertFormFakeNews($_POST['champ1-1'],$_POST['champ1-2'],$_POST['champ1-3']);
+
+        echo "sdvcoljiubhkdsvijbfuk\n";
+        echo "sedd\n";
+
+    }
+    public function   SubmitFormArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
         echo "sdvcoljiubhkdsvijbfuk\n";
