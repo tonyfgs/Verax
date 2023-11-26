@@ -44,7 +44,7 @@ class ModeleAdmin
                 $tab2[] = $t;
             }
         }
-        echo $twig->render('adminUserList.html', ['utilisateurs' => $tab2]);
+        echo $twig->render('adminUserList.html', ['utilisateurs' => $tab2,  "userRole" => $_SESSION["role"]]);
     }
 
     public function unBanUser(){
@@ -87,7 +87,7 @@ class ModeleAdmin
 
     public function administrer(){
         global $twig;
-        echo $twig->render("VueAdminLayout.html");
+        echo $twig->render("VueAdminLayout.html", ["userRole" => $_SESSION["role"]]);
     }
 
 }
