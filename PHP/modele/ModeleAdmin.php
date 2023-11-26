@@ -119,14 +119,14 @@ class ModeleAdmin
 
     public function SubmitFormFakeNews() {
         global $dsn, $login, $mdp, $twig;
-        //$gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
         echo "Je suis la ";
         // Vérifier si les clés existent dans $_POST
         $champ1_1 = isset($_POST['champ1-1']) ? $_POST['champ1-1'] : null;
         $champ1_2 = isset($_POST['champ1-2']) ? $_POST['champ1-2'] : null;
         $champ1_3 = isset($_POST['champ1-3']) ? $_POST['champ1-3'] : null;
         $result = true;
-            //$gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3,$_SESSION["pseudo"]);
+        $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3,$_SESSION["pseudo"]);
         if ($result){
             echo $_SESSION["pseudo"];
             echo " envoie du formulaire confirmer merci pour votre contribution";
