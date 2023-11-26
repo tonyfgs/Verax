@@ -48,7 +48,7 @@
             return $this -> auteur;
         }
 
-        public function getTitle() {
+        public function getTitre() {
             return $this->titre;
         }
 

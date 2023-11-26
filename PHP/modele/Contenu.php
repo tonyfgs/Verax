@@ -2,8 +2,8 @@
     namespace modele;
 
     abstract class Contenu {
-        private $id;
-        private $typeContenu;
+        protected $id;
+        protected $typeContenu;
 
         public function __construct(int $id) {
             $this -> id = $id;

@@ -44,5 +44,9 @@
             
             return $temp;
         }
+
+        public function __sleep() {
+            return ['id', 'typeContenu', 'titre', 'lien'];
+        }
     }
 ?>
