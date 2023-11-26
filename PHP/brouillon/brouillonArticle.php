@@ -12,9 +12,6 @@ use PDOException;
     $articleManager = new ArticleManager();
     $articleCourant = $articleManager -> getArticle(6);
 
-    
-
-
     //echo $ret;
 
     // echo "Coucouuuuuu !";
@@ -43,6 +40,6 @@ use PDOException;
     //     $recup = $articleCourant;
     // }
     
-
+    //echo "Titre de l'article : " . $articleCourant -> getTitre();
     echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
