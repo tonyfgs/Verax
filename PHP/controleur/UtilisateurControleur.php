@@ -5,6 +5,8 @@ namespace controleur;
 use Exception;
 use modele\ModeleUtilisateur;
 use Config\Validation;
+use PDOException;
+
 
 class UtilisateurControleur
 {

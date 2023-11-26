@@ -9,64 +9,29 @@
     <!-- Start Banner Hero -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+            {% for key, article in articles %}
+                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="{{ key }}" {% if key == 0 %}class="active"{% endif %}></li>
+            {% endfor %}
         </ol>
         <div class="carousel-inner white">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="assets/img/fnRepasCharlesMacron.webp" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>test</b> Repas à 6,2M ?</h1>
-                                <h3 class="h2">Dîner avec Charles III à Versailles : Combien a coûté le repas avec le roi ?</h3>
-                                <p>
-                                     Un montant de 6,2 millions d’euros circule sur les réseaux sociaux, sans être sourcé. « 20 Minutes » a contacté les prestataires de la réception afin d’en connaître les coulisses <a rel="sponsored" class="text-success" href="https://www.20minutes.fr/societe/4055044-20230928-diner-charles-iii-versailles-combien-coute-repas-roi" target="_blank">20minutes</a>  
-                                </p>
+            {% for key, article in articles %}
+                <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                    <div class="container">
+                        <div class="row p-5">
+                            <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                                <img class="img-fluid" src="{{ article.getImagePrincipale() }}" alt="">
+                            </div>
+                            <div class="col-lg-6 mb-0 d-flex align-items-center">
+                                <div class="text-align-left align-self-center">
+                                    <h1 class="h1 text-success"><b>{{ article.getTitre() }}</b></h1>
+                                    <h3 class="h2">{{ article.getDescription() }}</h3>
+                                    <p>{{ article.getContenus()|raw }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="assets/img/fnFranceRemplaceEuroParFranc.webp" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">test 2</h1>
-                                <h3 class="h2">La France abandonne l'euro?</h3>
-                                <p>
-                                    « La fin de l’euro. Le retour au franc ». La description est surprenante et en contexte d’inflation, la nouvelle pourrait être probable. Face à la hausse des prix et les discussions qui n’en finissent plus avec les grands distributeurs, le gouvernement aurait-il décidé de prendre des mesures drastiques pour l’économie du pays ? Cela aurait pu être possible, sauf que la vidéo en question devenue virale sur Facebook (elle a été vue 1,5 million de fois) est en réalité un montage vidéo. 20 Minutes vous raconte.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="assets/img/fnRonaldoImpot.webp" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">test 3</h1>
-                                <h3 class="h2">Citation de Cristiano Ronaldo sur les impôts en Europe </h3>
-                                <p>
-                                    Depuis plusieurs jours, une publication prétendant rapporter une conversation entre le joueur de foot Cristiano Ronaldo et un journaliste a été partagée des dizaines de milliers de fois sur Facebook.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
             <i class="fas fa-chevron-left"></i>
@@ -75,6 +40,7 @@
             <i class="fas fa-chevron-right"></i>
         </a>
     </div>
+    
     <!-- End Banner Hero -->
 
 {% include './footer.html.twig' %}
