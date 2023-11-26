@@ -118,7 +118,7 @@ class VisiteurControleur
         global $twig;
         $tabArticles = array();
         $manager = new ArticleManager();
-        $tabArticles = $manager -> getDerniersArticles(2);
+        $tabArticles = $manager -> getDerniersArticles(3);
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
 
