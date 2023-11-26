@@ -175,7 +175,7 @@ use modele\ContenuParagraphe;
 		
             $temp = array();
     
-            for ($cpt = 0 ; $cpt <= $nbArticles; $cpt++) {
+            for ($cpt = 0 ; $cpt < $nbArticles; $cpt++) {
                 
                 if (isset($this -> getAllArticles()[$cpt])) {
                     $temp[] = $this -> getAllArticles()[$cpt];
