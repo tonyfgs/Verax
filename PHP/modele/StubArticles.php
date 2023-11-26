@@ -53,7 +53,7 @@ use modele\ContenuParagraphe;
             $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             
              
-             $temp[2] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);
+             //$temp[2] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);
              $temp[3] ->remplirArticle($this -> chargerContenuParagraphe()['article2']);
 
              
