@@ -17,26 +17,26 @@ use PDOException;
 
     //echo $ret;
 
-    echo "Coucouuuuuu !";
+    // echo "Coucouuuuuu !";
 
-    try {
+    // try {
 
-    $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
+    // $gw = new ArticleGateway(new Connection($dsn, $login, $mdp));
 
-    $ret = $gw -> insert($articleCourant -> getId(), 
-                         $articleCourant -> getTitre(),
-                         "ceci est le contenu et tout et tout...",
-                        $articleCourant -> getTemps(),
-                         $articleCourant -> getDescription());
+    // $ret = $gw -> insert($articleCourant -> getId(), 
+    //                      $articleCourant -> getTitre(),
+    //                      "ceci est le contenu et tout et tout...",
+    //                     $articleCourant -> getTemps(),
+    //                      $articleCourant -> getDescription());
 
-    } catch (PDOException $e) {
-        echo "Erreur PDO : ".$e -> getMessage();
-    }
+    // } catch (PDOException $e) {
+    //     echo "Erreur PDO : ".$e -> getMessage();
+    // }
 
-    if (isset($ret)) {
-        echo "Valeur de retour ... : " . $ret;
-    }
+    // if (isset($ret)) {
+    //     echo "Valeur de retour ... : " . $ret;
+    // }
     
 
-    //echo $twig->render('Article.html', ['article' => $articleCourant]);
+    echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
