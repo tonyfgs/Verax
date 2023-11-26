@@ -2,6 +2,7 @@
 
 namespace modele;
 
+use controleur\VisiteurControleur;
 use dal;
 use dal\gateways\UtilisateurGateway;
 use Exception;
@@ -43,23 +44,32 @@ class ModeleVisiteur
         try{
             $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
             $tab = $gw->findUserByPseudo($_POST['pseudo']);
-            $user = $tab[0];
+            if (empty($tab) ){
+                $dataVueErreur[] = "Pseudo et/ou mot de passe incorrect(s)";
+                echo $twig->render("error.html",['dVueErreur' => $dataVueErreur]);
+            }
+            else {
+                $user = $tab[0];
 
-            if (password_verify($_POST['mdp'], $user->getMdp())) {
-                $_SESSION['pseudo'] = $_POST['pseudo'];
-                $_SESSION['nom'] = $user->getNom();
-                $_SESSION['prenom'] = $user->getPrenom();
-                $_SESSION['mail'] = $user->getMail();
-                switch ($user->getRole()) {
-                    case 'U':
-                        $_SESSION['role'] = 'Utilisateur';
-                        break;
-                    case 'A':
-                        $_SESSION['role'] = 'Admin';
-                        break;
-                    default :
-                        $_SESSION['role'] = 'Visiteur';
-                        break;
+                if (password_verify($_POST['mdp'], $user->getMdp())) {
+                    $_SESSION['pseudo'] = $_POST['pseudo'];
+                    $_SESSION['nom'] = $user->getNom();
+                    $_SESSION['prenom'] = $user->getPrenom();
+                    $_SESSION['mail'] = $user->getMail();
+                    switch ($user->getRole()) {
+                        case 'U':
+                            $_SESSION['role'] = 'Utilisateur';
+                            break;
+                        case 'A':
+                            $_SESSION['role'] = 'Admin';
+                            break;
+                        default :
+                            $_SESSION['role'] = 'Visiteur';
+                            break;
+                    }
+                } else {
+                    $dataVueErreur[] = "Pseudo et/ou mot de passe incorrect(s)";
+                    echo $twig->render("error.html", ['dVueErreur' => $dataVueErreur]);
                 }
             }
         }
