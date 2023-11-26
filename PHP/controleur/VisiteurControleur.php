@@ -102,7 +102,7 @@ class VisiteurControleur
         global $twig;
         $manager = new ArticleManager();
         $articleTemp = $manager -> getArticle(7);
-        echo $twig -> render('article.html', ['Article.html' => $articleTemp]);
+        echo $twig -> render('Article.html', ['article' => $articleTemp]);
     }
 
     //utiliser router afficher les pages
