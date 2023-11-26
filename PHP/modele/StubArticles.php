@@ -41,9 +41,15 @@ use modele\ContenuParagraphe;
             
             
             $temp[1] -> remplirArticle($this -> chargerContenuParagraphe()['article2']);
+
+            // ---------- Création de l'article 3 --------------------------
+
+            $temp[] = new Article(3, "Tempête en Guyane ! ", "Fake news : aucune tempête ne menace la Guyane aujourd'hui !", 2, date("d-m-Y"), "Siwa",
+             "https://static1.mclcm.net/iod/images/v2/69/photo/405283/658x370_100_300_000000x30x0.jpg?ts=20231030183145");
             
+            $temp[2] ->remplirArticle($this -> chargerContenuParagraphe()['article3']);
             // =======================================
-            $temp[] = new Article(3, "Titre du troisième Article", "Contenu du troisième article...\n seconde ligne... \n troisième ligne ", 7, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
+            
             $temp[] = new Article(4, "Titre du quatrième Article", "Contenu du quatrième article...\n\n\n seconde ligne...", 100, date("d-m-Y"), "Siwa", "assets/img/mainThinkerview.webp");
             
              
@@ -158,6 +164,32 @@ use modele\ContenuParagraphe;
                                 s de gaz \"vont augmenter de 15%\", ça représente \"25 euros en plus à payer chaque mois pour le gaz\"
                                  précise Grégoire Lecalot qui ajoute que le gouvernement a quand même prévu \"des chèques é
                                  nergies aux foyers les plus modestes de 100 ou 200 euros selon ce qu'on gagne.\"");
+
+
+            // ------ Contenu de l'article 3 ---------
+
+            $temp['article3'][] = new ContenuParagraphe(1, "Une certaine \"tempête Jinette\" en Guyane", 
+                            "Ne vous laissez pas convaincre par les nuages et les pluies au-dessus de l'île de Cayenne ce matin. 
+                            Les informations annonçant l'arrivée de la \"tempête Jinette\" en Guyane les 24 et 25 novembre so
+                            nt fausses. Contacté ce matin, Météo France Guyane le confirme. Un simple tour sur leur site perm
+                            et de s'en rendre compte. D'ailleurs, aucune alerte météo n'est prévue pour la journée, pour l'ins
+                            tant. La vigilance étant au vert.                        
+                            \"Le format du document ne correspond même pas\", précise Météo France. On remarque également de
+                            s incohérences factuelles dans les dates inscrites, le document étant daté, en haut à droite, 
+                            au 25 novembre.");
+
+            $temp['article3'][] = new contenuMedia(1, "Pour aujourd'hui, la vigilance est au vert en Guyane. ", 
+                        "https://medias.franceantilles.fr/api/v1/images/view/6560a041c9b8a232734f9fda/width_1000/image.jpg");
+
+
+            $temp['article3'][] = new ContenuParagraphe(2, "De simples petites averses en prévision !", 
+                            "Les quelques averses qui passent actuellement au-dessus de l'île de Cayenne et des savanes ne sont que passagères.
+                            Contrairement à ce qu'annonce le faux document, les populations n'ont donc pas besoin de se préparer à événement météorologique.
+                            Les vagues maximales de 10 m annoncées, tout comme les rafales de 100 km/h à 120 km/h ne correspondent absolument pas aux prévisions réelles.
+                            Les creux prévus ce jour avoisinent plutôt les 1,40 m... rien d'anormal");
+
+            $temp['article3'][] = new contenuMedia(2, "Le faux document en question. Diffusé depuis hier soir.", 
+                    "https://medias.franceantilles.fr/api/v1/images/view/6560b08a04eeb6664b7f5488/width_1000/image.jpg");
 
             return $temp;
         }
