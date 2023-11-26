@@ -49,31 +49,22 @@
 
 	public function recupAllArticles() : array {
 		
-			$query = 'SELECT * FROM articles';
-			$tempArticles = array();
-			$tempLigne = array();
-
+			$query = 'SELECT * FROM article';
+            $this -> con -> executeQuery($query);
 			try {
-				$this -> con -> executeQuery($query, []);
-				while ($row = $this -> con -> getResults()) {
-					$tempLigne[] = $row;
-				}
-
-				while ($row = $tempLigne) {
-					$newA = new Article(
-							$row['idArticle'], $row['titre'], $row['description'],
-							$row['temps'], $row['datePub'], $row['auteur'],
-							"Pas d'image encore...");
-					
-					//$newA -> remplirArticle($row['contenu']);
-					$tempArticles[] = $newA;
-				}
-
+                $newA = array();
+				$results = $this->con->getResults();
+				foreach ($results as $row){
+                    $newA[] = new Article(
+                        $row['idArticle'], $row['titre'], $row['description'],
+                        $row['temps'], $row['datePub'], $row['auteur'],
+                        "Pas d'image encore...");
+                }
 		} catch (PDOException $e) {
 			echo "Erreur PDO : ".$e -> getMessage();
 		}
 
-		return $tempArticles;
+		return $newA;
 	}
 	
 
