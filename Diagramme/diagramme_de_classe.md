@@ -198,9 +198,11 @@ interface IUserManager{
 }
 
 interface IArticleManager{
-    + getArticles() : String
     + addArticle(... String)
     + deleteArticle(... String)
+}
+interface IViewerArticle{
+    + getArticles() : String
 }
 
 class DataManager{
@@ -242,10 +244,13 @@ IFormManager --> FormTheque
 IUserManager --> UserTheque
 
 ModeleVisiteur ..> User
-ModeleVisiteur ..> IArticleManager
+ModeleVisiteur ..> IViewerArticle
+IViewerArticle <|.. IArticleManager
+IViewerArticle ..|> ArticleTheque
 
 ModeleUtilisateur ..> IUserManager
-ModeleUtilisateur ..> IArticleManager
+ModeleUtilisateur ..> IViewerArticle
+ModeleUtilisateur ..> IFormManager
 IModeleConnected ..> Formulaire
 
 ModeleAdmin ..> IUserManager
