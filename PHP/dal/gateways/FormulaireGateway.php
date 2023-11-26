@@ -52,12 +52,13 @@ class FormulaireGateway
         return $this->con->getResults();
     }
 
-    public function insertFormFakeNews($theme, $datePublication, $link) : bool {
-        $query = 'INSERT INTO contribue (theme, datePublication, link) VALUES (:t, :d, :l)';
+    public function insertFormFakeNews($theme, $datePublication, $link, $pseudo) : bool {
+        $query = 'INSERT INTO contribue (theme, datePublication, link, pseudo) VALUES (:t, :d, :l, :p)';
         return $this->con->executeQuery($query,  array(
             ':t' => array($theme, PDO::PARAM_STR),
             ':d' => array($datePublication, PDO::PARAM_STR),
             ':l' => array($link, PDO::PARAM_STR),
+            ':p' => array($pseudo, PDO::PARAM_STR),
         ));
     }
 

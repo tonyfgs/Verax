@@ -1,0 +1,30 @@
+.navAdmin {
+    display: flex; /* Use flexbox to layout the links */
+    justify-content: center; /* Center the links horizontally */
+    list-style-type: none; /* Remove default list styling */
+    background-color: #f3f3f3; /* Background color of the nav bar */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margins */
+}
+.navAdmin a {
+    display: block; /* Block level links */
+    color: #000000; /* Text color */
+    text-align: center; /* Center text */
+    padding: 14px 20px; /* Padding around the links */
+    text-decoration: none; /* No underline */
+    font-size: 17px; /* Font size */
+}
+.navAdmin a:hover {
+    color: red; /* Text color on hover */
+}
+.navAdmin a.active {
+    background-color: #788888; /* Background color of the active link */
+}
+
+.search-container {
+    margin: auto;
+    max-width: 300px;
+    padding: 20px;
+    align-content: center;
+}
+

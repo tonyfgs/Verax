@@ -73,7 +73,6 @@ class ModeleUtilisateur
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
         $result =  mail("Tony.FAGES@etu.uca.fr","Bug Report",$_POST["champ3-1"]);
-        echo $result;
         echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
 
     }
@@ -86,9 +85,10 @@ class ModeleUtilisateur
         $champ1_1 = isset($_POST['champ1-1']) ? $_POST['champ1-1'] : null;
         $champ1_2 = isset($_POST['champ1-2']) ? $_POST['champ1-2'] : null;
         $champ1_3 = isset($_POST['champ1-3']) ? $_POST['champ1-3'] : null;
-        $result = $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3);
+        $result = $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3,$_SESSION["pseudo"]);
         if ($result){
-            echo "Envoie du formulaire confirmer merci pour votre contribution";
+            echo $_SESSION["pseudo"];
+            echo " envoie du formulaire confirmer merci pour votre contribution";
         }
         else {
             echo "Erreur envoie du formulaire";
