@@ -3,8 +3,9 @@
 namespace dal\gateways;
 use dal\Connection;
 use metier\Article;
+use modele\IArticleDataManager;
 
-class ArticleGateway {
+class ArticleGateway implements IArticleDataManager {
 
 private $con;
 
@@ -51,7 +52,34 @@ public function selectAllArticle() : array {
 	return $tab;
 }
 
+    public function getAllArticles() : array {
+        return $this->selectAllArticle();
+    }
 
+    public function getArticle(int $id) : Article {
+        $articles = $this->findArticle($id);
+        return $articles[0];
+    }
+
+	/*
+		Cette méthode a vocation a être modifée avec le temps. 
+		Pour l'instant, elle renvoie simplement un certains nombre d'articles sans prendre
+		en compte leur date de parution. Le but est simplement d'implémenter la méthode pour répondre
+		à la demande d'implémentation de l'interface. 
+	*/
+	public function getDerniersArticles(int $nbArticles) : array {
+		
+		$temp = array();
+
+		for ($cpt = 0 ; $cpt <= $nbArticles; $cpt++) {
+			
+			if (isset($this -> getAllArticles()[$cpt])) {
+				$temp[] = $this -> getAllArticles()[$cpt];
+			}
+		}
+
+		return $temp;
+	}
 
 
 }

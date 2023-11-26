@@ -59,7 +59,21 @@ class FormulaireGateway
             ':d' => array($datePublication, PDO::PARAM_STR),
             ':l' => array($link, PDO::PARAM_STR),
             ':p' => array($pseudo, PDO::PARAM_STR),
+
         ));
+    }
+    public function insertFormMessage($pseudo, $mail, $nom, $prenom) : bool {
+        echo "\n1.1";
+        $query = 'INSERT INTO contribue VALUES (:ps, :m, :n, :p)';
+        echo "\n1.2";
+        $this->con->executeQuery($query,  array(
+            ':ps' => array($pseudo, PDO::PARAM_STR),
+            ':m' => array($mail, PDO::PARAM_STR),
+            ':n' => array($nom, PDO::PARAM_STR),
+            ':p' => array($prenom, PDO::PARAM_STR)
+
+        ));
+        return true;
     }
 
 
