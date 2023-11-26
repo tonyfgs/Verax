@@ -65,7 +65,7 @@
 							$row['temps'], $row['datePub'], $row['auteur'],
 							"Pas d'image encore...");
 					
-					$newA -> remplirArticle($row['contenu']);
+					//$newA -> remplirArticle($row['contenu']);
 					$tempArticles[] = $newA;
 				}
 
