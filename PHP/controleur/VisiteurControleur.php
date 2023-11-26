@@ -4,6 +4,7 @@ namespace controleur;
 
 use controleur\UtilisateurControleur;
 use Config\Validation;
+use dal\Connection;
 use dal\gateways\ArticleGateway;
 use dal\gateways\UtilisateurGateway;
 use modele\ModeleVisiteur;
@@ -99,8 +100,8 @@ class VisiteurControleur
     }
 
     function afficherArticle() {
-        global $twig;
-        $manager = new ArticleManager();
+        global $twig, $dsn, $login, $mdp;
+        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
 
         if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
             $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
@@ -115,9 +116,9 @@ class VisiteurControleur
 
     //utiliser router afficher les pages
     function afficherAccueil(){
-        global $twig;
+        global $twig, $dsn, $login, $mdp;
+        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
         $tabArticles = array();
-        $manager = new ArticleManager();
         $tabArticles = $manager -> getDerniersArticles(2);
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }

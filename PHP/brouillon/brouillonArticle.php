@@ -8,10 +8,11 @@ use modele\ArticleManager;
 use dal\Connection;
 use metier\Article;
 use modele\SerialManager;
+use modele\stubArticles;
 use pdo;
 use PDOException;
 
-    $articleManager = new ArticleManager();
+    $articleManager = new ArticleManager(new stubArticles());
     $articleCourant = $articleManager -> getArticle(6);
 
     $stockageContenusSerialises = SerialManager::serialiserContenus($articleCourant -> getContenus());

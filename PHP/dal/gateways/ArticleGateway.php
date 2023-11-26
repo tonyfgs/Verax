@@ -3,7 +3,10 @@
 namespace dal\gateways;
 use dal\Connection;
 use metier\Article;
+use modele\ArticleManager;
 use modele\IArticleDataManager;
+use modele\SerialManager;
+use PDO;
 
 class ArticleGateway implements IArticleDataManager {
 
@@ -15,9 +18,15 @@ public function __construct(Connection $con){
 
 
 
-public function insert(int $id, string $titre, string $contenu, int $temps) : bool{
-	$query = 'INSERT INTO article VALUES(:i,:t,:c,:te,CURRENT_DATE)';
-	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT), ':t' => array($titre, PDO::PARAM_STR), ':c' => array($contenu, PDO::PARAM_STR), ':te' => array($temps, PDO::PARAM_INT)));
+public function insert(int $id,string $auteur, string $description,  string $titre, string $contenu, int $temps, string $imagePrincipale) : bool{
+	$query = 'INSERT INTO article VALUES(:i, :a, :d,:t,:c,:te,CURRENT_DATE, :im)';
+	return $this->con->executeQuery($query,array(':i' => array($id,PDO::PARAM_INT),
+        ':a' => array($auteur, PDO::PARAM_STR) ,
+        ':d' => array($description, PDO::PARAM_STR),
+        ':t' => array($titre, PDO::PARAM_STR),
+        ':c' => array($contenu, PDO::PARAM_STR),
+        ':te' => array($temps, PDO::PARAM_INT),
+        ':im' => array($imagePrincipale, PDO::PARAM_STR)));
 }
 
 public function findArticle(int $id) : array {
@@ -26,7 +35,10 @@ public function findArticle(int $id) : array {
 	$results = $this->con->getResults();
 	if (count($results) == 0) return array();
 	foreach ($results as $row) {
-		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
+        $deserial = SerialManager::deserialiserContenus($row['contenu']);
+		$tmp = new Article($row['idArticle'],$row['titre'],$row['description'], $row['temps'],$row['datePub'], $row['auteur'],$row['imagePrincipale']);
+        $tmp->remplirArticle($deserial);
+        $tab[] = $tmp;
 	}
 	return $tab;
 }
@@ -46,9 +58,12 @@ public function selectAllArticle() : array {
 	$this->con->executeQuery($query,array());
 	$results = $this->con->getResults();
 	if (count($results) == 0) return array();
-	foreach ($results as $row) {
-		$tab[] = new Article($row['idArticle'],$row['titre'],$row['contenu'],$row['temps'],$row['datePub']);
-	}
+    foreach ($results as $row) {
+        $deserial = SerialManager::deserialiserContenus($row['contenu']);
+        $tmp = new Article($row['idArticle'],$row['titre'],$row['description'], $row['temps'],$row['datePub'], $row['auteur'],$row['imagePrincipale']);
+        $tmp->remplirArticle($deserial);
+        $tab[] = $tmp;
+    }
 	return $tab;
 }
 

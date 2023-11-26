@@ -46,18 +46,17 @@ class NoteGateway
     }
 
     public function getNoteByUserOnArticle($pseudo, $idArticle) : int{
-        $query = 'SELECT note FROM Note WHERE pseudo = :pseudo AND idArticle = :idArticle';
-        $param = [ array(
-            ':pseudo' => array($pseudo, PDO::PARAM_STR),
-            ':idArticle' => array($idArticle, PDO::PARAM_INT)
-        )];
-        $this->con->executeQuery($query,$param);
+        $query = 'SELECT note FROM Note WHERE pseudo = :p AND idArticle = :i';
+        $this->con->executeQuery($query,array(
+            ':p' => array($pseudo, PDO::PARAM_STR),
+            ':i' => array($idArticle, PDO::PARAM_INT)
+        ));
 
         $results = $this->con->getResults();
         if (count($results) == 0) {
             return 0;
         }
-        return $results;
+        return $results["note"];
     }
 
     public function updateNote($idArticle, $pseudo, $note) : bool{

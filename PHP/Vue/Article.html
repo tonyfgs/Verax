@@ -76,11 +76,13 @@
                 <button type="submit" class="avis-button">
                     <img src="assets/img/like.png" alt="Like">
                 </button>
+                <input type="hidden" name="id" value="{{ article.getId() }}">
             </form>
             <form action="index.php?action=BadReview" method="POST">
                 <button type="submit" class="avis-button">
                     <img src="assets/img/dislike.png" alt="Dislike">
                 </button>
+                <input type="hidden" name="id" value="{{ article.getId() }}">
             </form>
         </div>
     </div>
