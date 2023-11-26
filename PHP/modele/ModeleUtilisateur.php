@@ -78,9 +78,5 @@ class ModeleUtilisateur
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
             echo "3";
         }
-
-
-
-
     }
 }

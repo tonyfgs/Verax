@@ -3,6 +3,7 @@
 namespace modele;
 
 use dal\Connection;
+use dal\gateways\FormulaireGateway;
 use dal\gateways\UtilisateurGateway;
 use metier\Utilisateur;
 
@@ -88,6 +89,35 @@ class ModeleAdmin
     public function administrer(){
         global $twig;
         echo $twig->render("VueAdminLayout.html", ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function accessForm(){
+        global $twig, $dsn, $mdp, $login;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login,$mdp));
+        if ($gw->isBan($_SESSION["pseudo"])){
+            echo  $twig->render('error.html', ['dVueErreur' => array('Vous n êtes plus autorisée à faire cette action pour le moment !')]);
+        }
+        else {
+            echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
+        }
+    }
+
+    public function accessAccount(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $User = $gw->findUserByPseudo($_SESSION['pseudo']);
+        echo $twig->render('CompteUtilisateur.html', ['utilisateur' => $User[0], 'userRole' => $_SESSION["role"] ]);
+    }
+
+    public function submitForm(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        echo "1";
+        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            echo "2";
+            $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
+            echo "3";
+        }
     }
 
 }
