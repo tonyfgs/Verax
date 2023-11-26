@@ -6,11 +6,16 @@ namespace brouillon;
 use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
 use dal\Connection;
+use modele\SerialManager;
 use pdo;
 use PDOException;
 
     $articleManager = new ArticleManager();
     $articleCourant = $articleManager -> getArticle(6);
+
+    $stockageContenusSerialises = SerialManager::serialiserContenus($articleCourant -> getContenus());
+
+    echo "Contenus serialisés : " . $stockageContenusSerialises;
 
     //echo $ret;
 
@@ -41,5 +46,5 @@ use PDOException;
     // }
     
     //echo "Titre de l'article : " . $articleCourant -> getTitre();
-    echo $twig->render('Article.html', ['article' => $articleCourant]);
+    //echo $twig->render('Article.html', ['article' => $articleCourant]);
 ?>
