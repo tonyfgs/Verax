@@ -15,7 +15,7 @@ use PDOException;
     
 
 
-    echo $ret;
+    //echo $ret;
 
     echo "Coucouuuuuu !";
 
@@ -31,6 +31,10 @@ use PDOException;
 
     } catch (PDOException $e) {
         echo "Erreur PDO : ".$e -> getMessage();
+    }
+
+    if (isset($ret)) {
+        echo "Valeur de retour ... : " . $ret;
     }
     
 
