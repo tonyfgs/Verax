@@ -61,14 +61,14 @@
 
 				while ($row = $tempLigne) {
 					$newA = new Article(
-							$row['id'], $row['titre'], $row['description'],
+							$row['idArticle'], $row['titre'], $row['description'],
 							$row['temps'], $row['datePub'], $row['auteur'],
 							"Pas d'image encore...");
 					
-					$newA -> remplirArticle($row['lContenus']);
+					$newA -> remplirArticle($row['Contenus']);
 					$tempArticles[] = $newA;
 				}
-				
+
 		} catch (PDOException $e) {
 			echo "Erreur PDO : ".$e -> getMessage();
 		}
