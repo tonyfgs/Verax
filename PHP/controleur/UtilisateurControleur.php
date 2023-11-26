@@ -34,7 +34,6 @@ class UtilisateurControleur
                     $this->accessForm();
                     break;
                 case 'SubmitFormFakeNews':
-                    echo "Je Suit la \n";
                     $this->SubmitFormFakeNews();
                     break;
                 case 'SubmitFormArticle':
@@ -109,7 +108,6 @@ class UtilisateurControleur
     }
 
     function SubmitFormFakeNews(){
-        echo "marche fdp";
         $mdl = new ModeleUtilisateur();
         $mdl->SubmitFormFakeNews();
     }

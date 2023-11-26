@@ -72,26 +72,27 @@ class ModeleUtilisateur
     public function  submitFormBug(){
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-        $result =  mail("Tony.FAGES@etu.uca.fr","Bug Report",$_POST["champ3"]);
+        $result =  mail("Tony.FAGES@etu.uca.fr","Bug Report",$_POST["champ3-1"]);
         echo $result;
         echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
 
     }
 
-    public function   SubmitFormFakeNews(){
-        echo "sdvcoljiubhkdsvijbfuk\n";
-        echo "sedd\n";
+    public function SubmitFormFakeNews() {
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-        echo $_POST['champ1-1'];
-        echo $_POST['champ1-2'];
-        echo $_POST['champ1-3'];
-        $result = $gw->insertFormFakeNews($_POST['champ1-1'],$_POST['champ1-2'],$_POST['champ1-3']);
 
-        echo "sdvcoljiubhkdsvijbfuk\n";
-        echo "sedd\n";
+        // Vérifier si les clés existent dans $_POST
+        $champ1_1 = isset($_POST['champ1-1']) ? $_POST['champ1-1'] : null;
+        $champ1_2 = isset($_POST['champ1-2']) ? $_POST['champ1-2'] : null;
+        $champ1_3 = isset($_POST['champ1-3']) ? $_POST['champ1-3'] : null;
+        $result = $gw->insertFormFakeNews($champ1_1, $champ1_2, $champ1_3);
+        echo "Envoie du formulaire confirmer merci pour votre contribution";
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
 
     }
+
+    /*
     public function   SubmitFormArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
@@ -100,14 +101,8 @@ class ModeleUtilisateur
             echo "sedd\n";
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
             echo "qwewe\n";
-
-            echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
-
-
         }
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"]]);
-
-
-
     }
+
+    */
 }
