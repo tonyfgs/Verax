@@ -31,6 +31,11 @@ class VisiteurControleur
                 case 'economie':
                     $this->afficherEconomie();
                     break;
+
+                case 'afficherArticle' :
+                    $this -> afficherArticle();
+                    break;
+
                 case 'culture':
                     $this->afficherCulture();
                     break;
@@ -91,6 +96,21 @@ class VisiteurControleur
     function inscription(){
         $mdl = new ModeleVisiteur();
         $mdl->signUp();
+    }
+
+    function afficherArticle() {
+        global $twig;
+        $manager = new ArticleManager();
+
+        if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
+            $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
+            echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
+        } else {
+            $idArticle = htmlspecialchars($_POST['articleId']);
+        }
+
+        $articleTemp = $manager -> getArticle($idArticle);
+        echo $twig -> render('Article.html', ['article' => $articleTemp]);
     }
 
     //utiliser router afficher les pages

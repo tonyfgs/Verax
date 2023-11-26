@@ -125,10 +125,7 @@ use modele\ContenuParagraphe;
                                      d'images inversées, c'est-à-dire vérifier l'origine d'une photo ou d'une vidéo en 
                                      l'entrant sur l'un de ces moteurs de recherche.");
             
-            $temp['article2'][] = new contenuMedia(1, "Des violents affrontements", 
-           "                    https://www.google.com/search?sca_esv=585436030&sxsrf=AM9HkKmPAjDFE0AvmmHe7NbFGfDwHj1
-           GsQ:1701014553597&q=guerre+en+ukraine&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjB4OWBheKCAxWVUKQEHQMuCHsQ0pQJe
-           gQIChAB&biw=1163&bih=571&dpr=1.65#imgrc=ownouWa-eHpUdM");
+            $temp['article2'][] = new contenuMedia(1, "Des violents affrontements", "https://images.ladepeche.fr/api/v1/images/view/655a496a7097bc144658af8c/large/image.jpg?v=1");
            
            $temp['article2'][] = new ContenuParagraphe(2, "Non les rayons ne seront pas vides cet hiver", 
                                     "Lorenzo se demande s'il est vrai \"qu'il y aura une pénurie de produits étrangers cet hiver\"
@@ -151,10 +148,7 @@ use modele\ContenuParagraphe;
                                      itures, nos téléphones ou encore dans les jouets.\"");
 
             $temp['article2'][] = new contenuMedia(2, "Une carte en perpétuelle évolution", 
-                                    "https://www.google.com/search?sca_esv=585436030&sxsrf=AM9HkKmPAjDF
-                                    E0AvmmHe7NbFGfDwHj1GsQ:1701014553597&q=guerre+en+ukraine&tbm=isch&source=
-                                    lnms&sa=X&ved=2ahUKEwjB4OWBheKCAxWVUKQEHQMuCHsQ0pQJegQIChAB&biw=1163&bih=57
-                                    1&dpr=1.65#imgrc=3nh2M_YW4N6_gM");
+                                    "https://ds1.static.rtbf.be/image/media/object/default/16x9/1920x1080/4/e/6/4e67668ff30a378cbf0a9172f92712a7.jpg");
 
             $temp['article2'][] = new ContenuParagraphe(3, "Le gaz va augmenter en 2023, mais l'Etat va continuer à aider", 
                                 "Isra se demande s'il est vrai \"que le gaz va être plus cher cet hiver\". Grégoire Lecalot
@@ -180,7 +174,7 @@ use modele\ContenuParagraphe;
 		
             $temp = array();
     
-            for ($cpt = 0 ; $cpt <= $nbArticles; $cpt++) {
+            for ($cpt = 0 ; $cpt < $nbArticles; $cpt++) {
                 
                 if (isset($this -> getAllArticles()[$cpt])) {
                     $temp[] = $this -> getAllArticles()[$cpt];
