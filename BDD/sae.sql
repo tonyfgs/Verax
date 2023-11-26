@@ -20,11 +20,12 @@ DROP TABLE IF EXISTS rediger;
 CREATE TABLE article (
                          idArticle DECIMAL(10,0) PRIMARY KEY,
                          auteur VARCHAR(30),
-                         description VARCHAR(30),
+                         description TEXT,
                          titre VARCHAR(30) NOT NULL,
                          contenu TEXT NOT NULL,
                          temps DECIMAL(10,0) NOT NULL CHECK (temps > 0),
-                         datePub DATE NOT NULL
+                         datePub DATE NOT NULL,
+                         imagePrincipale TEXT
 );
 
 -- Table structure for loi
@@ -58,7 +59,7 @@ CREATE TABLE utilisateur (
 CREATE TABLE note (
                       idArticle DECIMAL(10,0) NOT NULL REFERENCES article,
                       pseudo VARCHAR(30) NOT NULL REFERENCES utilisateur,
-                      note NUMERIC NOT NULL CHECK (note IN (1,-1)),
+                      note INT NOT NULL,
                       PRIMARY KEY(idArticle,pseudo)
 );
 
@@ -82,12 +83,13 @@ CREATE TABLE sujet (
 );
 
 -- Table structure for contribue
-CREATE TABLE contribue (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    pseudo VARCHAR(10) NOT NULL,
-    mail VARCHAR(256) NOT NULL,
-    nom VARCHAR(256) NOT NULL,
-    prenom VARCHAR(256) NOT NULL
+CREATE TABLE IF NOT EXISTS contribue (
+    id int NOT NULL AUTO_INCREMENT,
+    theme varchar(30) NOT NULL,
+    datePublication date NOT NULL,
+    link varchar(256) NOT NULL,
+    pseudo varchar(256) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 -- Table structure for discuter
