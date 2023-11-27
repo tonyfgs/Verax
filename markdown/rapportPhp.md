@@ -14,7 +14,7 @@ C'est ainsi l'occasion de revenir sur les différentes modalités de notation é
 
 Dans le cadre de notre projet, nous avons directement intégré la classe de connexion fournie dans le cours, qui intègre bien de son côté PDO. 
 
-A l'aide de cette classe de connexion, nous avons été en mesure de construire différentes Gateways, pour intéragir avec notre base de données. 
+A l'aide de cette classe de connexion, nous avons été en mesure de construire différentes Gateways, pour interagir avec notre base de données. 
 
 **Exemple de Gateways du projet :**
 
@@ -37,7 +37,7 @@ En ce qui concerne nos contrôleurs, la grande majorité a déjà été commenc�
 **Trois contrôleurs du projet bien aboutis :**
 * [Contrôleur des visiteurs](../PHP/controleur/VisiteurControleur.php)
 * [Contrôleur des admins](../PHP/controleur/AdminControleur.php)
-* [Contrôleur des utlisateurs](../PHP/controleur/UtilisateurControleur.php)
+* [Contrôleur des utilisateurs](../PHP/controleur/UtilisateurControleur.php)
 
 ### Pattern Frontcontroleur sans routage
 
@@ -58,13 +58,13 @@ Elle est à retrouver ici : [Validation](../PHP/config/Validation.php).
 
 ### Vues dont vue d'erreur 
 
-Comme dit précédent, nous avons de multiples vues au sein du projet.
+Comme dit précédemment, nous avons de multiples vues au sein du projet.
 
 Nous avons par exemple, entre autre, une vue d'accueil, affichant certains des articles du site dans un caroussel : [accueil](../PHP/Vue/accueil.html). 
 
 Nous avons aussi une vue permettant d'afficher de manière propre et élégante les données des différents articles : [Vue des articles](../PHP/Vue/Article.html). 
 
-Une autre vue intéressante est par exemple cette nous permettant de se connecter : [Vue de connexion](../PHP/Vue/connexion.html). 
+Une autre vue intéressante est par exemple celle nous permettant de se connecter : [Vue de connexion](../PHP/Vue/connexion.html). 
 
 Et pour finir, notre projet possède aussi une vue réservée aux erreurs : [Vue d'erreur](../PHP/Vue/error.html). 
 
@@ -79,7 +79,7 @@ Et pour finir, notre projet possède aussi une vue réservée aux erreurs : [Vue
 
 
 ### Utilisation de namespace PSR4 
-Notre projet est entièreté couvert par des namespace. 
+Notre projet est entièrement couvert par des namespaces. 
 
 Toutes les informations sont à retrouver ici : [composer.json](../PHP/composer.json)
 
@@ -103,8 +103,8 @@ Une interface [IArticleDataManager](../PHP/modele/IArticleDataManager.php) perme
 
 Nous avons pris la décision de stocker directement le contenu de nos articles dans la table Article associée en base de données. 
 
-Le but étant d'éviter de trop compléxifier la base de données en rajoutant une table Contenu, d'autant plus car nos différents types de contenu (paragraphes, vidéos, images) sont en mesure d'évoluer, d'autres risques d'arriver et cela aurait demander des modifications trop fréquentes de la base de données. 
+Le but étant d'éviter de trop compléxifier la base de données en rajoutant une table Contenu, d'autant plus car nos différents types de contenu (paragraphes, vidéos, images) sont en mesure d'évoluer, et en plus de cela d'autres risques d'arriver et cela aurait demandé des modifications trop fréquentes de la base de données. 
 
-Dans ce sens, notre table Article en BDD contient simplement une colonne TEXT contenu tout le contenu de l'article. 
+Dans ce sens, notre table Article en BDD contient simplement une colonne TEXT `contenu` stockant tout les blocs de contenus de l'article. 
 
-Nous avons donc un processus de serialisation des différents contenus de nos articles avant de les insérer en BDD (de manière à n'avoir qu'un string en BDD), puis un procesus de deserialisation vient remettre sous forme d'objets nos différents contenus, à partir du string stocké en BDD. 
+Nous avons donc un processus de serialisation des différents contenus de nos articles avant de les insérer en BDD (de manière à n'avoir qu'un string en BDD), puis un processus de deserialisation vient remettre sous forme d'objets nos différents contenus, à partir du string stocké en BDD. 
