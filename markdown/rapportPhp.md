@@ -83,7 +83,9 @@ Il est ainsi possible de constater que tous les attendus minimaux ont été réa
 ### Au dessus +
 
 ### Vues complètes bien segmentées et utilisation de bootstrap
+Les vues sont séparées du code pour permettre de les mettre à jour sans changer le code ou bien à l’inverse de mettre à jour le code sans modifier les vues. De plus leurs structure est séparé en 3 partie, le header, le footer et le corps de la page et seul de l’affichage de donnée y a été fait. 
 
+Le design des vues a été fait majoritairement avec des composants Bootstrap afin de simplifier le développement de l’esthétique du site ainsi que pour répondre aux consignes.
 
 ### Utilisation de namespace PSR4 
 Notre projet est entièrement couvert par des namespaces. 
