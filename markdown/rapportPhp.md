@@ -78,9 +78,9 @@ Il est ainsi possible d'aller voir ce système avec la [vue d'admin](../PHP/Vue/
 
 # Attendus
 
-Il est ainsi possible de constater que tous les attendus minimaux ont été réalisés. 
-
 ### Au dessus +
+
+Il est ainsi possible de constater que tous les attendus minimaux ont été réalisés. 
 
 ### Vues complètes bien segmentées et utilisation de bootstrap
 Les vues sont séparées du code pour permettre de les mettre à jour sans changer le code ou bien à l’inverse de mettre à jour le code sans modifier les vues. De plus leurs structure est séparé en 3 partie, le header, le footer et le corps de la page et seul de l’affichage de donnée y a été fait. 
