@@ -12,8 +12,32 @@ C'est ainsi l'occasion de revenir sur les différentes modalités de notation é
 
 ### PDO et pattern Gateway 
 
+Dans le cadre de notre projet, nous avons directement intégré la classe de connexion fournie dans le cours, qui intègre bien de son côté PDO. 
 
-### Implémentation MVC et 2 contrôleurs 
+A l'aide de cette classe de connexion, nous avons été en mesure de construire différentes Gateways, pour intéragir avec notre base de données. 
+
+**Exemple de Gateways du projet :**
+
+* [Gateway utilisateur](../PHP/dal/gateways/UtilisateurGateway.php)
+* [Gateway Article](../PHP/dal/gateways/ArticleGateway.php)
+* [Gateway formulaire](../PHP/dal/gateways/FormulaireGateway.php)
+* [Gateway notes](../PHP/dal/gateways/NoteGateway.php)
+
+
+### Implémentation MVC et 2 contrôleurs
+
+Nous avons bien pris soin de séparer la partie vue, des contrôleurs et du modèle.
+
+Notre partie PHP est donc constituée d'un dossier `Vue` contenant toutes les vues, ainsi qu'un dossier `controleur` rassemblant tous les contrôleurs du projet. 
+
+En plus de cela, un dossier `metier` rassemble des classes métiers, mais il a vocation, dans les jours à venir, à être déplace dans le dossier `modele`.
+
+En ce qui concerne nos contrôleurs, la grande majorité a déjà été commencée, et d'autres sont particulièrement complets. 
+
+**Trois contrôleurs du projet bien aboutis :**
+* [Contrôleur des visiteurs](../PHP/controleur/VisiteurControleur.php)
+* [Contrôleur des admins](../PHP/controleur/AdminControleur.php)
+* [Contrôleur des utlisateurs](../PHP/controleur/UtilisateurControleur.php)
 
 ### Pattern Frontcontroleur sans routage
 
