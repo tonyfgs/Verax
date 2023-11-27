@@ -46,7 +46,7 @@ Nous possédons bien un Frontcontroleur, n'implémentant pas de routage.
 Le voici : [Front contrôleur](../PHP/controleur/FrontControler.php)
 
 ### Autoloader simple sans namespace 
-Nous utilisations Autoloader directement avec composer. 
+Nous utilisons Autoloader directement avec composer. 
 
 Il a été configuré ici : [composer.json](../PHP/composer.json)
 
