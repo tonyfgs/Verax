@@ -2,4 +2,8 @@
 
 ### Dépôt du projet Verax 
 
-#### Verax est un site communautaire qui ressence les fakes news 
+# Sommaire
+
+[1.) Rendue de la partie php : rapport](./markdown/rapportPhp.md)
+
+---
