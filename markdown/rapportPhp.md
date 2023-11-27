@@ -70,8 +70,15 @@ Et pour finir, notre projet possède aussi une vue réservée aux erreurs : [Vue
 
 ### Partie administration ou équivalent 
 
+Nous avons implémenté un système de bannissement/débanissement d'utilisateurs (qui bloque certaines actions comme l'envoie de formulaires, ...). 
+
+Il est aussi possible pour les admins de changer les rôles d'un utilisateur donné.
+
+Il est ainsi possible d'aller voir ce système avec la [vue d'admin](../PHP/Vue/adminUserList.html) et le [modèle d'admin](../PHP/modele/ModeleAdmin.php). 
 
 # Attendus
+
+Il est ainsi possible de constater que tous les attendus minimaux ont été réalisés. 
 
 ### Au dessus +
 
@@ -108,3 +115,9 @@ Le but étant d'éviter de trop compléxifier la base de données en rajoutant u
 Dans ce sens, notre table Article en BDD contient simplement une colonne TEXT `contenu` stockant tout les blocs de contenus de l'article. 
 
 Nous avons donc un processus de serialisation des différents contenus de nos articles avant de les insérer en BDD (de manière à n'avoir qu'un string en BDD), puis un processus de deserialisation vient remettre sous forme d'objets nos différents contenus, à partir du string stocké en BDD. 
+
+
+### Utilisation de Javascript
+
+Mise en place du JavaScript pour afficher des popups dans la Vue de [adminListUser](../PHP/Vue/adminUserList.html) afin de préciser un motif au bannissement et enfin la séléction du nouveau rôle de l'utilisateur.
+
