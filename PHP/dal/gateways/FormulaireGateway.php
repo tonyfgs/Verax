@@ -16,8 +16,9 @@ class FormulaireGateway
         $this->con->executeQuery($query);
         $results = $this->con->getResults();
         $tab = array();
+
         foreach ($results as $row){
-            $tab[] = new Formulaire($row['pseudo'],$row['mail'],$row['mdp'],$row['nom'],$row['prenom'],$row['role']);
+            $tab[] = new Formulaire($row['theme'],$row['datePublication'],$row['link'],$row['nom']);
         }
         return $tab;
     }

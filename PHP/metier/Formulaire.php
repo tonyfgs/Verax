@@ -4,13 +4,15 @@ namespace metier;
 
 class Formulaire
 {
-    private $titre;
-    private $contenue;
-    private $contributeur;
-    public function __construct($titre, $contenue, $contributeur){
-     $this->contenue = $contenue;
-     $this->contributeur = $contributeur;
-     $this->titre = $titre;
+    private $theme;
+    private $datePublication;
+    private $link;
+    private $pseudo;
+    public function __construct( $theme,  $datePublication,  $link, $pseudo){
+     $this->theme = $theme;
+     $this->datePublication = $datePublication;
+     $this->link = $link;
+    $this->pseudo = $pseudo;
     }
 
 }
