@@ -17,7 +17,9 @@ if (!isset($_SESSION["role"])) {
 }
 
 
-global $dsn, $login, $mdp;
+try {
+
+    global $dsn, $login, $mdp;
 $gw = new \dal\gateways\ArticleGateway(new \dal\Connection($dsn, $login, $mdp));
 $mgr = new \modele\ArticleManager(new \modele\stubArticles());
 foreach ($mgr->getDerniersArticles(3) as $article){
@@ -28,5 +30,9 @@ foreach ($mgr->getDerniersArticles(3) as $article){
 
 
 $cont = new FrontControler();
+
+} catch (Exception $e) {
+    echo $e -> getMessage();
+}
 
 //require("./brouillon/brouillonArticle.php");
