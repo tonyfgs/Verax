@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Verax</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/adminCss.css">
 </head>
+
 <body>
 {% include './header.html.twig' %}
 {% include './headerAdmin.html.twig' %}
+
+
+<div class="container">
+    <!-- Table for the user list -->
+    <table>
+        <thead>
+        <tr>
+            <th class="centered">Identifiant Signalement</th>
+            <th class="centered">Motif</th>
+            <th class="centered">Pseudo</th>
+            <th class="centered">Numero Article</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Repeat this block for each user entry -->
+        {% if reports is not empty %}
+        {% for report in reports %}
+        <tr>
+            <td>{{ report.id }}</td>
+            <td>{{ report.motif }} </td>
+            <td>{{ report.pseudo }}</td>
+            <td>{{ report.idArticle }}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+<!-- Close Header -->
+<footer>
+
+</footer>
+<!-- End Footer -->
+
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+<!-- End Script -->
 </body>
+
 </html>

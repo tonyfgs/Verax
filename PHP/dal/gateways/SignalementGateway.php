@@ -11,21 +11,18 @@ class SignalementGateway
         $this->con = $con;
     }
 
-    public function getAllReporting(){
+    public function getAllReporting(): array{
         $query = 'SELECT * FROM signalement';
         $res = $this->con->executeQuery($query);
-        $results = $this->con->getResults();
-        $tab = array();
-        var_dump($tab);
+        return $results = $this->con->getResults();
     }
 
-    public function insertReporting($motif){
-        $query = 'INSERT INTO signalement VALUES (:m,:a,:p)';
-        $this->con->executeQuery($query,  array(
+    public function insertReporting($motif,$idArticle): bool{
+        $query = 'INSERT INTO signalement (motif, idArticle, pseudo) VALUES (:m,:a,:p)';
+        return $this->con->executeQuery($query,  array(
             ':m' => array($motif, PDO::PARAM_STR),
-            ':p' => array($_SESSION['pseudo'], PDO::PARAM_STR),
-            ':a' => array($preno, PDO::PARAM_STR)
-
+            ':a' => array($idArticle, PDO::PARAM_INT),
+            ':p' => array($_SESSION['pseudo'], PDO::PARAM_STR)
         ));
     }
 }

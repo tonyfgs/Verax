@@ -3,7 +3,9 @@
 namespace modele;
 
 use dal\Connection;
+use dal\gateways\ArticleGateway;
 use dal\gateways\FormulaireGateway;
+use dal\gateways\SignalementGateway;
 use dal\gateways\UtilisateurGateway;
 use metier\Formulaire;
 use metier\Utilisateur;
@@ -155,10 +157,27 @@ class ModeleAdmin
     }
 
     public function getAllForm(){
-    global $dsn, $login, $mdp, $twig;
-    $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-    $tab = $gw->getAllForm();
-    echo $twig->render('adminFormList.html', ['forms' => $tab,  "userRole" => $_SESSION["role"]]);
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        $tab = $gw->getAllForm();
+        echo $twig->render('adminFormList.html', ['forms' => $tab,  "userRole" => $_SESSION["role"]]);
+    }
+
+    public function listReport(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
+        $tab = $gw->getAllReporting();
+        echo $twig->render('adminReport.html', ['reports' => $tab,  "userRole" => $_SESSION["role"]]);
+    }
+
+    public function reportArticle(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
+        $result = $gw->insertReporting($_POST['motif'],$_POST['articleId']);
+        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+        $tabArticles = array();
+        $tabArticles = $manager -> getDerniersArticles(3);
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
 
 }

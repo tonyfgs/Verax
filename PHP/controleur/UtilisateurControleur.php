@@ -47,9 +47,6 @@ class UtilisateurControleur
                 case 'SubmitFormBug':
                     $this->submitFormBug();
                     break;
-                case 'ReportArticle':
-                    $this->reportArticle();
-                    break;
                 case 'AccessAccount':
                     $this->accessAccount();
                     break;

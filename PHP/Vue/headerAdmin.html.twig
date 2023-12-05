@@ -19,7 +19,9 @@
     </form>
     <a href="#about">Sujets a valides</a>
     <a href="#about">Rediger un articles</a>
-    <a href="index.php?action=ReportArticle">Signalements</a>
+    <form action="index.php?action=ListReport" method="POST">
+        <input type="submit" class="page-header" value="Signalements">
+    </form>
     <form action="index.php?action=GestionUser" method="POST">
         <input type="submit" class="page-header" value="Liste des Utilisateurs">
     </form>

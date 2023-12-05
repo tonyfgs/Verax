@@ -58,6 +58,12 @@ class AdminControleur
                 case 'SubmitFormBug':
                     $this->submitFormBug();
                     break;
+                case 'ListReport':
+                    $this->listReport();
+                    break;
+                case "ReportArticle":
+                    $this->reportArticle();
+                    break;
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
                     echo $twig->render("error.html", ['dVueError' => $dataVueErreur]);
@@ -133,6 +139,16 @@ class AdminControleur
     function sujetSoumis(){
         $mdl = new ModeleAdmin();
         $mdl->getAllForm();
+    }
+
+    function listReport(){
+        $mdl = new ModeleAdmin();
+        $mdl->listReport();
+    }
+
+    function reportArticle(){
+        $mdl = new ModeleAdmin();
+        $mdl->reportArticle();
     }
 
 }

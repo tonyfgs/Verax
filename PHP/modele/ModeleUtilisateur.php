@@ -3,8 +3,10 @@
 namespace modele;
 use controleur\VisiteurControleur;
 use dal\Connection;
+use dal\gateways\ArticleGateway;
 use dal\gateways\FormulaireGateway;
 use dal\gateways\NoteGateway;
+use dal\gateways\SignalementGateway;
 use dal\gateways\UtilisateurGateway;
 use metier\Utilisateur;
 
@@ -118,8 +120,10 @@ class ModeleUtilisateur
 
     public function reportArticle(){
         global $dsn, $login, $mdp, $twig;
-        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-        $result = $gw->insertFormMessage($_POST['pseudo'],['userRole' => $_SESSION["role"]],$_POST['name'],$_POST['surname']);
-        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
-    }
+        $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
+        $result = $gw->insertReporting($_POST['motif'],$_POST['articleId']);
+        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+        $tabArticles = array();
+        $tabArticles = $manager -> getDerniersArticles(3);
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);    }
 }
