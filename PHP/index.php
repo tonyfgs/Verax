@@ -16,20 +16,18 @@ if (!isset($_SESSION["role"])) {
     $_SESSION["role"] = 'Visiteur';
 }
 
+global $dsn, $login, $mdp;
 
 try {
 
-    global $dsn, $login, $mdp;
-$gw = new \dal\gateways\ArticleGateway(new \dal\Connection($dsn, $login, $mdp));
-$mgr = new \modele\ArticleManager(new \modele\stubArticles());
-foreach ($mgr->getDerniersArticles(3) as $article){
-    $serial = \modele\SerialManager::serialiserContenus($article->getContenus());
-    $gw->insert($article->getId(),$article->getAuteur(), $article->getDescription(), $article->getTitre(), $serial, $article->getTemps(), $article->getImagePrincipale());
-}
+    $gw = new \dal\gateways\ArticleGateway(new \dal\Connection($dsn, $login, $mdp));
+    $mgr = new \modele\ArticleManager(new \modele\stubArticles());
+    foreach ($mgr->getDerniersArticles(3) as $article){
+        $serial = \modele\SerialManager::serialiserContenus($article->getContenus());
+        $gw->insert($article->getId(),$article->getAuteur(), $article->getDescription(), $article->getTitre(), $serial, $article->getTemps(), $article->getImagePrincipale());
+    }
 
-
-
-$cont = new FrontControler();
+    //$cont = new FrontControler();
 
 } catch (Exception $e) {
     echo $e -> getMessage();
