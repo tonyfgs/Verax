@@ -112,7 +112,6 @@ class VisiteurControleur
 
     public function afficherEconomie() {
         global $twig;
-        echo $_SESSION["role"];
         echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
     }
 

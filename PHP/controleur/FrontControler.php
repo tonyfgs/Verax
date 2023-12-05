@@ -23,13 +23,13 @@ class FrontControler {
                 "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle","ReportArticle", 'AccessAccount'
             ],
             "Redacteur" => [
-                "redigerArticle", "validerArticle", "publierArticle",
+                "redigerArticle", "validerArticle", "publierArticle","SujetSoumis"
             ],
             "Moderateur" => [
-                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
+                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur",
             ],
             "Admin" => [
-                'GestionUser','BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer', "AccessForm", 'AccessAccount' , "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle"
+                'GestionUser',"SujetSoumis",'BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer', "AccessForm", 'AccessAccount' , "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle"
             ],
         );
         $action = Validation::nettoyerString($_GET["action"] ?? "");

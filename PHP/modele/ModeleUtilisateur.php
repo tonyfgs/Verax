@@ -110,11 +110,16 @@ class ModeleUtilisateur
     public function   SubmitFormArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
-        echo "1";
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            echo "2";
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
             echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
         }
+    }
+
+    public function reportArticle(){
+        global $dsn, $login, $mdp, $twig;
+        $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+        $result = $gw->insertFormMessage($_POST['pseudo'],['userRole' => $_SESSION["role"]],$_POST['name'],$_POST['surname']);
+        echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
     }
 }

@@ -5,6 +5,7 @@ namespace modele;
 use dal\Connection;
 use dal\gateways\FormulaireGateway;
 use dal\gateways\UtilisateurGateway;
+use metier\Formulaire;
 use metier\Utilisateur;
 
 class ModeleAdmin
@@ -151,6 +152,13 @@ class ModeleAdmin
             $result = $gw->insertFormMessage($_POST['pseudo'],$_POST['email'],$_POST['name'],$_POST['surname']);
             echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
         }
+    }
+
+    public function getAllForm(){
+    global $dsn, $login, $mdp, $twig;
+    $gw = new FormulaireGateway(new Connection($dsn, $login, $mdp));
+    $tab = $gw->getAllForm();
+    echo $twig->render('adminFormList.html', ['forms' => $tab,  "userRole" => $_SESSION["role"]]);
     }
 
 }

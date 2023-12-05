@@ -88,6 +88,54 @@
         </div>
     </div>
 
+    <div class="signalement-container">
+        <button id="signalementBtn" class="signalement-btn">Signalement</button>
+
+        <!-- Popup de signalement -->
+        <div id="signalementPopup" class="signalement-popup">
+            <div class="signalement-content">
+                <span class="close  ">&times;</span>
+                <form action="path_to_your_handling_script" method="post">
+                    <textarea name="signalementText" placeholder="Décrivez le problème..."></textarea>
+                    
+                    <input type="submit" value="Envoyer">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Obtenez le bouton qui ouvre le popup
+        var btn = document.getElementById("signalementBtn");
+
+        // Obtenez le popup lui-même
+        var popup = document.getElementById("signalementPopup");
+
+        // Obtenez l'élément <span> qui ferme le popup
+        var span = document.getElementsByClassName("close")[0];
+
+        // Lorsque l'utilisateur clique sur le bouton, ouvrez le popup
+        btn.onclick = function() {
+            popup.style.display = "block";
+        }
+
+        // Lorsque l'utilisateur clique sur <span> (x), fermez le popup
+        span.onclick = function() {
+            popup.style.display = "none";
+        }
+
+        // Lorsque l'utilisateur clique n'importe où en dehors du popup, fermez-le
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
 
     {% include './footer.html.twig' %}
 <!-- Ajoutez vos scripts JavaScript ici -->

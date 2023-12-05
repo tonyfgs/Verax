@@ -26,6 +26,9 @@ class UtilisateurControleur
                 case 'Disconnect':
                     $this->disconnect();
                     break;
+                case 'ReportArticle':
+                    $this->reportArticle();
+                    break;
                 case 'GoodReview':
                     $this->goodReview();
                     break;
@@ -115,7 +118,8 @@ class UtilisateurControleur
     }
 
     function reportArticle(){
-
+        $mdl = new ModeleUtilisateur();
+        $mdl->reportArticle();
     }
 
     function changeEmail(){

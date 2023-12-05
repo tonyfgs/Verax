@@ -133,3 +133,44 @@
     width: 50px; /* Ajustez la taille de l'image selon vos besoins */
     height: 50px; /* Ajustez la taille de l'image selon vos besoins */
 }
+
+
+/* Style pour le conteneur Flexbox */
+.signalement-container {
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligner les éléments enfant à droite */
+    z-index: 1001; /* S'assurer qu'il est au-dessus des autres éléments */
+}
+
+/* Style pour le bouton de signalement */
+.signalement-btn {
+    /* Styles pour le bouton (taille, couleurs, etc.) */
+    margin-bottom: 10px; /* Ajoutez une marge pour séparer du popup */
+}
+
+/* Style pour le popup de signalement */
+.signalement-popup {
+    display: none; /* Caché par défaut */
+    bottom: 100%; /* Positionner juste au-dessus du bouton */
+    right: 0;
+    z-index: 1000; /* Assurez-vous qu'il est en dessous du bouton pour qu'il apparaisse au-dessus lorsqu'il est affiché */
+    /* Autres styles pour le popup (taille, couleurs, box-shadow, etc.) */
+}
+
+.signalement-popup .close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.signalement-popup textarea {
+    width: 100%;
+    /* Styles pour le textarea */
+}
+
+.signalement-popup input[type="submit"] {
+    /* Styles pour le bouton d'envoi */
+}

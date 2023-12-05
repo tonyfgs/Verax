@@ -11,20 +11,20 @@ class FormulaireGateway
         $this->con = $con;
     }
 
-    public function getAllForm() : array{
-        $query = 'SELECT * FROM Contribution';
+    public function     getAllForm() : array{
+        $query = 'SELECT * FROM contribue';
         $this->con->executeQuery($query);
         $results = $this->con->getResults();
         $tab = array();
 
         foreach ($results as $row){
-            $tab[] = new Formulaire($row['theme'],$row['datePublication'],$row['link'],$row['nom']);
+            $tab[] = new Formulaire($row['theme'],$row['datePublication'],$row['link'],$row['pseudo']);
         }
         return $tab;
     }
 
     public function getAllFormByUser($pseudo) : array{
-        $query = 'SELECT * FROM Contribution WHERE idContributeur = :pseudo';
+        $query = 'SELECT * FROM contribue WHERE idContributeur = :pseudo';
         $param = [ array(
             ':pseudo' => array($pseudo, PDO::PARAM_STR),
         )
@@ -34,7 +34,7 @@ class FormulaireGateway
     }
 
     public function getFormById($idForm) : array{
-        $query = 'SELECT * FROM Contribution WHERE id = :idForm';
+        $query = 'SELECT * FROM contribue WHERE id = :idForm';
         $param = [ array(
             ':pseudo' => array($idForm, PDO::PARAM_INT),
         )
@@ -44,7 +44,7 @@ class FormulaireGateway
     }
 
     public function getAllFormByType($type) : array{
-        $query = 'SELECT * FROM Contribution WHERE type = :type';
+        $query = 'SELECT * FROM contribue WHERE type = :type';
         $param = [ array(
             ':pseudo' => array($type, PDO::PARAM_STR),
         )
@@ -64,9 +64,7 @@ class FormulaireGateway
         ));
     }
     public function insertFormMessage($pseudo, $mail, $nom, $prenom) : bool {
-        echo "\n1.1";
         $query = 'INSERT INTO contribue VALUES (:ps, :m, :n, :p)';
-        echo "\n1.2";
         $this->con->executeQuery($query,  array(
             ':ps' => array($pseudo, PDO::PARAM_STR),
             ':m' => array($mail, PDO::PARAM_STR),

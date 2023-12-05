@@ -22,27 +22,8 @@
 
 <body>
 {% include './header.html.twig' %}
+{% include './headerAdmin.html.twig' %}
 
-<!-- Nav Admin -->
-<div class="navAdmin">
-  <a href="SujetSoumis.html">Sujets soumis</a>
-  <a href="ValidationArticle.html">Sujets a valides</a>
-  <a href="RedactionArticle.html">Rediger un articles</a>
-  <a href="#about">Signalements</a>
-  <form action="index.php?action=GestionUser" method="POST">
-    <input type="submit" class="page-header" value="Liste des Utilisateurs">
-  </form>
-  <a href="#about" >Actions des Moderateurs</a>
-  <a href="#about" >Bureau Clients</a>
-</div>
-
-
-<div class="search-container">
-  <form action="/search" method="get">
-    <input type="text" placeholder="Recherche..." name="search">
-    <input type="submit" value="Go">
-  </form>
-</div>
 
 <!-- Close Header -->
 <footer>

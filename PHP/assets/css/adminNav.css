@@ -11,9 +11,9 @@ h1 {
     list-style-type: none; /* Remove default list styling */
     background-color: #f3f3f3; /* Background color of the nav bar */
     padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margins */
+    margin-bottom: 10px; /* Remove default margins */
 }
-.navAdmin a {
+.navAdmin a,.navAdmin form {
     display: block; /* Block level links */
     color: #000000; /* Text color */
     text-align: center; /* Center text */

@@ -28,6 +28,9 @@ class AdminControleur
                 case 'GestionUser':
                     $this->gestionUser();
                     break;
+                case 'SujetSoumis':
+                    $this->sujetSoumis();
+                    break;
                 case 'BanUser':
                     $this->banUser();
                     break;
@@ -125,6 +128,11 @@ class AdminControleur
     function SubmitFormFakeNews(){
         $mdl = new ModeleAdmin();
         $mdl->SubmitFormFakeNews();
+    }
+
+    function sujetSoumis(){
+        $mdl = new ModeleAdmin();
+        $mdl->getAllForm();
     }
 
 }

@@ -14,5 +14,24 @@ class Formulaire
      $this->link = $link;
     $this->pseudo = $pseudo;
     }
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    public function getDatePublication()
+    {
+        return $this->datePublication;
+    }
+
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
 
 }
