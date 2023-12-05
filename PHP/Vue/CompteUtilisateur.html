@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     ,<link rel="stylesheet" href="assets/css/cmptUser.css" />
+    <link rel="stylesheet" href="assets/css/adminNav.css" />
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
@@ -52,7 +53,54 @@
             </div>
         </div>
     </div>
+    <form class="ban-form" action="index.php?action=DeleteProfil" method="POST" onsubmit="return popUpDeConfirmation('{{ utilisateur.pseudo }}')">
+        <input type="hidden" name="id" value="{{ utilisateur.pseudo }}">
+        <input type="submit" value="SUPPRIMER PROFIL">
+    </form>
+    <div id="confirmationPopup" class="confirmation-popup">
+        <form id="banConfirmationForm" action="index.php?action=DeleteProfil" method="POST" onsubmit="return envoyeBan()">
+            <input type="hidden" name="id" id="pseudoInput">
+            <label for="messageInput">Confirmer l'action :</label>
+            <input type="submit" value="Confirmer la suppression">
+            <button type="button" onclick="masquageConfirmationPopup()">Annuler</button>
+        </form>
+    </div>
     {% endif %}
 </div>
+<script>
+    function popUpDeConfirmation(pseudo) {
+        document.getElementById('pseudoInput').value = pseudo;
+        document.getElementById('confirmationPopup').style.display = 'block';
+        return false; // Prevents the form from submitting immediately
+    }
+
+    function masquageConfirmationPopup() {
+        document.getElementById('confirmationPopup').style.display = 'none';
+    }
+
+    function envoyeBan(){
+        // Set the value of the hidden "motif" input with the content of the message input
+        var messageContent = document.getElementById('messageInput').value;
+        document.getElementById('motifInput').value = messageContent;
+        return true; // Allow the form to be submitted
+    }
+
+    function envoyeRole(){
+        // Set the value of the hidden "motif" input with the content of the message input
+        var role = document.getElementById('roleSelect').value;
+        document.getElementById('roleInput').value = role;
+        return true; // Allow the form to be submitted
+    }
+
+    function showRoleManagementModal(pseudo) {
+        document.getElementById('pseudoInputRole').value = pseudo;
+        document.getElementById('roleManagementModal').style.display = 'block';
+        return false; // Prevents the form from submitting immediately
+    }
+
+    function hideRoleManagementModal() {
+        document.getElementById('roleManagementModal').style.display = 'none';
+    }
+</script>
 </body>
 </html>
