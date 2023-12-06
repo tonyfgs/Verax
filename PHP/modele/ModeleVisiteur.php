@@ -85,7 +85,9 @@ class ModeleVisiteur
 
     function afficherArticle() {
         global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+
+        //$manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+        $manager = new ArticleManager(new stubArticles());
 
         if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
             $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
@@ -101,7 +103,10 @@ class ModeleVisiteur
     //utiliser router afficher les pages
     function afficherAccueil(){
         global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+
+        //$manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+        $manager = new ArticleManager(new stubArticles());
+        
         $tabArticles = array();
         $tabArticles = $manager -> getDerniersArticles(3);
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);

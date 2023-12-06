@@ -27,7 +27,7 @@ global $dsn, $login, $mdp;
 //     $gw->insert($article->getId(),$article->getAuteur(), $article->getDescription(), $article->getTitre(), $serial, $article->getTemps(), $article->getImagePrincipale());
 // }
 
-//$cont = new FrontControler();
+$cont = new FrontControler();
 
 
 //require("./brouillon/brouillonArticle.php");
