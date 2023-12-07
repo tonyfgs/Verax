@@ -100,7 +100,7 @@
             <div class="signalement-content">
                 <span class="close  ">&times;</span>
                 <form action="index.php?action=ReportArticle" method="post">
-                    <textarea name="motif" placeholder="Décrivez le problème..."></textarea>
+                    <textarea name="motif" placeholder="Décrivez le problème..." required></textarea>
                     <input type="hidden" name="articleId" value="{{ article.getId() }}">
                     <input type="submit" value="Envoyer">
                 </form>

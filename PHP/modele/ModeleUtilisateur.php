@@ -121,13 +121,6 @@ class ModeleUtilisateur
     public function reportArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
-        if (empty($_POST['motif'])){
-            $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
-            $tabArticles = array();
-            $tabArticles = $manager -> getDerniersArticles(3);
-            echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
-            return;
-        }
         if($_SESSION["role"] != 'Visiteur' ){
             $result = $gw->insertReporting($_POST['motif'],$_POST['articleId']);
         }
