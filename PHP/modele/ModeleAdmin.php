@@ -167,7 +167,10 @@ class ModeleAdmin
         global $dsn, $login, $mdp, $twig;
         $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
         $tab = $gw->getAllReporting();
-        usort($tab, function($a, $b) {
+        usort($tab, function($a, $b) {  
+            if ($a['idArticle'] == $b['idArticle']) {
+                return $b['dateSignalement'] <=> $a['dateSignalement'];
+            }
             return $a['idArticle'] <=> $b['idArticle'];
         });
         echo $twig->render('adminReport.html', array('reports' => $tab,  "userRole" => $_SESSION["role"]));
