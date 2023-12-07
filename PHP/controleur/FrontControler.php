@@ -20,7 +20,7 @@ class FrontControler {
                 "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie"
             ],
             "Utilisateur" => [
-                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle","ReportArticle", 'AccessAccount'
+                "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle","ReportArticle", 'AccessAccount', 'DeleteProfil'
             ],
             "Redacteur" => [
                 "redigerArticle", "validerArticle", "publierArticle","SujetSoumis"

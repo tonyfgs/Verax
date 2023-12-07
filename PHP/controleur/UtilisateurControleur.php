@@ -56,8 +56,9 @@ class UtilisateurControleur
                 case 'ChangePassword':
                     $this->changePassword();
                     break;
-                case 'DeleteAccount':
-                    $this->deleteAccount();
+                case 'DeleteProfil':
+                    $this->deleteProfil();
+                    break;
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
                     echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
@@ -127,7 +128,9 @@ class UtilisateurControleur
 
     }
 
-    function deleteAccount(){
+    function deleteProfil(){
+        $mdl = new ModeleUtilisateur();
+        $mdl->deleteProfil();
 
     }
 }
