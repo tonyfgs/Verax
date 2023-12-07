@@ -1,20 +1,11 @@
-body, html {
+body{
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-}
-.bg {
-    /* The image used */
-    background-image: url("../img/wallpaperConnexion.jpg");
+    background-color: #dcd2cb;
 
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
+
 .login-container {
     position: absolute;
     top: 50%;

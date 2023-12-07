@@ -19,7 +19,7 @@
     <table>
         <thead>
         <tr>
-            <th class="centered">Identifiant Signalement</th>
+            <th class="centered">Date Signalement</th>
             <th class="centered">Motif</th>
             <th class="centered">Pseudo</th>
             <th class="centered">Numero Article</th>
@@ -30,7 +30,7 @@
         {% if reports is not empty %}
         {% for report in reports %}
         <tr>
-            <td>{{ report.id }}</td>
+            <td>{{ report.dateSignalement }}</td>
             <td>{{ report.motif }} </td>
             <td>{{ report.pseudo }}</td>
             <td>{{ report.idArticle }}</td>

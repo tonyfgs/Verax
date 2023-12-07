@@ -147,7 +147,7 @@ class AdminControleur
     }
 
     function reportArticle(){
-        $mdl = new ModeleAdmin();
+        $mdl = new ModeleUtilisateur();
         $mdl->reportArticle();
     }
 

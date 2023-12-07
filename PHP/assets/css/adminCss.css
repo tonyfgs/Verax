@@ -4,7 +4,9 @@ table {
 
 }
 
-
+h2{
+    text-align: center;
+}
 
 table tr th, table tr td {
     text-align: left;
@@ -90,4 +92,8 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+
+.bodyInscription{
+    background-color: #9b4102;
 }

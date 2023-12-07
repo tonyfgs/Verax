@@ -18,7 +18,7 @@ class SignalementGateway
     }
 
     public function insertReporting($motif,$idArticle): bool{
-        $query = 'INSERT INTO signalement (motif, idArticle, pseudo) VALUES (:m,:a,:p)';
+        $query = 'INSERT INTO signalement (dateSignalement,motif, idArticle, pseudo) VALUES (CURRENT_DATE,:m,:a,:p)';
         return $this->con->executeQuery($query,  array(
             ':m' => array($motif, PDO::PARAM_STR),
             ':a' => array($idArticle, PDO::PARAM_INT),

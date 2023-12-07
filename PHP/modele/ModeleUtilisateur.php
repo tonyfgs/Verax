@@ -121,9 +121,24 @@ class ModeleUtilisateur
     public function reportArticle(){
         global $dsn, $login, $mdp, $twig;
         $gw = new SignalementGateway(new Connection($dsn, $login, $mdp));
-        $result = $gw->insertReporting($_POST['motif'],$_POST['articleId']);
+        if (empty($_POST['motif'])){
+            $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+            $tabArticles = array();
+            $tabArticles = $manager -> getDerniersArticles(3);
+            echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
+            return;
+        }
+        if($_SESSION["role"] != 'Visiteur' ){
+            $result = $gw->insertReporting($_POST['motif'],$_POST['articleId']);
+        }
+        else if ($_SESSION["role"] = 'Visiteur') {
+            echo $twig->render('connexion.html', ["userRole" => $_SESSION["role"]]);
+            return;
+        }
         $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
         $tabArticles = array();
         $tabArticles = $manager -> getDerniersArticles(3);
-        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);    }
+        echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
+        return;
+    }
 }
