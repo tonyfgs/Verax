@@ -1,141 +1,240 @@
--- Drop tables if they exist
-DROP TABLE IF EXISTS article;
-DROP TABLE IF EXISTS utilisateur;
-DROP TABLE IF EXISTS concerne;
-DROP TABLE IF EXISTS contribue;
-DROP TABLE IF EXISTS loi;
-DROP TABLE IF EXISTS note;
-DROP TABLE IF EXISTS posseder;
-DROP TABLE IF EXISTS supprime;
-DROP TABLE IF EXISTS role;
-DROP TABLE IF EXISTS sujet;
-DROP TABLE IF EXISTS theme;
-DROP TABLE IF EXISTS discuter;
-DROP TABLE IF EXISTS bannir;
-DROP TABLE IF EXISTS consultation;
-DROP TABLE IF EXISTS consulter;
-DROP TABLE IF EXISTS rediger;
 
--- Table structure for article
-CREATE TABLE article (
-                         idArticle DECIMAL(10,0) PRIMARY KEY,
-                         auteur VARCHAR(30),
-                         description TEXT,
-                         titre VARCHAR(30) NOT NULL,
-                         contenu TEXT NOT NULL,
-                         temps DECIMAL(10,0) NOT NULL CHECK (temps > 0),
-                         datePub DATE NOT NULL,
-                         imagePrincipale TEXT
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `idArticle` decimal(10,0) NOT NULL,
+  `auteur` varchar(30) DEFAULT NULL,
+  `description` text,
+  `titre` varchar(30) NOT NULL,
+  `contenu` text NOT NULL,
+  `temps` decimal(10,0) NOT NULL,
+  `datePub` date NOT NULL,
+  `imagePrincipale` text,
+  PRIMARY KEY (`idArticle`)
+) ;
+
+DROP TABLE IF EXISTS `bannir`;
+CREATE TABLE IF NOT EXISTS `bannir` (
+  `pseudoUser` varchar(30) NOT NULL,
+  `pseudoModo` varchar(30) NOT NULL,
+  `motif` text NOT NULL,
+  PRIMARY KEY (`pseudoUser`,`pseudoModo`)
 );
 
--- Table structure for loi
-CREATE TABLE loi (
-                     codeLoi DECIMAL(10,0) PRIMARY KEY,
-                     amende DECIMAL(10,0) NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `concerne`
+--
+
+DROP TABLE IF EXISTS `concerne`;
+CREATE TABLE IF NOT EXISTS `concerne` (
+  `codeLoi` decimal(10,0) DEFAULT NULL,
+  `idArticle` decimal(10,0) DEFAULT NULL
 );
 
--- Table structure for concerne
-CREATE TABLE concerne (
-                          codeLoi DECIMAL(10,0) REFERENCES loi,
-                          idArticle DECIMAL(10,0) REFERENCES article
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `consultation`
+--
+
+DROP TABLE IF EXISTS `consultation`;
+CREATE TABLE IF NOT EXISTS `consultation` (
+  `id` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) DEFAULT NULL,
+  `type` text NOT NULL,
+  `contenu` text NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- Table structure for role
-CREATE TABLE role (
-    roleUtil CHAR(1) PRIMARY KEY CHECK (roleUtil IN ('U','R','M','A'))
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `consulter`
+--
+
+DROP TABLE IF EXISTS `consulter`;
+CREATE TABLE IF NOT EXISTS `consulter` (
+  `idConsultation` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  `motif` text NOT NULL,
+  PRIMARY KEY (`idConsultation`,`pseudo`)
 );
 
--- Table structure for utilisateur
-CREATE TABLE utilisateur (
-                             pseudo VARCHAR(30) PRIMARY KEY,
-                             nom VARCHAR(30) NOT NULL,
-                             prenom VARCHAR(30) NOT NULL,
-                             mdp VARCHAR(255) NOT NULL,
-                             mail VARCHAR(30) NOT NULL,
-                             roleUtil CHAR(1) NOT NULL REFERENCES role
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contribue`
+--
+
+DROP TABLE IF EXISTS `contribue`;
+CREATE TABLE IF NOT EXISTS `contribue` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `theme` varchar(30) NOT NULL,
+  `datePublication` date NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `pseudo` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- Table structure for note
-CREATE TABLE note (
-                      idArticle DECIMAL(10,0) NOT NULL REFERENCES article,
-                      pseudo VARCHAR(30) NOT NULL REFERENCES utilisateur,
-                      note INT NOT NULL,
-                      PRIMARY KEY(idArticle,pseudo)
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `discuter`
+--
+
+DROP TABLE IF EXISTS `discuter`;
+CREATE TABLE IF NOT EXISTS `discuter` (
+  `idMessage` decimal(10,0) NOT NULL,
+  `idArticle` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  `message` text NOT NULL,
+  `datePublication` date NOT NULL,
+  PRIMARY KEY (`idMessage`)
 );
 
--- Table structure for posseder
-CREATE TABLE posseder (
-                          pseudo VARCHAR(30) REFERENCES utilisateur,
-                          roleUtil CHAR(1) REFERENCES role,
-                          PRIMARY KEY (pseudo,roleUtil)
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `loi`
+--
+
+DROP TABLE IF EXISTS `loi`;
+CREATE TABLE IF NOT EXISTS `loi` (
+  `codeLoi` decimal(10,0) NOT NULL,
+  `amende` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`codeLoi`)
 );
 
--- Table structure for theme
-CREATE TABLE theme (
-    theme VARCHAR(30) PRIMARY KEY
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `note`
+--
+
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
+  `idArticle` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  `note` int NOT NULL,
+  PRIMARY KEY (`idArticle`,`pseudo`)
 );
 
--- Table structure for sujet
-CREATE TABLE sujet (
-                       idArticle DECIMAL(10,0) REFERENCES article,
-                       idTheme VARCHAR(30) REFERENCES theme,
-                       PRIMARY KEY(idArticle,idTheme)
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`idArticle`, `pseudo`, `note`) VALUES
+('1', 'admin', -1),
+('3', 'admin', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `posseder`
+--
+
+DROP TABLE IF EXISTS `posseder`;
+CREATE TABLE IF NOT EXISTS `posseder` (
+  `pseudo` varchar(30) NOT NULL,
+  `roleUtil` char(1) NOT NULL,
+  PRIMARY KEY (`pseudo`,`roleUtil`)
 );
 
--- Table structure for contribue
-CREATE TABLE IF NOT EXISTS contribue (
-    id int NOT NULL AUTO_INCREMENT,
-    theme varchar(30) NOT NULL,
-    datePublication date NOT NULL,
-    link varchar(256) NOT NULL,
-    pseudo varchar(256) NOT NULL,
-    PRIMARY KEY (id)
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rediger`
+--
+
+DROP TABLE IF EXISTS `rediger`;
+CREATE TABLE IF NOT EXISTS `rediger` (
+  `idArticle` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  PRIMARY KEY (`pseudo`,`idArticle`)
 );
 
--- Table structure for discuter
-CREATE TABLE discuter (
-                          idMessage DECIMAL(10,0) PRIMARY KEY,
-                          idArticle DECIMAL(10,0) NOT NULL REFERENCES article,
-                          pseudo VARCHAR(30) NOT NULL REFERENCES utilisateur,
-                          message TEXT NOT NULL,
-                          datePublication DATE NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `roleUtil` char(1) NOT NULL,
+  PRIMARY KEY (`roleUtil`)
+) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `signalement`
+--
+
+DROP TABLE IF EXISTS `signalement`;
+CREATE TABLE IF NOT EXISTS `signalement` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dateSignalement` date NOT NULL,
+  `motif` text NOT NULL,
+  `idArticle` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- Table structure for supprime
-CREATE TABLE supprime (
-                          idArticle DECIMAL(10,0) REFERENCES article,
-                          pseudo VARCHAR(30) REFERENCES utilisateur,
-                          motif TEXT NOT NULL,
-                          PRIMARY KEY(idArticle,pseudo)
+----------------
+
+--
+-- Structure de la table `sujet`
+--
+
+DROP TABLE IF EXISTS `sujet`;
+CREATE TABLE IF NOT EXISTS `sujet` (
+  `idArticle` decimal(10,0) NOT NULL,
+  `idTheme` varchar(30) NOT NULL,
+  PRIMARY KEY (`idArticle`,`idTheme`)
 );
 
--- Table structure for bannir
-CREATE TABLE bannir (
-                        pseudoUser VARCHAR(30) REFERENCES utilisateur,
-                        pseudoModo VARCHAR(30) REFERENCES utilisateur,
-                        motif TEXT NOT NULL,
-                        PRIMARY KEY(pseudoUser,pseudoModo)
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `supprime`
+--
+
+DROP TABLE IF EXISTS `supprime`;
+CREATE TABLE IF NOT EXISTS `supprime` (
+  `idArticle` decimal(10,0) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  `motif` text NOT NULL,
+  PRIMARY KEY (`idArticle`,`pseudo`)
 );
 
--- Table structure for consultation
-CREATE TABLE consultation (
-                              id DECIMAL(10,0) PRIMARY KEY,
-                              pseudo VARCHAR(30) REFERENCES utilisateur,
-                              type TEXT NOT NULL,
-                              contenu TEXT NOT NULL
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `theme`
+--
+
+DROP TABLE IF EXISTS `theme`;
+CREATE TABLE IF NOT EXISTS `theme` (
+  `theme` varchar(30) NOT NULL,
+  PRIMARY KEY (`theme`)
 );
 
--- Table structure for consulter
-CREATE TABLE consulter (
-                           idConsultation DECIMAL(10,0) REFERENCES consultation,
-                           pseudo VARCHAR(30) REFERENCES utilisateur,
-                           motif TEXT NOT NULL,
-                           PRIMARY KEY(idConsultation, pseudo)
-);
+-- --------------------------------------------------------
 
--- Table structure for rediger
-CREATE TABLE rediger (
-                         idArticle DECIMAL(10,0) REFERENCES article,
-                         pseudo VARCHAR(30) REFERENCES utilisateur,
-                         PRIMARY KEY(pseudo,idArticle)
+--
+-- Structure de la table `utilisateur`
+--
+
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `pseudo` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `roleUtil` char(1) NOT NULL,
+  PRIMARY KEY (`pseudo`)
 );
