@@ -117,4 +117,10 @@ class ModeleUtilisateur
             echo $twig->render('contact.html', ['userRole' => $_SESSION["role"]]);
         }
     }
+    public function deleteProfil() {
+        global $dsn, $login, $mdp, $twig;
+        $gw = new UtilisateurGateway(new Connection($dsn,$login,$mdp));
+        $gw->delete($_SESSION['pseudo']);
+        $this->disconnect();
+    }
 }
