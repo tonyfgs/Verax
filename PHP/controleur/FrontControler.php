@@ -26,7 +26,7 @@ class FrontControler {
                 "redigerArticle", "validerArticle", "publierArticle","SujetSoumis"
             ],
             "Moderateur" => [
-                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur",
+                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
             ],
             "Admin" => [
                 'GestionUser',"SujetSoumis",'BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer', "AccessForm", 'AccessAccount' , "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle", "ListReport","ReportArticle","Api"

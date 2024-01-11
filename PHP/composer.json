@@ -8,6 +8,7 @@
             "dal\\" : "dal/",
             "dal\\gateways\\" : "dal/gateways/",
             "metier\\" : "metier/",
+            "json_output\\" : "json_output/",
             "modele\\manager\\" : "modele/manager" 
         }
     },

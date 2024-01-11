@@ -12,8 +12,8 @@ use metier\Utilisateur;
 
 class ModeleAdmin
 {
-    function isAdmin(){
-        return isset($_SESSION["role"]) || $_SESSION["role"] == 'Admin';
+    public function isAdmin(){
+        return isset($_SESSION["role"]) && $_SESSION["role"] == 'Admin';
     }
 
     public function disconnect(){
@@ -190,7 +190,7 @@ class ModeleAdmin
         global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $users = $gw->findAllUser();
-        file_put_contents('/json_output/users.json',$users);
+        file_put_contents('json_output/users.json',json_encode($users));
     }
 
 }
