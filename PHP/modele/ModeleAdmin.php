@@ -186,4 +186,11 @@ class ModeleAdmin
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
 
+    public function api() {
+        global $dsn, $login, $mdp, $twig;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $users = $gw->findAllUser();
+        file_put_contents('/json_output/users.json',$users);
+    }
+
 }

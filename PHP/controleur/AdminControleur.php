@@ -64,6 +64,8 @@ class AdminControleur
                 case "ReportArticle":
                     $this->reportArticle();
                     break;
+                case "Api":
+                    $this->
                 default:
                     $dataVueErreur[] = "Erreur d'appel PHP";
                     echo $twig->render("error.html", ['dVueError' => $dataVueErreur]);
@@ -149,6 +151,11 @@ class AdminControleur
     function reportArticle(){
         $mdl = new ModeleUtilisateur();
         $mdl->reportArticle();
+    }
+
+    function api() {
+        $mdl = new ModeleAdmin();
+        $mdl->api();
     }
 
 }
