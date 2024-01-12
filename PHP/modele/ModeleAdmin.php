@@ -190,7 +190,7 @@ class ModeleAdmin
         global $dsn, $login, $mdp, $twig;
         $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
         $users = $gw->findAllUser();
-        file_put_contents('json_output/users.json',json_encode($users));
+        file_put_contents('json_output/users.json',json_encode($users,128));
     }
 
 }

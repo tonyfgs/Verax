@@ -69,6 +69,7 @@ class Utilisateur implements JsonSerializable {
             'mail'=> $this->getMail(),
             'nom' => $this->getNom(),
             'prenom' => $this->getPrenom(),
+            'banni' => $this->getBan(),
             'role' => $this->getRole()
          );
     }
