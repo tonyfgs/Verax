@@ -22,5 +22,13 @@
         "prenom": "Jean",
         "banni": false,
         "role": "U"
+    },
+    {
+        "pseudo": "noalekoala",
+        "mail": "noa.lekoala@outlook.fr",
+        "nom": "lekoala",
+        "prenom": "noa",
+        "banni": false,
+        "role": "U"
     }
 ]

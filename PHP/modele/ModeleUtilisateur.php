@@ -14,7 +14,7 @@ class ModeleUtilisateur
 {
 
     public function isUser(){
-        return (!isset($_SESSION["role"]) || $_SESSION["role"] != 'Utilisateur');
+        return (!isset($_SESSION["role"]) && $_SESSION["role"] != 'Visiteur');
     }
     public function disconnect(){
         global $twig;
