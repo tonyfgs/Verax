@@ -107,4 +107,31 @@ class ModeleVisiteur
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
     }
 
+    public function api() {
+        global $dsn, $login, $mdp, $twig;
+        $gw = new UtilisateurGateway(new Connection($dsn, $login, $mdp));
+        $users = $gw->findAllUser();
+        $json = json_encode($users,128);
+        $ip_address = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+        $target_url = "http://" . $ip_address . "/users_json";
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/json",
+                'method'  => 'POST',
+                'content' => $json,
+            ],
+        ];
+        $context  = stream_context_create($options);
+        // Envoi de la requête POST
+        $response = file_get_contents($target_url, false, $context);
+        // Vérification de la réponse
+        if ($response === FALSE) {
+        // Gestion des erreurs
+            echo "Erreur lors de l'envoi de la requête.";
+        } else {
+        // Traitement de la réponse
+            echo "Réponse reçue : " . $response;
+        }
+    }
+
 }
