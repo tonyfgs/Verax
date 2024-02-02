@@ -17,7 +17,7 @@ class FrontControler {
         $dVueErreur = [];
         $actions = array(
             "Visiteur" => [
-                "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie"
+                "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie", "api"
             ],
             "Utilisateur" => [
                 "Disconnect", "GoodReview", "BadReview", "AccessForm", "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle","ReportArticle", 'AccessAccount', 'DeleteProfil'
@@ -26,10 +26,10 @@ class FrontControler {
                 "redigerArticle", "validerArticle", "publierArticle","SujetSoumis"
             ],
             "Moderateur" => [
-                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur",
+                "supprimerArticleTemporaire", "DemanderSupprimerUtilisateur"
             ],
             "Admin" => [
-                'GestionUser',"SujetSoumis",'BanUser','ChangeUserRole', 'Disconnect', 'UnbanUser', 'Administrer', "AccessForm", 'AccessAccount' , "SubmitFormBug", "SubmitFormFakeNews","SubmitFormArticle", "ListReport","ReportArticle"
+                'GestionUser',"SujetSoumis",'BanUser','ChangeUserRole','UnbanUser', 'Administrer', "ListReport"
             ],
         );
         $action = Validation::nettoyerString($_GET["action"] ?? "");

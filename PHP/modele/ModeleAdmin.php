@@ -12,8 +12,8 @@ use metier\Utilisateur;
 
 class ModeleAdmin
 {
-    function isAdmin(){
-        return isset($_SESSION["role"]) || $_SESSION["role"] == 'Admin';
+    public function isAdmin(){
+        return isset($_SESSION["role"]) && $_SESSION["role"] == 'Admin';
     }
 
     public function disconnect(){

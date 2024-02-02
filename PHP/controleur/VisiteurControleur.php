@@ -63,6 +63,9 @@ class VisiteurControleur
                     $this->inscription();
                     $this->afficherAccueil();
                     break;
+                case 'Api':
+                    $this->api();
+                    break;
                 default:
                     $dataVueErreur[] = "Action Non-Autorisé si pas connecté";
                     echo $twig->render("error.html",['dVueError' => $dataVueErreur]);
@@ -134,6 +137,11 @@ class VisiteurControleur
     public function afficherConnexion() {
         global $twig;
         echo $twig->render('connexion.html', ["userRole" => $_SESSION["role"]]);
+    }
+
+    public function api() {
+        $mdl = new ModeleVisiteur();
+        $mdl->api();
     }
 
 

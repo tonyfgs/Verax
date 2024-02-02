@@ -10,6 +10,7 @@ require __DIR__ . '/vendor/autoload.php';
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/Vue');
 $twig = new Twig\Environment($loader, [ 'cache' => false, 'debug' => true ]);
 
+
 session_start();
 if (!isset($_SESSION["role"])) {
     session_unset();
@@ -24,7 +25,6 @@ foreach ($mgr->getDerniersArticles(3) as $article){
     $gw->insert($article->getId(),$article->getAuteur(), $article->getDescription(), $article->getTitre(), $serial, $article->getTemps(), $article->getImagePrincipale());
 }
 */
-
 
 $cont = new FrontControler();
 

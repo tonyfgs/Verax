@@ -53,27 +53,27 @@
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                             <form action="index.php?action=accueil" method="POST">
-                                <input type="submit" class="page-header" value="accueil">
+                                <input type="submit" class="page-header" value="Accueil">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=economie" method="POST">
-                                <input type="submit" class="page-header" value="economie">
+                                <input type="submit" class="page-header" value="Économie">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=culture" method="POST">
-                                <input type="submit" class="page-header" value="culture">
+                                <input type="submit" class="page-header" value="Culture">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=politique" method="POST">
-                                <input type="submit" class="page-header" value="politique">
+                                <input type="submit" class="page-header" value="Politique">
                             </form>
                         </li>
                         <li class="nav-item">
                             <form action="index.php?action=faitsDivers" method="POST">
-                                <input type="submit" class="page-header" value="faitsDivers">
+                                <input type="submit" class="page-header" value="Faits Divers">
                             </form>
                         </li>
                         <li>
@@ -91,12 +91,12 @@
                         {% if userRole != 'Visiteur' and userRole != null%}
                             <li>
                                 <form action="index.php?action=AccessForm" method="POST">
-                                    <input type="submit" class="page-header" value="contact">
+                                    <input type="submit" class="page-header" value="Contact">
                                 </form>
                             </li>
                             <li>
                                 <form action="index.php?action=Disconnect" method="POST">
-                                    <input type="submit" class="page-header" value="Déconnexion">
+                                    <input type="submit" class="page-header" value="Se déconnecter">
                                 </form>
                             </li>
                         {% endif %}

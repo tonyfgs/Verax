@@ -4,8 +4,9 @@ namespace metier;
 
 use dal\Connection;
 use dal\gateways\UtilisateurGateway;
+use JsonSerializable;
 
-class Utilisateur {
+class Utilisateur implements JsonSerializable {
     private $pseudo;
     private $mail;
 
@@ -61,6 +62,18 @@ class Utilisateur {
     {
         $this->ban = $ban;
     }
+
+    public function jsonSerialize() {
+        return array(
+            'pseudo'=> $this->getpseudo(),
+            'mail'=> $this->getMail(),
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'banni' => $this->getBan(),
+            'role' => $this->getRole()
+         );
+    }
+
 }
 
 

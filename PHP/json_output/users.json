@@ -1,0 +1,34 @@
+[
+    {
+        "pseudo": "admin",
+        "mail": "test@gmail.com",
+        "nom": "LABORIE",
+        "prenom": "Louis",
+        "banni": false,
+        "role": "A"
+    },
+    {
+        "pseudo": "test",
+        "mail": "test@test.test",
+        "nom": "Testeur",
+        "prenom": "Test",
+        "banni": false,
+        "role": "U"
+    },
+    {
+        "pseudo": "jeanlebg",
+        "mail": "jean@jean.com",
+        "nom": "Jean",
+        "prenom": "Jean",
+        "banni": false,
+        "role": "U"
+    },
+    {
+        "pseudo": "noalekoala",
+        "mail": "noa.lekoala@outlook.fr",
+        "nom": "lekoala",
+        "prenom": "noa",
+        "banni": false,
+        "role": "U"
+    }
+]
