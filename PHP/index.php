@@ -1,7 +1,4 @@
 <?php
-
-echo "coucou Noa le boss !";
-
 //namespace brouillon;
 
 use controleur\FrontControler;
@@ -31,3 +28,5 @@ foreach ($mgr->getDerniersArticles(3) as $article){
 $cont = new FrontControler();
 
 //require("./brouillon/brouillonArticle.php");
+
+echo "coucou Noa le boss !";
