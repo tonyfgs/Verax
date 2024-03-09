@@ -12,7 +12,7 @@ $twig = new Twig\Environment($loader, [ 'cache' => false, 'debug' => true ]);
 
 session_start();
 
-
+echo "passage apres le session start...";
 
 if (!isset($_SESSION["role"])) {
     session_unset();
@@ -32,4 +32,4 @@ $cont = new FrontControler();
 
 //require("./brouillon/brouillonArticle.php");
 
-echo "coucou Noa le boss !";
+echo "Fin de l'index";
