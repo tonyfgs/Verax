@@ -1,5 +1,7 @@
 <?php
 
+echo "coucou Noa le boss !";
+
 //namespace brouillon;
 
 use controleur\FrontControler;
