@@ -15,20 +15,27 @@ use modele\ArticleManager;
 class VisiteurControleur
 {
     public function __construct(){
+
+        // echo "debut du visiteur controleur <br>";
+
         global $twig;
 
         try{
             if(!isset($_REQUEST["action"])) {
+                echo "Passage dans action nulle <br>";
                 $action = NULL;
             }
             else {
                 $action = Validation::nettoyerString($_REQUEST["action"]);
             }
+
             switch ($action){
+
                 case NULL:
                 case 'accueil':
                     $this->afficherAccueil();
                     break;
+
                 case 'economie':
                     $this->afficherEconomie();
                     break;
@@ -103,14 +110,20 @@ class VisiteurControleur
     }
 
     function afficherArticle() {
+
         $mdl = new ModeleVisiteur();
         $mdl->afficherArticle();
     }
 
     //utiliser router afficher les pages
     function afficherAccueil(){
+
+        // echo "Passage dans afficher accueil du front controller <br>";
+
         $mdl = new ModeleVisiteur();
         $mdl->afficherAccueil();
+
+        // echo "fin de afficher accueil du visiteur controleur <br>";
     }
 
     public function afficherEconomie() {

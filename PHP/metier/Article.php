@@ -20,6 +20,9 @@
 
         public function __construct( $id, $title, $description, $temps, $date, $auteur, $imagePrincipale) {
             global $dsn, $login,$mdp;
+
+            // echo "debut du constructeur de l'article <br>";
+
             $this->id = $id;
             $this->titre = $title;
             $this->description = $description;
@@ -28,11 +31,22 @@
             $this -> lContenus = array();
             $this -> auteur = $auteur;
             $this -> imagePrincipale = $imagePrincipale;
-            $gw = new NoteGateway(new Connection($dsn, $login,$mdp));
-            $this->note = $gw->getNoteByArticles($id);
+
+            // echo "passage après le chargement de l'image principale <br>";
+
+            // Ce bout de code fou la merde :
+            //$gw = new NoteGateway(new Connection($dsn, $login,$mdp));
+            // $this->note = $gw->getNoteByArticles($id);
+
+            // echo "fin du constructeur d'article <br>";
+
+            
         }
 
         public function remplirArticle($lContenus) {
+
+            // echo "debut de remplir article <br>";
+
             foreach ($lContenus as $contenu) {
                 $this -> lContenus[] = $contenu; 
             }

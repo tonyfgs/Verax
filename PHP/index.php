@@ -12,12 +12,13 @@ $twig = new Twig\Environment($loader, [ 'cache' => false, 'debug' => true ]);
 
 session_start();
 
-echo "passage apres le session start...";
+// echo "passage apres le session start... <br>";
 
 if (!isset($_SESSION["role"])) {
     session_unset();
     $_SESSION["role"] = 'Visiteur';
 }
+
 /*
 global $dsn, $login, $mdp;
 $gw = new \dal\gateways\ArticleGateway(new \dal\Connection($dsn, $login, $mdp));
@@ -32,4 +33,4 @@ $cont = new FrontControler();
 
 //require("./brouillon/brouillonArticle.php");
 
-echo "Fin de l'index";
+echo "Fin de l'index...";

@@ -13,6 +13,9 @@ use modele\StubArticles;
         private $articletheque;
 
         public function __construct(IArticleDataManager $imgr) {
+
+            // echo "Passage dans constructeur d'article manager <br>";
+
             $this -> dataManager = $imgr;
             $this -> articletheque = new Articletheque($this -> dataManager);
         }

@@ -12,12 +12,17 @@ use modele\ContenuParagraphe;
         private $lArticles;
 
         public function __construct() {
+
+            // echo "Passage dans le constructeur de stub Article <br>";
+
             $this -> chargerArticles();
         }        
 
         public function chargerArticles() {
             
             $temp = array();
+
+            // echo "debut de charger article <br>";
 
             // ------ Creation de l'article 1 ------------
             $temp[] = new Article(1, "Thinkerview", "Thinkerview est une chaîne youtube d'interview-débat, 
@@ -26,7 +31,11 @@ use modele\ContenuParagraphe;
             diffusées en direct, puis republiées sans montage. ", 3, date("d-m-Y"), "Siwa", 
             "assets/img/mainThinkerview.webp");
 
+           //  echo "passage après le constructeur de l'article <br>";
+
             $temp[0] -> remplirArticle($this -> chargerContenuParagraphe()['article1']);
+
+            // echo "fin creation article 1 <br>";
 
             // ----------- Creation de l'article 2 -------------
                                    
@@ -62,6 +71,8 @@ use modele\ContenuParagraphe;
              //echo "Temporaire..." : $this -> chargerContenuParagraphe()['article1'].
 
             $this -> lArticles = $temp;
+
+            // echo "fin de charger articles <br>";
         }
 
         public function chargerContenuParagraphe() : array {

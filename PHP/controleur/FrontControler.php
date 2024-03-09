@@ -13,8 +13,11 @@ class FrontControler {
 
     public function __construct()
     {
+        // echo "debut du front controller... <br>";
+
         global $twig;
         $dVueErreur = [];
+
         $actions = array(
             "Visiteur" => [
                 "seConnecter", "sInscrire", "Connexion", "Inscription", "accueil", "economie", "api"
@@ -32,11 +35,15 @@ class FrontControler {
                 'GestionUser',"SujetSoumis",'BanUser','ChangeUserRole','UnbanUser', 'Administrer', "ListReport"
             ],
         );
+
         $action = Validation::nettoyerString($_GET["action"] ?? "");
+
         if(in_array($action,$actions['Admin'])){
+
             $mdl = new ModeleAdmin();
 
             if(!$mdl->isAdmin()){
+
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
             }
@@ -45,8 +52,11 @@ class FrontControler {
             }
         }
         else if(in_array($action,$actions['Utilisateur'])){
+
             $mdl = new ModeleUtilisateur();
+
             if($mdl->isUser()){
+                
                 $dVueErreur[] = 'Connexion requise !';
                 echo  $twig->render('error.html', ['dVueErreur' => $dVueErreur]);
             }
@@ -60,5 +70,4 @@ class FrontControler {
     }
 
 }
-
 ?>

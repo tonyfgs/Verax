@@ -9,6 +9,7 @@ use Exception;
 use dal\Connection;
 use PDOException;
 use dal\gateways\ArticleGateway;
+use modele\ArticleManager;
 
 class ModeleVisiteur
 {
@@ -85,7 +86,11 @@ class ModeleVisiteur
 
     function afficherArticle() {
         global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+
+        // marche plus pour l'instant : 
+        // $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+
+        $manager = new ArticleManager(new stubArticles());
 
         if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
             $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
@@ -100,11 +105,27 @@ class ModeleVisiteur
 
     //utiliser router afficher les pages
     function afficherAccueil(){
+
+        // echo "Passage dans afficher accueil du Modele Visiteur <br>";
+
         global $twig, $dsn, $login, $mdp;
-        $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+        // echo "initialisation des variables ok <br>";
+        // echo "encore un msg <br>";
+        
+        // Obsolète tant que bdd pas de retour
+        //$manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
+
+        // Version avec le stub :
+        $manager = new ArticleManager(new stubArticles());
+        
+        // echo "instanciation du manager ok <br>";
+
         $tabArticles = array();
+
         $tabArticles = $manager -> getDerniersArticles(3);
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
+    
+        // echo "fin de afficher accueil du Modele Visiteur  <br>";
     }
 
     public function api() {
