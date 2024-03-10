@@ -10,6 +10,7 @@ use dal\Connection;
 use PDOException;
 use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
+use modele\stubArticles;
 
 class ModeleVisiteur
 {

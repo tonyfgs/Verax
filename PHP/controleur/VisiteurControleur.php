@@ -22,7 +22,7 @@ class VisiteurControleur
 
         try{
             if(!isset($_REQUEST["action"])) {
-                echo "Passage dans action nulle <br>";
+                // echo "Passage dans action nulle <br>";
                 $action = NULL;
             }
             else {
