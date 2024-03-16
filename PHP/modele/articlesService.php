@@ -7,6 +7,10 @@ namespace modele;
 use modele\IArticleDataManager;
 use metier\Article;
 
+use modele\Contenu;
+use modele\contenuParagraphe;
+use modele\contenuMedia;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
