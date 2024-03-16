@@ -12,6 +12,8 @@ use dal\gateways\ArticleGateway;
 use modele\ArticleManager;
 use modele\stubArticles;
 
+//use services\articlesService;
+
 class ModeleVisiteur
 {
 
@@ -117,7 +119,17 @@ class ModeleVisiteur
         //$manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
 
         // Version avec le stub :
-        $manager = new ArticleManager(new stubArticles());
+        // $manager = new ArticleManager(new stubArticles());
+
+        // $serviceApi = new articlesService('http://181.214.189.133:9092');
+
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+
+        $dataVueErreur[] = "Coucou ?";
+
+        // Version avec l'api : http://181.214.189.133:9092'
+
+        $manager = new ArticleManager($serviceApi);
         
         // echo "instanciation du manager ok <br>";
 
