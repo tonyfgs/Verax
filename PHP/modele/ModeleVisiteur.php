@@ -93,7 +93,9 @@ class ModeleVisiteur
         // marche plus pour l'instant : 
         // $manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
 
-        $manager = new ArticleManager(new stubArticles());
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+        $manager = new ArticleManager($serviceApi);
+
 
         if (!isset($_POST['articleId']) || empty($_POST['articleId'])) {
             $dataVueErreur[] = "Une erreur est survenue : L'article est introuvable.";
@@ -102,7 +104,9 @@ class ModeleVisiteur
             $idArticle = htmlspecialchars($_POST['articleId']);
         }
 
+
         $articleTemp = $manager -> getArticle($idArticle);
+
         echo $twig -> render('Article.html', ['article' => $articleTemp, 'userRole' => $_SESSION['role']]);
     }
 
@@ -113,32 +117,25 @@ class ModeleVisiteur
 
         global $twig, $dsn, $login, $mdp;
         // echo "initialisation des variables ok <br>";
-        // echo "encore un msg <br>";
-        
+       
         // Obsolète tant que bdd pas de retour
         //$manager = new ArticleManager(new ArticleGateway(new Connection($dsn, $login, $mdp)));
 
         // Version avec le stub :
         // $manager = new ArticleManager(new stubArticles());
 
-        // $serviceApi = new articlesService('http://181.214.189.133:9092');
 
+        // Version avec l'api : http://181.214.189.133:9092
         $serviceApi = new articlesService('http://181.214.189.133:9092');
-
-        $dataVueErreur[] = "Coucou ?";
-
-        // Version avec l'api : http://181.214.189.133:9092'
-
         $manager = new ArticleManager($serviceApi);
         
-        // echo "instanciation du manager ok <br>";
 
         $tabArticles = array();
 
         $tabArticles = $manager -> getDerniersArticles(3);
+
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
-    
-        // echo "fin de afficher accueil du Modele Visiteur  <br>";
+
     }
 
     public function api() {

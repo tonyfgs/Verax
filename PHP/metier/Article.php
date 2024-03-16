@@ -47,6 +47,8 @@
 
             // echo "debut de remplir article <br>";
 
+            // var_dump($lContenus);
+
             foreach ($lContenus as $contenu) {
                 $this -> lContenus[] = $contenu; 
             }

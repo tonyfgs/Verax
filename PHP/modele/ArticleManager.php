@@ -43,7 +43,10 @@ use modele\StubArticles;
         }
 
         public function getDerniersArticles(int $nbArticles) : array {
-            return $this -> dataManager -> getDerniersArticles($nbArticles);
+            
+            return $this -> articletheque -> getDerniersArticles($nbArticles);
+            //return $this -> dataManager -> getDerniersArticles($nbArticles);
         }
+            
     }
 ?>

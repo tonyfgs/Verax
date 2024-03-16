@@ -26,11 +26,89 @@ class articlesService implements IArticleDataManager {
 
     public function getAllArticles() : array {
         try {
+
+            // echo "debut de getAllArticles ! <br>";
+
             $response = $this->client->request('GET', '/articles');
+
             $body = $response->getBody();
-            $articles = json_decode($body, true);
-            return $articles;
+
+            // echo $body;
+
+            $articlesDansTableau = json_decode($body, true);
+
+            // var_dump($articlesDansTableau);
+
+            foreach ($articlesDansTableau as $articleColomne) {
+                // Créer un nouvel objet Article en utilisant les données de l'array
+
+                // echo "<br>";
+                // echo "<br>";
+                // echo "recuperation nouvel article dans le foreach ";
+                // echo "<br>";
+                // echo "<br>";
+
+                $nouvelArticle = new Article(
+                    $articleColomne['id'],
+                    $articleColomne['titre'],
+                    $articleColomne['description'],
+                    $articleColomne['temps'],
+                    $articleColomne['date'],
+                    $articleColomne['auteur'],
+                    $articleColomne['imagePrincipale']
+
+                );
+
+
+                // echo "<br> debut deserialisation dans le foreach !";
+
+                // var_dump($articleColomne['contenus']);
+
+                $contenusFinaux = [];
+
+                foreach ($articleColomne['contenus'] as $donnee) {
+
+                    $typeContenu = $donnee['typeContenu'];
+                
+                    if ($typeContenu === 'image') {
+
+                        $contenu = new contenuMedia(
+                            $donnee['id'],
+                            $donnee['titre'],
+                            $donnee['lien']
+                        );
+                    } elseif ($typeContenu === 'paragraphe') {
+
+                        $contenu = new contenuParagraphe(
+                            $donnee['id'],
+                            $donnee['titre'],
+                            $donnee['texte']
+                        );
+                    } elseif ($typeContenu === 'video') {
+
+                        $contenu = contenuMedia::newVideo($donnee['id'],
+                        $donnee['titre'],
+                        $donnee['lien']);
+                    }
+                
+
+                    $contenusFinaux[] = $contenu;
+                }
+
+                // echo "<br>";
+                // echo "contenu deserialisé dans le foreach ! ";
+                // echo "<br>";
+                // echo "<br>";
+
+                $nouvelArticle -> remplirArticle($contenusFinaux);
+
+                $articlesFinaux[] = $nouvelArticle;
+            }
+
+            return $articlesFinaux;
+
         } catch (GuzzleException $e) {
+
             echo "Erreur lors de la récupération des articles : " . $e->getMessage();
             return [];
         }
@@ -49,12 +127,14 @@ class articlesService implements IArticleDataManager {
     }
 
     public function getDerniersArticles($nbArticles) {
-        // Cette méthode pourrait être implémentée de manière similaire si votre API supporte cette fonctionnalité
-        throw new \Exception("getDerniersArticles method not implemented.");
-    }
-}
+        try {
+            
+            return $this->getAllArticles();
 
-// Exemple d'utilisation
-// $articlesService = new ArticlesService('http://181.214.189.133:9092');
-// $articles = $articlesService->getAllArticles();
-// print_r($articles);
+        } catch (\Exception $e) {
+            echo "Erreur lors de la récupération des derniers articles : " . $e->getMessage();
+            return [];
+        }
+    }
+    
+}

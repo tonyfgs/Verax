@@ -33,5 +33,20 @@
         public function getAllArticles() : array {
             return $this -> lArticles;
         }
+
+        public function getDerniersArticles(int $nbArticles) : array {
+		
+            $temp = array();
+    
+            for ($cpt = 0 ; $cpt < $nbArticles; $cpt++) {
+                
+                if (isset($this -> getAllArticles()[$cpt])) {
+                    $temp[] = $this -> getAllArticles()[$cpt];
+                }
+            }
+    
+            return $temp;
+        }
+
     }
 ?>
