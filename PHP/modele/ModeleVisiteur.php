@@ -132,7 +132,7 @@ class ModeleVisiteur
 
         $tabArticles = array();
 
-        $tabArticles = $manager -> getDerniersArticles(3);
+        $tabArticles = $manager -> getDerniersArticles(10);
 
         echo $twig->render('accueil.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticles]);
 
