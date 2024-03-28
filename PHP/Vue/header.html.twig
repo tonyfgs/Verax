@@ -21,7 +21,7 @@
 <body>
 <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <a class="navbar-brand text-success logo h1 align-self-center">Verax</a>
+        <a class="navbar-brand text-success logo h1 align-self-center" href="/" >Verax</a>
     </nav>
     <!-- Close Top Nav -->
 
@@ -51,16 +51,13 @@
                 {% endif %}
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <form action="index.php?action=accueil" method="POST">
-                                <input type="submit" class="page-header" value="Accueil">
-                            </form>
-                        </li>
+
                         <li class="nav-item">
                             <form action="index.php?action=economie" method="POST">
-                                <input type="submit" class="page-header" value="Économie">
+                                <input type="submit" class="page-header" value="Economie">
                             </form>
                         </li>
+
                         <li class="nav-item">
                             <form action="index.php?action=culture" method="POST">
                                 <input type="submit" class="page-header" value="Culture">
@@ -71,11 +68,13 @@
                                 <input type="submit" class="page-header" value="Politique">
                             </form>
                         </li>
+
                         <li class="nav-item">
                             <form action="index.php?action=faitsDivers" method="POST">
-                                <input type="submit" class="page-header" value="Faits Divers">
+                                <input type="submit" class="page-header" value="Environnement">
                             </form>
                         </li>
+                        
                         <li>
                             {% if userRole == 'Admin'%}
                                 <form action="index.php?action=Administrer" method="POST">

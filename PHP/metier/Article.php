@@ -14,6 +14,7 @@
         private $date;
         private $auteur;
         private $imagePrincipale;
+        private $categorie;
 
         private $note;
         private $lContenus;
@@ -32,15 +33,16 @@
             $this -> auteur = $auteur;
             $this -> imagePrincipale = $imagePrincipale;
 
-            // echo "passage après le chargement de l'image principale <br>";
-
-            // Ce bout de code fou la merde :
-            //$gw = new NoteGateway(new Connection($dsn, $login,$mdp));
-            // $this->note = $gw->getNoteByArticles($id);
-
-            // echo "fin du constructeur d'article <br>";
+            $this -> categorie = "pas de categorie";
 
             
+
+           
+        }
+
+        public function setCategorie($val) {
+
+            $this -> categorie = $val;
         }
 
         public function remplirArticle($lContenus) {
@@ -68,6 +70,10 @@
 
         public function getAuteur() {
             return $this -> auteur;
+        }
+
+        public function getCategorie() {
+            return $this -> categorie;
         }
 
         public function getTitre() {

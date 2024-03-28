@@ -63,6 +63,8 @@ class articlesService implements IArticleDataManager {
 
                 );
 
+                $nouvelArticle -> setCategorie($articleColomne['categorie']);
+
 
                 // echo "<br> debut deserialisation dans le foreach !";
 

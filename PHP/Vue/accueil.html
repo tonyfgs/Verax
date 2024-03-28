@@ -25,7 +25,13 @@
                                 <div class="text-align-left align-self-center">
                                     <h1 class="h1 text-success"><b>{{ article.getTitre() }}</b></h1>
                                     <h3 class="h2">{{ article.getDescription() }}</h3>
-                                    {# <p>{{ article.getContenus()|raw }}</p> #}
+
+
+                                    <div class="divCategorie">
+
+                                        <p>{{article.getCategorie()}}</p>
+
+                                    </div>
 
                                     <form method="post" action="index.php?action=afficherArticle">
                                         {# <p> test </p> #}
@@ -47,6 +53,53 @@
             <i class="fas fa-chevron-right"></i>
         </a>
     </div>
+
+
+    <div class="presentation">
+
+        <h2>Verax : Qui Sommes-nous ?</h2>
+
+        <div class="parEtImg">
+
+            <p class="presTexte">
+
+
+                Ce site internet a été conçu et développé avec un objectif clair et précis : lutter efficacement contre la désinformation 
+                en ligne et la propagation de fake news, véritables fléaux des temps modernes qui minent la société et déforment la perception de la réalité. 
+                <br><br>
+                Dans cet esprit, notre plateforme offre un accès à une vaste bibliothèque d'articles soigneusement rédigés et vérifiés, ayant
+                 pour but de déconstruire les fausses informations et de rétablir la vérité sur de nombreux sujets d'actualité et de société.
+                {# <br>
+                Nous tenons à souligner que notre démarche repose sur une méthodologie rigoureuse,
+                 s'appuyant sur des faits avérés, des preuves tangibles, et des sources fiables.  #}
+
+                <br> <br>
+
+                En plus de notre site web, nous sommes ravis de vous annoncer que notre application mobile est désormais disponible sur Android.
+
+                <br><br><br>
+
+                Ce projet a été réalisé par une équipe de 6 personnes, dans la cadre d'un projet de SAE, en seconde année de BUT Informatique. Retrouvez une présentation 
+                détaillée de la conception de ce projet en cliquant sur le bouton ci-dessous.
+
+                
+
+            </p>
+
+            <img class="presImage" src="https://cdn.discordapp.com/attachments/1150826625320108032/1187039201963815005/logoVerAX.png?ex=6616a267&is=66042d67&hm=3bff873b7b4d7d465cb0254555acb2edd121bce0f0a4d720a3504b80a9ace460&" alt="">
+    
+
+        </div>
+
+        <form class="btPres"  method="post" action="index.php?action=afficherArticle">
+            {# <p> test </p> #}
+            <input type="hidden" name="articleId" value="{{ 3}}">
+            <input type="submit" value="Voir l'article">
+        </form>
+
+        
+
+        </div>
     
     <!-- End Banner Hero -->
 
@@ -55,3 +108,86 @@
 </body>
 
 </html>
+
+<style>
+
+    .btPres {
+
+        margin-left: 5vh;
+    }
+
+    .presentation {
+
+        color : white;
+        padding: 5vh;
+
+        margin-top: 3vh;
+        margin-bottom: 6vh;
+        background-color: #C35757;
+
+        margin-left: 13vh;
+        margin-right: 13vh;
+
+        border-radius: 30px;
+
+    }
+    .presentation h2 {
+
+        margin-bottom: 2vh;
+    
+        font-weight: bold;
+        font-size: 5vh;
+    }
+
+    .presentation .parEtImg {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        
+    }
+
+    .presentation .presTexte {
+
+        width: 46%;
+        height: 100%;
+
+        font-size: 20vh;
+
+
+    }
+
+    .presentation .presImage {
+
+        height: 50vh;
+        width: 50vh;
+        border-radius: 30px;
+    }
+
+
+    .divCategorie {
+
+        margin-top:  5px;
+        padding-top: 0.6vh;
+
+        font-size: bold;
+        font-family: Arial;
+        font-size: 2vh;
+
+        background-color: #F99E9E;
+
+        border-radius: 30px;
+
+        width: 18vh;
+        height: 4.3vh;
+
+        text-align: center;
+
+        margin-bottom: 3vh;
+
+
+    }
+
+</style>

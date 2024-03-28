@@ -10,7 +10,11 @@ use dal\gateways\UtilisateurGateway;
 use modele\ModeleVisiteur;
 use PDOException;
 use Exception;
+
+
 use modele\ArticleManager;
+use modele\stubArticles;
+use services\articlesService;
 
 class VisiteurControleur
 {
@@ -128,23 +132,29 @@ class VisiteurControleur
 
     public function afficherEconomie() {
         global $twig;
-        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
+        // echo $twig->render('economie.html', ["userRole" => $_SESSION["role"]]);
+
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherEconomie();
+
     }
 
     public function afficherCulture() {
         global $twig;
 
-        echo $twig->render('culture.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherCulture();
     }
 
     public function afficherPolitique() {
-        global $twig;
-        echo $twig->render('politique.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherPolitique();
     }
 
     public function afficherFaitsDivers() {
         global $twig;
-        echo $twig->render('faitsDivers.html', ["userRole" => $_SESSION["role"]]);
+        $mdl = new ModeleVisiteur();
+        $mdl->afficherEnvironnement();
     }
 
     public function afficherConnexion() {

@@ -87,6 +87,106 @@ class ModeleVisiteur
         }
     }
 
+
+    function afficherEconomie() {
+
+        global $twig;
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+        $manager = new ArticleManager($serviceApi);
+        
+
+        $tabArticles = array();
+
+        $tabArticles = $manager -> getDerniersArticles(10);
+
+        $tabArticlesfinaux = [];
+
+        foreach ($tabArticles as $article) {
+
+            if ($article -> getCategorie() === "economie") {
+
+                $tabArticlesfinaux[] = $article;
+            }
+        }
+        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticlesfinaux]);
+
+    }
+
+    function afficherEnvironnement() {
+
+        global $twig;
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+        $manager = new ArticleManager($serviceApi);
+        
+
+        $tabArticles = array();
+
+        $tabArticles = $manager -> getDerniersArticles(10);
+
+        $tabArticlesfinaux = [];
+
+        foreach ($tabArticles as $article) {
+
+            if ($article -> getCategorie() === "environnement") {
+
+                $tabArticlesfinaux[] = $article;
+            }
+        }
+        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticlesfinaux]);
+
+    }
+
+    function afficherPolitique() {
+
+        global $twig;
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+        $manager = new ArticleManager($serviceApi);
+        
+
+        $tabArticles = array();
+
+        $tabArticles = $manager -> getDerniersArticles(10);
+
+        $tabArticlesfinaux = [];
+
+        foreach ($tabArticles as $article) {
+
+            if ($article -> getCategorie() === "politique") {
+
+                $tabArticlesfinaux[] = $article;
+            }
+        }
+        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticlesfinaux]);
+
+    }
+
+
+    function afficherCulture() {
+
+        global $twig;
+        $serviceApi = new articlesService('http://181.214.189.133:9092');
+        $manager = new ArticleManager($serviceApi);
+        
+
+        $tabArticles = array();
+
+        $tabArticles = $manager -> getDerniersArticles(10);
+
+        $tabArticlesfinaux = [];
+
+        foreach ($tabArticles as $article) {
+
+            if ($article -> getCategorie() === "culture") {
+
+                $tabArticlesfinaux[] = $article;
+            }
+        }
+        echo $twig->render('economie.html', ["userRole" => $_SESSION["role"], 'articles' => $tabArticlesfinaux]);
+
+    }
+
+
+
     function afficherArticle() {
         global $twig, $dsn, $login, $mdp;
 
